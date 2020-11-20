@@ -2,8 +2,8 @@
 
 |Shelby El-rassi|Adrienne Smith|
 |:-------------:|:-------------:|
-|[https://www.shelby-el-rassi.com/](https://www.shelby-el-rassi.com/)  |[]() |
-
+|[www.shelby-el-rassi.com/](www.shelby-el-rassi.com/)  |[]() |
+|[https://github.com/Shelby219](www.shelby-el-rassi.com/)  |[https://github.com/aes89](https://github.com/aes89) |
 
 #### Index:
 - [**Description**](#Description) 
