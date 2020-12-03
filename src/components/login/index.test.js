@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import Login from './login';
+import Login from '.';
 
 it('renders', () => {
     expect(shallow(<Login />)).toMatchSnapshot();

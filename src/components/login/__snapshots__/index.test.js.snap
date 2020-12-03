@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div>
+  <h1>
+    Anywhere in your app!
+  </h1>
+  <Formik
+    initialValues={
+      Object {
+        "email": "",
+        "password": "",
+      }
+    }
+    onSubmit={[Function]}
+    validate={[Function]}
+  >
+    <Component />
+  </Formik>
+</div>
+`;
