@@ -12,6 +12,7 @@ exports[`renders 1`] = `
   <input
     id="firstName"
     name="firstName"
+    onBlur={[Function]}
     onChange={[Function]}
     type="text"
     value=""
@@ -24,6 +25,7 @@ exports[`renders 1`] = `
   <input
     id="lastName"
     name="lastName"
+    onBlur={[Function]}
     onChange={[Function]}
     type="text"
     value=""
@@ -36,6 +38,7 @@ exports[`renders 1`] = `
   <input
     id="email"
     name="email"
+    onBlur={[Function]}
     onChange={[Function]}
     type="email"
     value=""
@@ -48,6 +51,7 @@ exports[`renders 1`] = `
   <input
     id="password"
     name="password"
+    onBlur={[Function]}
     onChange={[Function]}
     type="password"
     value=""
@@ -60,6 +64,7 @@ exports[`renders 1`] = `
   <input
     id="confirmPassword"
     name="confirmPassword"
+    onBlur={[Function]}
     onChange={[Function]}
     type="password"
     value=""

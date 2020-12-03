@@ -8,5 +8,5 @@ it('renders', () => {
 });
 
 it('expects text to render', () => {
-    expect(shallow(<Register />).text()).toMatch('Register:')
+    expect(shallow(<Register />).text()).toMatch('First NameLast Name')
 })
