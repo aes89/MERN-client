@@ -77,30 +77,30 @@ const Register = () => {
 
 
   const formik = useFormik({
-
+      
     initialValues: {
-
-      firstName: '',
-
-      lastName: '',
-
-      email: '',
-
-      password: '',
-
-      confirmPassword: '',
-
+        
+        firstName: '',
+        
+        lastName: '',
+        
+        email: '',
+        
+        password: '',
+        
+        confirmPassword: '',
+        
     },
-
+    
     validate,
-
+    
     onSubmit: values => {
-
-      alert(JSON.stringify(values, null, 2));
-
+        
+        alert(JSON.stringify(values, null, 2));
+        
     },
-
-  });
+    
+});
 
   return (
 
@@ -110,97 +110,108 @@ const Register = () => {
 
       <input
 
-        id="firstName"
+id="firstName"
 
-        name="firstName"
+name="firstName"
 
-        type="text"
+type="text"
 
-        onChange={formik.handleChange}
+onChange={formik.handleChange}
+
+onBlur={formik.handleBlur}
 
         value={formik.values.firstName}
+        
+        />
 
-      />
-
-      {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+      {formik.touched.firstName && formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
 
       <label htmlFor="lastName">Last Name</label>
 
       <input
 
-        id="lastName"
+id="lastName"
 
-        name="lastName"
+name="lastName"
 
-        type="text"
+type="text"
 
-        onChange={formik.handleChange}
+onChange={formik.handleChange}
 
-        value={formik.values.lastName}
+onBlur={formik.handleBlur}
 
-      />
+value={formik.values.lastName}
 
-      {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+/>
+
+      {formik.touched.lastName && formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
       <label htmlFor="email">Email Address</label>
 
       <input
 
-        id="email"
+id="email"
 
-        name="email"
+name="email"
 
-        type="email"
+type="email"
 
-        onChange={formik.handleChange}
+onChange={formik.handleChange}
 
-        value={formik.values.email}
+onBlur={formik.handleBlur}
 
-      />
+value={formik.values.email}
 
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+/>
+
+      {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
       <label htmlFor="password">Password</label>
 
         <input
 
-            id="password"
+id="password"
 
-            name="password"
+name="password"
 
-            type="password"
+type="password"
 
-            onChange={formik.handleChange}
+onChange={formik.handleChange}
 
-            value={formik.values.password}
+onBlur={formik.handleBlur}
 
-        />
+value={formik.values.password}
 
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+/>
+
+        {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
         <label htmlFor="confirmPassword">Password</label>
 
         <input
 
-            id="confirmPassword"
+id="confirmPassword"
 
-            name="confirmPassword"
+name="confirmPassword"
 
-            type="password"
+type="password"
 
-            onChange={formik.handleChange}
+onChange={formik.handleChange}
 
-            value={formik.values.confirmPassword}
+onBlur={formik.handleBlur}
 
-        />
+value={formik.values.confirmPassword}
 
-        {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+/>
+
+        {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
 
       <button type="submit">Submit</button>
 
     </form>
 
   );
+
 
 };
 

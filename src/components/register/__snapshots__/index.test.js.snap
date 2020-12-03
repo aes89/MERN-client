@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="firstName"
+  >
+    First Name
+  </label>
+  <input
+    id="firstName"
+    name="firstName"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="lastName"
+  >
+    Last Name
+  </label>
+  <input
+    id="lastName"
+    name="lastName"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="email"
+  >
+    Email Address
+  </label>
+  <input
+    id="email"
+    name="email"
+    onChange={[Function]}
+    type="email"
+    value=""
+  />
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    id="password"
+    name="password"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <label
+    htmlFor="confirmPassword"
+  >
+    Password
+  </label>
+  <input
+    id="confirmPassword"
+    name="confirmPassword"
+    onChange={[Function]}
+    type="password"
+    value=""
+  />
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;
