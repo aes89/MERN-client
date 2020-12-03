@@ -2,6 +2,7 @@ import React from 'react';
 
 import Login from './components/login';
 import Register from './components/register';
+import UserSettings from './components/userSettings';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </header>
       <Login />
       <Register />
+      <UserSettings />
       <div>hello world</div>
     </div>
   );
