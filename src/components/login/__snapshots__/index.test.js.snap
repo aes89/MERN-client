@@ -3,7 +3,7 @@
 exports[`renders 1`] = `
 <div>
   <h1>
-    Anywhere in your app!
+    Log In:
   </h1>
   <Formik
     initialValues={

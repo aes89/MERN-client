@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Login from './components/login';
+import Register from './components/register';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         {/* <Login /> */}
       </header>
       <Login />
+      <Register />
       <div>hello world</div>
     </div>
   );

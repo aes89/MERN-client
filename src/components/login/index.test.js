@@ -8,5 +8,5 @@ it('renders', () => {
 });
 
 it('expects text to render', () => {
-    expect(shallow(<Login />).text()).toBe('my login banner no worries')
+    expect(shallow(<Login />).text()).toMatch('Log In:')
 })

@@ -1,132 +1,83 @@
 import React from 'react';
 
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
  
 
  const Login = () => (
 
-   <div>
+  <div>
 
-     <h1>Anywhere in your app!</h1>
+  <h1>Log In:</h1>
 
-     <Formik
+  <Formik
 
-       initialValues={{ email: '', password: '' }}
+    initialValues={{ email: '', password: '' }}
 
-       validate={values => {
+    validate={values => {
 
-         const errors = {};
+      const errors = {};
 
-         if (!values.email) {
+      if (!values.email) {
 
-           errors.email = 'Required';
+        errors.email = 'Required';
 
-         } else if (
+      } else if (
 
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
 
-         ) {
+      ) {
 
-           errors.email = 'Invalid email address';
+        errors.email = 'Invalid email address';
 
-         }
+      }
 
-         return errors;
+      return errors;
 
-       }}
+    }}
 
-       onSubmit={(values, { setSubmitting }) => {
+    onSubmit={(values, { setSubmitting }) => {
 
-         setTimeout(() => {
+      setTimeout(() => {
 
-           alert(JSON.stringify(values, null, 2));
+        alert(JSON.stringify(values, null, 2));
 
-           setSubmitting(false);
+        setSubmitting(false);
 
-         }, 400);
+      }, 400);
 
-       }}
+    }}
 
-     >
+  >
 
-       {({
+    {({ isSubmitting }) => (
 
-         values,
+      <Form>
 
-         errors,
+        <Field type="email" name="email" />
 
-         touched,
+        <ErrorMessage name="email" component="div" />
 
-         handleChange,
+        <Field type="password" name="password" />
 
-         handleBlur,
+        <ErrorMessage name="password" component="div" />
 
-         handleSubmit,
+        <button type="submit" disabled={isSubmitting}>
 
-         isSubmitting,
+          Submit
 
-         /* and other goodies */
+        </button>
 
-       }) => (
+      </Form>
 
-         <form onSubmit={handleSubmit}>
+    )}
 
-           <input
+  </Formik>
 
-             type="email"
+</div>
 
-             name="email"
-
-             onChange={handleChange}
-
-             onBlur={handleBlur}
-
-             value={values.email}
-
-           />
-
-           {errors.email && touched.email && errors.email}
-
-           <input
-
-             type="password"
-
-             name="password"
-
-             onChange={handleChange}
-
-             onBlur={handleBlur}
-
-             value={values.password}
-
-           />
-
-           {errors.password && touched.password && errors.password}
-
-           <button type="submit" disabled={isSubmitting}>
-
-             Submit
-
-           </button>
-
-         </form>
-
-       )}
-
-     </Formik>
-
-   </div>
-
- );
-
- 
+);
 
 
-// const Login = () => (
-// 	<div>
-// 		my login banner no worries
-// 	</div>
-// );
 
 export default Login;
