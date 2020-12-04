@@ -8,29 +8,15 @@ const validate = values => {
 
   const errors = {};
 
-  if (!values.firstName) {
+  if (!values.name) {
 
-    errors.firstName = 'Required';
+    errors.name = 'Required';
 
-  } else if (values.firstName.length > 15) {
+  } else if (values.name.length > 15) {
 
-    errors.firstName = 'Must be 15 characters or less';
-
-  }
-
-
-
-  if (!values.lastName) {
-
-    errors.lastName = 'Required';
-
-  } else if (values.lastName.length > 20) {
-
-    errors.lastName = 'Must be 20 characters or less';
+    errors.name = 'Must be 15 characters or less';
 
   }
-
-
 
   if (!values.email) {
 
@@ -80,9 +66,7 @@ const UserSettings = () => {
       
     initialValues: {
         
-        firstName: '',
-        
-        lastName: '',
+        name: '',
         
         email: '',
         
@@ -103,16 +87,17 @@ const UserSettings = () => {
 });
 
   return (
-
+    <div>
+    <h1>User Settings:</h1>
     <form onSubmit={formik.handleSubmit}>
 
-      <label htmlFor="firstName">First Name</label>
+      <label htmlFor="firstName">Name</label>
 
       <input
 
-id="firstName"
+id="userSettingsName"
 
-name="firstName"
+name="name"
 
 type="text"
 
@@ -120,37 +105,18 @@ onChange={formik.handleChange}
 
 onBlur={formik.handleBlur}
 
-        value={formik.values.firstName}
+        value={formik.values.name}
         
         />
 
-      {formik.touched.firstName && formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+      {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
 
-      <label htmlFor="lastName">Last Name</label>
-
-      <input
-
-id="lastName"
-
-name="lastName"
-
-type="text"
-
-onChange={formik.handleChange}
-
-onBlur={formik.handleBlur}
-
-value={formik.values.lastName}
-
-/>
-
-      {formik.touched.lastName && formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
       <label htmlFor="email">Email Address</label>
 
       <input
 
-id="email"
+id="userSettingsEmail"
 
 name="email"
 
@@ -170,7 +136,7 @@ value={formik.values.email}
 
         <input
 
-id="password"
+id="userSettingsPassword"
 
 name="password"
 
@@ -190,7 +156,7 @@ value={formik.values.password}
 
         <input
 
-id="confirmPassword"
+id="userSettingsConfirmPassword"
 
 name="confirmPassword"
 
@@ -206,13 +172,19 @@ value={formik.values.confirmPassword}
 
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
 
-      <button type="submit">Submit</button>
+      <button type="submit">Update Details</button>
 
     </form>
-
+</div>
   );
 
 
 };
 
 export default UserSettings;
+
+
+
+
+
+

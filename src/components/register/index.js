@@ -8,30 +8,6 @@ const validate = values => {
 
   const errors = {};
 
-  if (!values.firstName) {
-
-    errors.firstName = 'Required';
-
-  } else if (values.firstName.length > 15) {
-
-    errors.firstName = 'Must be 15 characters or less';
-
-  }
-
-
-
-  if (!values.lastName) {
-
-    errors.lastName = 'Required';
-
-  } else if (values.lastName.length > 20) {
-
-    errors.lastName = 'Must be 20 characters or less';
-
-  }
-
-
-
   if (!values.email) {
 
     errors.email = 'Required';
@@ -80,10 +56,6 @@ const Register = () => {
       
     initialValues: {
         
-        firstName: '',
-        
-        lastName: '',
-        
         email: '',
         
         password: '',
@@ -103,54 +75,15 @@ const Register = () => {
 });
 
   return (
-
+    <div>
+    <h1>Register:</h1>
     <form onSubmit={formik.handleSubmit}>
-
-      <label htmlFor="firstName">First Name</label>
-
-      <input
-
-id="firstName"
-
-name="firstName"
-
-type="text"
-
-onChange={formik.handleChange}
-
-onBlur={formik.handleBlur}
-
-        value={formik.values.firstName}
-        
-        />
-
-      {formik.touched.firstName && formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-
-      <label htmlFor="lastName">Last Name</label>
-
-      <input
-
-id="lastName"
-
-name="lastName"
-
-type="text"
-
-onChange={formik.handleChange}
-
-onBlur={formik.handleBlur}
-
-value={formik.values.lastName}
-
-/>
-
-      {formik.touched.lastName && formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
       <label htmlFor="email">Email Address</label>
 
       <input
 
-id="email"
+id="registerEmail"
 
 name="email"
 
@@ -170,7 +103,7 @@ value={formik.values.email}
 
         <input
 
-id="password"
+id="registerPassword"
 
 name="password"
 
@@ -190,7 +123,7 @@ value={formik.values.password}
 
         <input
 
-id="confirmPassword"
+id="registerConfirmPassword"
 
 name="confirmPassword"
 
@@ -206,13 +139,19 @@ value={formik.values.confirmPassword}
 
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
 
-      <button type="submit">Submit</button>
+      <button type="submit">Sign Up</button>
 
     </form>
-
+</div>
   );
 
 
 };
 
-export default Register
+export default Register;
+
+
+
+
+
+
