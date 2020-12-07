@@ -1,78 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <label
-    htmlFor="firstName"
+<div>
+  <h1>
+    Register:
+  </h1>
+  <form
+    onSubmit={[Function]}
   >
-    First Name
-  </label>
-  <input
-    id="firstName"
-    name="firstName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    type="text"
-    value=""
-  />
-  <label
-    htmlFor="lastName"
-  >
-    Last Name
-  </label>
-  <input
-    id="lastName"
-    name="lastName"
-    onBlur={[Function]}
-    onChange={[Function]}
-    type="text"
-    value=""
-  />
-  <label
-    htmlFor="email"
-  >
-    Email Address
-  </label>
-  <input
-    id="email"
-    name="email"
-    onBlur={[Function]}
-    onChange={[Function]}
-    type="email"
-    value=""
-  />
-  <label
-    htmlFor="password"
-  >
-    Password
-  </label>
-  <input
-    id="password"
-    name="password"
-    onBlur={[Function]}
-    onChange={[Function]}
-    type="password"
-    value=""
-  />
-  <label
-    htmlFor="confirmPassword"
-  >
-    Password
-  </label>
-  <input
-    id="confirmPassword"
-    name="confirmPassword"
-    onBlur={[Function]}
-    onChange={[Function]}
-    type="password"
-    value=""
-  />
-  <button
-    type="submit"
-  >
-    Submit
-  </button>
-</form>
+    <label
+      htmlFor="email"
+    >
+      Email Address
+    </label>
+    <input
+      id="registerEmail"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="email"
+      value=""
+    />
+    <label
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      id="registerPassword"
+      name="password"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+    <label
+      htmlFor="confirmPassword"
+    >
+      Password
+    </label>
+    <input
+      id="registerConfirmPassword"
+      name="confirmPassword"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </form>
+</div>
 `;

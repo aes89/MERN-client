@@ -5,17 +5,40 @@ exports[`renders 1`] = `
   <h1>
     Log In:
   </h1>
-  <Formik
-    initialValues={
-      Object {
-        "email": "",
-        "password": "",
-      }
-    }
+  <form
     onSubmit={[Function]}
-    validate={[Function]}
   >
-    <Component />
-  </Formik>
+    <label
+      htmlFor="email"
+    >
+      Email Address
+    </label>
+    <input
+      id="loginEmail"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="email"
+      value=""
+    />
+    <label
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      id="loginPassword"
+      name="password"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+      Log In
+    </button>
+  </form>
 </div>
 `;

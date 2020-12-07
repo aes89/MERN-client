@@ -1,12 +1,14 @@
-import { shallow } from 'enzyme';
-import React from 'react';
+import { shallow } from "enzyme";
+import React from "react";
 
-import Register from '.';
+import Register from ".";
 
-it('renders', () => {
-    expect(shallow(<Register />)).toMatchSnapshot();
+it("renders", () => {
+  expect(shallow(<Register />)).toMatchSnapshot();
 });
 
-it('expects text to render', () => {
-    expect(shallow(<Register />).text()).toMatch('First NameLast Name')
-})
+it("expects text to render", () => {
+  expect(shallow(<Register />).text()).toMatch(
+    "Register:Email AddressPasswordPasswordSign Up"
+  );
+});

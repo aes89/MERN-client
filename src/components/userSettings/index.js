@@ -78,6 +78,15 @@ const UserSettings = () => {
           onChange={(event) => {
             formik.setFieldValue("file", event.currentTarget.files[0]);
           }}
+          //not sure what this does
+          // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
+          onSubmit={(values) => {
+            console.log({
+              fileName: values.file.name,
+              type: values.file.type,
+              size: `${values.file.size} bytes`,
+            });
+          }}
         />
 
         <label htmlFor="name">Name</label>

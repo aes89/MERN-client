@@ -9,6 +9,7 @@ exports[`renders learn react link 1`] = `
   />
   <Login />
   <Register />
+  <UserSettings />
   <div>
     hello world
   </div>
