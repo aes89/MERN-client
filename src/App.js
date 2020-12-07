@@ -17,11 +17,14 @@ const customStyles = {
   },
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 const user = false;
 
 const App = () => {
-  var subtitle;
+  const modals = {
+    register: <Register />,
+    login: <Login />,
+  };
+  const [modalOpen, setModalOpen] = React.useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -41,12 +44,24 @@ const App = () => {
         </Fragment>
       ) : (
         <Fragment>
-          <Login />
-          <Register />
+          <button
+            onClick={() => {
+              setModalOpen("login");
+              openModal();
+            }}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => {
+              setModalOpen("register");
+              openModal();
+            }}
+          >
+            Register
+          </button>
         </Fragment>
       )}
-
-      <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -54,15 +69,23 @@ const App = () => {
         ariaHideApp={false}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+        {modalOpen && modals[modalOpen]}
+        <button
+          onClick={() => {
+            setModalOpen("login");
+            openModal();
+          }}
+        >
+          Login
+        </button>
+        <button
+          onClick={() => {
+            setModalOpen("register");
+            openModal();
+          }}
+        >
+          Register
+        </button>
       </Modal>
     </div>
   );

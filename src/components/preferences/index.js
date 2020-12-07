@@ -30,7 +30,7 @@ const mappedValues = preferencesList.map((preference) => [preference, false]);
 
 const Preferences = () => (
   <div>
-    <h1>Sign Up</h1>
+    <h1>User Preferences</h1>
     <Formik
       initialValues={Object.fromEntries(mappedValues)}
       onSubmit={async (values) => {
