@@ -22,3 +22,47 @@ Server Repository: https://github.com/Shelby219/MERN-server
 
 
 # MERN-client
+
+---
+### Manual Testing Log - Development
+<details>
+<summary>Click to expand</summary>
+
+| Date | Feature | Test |
+|:---:|:---:|:---:|
+| 08/12/2020 | Log in and Regsiter Modals | Able to click on Log in or Register, modal appears. Able to click on Log in or Register within modal to switch forms. |
+
+</details>
+
+---
+### Automated Testing Log - Development
+<details>
+<summary>Click to expand</summary>
+
+| Feature | Test |
+|:---:|:---:|
+| test | test |
+
+</details>
+
+---
+### Manual Testing Log - Production
+<details>
+<summary>Click to expand</summary>
+
+| Date | Feature | Test |
+|:---:|:---:|:---:|
+| test | test | test |
+
+</details>
+
+---
+### Automated Testing Log - Production
+<details>
+<summary>Click to expand</summary>
+
+| Date | Feature | Test |
+|:---:|:---:|:---:|
+| test | test | test |
+
+</details>

@@ -17,7 +17,7 @@ const customStyles = {
   },
 };
 
-const user = false;
+const user = true;
 
 const App = () => {
   const modals = {
@@ -84,6 +84,12 @@ const App = () => {
             openModal();
           }}
         >
+          <button
+            onClick={() => {
+              // setModalOpen("register");
+              closeModal();
+            }}
+          ></button>
           Register
         </button>
       </Modal>
@@ -92,3 +98,35 @@ const App = () => {
 };
 
 export default App;
+
+// routes for laters
+
+// HOME
+// /
+
+// SIGN IN PAGE
+// user/login
+
+// REGISTER PAGE
+// user/register
+
+// ACCOUNT SETTINGS PAGE
+// user/:username/account-settings
+
+// PREFRENCES PAGE
+// preferences/:username
+
+// FRIDGE PAGE
+// ingredients/:username/fridge
+
+// PANTRY PAGE
+// ingredients/:username/pantry
+
+// BROWSE RECIPE PAGE
+// /recipes/browse
+
+// SINGLE RECIPE
+// /recipes/:recipe-name
+
+// USER SAVED RECIPES
+// /saved-recipes/:username

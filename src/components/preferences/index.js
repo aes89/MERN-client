@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { Formik, Field, Form } from "formik";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const toggle = "toggle";
 
 const preferencesList = [
   "vegetarian",
@@ -39,7 +38,6 @@ const Preferences = () => (
       }}
     >
       {({ values }) => {
-        console.log("value", values);
         return (
           <Form>
             {preferencesList.map((preference, index) => (
@@ -48,7 +46,8 @@ const Preferences = () => (
                 {preference}
               </label>
             ))}
-
+            {/* what was the name of your preference name tag on the checkbox? Preferences? plural? */}
+            {/* so the reqest will be req.body.preference ? */}
             <button type="submit">Submit</button>
           </Form>
         );
