@@ -30,7 +30,8 @@ Server Repository: https://github.com/Shelby219/MERN-server
 
 | Date | Feature | Test |
 |:---:|:---:|:---:|
-| 08/12/2020 | Log in and Regsiter Modals | Able to click on Log in or Register, modal appears. Able to click on Log in or Register within modal to switch forms. |
+| 07/12/2020 | Preferences creates false/true object | Form completed manually, able to console log returned object showing { "vegetarian": true, "vegan": false ...} |
+| 08/12/2020 | Log in and Register Modals | Able to click on Log in or Register, modal appears. Able to click on Log in or Register within modal to switch forms. |
 
 </details>
 
@@ -64,5 +65,22 @@ Server Repository: https://github.com/Shelby219/MERN-server
 | Date | Feature | Test |
 |:---:|:---:|:---:|
 | test | test | test |
+
+</details>
+
+---
+### Daily Tasks
+<details>
+<summary>Click to expand</summary>
+Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots</a>.
+&check;
+&cross; 
+
+| Date | Tasks Allocated | Completed? |
+|:---:|:---:|:---:|
+| 08/12/2020 | Create testing logs in ReadMe. | &check; |
+|| Cypress tests for preferences, log in, register, user settings. | |
+|| Routes | |
+
 
 </details>
