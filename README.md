@@ -79,8 +79,10 @@ Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots
 | Date | Tasks Allocated | Completed? |
 |:---:|:---:|:---:|
 | 08/12/2020 | Create testing logs in ReadMe. | &check; |
+|| Create daily task log | &check; |
 || Cypress tests for preferences, log in, register, user settings. | |
 || Routes | |
+|09/12/2020| | |
 
 
 </details>
