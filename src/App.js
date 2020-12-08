@@ -71,6 +71,7 @@ const App = () => {
       >
         {modalOpen && modals[modalOpen]}
         <button
+          class="modalLoginButton"
           onClick={() => {
             setModalOpen("login");
             openModal();
@@ -79,18 +80,22 @@ const App = () => {
           Login
         </button>
         <button
+          class="modalRegisterButton"
           onClick={() => {
             setModalOpen("register");
             openModal();
           }}
         >
-          <button
-            onClick={() => {
-              // setModalOpen("register");
-              closeModal();
-            }}
-          ></button>
           Register
+        </button>
+        <button
+          class="modalCancelButton"
+          onClick={() => {
+            // setModalOpen("register");
+            closeModal();
+          }}
+        >
+          Cancel
         </button>
       </Modal>
     </div>
@@ -99,7 +104,7 @@ const App = () => {
 
 export default App;
 
-// routes for laters
+// routes for later
 
 // HOME
 // /
@@ -130,3 +135,5 @@ export default App;
 
 // USER SAVED RECIPES
 // /saved-recipes/:username
+
+// also You need to add the massive ingredient JSON to your client repo when you do the autocmplete haha. If you pull the latest from server then you can move the file to a data file in the client :)

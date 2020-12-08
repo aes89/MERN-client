@@ -69,6 +69,7 @@ const Login = () => {
           id="loginEmail"
           name="email"
           type="email"
+          class="loginEmail"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -84,6 +85,7 @@ const Login = () => {
           id="loginPassword"
           name="password"
           type="password"
+          class="loginPassword"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
