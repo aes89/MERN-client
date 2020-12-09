@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import React, { Fragment } from "react";
 import Login from "./components/login";
 import Register from "./components/register";
@@ -17,9 +18,9 @@ const customStyles = {
   },
 };
 
-const user = true;
+const user = false;
 
-const App = () => {
+const App = ({ userLoggedIn }) => {
   const modals = {
     register: <Register />,
     login: <Login />,
@@ -37,6 +38,9 @@ const App = () => {
     <div className="App">
       <div>
         <h1>FridgeMate</h1>
+        <h4>
+          {userLoggedIn ? "you are logged in" : "please log in you loser"}
+        </h4>
       </div>
       {user ? (
         <Fragment>
@@ -91,7 +95,6 @@ const App = () => {
         <button
           class="modalCancelButton"
           onClick={() => {
-            // setModalOpen("register");
             closeModal();
           }}
         >
@@ -102,7 +105,11 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  userLoggedIn: state.userLoggedIn.username,
+});
+
+export default connect(mapStateToProps)(App);
 
 // routes for later
 
@@ -137,3 +144,18 @@ export default App;
 // /saved-recipes/:username
 
 // also You need to add the massive ingredient JSON to your client repo when you do the autocmplete haha. If you pull the latest from server then you can move the file to a data file in the client :)
+// https://material-ui.com/components/autocomplete/
+
+// user: {
+//   fridgeIngredients: [Array],
+//   pantryIngredients: [Array],
+//   _id: '5fd0136d3d8569a20f8504b0',
+//   name: 'Test User 1',
+//   email: 'tester@test.com',
+//   username: 'testusername',
+//   password: '$2a$10$n7gAww9x3nTlZFYQQ25zHuu4S8ix6U44akrTo7pP5GlqOba6bOWtK',
+//   createdDate: '2020-12-08T23:59:41.384Z',
+//   lastLogin: '2020-12-08T23:59:41.384Z',
+//   __v: 0,
+//   profile: 'https://fridgemate.s3.ap-southeast-2.amazonaws.com/1607471981565'
+//   }

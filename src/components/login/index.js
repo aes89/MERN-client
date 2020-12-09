@@ -1,17 +1,6 @@
 import React from "react";
-import Modal from "react-modal";
+import { connect } from "react-redux";
 import { useFormik } from "formik";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 const validate = (values) => {
   const errors = {};
@@ -25,25 +14,11 @@ const validate = (values) => {
   if (!values.password) {
     errors.password = "Required";
   }
-  // not on log in??
-  // else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(values.password)) {
-
-  //   errors.password = 'Invalid password';
-
-  // }
-
   return errors;
 };
 
-const Login = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+const Login = ({ actions, loggedIn }) => {
+  console.log("are we logged in", loggedIn);
 
   const formik = useFormik({
     initialValues: {
@@ -95,10 +70,24 @@ const Login = () => {
           <div>{formik.errors.password}</div>
         ) : null}
 
-        <button type="submit">Log In</button>
+        <button type="submit" onClick={actions.logIn}>
+          Log In
+        </button>
+        <button onClick={actions.logout}>log out</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  loggedIn: state.userLoggedIn.username,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    logIn: () => dispatch({ type: "login" }),
+    logout: () => dispatch({ type: "logout" }),
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -70,7 +70,7 @@ Server Repository: https://github.com/Shelby219/MERN-server
 
 ---
 ### Daily Tasks
-<details>
+<!-- <details> -->
 <summary>Click to expand</summary>
 Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots</a>.
 &check;
@@ -78,11 +78,12 @@ Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots
 
 | Date | Tasks Allocated | Completed? |
 |:---:|:---:|:---:|
+|**Adrienne** |
 | 08/12/2020 | Create testing logs in ReadMe. | &check; |
 || Create daily task log | &check; |
-|| Cypress tests for preferences, log in, register, user settings. | |
-|| Routes | |
-|09/12/2020| | |
-
-
+|| Cypress tests for preferences, log in, register, user settings. | &check; Login &check; Register &cross; User settings &cross; Preferences |
+|| Routes | &cross;|
+|09/12/2020| Finalise Part A documentation and presentation | &check; |
+| | Set up Redux (global state management) so can test components thoroughly | |
+|| Cypress tests for preferences and user settings. |  |
 </details>
