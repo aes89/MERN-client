@@ -1,0 +1,51 @@
+
+*, *::before, *::after {
+   box-sizing: border-box;
+}
+
+body {
+   font-family: sans-serif;
+   font-size: 1em;
+   color: #333;
+   height: 125vh;
+}
+
+em {
+   font-style: normal;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+} 
+
+/* Layout */
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+ }
+ 
+ .layoutContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+ }
+ 
+  /* Mobile First */
+  @media (min-width: 42em) {
+   .layoutContent {
+      margin-left: 4em;
+   }
+   
+ 
+}
+
+@media (min-width: 68em) {
+   .layoutContent {
+      margin-left: 15em;
+   }
+   
+   
+}

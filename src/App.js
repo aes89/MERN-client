@@ -4,19 +4,12 @@ import Login from "./components/login";
 import Register from "./components/register";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
+import Nav from "./components/nav";
 import "./App.css";
 import Modal from "react-modal";
+import styles from "./components/styles/app.module.css";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+
 
 // const user = false;
 
@@ -35,17 +28,19 @@ const App = ({ userLoggedIn }) => {
     setIsOpen(false);
   }
   return (
-    <div className="App">
-      <div>
+    <div className={styles.layout}>
+     <Nav />
+      <main className={styles.layoutContent}>
+   
         <h1>FridgeMate</h1>
         <h4>
           {userLoggedIn ? "you are logged in" : "please log in you loser"}
         </h4>
-      </div>
+      </main>
       {userLoggedIn ? (
         <Fragment>
           <UserSettings /> <Preferences />
-          <button onClick={actions.logout}>log out</button>
+
         </Fragment>
       ) : (
         <Fragment>
@@ -70,7 +65,6 @@ const App = ({ userLoggedIn }) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
         ariaHideApp={false}
         contentLabel="Example Modal"
       >
