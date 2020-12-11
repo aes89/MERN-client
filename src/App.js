@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 
-const user = false;
+// const user = false;
 
 const App = ({ userLoggedIn }) => {
   const modals = {
@@ -42,9 +42,10 @@ const App = ({ userLoggedIn }) => {
           {userLoggedIn ? "you are logged in" : "please log in you loser"}
         </h4>
       </div>
-      {user ? (
+      {userLoggedIn ? (
         <Fragment>
           <UserSettings /> <Preferences />
+          <button onClick={actions.logout}>log out</button>
         </Fragment>
       ) : (
         <Fragment>
