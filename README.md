@@ -2,18 +2,19 @@
 
 |Shelby El-rassi|Adrienne Smith|
 |:-------------:|:-------------:|
-|[www.shelby-el-rassi.com](www.shelby-el-rassi.com)  |[]() |
-|[github.com/Shelby219](www.shelby-el-rassi.com/)  |[github.com/aes89](https://github.com/aes89) |
+|[www.shelby-el-rassi.com](www.shelby-el-rassi.com)  |[adriennesmith-portfolio.netlify.app/](https://adriennesmith-portfolio.netlify.app/) |
+|[github.com/Shelby219](https://github.com/Shelby219)  |[github.com/aes89](https://github.com/aes89) |
 
 ---
 
 Deployed App:
 
-Documentation Repository: https://github.com/Shelby219/MERN-Part-A-Docs
+##### Documentation Repository: https://github.com/CA-MERN/MERN-Part-A-Docs
 
-Client Repository: https://github.com/Shelby219/MERN-client
+##### Client Repository: https://github.com/CA-MERN/MERN-client
 
-Server Repository: https://github.com/Shelby219/MERN-server
+##### Server Repository: https://github.com/CA-MERN/MERN-server
+
 
 ---
 
