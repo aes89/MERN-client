@@ -73,6 +73,7 @@ const App = ({ userLoggedIn }) => {
                     >
                       Register
                     </button>
+              
                   </Fragment>
                 )}
                 <Modal

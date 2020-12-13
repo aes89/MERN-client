@@ -7,6 +7,8 @@
     background-color: #ffffff;
     border-radius: 25px;
     border: 1px solid #000000;
+    padding: 20px;
+    padding-bottom: 40px;
  }
  .loginSignupBox h1{
     text-align: center;
@@ -27,13 +29,25 @@
     align-self: center;
  }
 
+ .loginSignupBox label{
+   margin: 10px;
+ }
+
+ .loginSignupBox input{
+    height: 50px;
+    margin: 10px;
+ }
+
+
  .loginSignupButtons {
     all: unset;
     background-color: #FB8D02;
     color: white;
-    padding: 10px;
+    padding: 13px;
+    margin: 10px;
     border-radius: 15px;
     cursor: pointer;
+    
   }
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {

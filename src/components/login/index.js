@@ -71,13 +71,14 @@ const Login = ({ actions, loggedIn }) => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-
-        <button class={styles.loginSignupButtons} type="submit" onClick={actions.logIn}>
-          Log In
-        </button>
-        <button class={styles.loginSignupButtons} onClick={actions.logout}>
-        log out</button>
-      </form>
+       <div>   
+          <button class={styles.loginSignupButtons} type="submit" onClick={actions.logIn}>
+            Log In
+          </button>
+          <button class={styles.loginSignupButtons} onClick={actions.logout}>
+          Log out</button>
+        </div>
+        </form>
     </div>   
   );
 };

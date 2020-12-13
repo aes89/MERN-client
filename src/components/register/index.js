@@ -109,8 +109,9 @@ const Register = () => {
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
           <div>{formik.errors.confirmPassword}</div>
         ) : null}
-
-        <button type="submit">Sign Up</button>
+        <div>  
+        <button class={styles.loginSignupButtons}  type="submit">Sign Up</button>
+        </div>
       </form>
     </div>
   );
