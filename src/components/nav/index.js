@@ -1,20 +1,30 @@
 import React, { Fragment } from "react";
-import SearchRecipeButton from "../searchButton";
+import SearchRecipeButton from "../resuables/searchButton";
 import Login from "../login";
 import Register from "../register";
 import styles from "../styles/sideNav.module.css";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+//IMAGES-icons
 import fridge from '../styles/imgs/fridge.png' 
 import pantry from '../styles/imgs/pantry.png' 
 import pref from '../styles/imgs/preference.png' 
 import list from '../styles/imgs/list.png' 
 
+//FOOD IMAGES
+import carrot from '../styles/imgs/carrot.png'
+import chilli from '../styles/imgs/chilli.png' 
+import corn from '../styles/imgs/corn.png' 
+import egg from '../styles/imgs/egg.png' 
+import garlic from '../styles/imgs/garlic.png' 
+import radish from '../styles/imgs/radish.png'  
+import ramen from '../styles/imgs/ramen.png'  
+import tomato from '../styles/imgs/tomato.png'  
 
 const navBar = () => {
 
-    const listFoodImg = []
-  
-
+    const listFoodImg = [carrot, chilli, corn, egg, garlic, radish, ramen, tomato]
+    let randomFoodImg = listFoodImg[Math.floor(Math.random()*listFoodImg.length)];
 
   return (
     <div>
@@ -27,17 +37,13 @@ const navBar = () => {
           <li> 
                  <a  class={styles.navLink} href="#0">
                  <div class={styles.userProfile}>
-                 <img alt="Users profile image"  src={fridge}
-                 />
+                 <img alt="Users profile image"  src={fridge}/>
+                   <div>User's Name</div>
                 </div>
                 
                  </a>
             </li>
-            <li>
-                <a  class={styles.navLink} href="#0">
-                <em>User's Name</em>
-                </a>
-            </li>
+
             <li>
                 <a class={styles.navLink}>
                 <em><SearchRecipeButton/></em>
@@ -67,21 +73,17 @@ const navBar = () => {
                 <em> My Preferences</em>
                 </a>
             </li>
-            <li>
-            <img alt="picture of food" />
+            <li class={styles.foodPic}>
+            <img alt="picture of food" src={randomFoodImg}/>
             </li>
-            <li>
-                    <Fragment>
-                <button
-                
-                >
-                    Login
-                </button>
-                <button
+            <li class={styles.navButtons} >
+                <Fragment>
+                    <button
                     
-                >
-                    Register
-                </button>
+                    >Login</button>
+                    <button
+                        
+                    >Register</button>
                 </Fragment>
             </li>
         </ul>

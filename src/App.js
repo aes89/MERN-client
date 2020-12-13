@@ -29,14 +29,17 @@ const App = ({ userLoggedIn }) => {
   }
   return (
     <div className={styles.layout}>
-     <Nav />
-      <main className={styles.layoutContent}>
-   
-        <h1>FridgeMate</h1>
-        <h4>
-          {userLoggedIn ? "you are logged in" : "please log in you loser"}
-        </h4>
-      </main>
+           <Nav />
+          <main className={styles.layoutContent}>
+      
+            <h1>FridgeMate</h1>
+            <h4>
+              {userLoggedIn ? "you are logged in" : "please log in you loser"}
+            </h4>
+          </main>
+
+
+
       {userLoggedIn ? (
         <Fragment>
           <UserSettings /> <Preferences />
