@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import styles from "../styles/loginSignup.module.css";
+
+ 
 
 const validate = (values) => {
   const errors = {};
@@ -23,28 +26,26 @@ const Login = ({ actions, loggedIn }) => {
   const formik = useFormik({
     initialValues: {
       email: "",
-
       password: "",
     },
-
     validate,
-
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
 
   return (
-    <div>
-      <h1>Log In:</h1>
+    <div class={styles.loginSignupBox}>
+      <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Email </label>
 
         <input
           id="loginEmail"
           name="email"
           type="email"
           class="loginEmail"
+          placeholder="Email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -61,6 +62,7 @@ const Login = ({ actions, loggedIn }) => {
           name="password"
           type="password"
           class="loginPassword"
+          placeholder="Enter Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -69,13 +71,15 @@ const Login = ({ actions, loggedIn }) => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-
-        <button type="submit" onClick={actions.logIn}>
-          Log In
-        </button>
-        <button onClick={actions.logout}>log out</button>
-      </form>
-    </div>
+       <div>   
+          <button class={styles.loginSignupButtons} type="submit" onClick={actions.logIn}>
+            Log In
+          </button>
+          <button class={styles.loginSignupButtons} onClick={actions.logout}>
+          Log out</button>
+        </div>
+        </form>
+    </div>   
   );
 };
 

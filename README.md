@@ -15,15 +15,6 @@ Deployed App:
 
 ##### Server Repository: https://github.com/CA-MERN/MERN-server
 
-
----
-
-#### Index:
-- [**Index**](#Index) 
-
-
-# MERN-client
-
 ---
 ### Manual Testing Log - Development
 <details>
