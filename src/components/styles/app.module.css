@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Paytone+One&display=swap');
 
 *, *::before, *::after {
    box-sizing: border-box;
+   font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -19,11 +21,12 @@ a {
    color: inherit;
 } 
 
-/* Layout */
+/* Layout All Pages Except Hoome*/
 .layout {
     display: flex;
     width: 100%;
     min-height: 100vh;
+    
  }
  
  .layoutContent {
@@ -32,6 +35,25 @@ a {
     align-items: center;
     flex: 1;
  }
+
+/* Home Layout for background image*/
+ .homeLayoutOnly {
+   display: flex;
+   width: 100%;
+   min-height: 100vh;
+   overflow: hidden;
+   background-image: url(./imgs/background.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+ .homeContent {
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
  
   /* Mobile First */
   @media (min-width: 42em) {

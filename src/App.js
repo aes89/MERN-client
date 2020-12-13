@@ -28,9 +28,9 @@ const App = ({ userLoggedIn }) => {
     setIsOpen(false);
   }
   return (
-    <div className={styles.layout}>
+    <div className={styles.homeLayoutOnly}>
            <Nav />
-          <main className={styles.layoutContent}>
+          <main className={` ${styles.homeContent}`}>
       
             <h1>FridgeMate</h1>
             <h4>

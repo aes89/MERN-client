@@ -35,42 +35,39 @@ const navBar = () => {
          <nav class={styles.nav}>
         <ul>
           <li> 
-                 <a  class={styles.navLink} href="#0">
-                 <div class={styles.userProfile}>
-                 <img alt="Users profile image"  src={fridge}/>
-                   <div>User's Name</div>
-                </div>
-                
+                 <a   href="#0">
+                    <div class={styles.userProfile}>
+                    <img alt="Users profile image"  src={fridge}/>
+                    <div>User's Name</div>
+                    </div>
                  </a>
             </li>
 
-            <li>
-                <a class={styles.navLink}>
-                <em><SearchRecipeButton/></em>
-                </a>
+            <li>  <SearchRecipeButton/>
+                <a class={styles.navLink}></a>
             </li>
             <li>
                <a  class={styles.navLink} href="#0">
                <img alt="Fridge" src={fridge}/>
-               <em>My Fridge</em>
+               <div>My Fridge</div>
                 </a>
             </li>
             <li>
                <a  class={styles.navLink} href="#0">
                <img alt="Pantry" src={pantry}/>
-               <em>Pantry Staples</em>
+               <div>Pantry Staples</div>
                 </a>
             </li>
             <li>
                 <a  class={styles.navLink} href="#0">
                 <img alt="list" src={list}/>
-                <em>Saved Recipes</em>
+                <div>Saved Recipes</div>
                 </a>
             </li>
             <li>
                 <a  class={styles.navLink} href="#0">
                 <img alt="preference" src={pref}/>
-                <em> My Preferences</em>
+                <div> My Preferences</div>
                 </a>
             </li>
             <li class={styles.foodPic}>
