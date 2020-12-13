@@ -45,7 +45,7 @@ const App = ({ userLoggedIn }) => {
       {userLoggedIn ? (
         <Fragment>
           <UserSettings /> <Preferences />
-          <button onClick={actions.logout}>log out</button>
+          {/* <button onClick={actions.logout}>log out</button> */}
         </Fragment>
       ) : (
         <Fragment>
