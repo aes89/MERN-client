@@ -121,10 +121,10 @@
  
 .navButtons > button{
    all: unset;
-   width: 70px;
+   padding: 10px;
    margin: 20px;
    cursor: pointer;
- 
+   color: black;
  }
 
 

@@ -9,7 +9,7 @@ body {
    font-family: sans-serif;
    font-size: 1em;
    color: #333;
-   height: 125vh;
+   height: 100vh;
 }
 
 em {
@@ -25,7 +25,7 @@ a {
 .layout {
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     
  }
  
@@ -36,11 +36,13 @@ a {
     flex: 1;
  }
 
+
 /* Home Layout for background image*/
  .homeLayoutOnly {
    display: flex;
+   justify-content: space-evenly;
    width: 100%;
-   min-height: 100vh;
+   height: 100vh;
    overflow: hidden;
    background-image: url(./imgs/background.jpg);
    background-size: cover;
@@ -48,26 +50,68 @@ a {
    background-position: center;
 }
  .homeContent {
-   display: flex;
-    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    flex: 1;
+    
+}
+
+.homeBox{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   text-align: center;
+   margin: 70px;
+   padding: 20px;
+   overflow: hidden;
+   background-color: #ffffff;
+   border-radius: 25px;
+ 
+}
+
+.homeBox h1{
+   
+  overflow: hidden;
+  font-family: "Paytone One", serif;
+  color: #FB8D02;
+  font-size: 4em;
+  letter-spacing: 0px;
+  line-height: 1.2;
+  font-weight: 400;
+
+}
+.homeBox h3{
+   color: #000000;
+   font-size: 1.5em;
+   line-height: 1.2;
+   font-weight: 400;
 }
 
  
-  /* Mobile First */
-  @media (min-width: 42em) {
-   .layoutContent {
-      margin-left: 4em;
-   }
-   
- 
-}
 
-@media (min-width: 68em) {
-   .layoutContent {
-      margin-left: 15em;
+/* Phone Styles */ 
+@media only screen and (max-width: 600px) {
+   .homeBox{
+         margin: 30px;
+   }
+   .homeBox h1{
+      font-size: 2em;
+   }
+   .homeBox h3{
+      font-size: 1em;
    }
    
-   
 }
+ 
+ /* Tablet Styles */ 
+ @media only screen 
+ and (min-device-width: 601px) 
+ and (-webkit-min-device-pixel-ratio: 1) {
+  
+  
+ }
+ /* Desktop Styles */ 
+ @media only screen and (min-width:1201px) {
+   
+
+  }

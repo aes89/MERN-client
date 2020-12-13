@@ -1,6 +1,8 @@
 import React from "react";
 
 import { useFormik } from "formik";
+import styles from "../styles/loginSignup.module.css";
+
 
 const validate = (values) => {
   const errors = {};
@@ -57,8 +59,8 @@ const Register = () => {
   });
 
   return (
-    <div>
-      <h1>Register:</h1>
+    <div class={styles.loginSignupBox}>
+      <h1>Sign Up</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email Address</label>
 
