@@ -4,8 +4,12 @@ import Login from "./components/login";
 import Register from "./components/register";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
+import SearchRecipeButton from "./components/resuables/searchButton";
+import Nav from "./components/nav";
 import "./App.css";
 import Modal from "react-modal";
+import styles from "./components/styles/app.module.css";
+
 
 const customStyles = {
   content: {
@@ -17,7 +21,6 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-
 // const user = false;
 
 const App = ({ userLoggedIn }) => {
@@ -30,78 +33,95 @@ const App = ({ userLoggedIn }) => {
   const openModal = () => {
     setIsOpen(true);
   };
-
+    
   function closeModal() {
     setIsOpen(false);
   }
+
+  
   return (
-    <div className="App">
-      <div>
-        <h1>FridgeMate</h1>
-        <h4>
-          {userLoggedIn ? "you are logged in" : "please log in you loser"}
-        </h4>
-      </div>
-      {userLoggedIn ? (
-        <Fragment>
-          <UserSettings /> <Preferences />
-          <button onClick={actions.logout}>log out</button>
-        </Fragment>
-      ) : (
-        <Fragment>
-          <button
-            onClick={() => {
-              setModalOpen("login");
-              openModal();
-            }}
-          >
-            Login
-          </button>
-          <button
-            onClick={() => {
-              setModalOpen("register");
-              openModal();
-            }}
-          >
-            Register
-          </button>
-        </Fragment>
-      )}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        ariaHideApp={false}
-        contentLabel="Example Modal"
-      >
-        {modalOpen && modals[modalOpen]}
-        <button
-          class="modalLoginButton"
-          onClick={() => {
-            setModalOpen("login");
-            openModal();
-          }}
-        >
-          Login
-        </button>
-        <button
-          class="modalRegisterButton"
-          onClick={() => {
-            setModalOpen("register");
-            openModal();
-          }}
-        >
-          Register
-        </button>
-        <button
-          class="modalCancelButton"
-          onClick={() => {
-            closeModal();
-          }}
-        >
-          Cancel
-        </button>
-      </Modal>
+    <div className={styles.homeLayoutOnly}>
+           <Nav />
+          <main className={` ${styles.homeContent}`}>
+              <div className={styles.homeBox}>
+                  <p>Random Food Jokes API</p>
+                  <h1>What is in your fridge?</h1>
+                  <h3>Just add your ingredients and FridgeMate will help find recipes personlised to you!</h3>
+                  <SearchRecipeButton/>
+                  <h4>
+                    {userLoggedIn ? "you are logged in" : "please log in you loser"}
+                  </h4>
+                  <div>
+                      {userLoggedIn ? (
+                  <Fragment>
+                    <UserSettings /> <Preferences />
+
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <button
+                      onClick={() => {
+                        setModalOpen("login");
+                        openModal();
+                      }}
+                    >
+                      Login
+                    </button>
+                    <button
+                      onClick={() => {
+                        setModalOpen("register");
+                        openModal();
+                      }}
+                    >
+                      Register
+                    </button>
+              
+                  </Fragment>
+                )}
+                <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={closeModal}
+                  style={customStyles}
+                  ariaHideApp={false}
+                  contentLabel="Example Modal"
+                >
+                  {modalOpen && modals[modalOpen]}
+                  <button
+                    class="modalLoginButton"
+                    onClick={() => {
+                      setModalOpen("login");
+                      openModal();
+                    }}
+                  >
+                    Login
+                  </button>
+                  <button
+                    class="modalRegisterButton"
+                    onClick={() => {
+                      setModalOpen("register");
+                      openModal();
+                    }}
+                  >
+                    Register
+                  </button>
+                  <button
+                    class="modalCancelButton"
+                    onClick={() => {
+                      closeModal();
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </Modal>
+              </div>
+          
+              </div>
+     
+         </main>
+
+
+
+      
     </div>
   );
 };
