@@ -33,10 +33,12 @@ const App = ({ userLoggedIn }) => {
   const openModal = () => {
     setIsOpen(true);
   };
-
+    
   function closeModal() {
     setIsOpen(false);
   }
+
+  
   return (
     <div className={styles.homeLayoutOnly}>
            <Nav />
