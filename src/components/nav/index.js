@@ -27,12 +27,12 @@ const navBar = () => {
     let randomFoodImg = listFoodImg[Math.floor(Math.random()*listFoodImg.length)];
 
   return (
-    <div>
+    <div  class={styles.navBox} >
     
         <a class={styles.trigger} href="#0">
           <i ><MoreVertIcon/></i>
          </a>
-         <nav class={styles.nav}>
+        <nav class={styles.nav}>
         <ul>
           <li> 
                  <a   href="#0">
