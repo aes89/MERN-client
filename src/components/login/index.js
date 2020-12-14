@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 
- 
-
 const validate = (values) => {
   const errors = {};
 
@@ -21,14 +19,13 @@ const validate = (values) => {
 };
 
 const Login = ({ actions, loggedIn }) => {
-  console.log("are we logged in", loggedIn);
-
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validate,
+
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
@@ -71,15 +68,20 @@ const Login = ({ actions, loggedIn }) => {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
-       <div>   
-          <button class={styles.loginSignupButtons} type="submit" onClick={actions.logIn}>
+        <div>
+          <button
+            class={styles.loginSignupButtons}
+            type="submit"
+            onClick={actions.logIn}
+          >
             Log In
           </button>
           <button class={styles.loginSignupButtons} onClick={actions.logout}>
-          Log out</button>
+            Log out
+          </button>
         </div>
-        </form>
-    </div>   
+      </form>
+    </div>
   );
 };
 
