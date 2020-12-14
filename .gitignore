@@ -1,3 +1,5 @@
+node_modules/
 .DS_Store
 cypress.json
 cypress.env.json
+// eslint-disable-next-line
