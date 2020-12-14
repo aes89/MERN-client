@@ -9,119 +9,39 @@ import Nav from "./components/nav";
 import "./App.css";
 import Modal from "react-modal";
 import styles from "./components/styles/app.module.css";
+import AuthenticationModal from "./components/AuthenticationModal";
 
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-// const user = false;
-
-const App = ({ userLoggedIn }) => {
-  const modals = {
-    register: <Register />,
-    login: <Login />,
-  };
-  const [modalOpen, setModalOpen] = React.useState(null);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
-    
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  
+const App = ({ actions, userLoggedIn }) => {
+  const { setModalOpen } = actions;
   return (
     <div className={styles.homeLayoutOnly}>
-           <Nav />
-          <main className={`${styles.homeContent}`}>
-              <div className={styles.homeBox}>
-                  <p>Random Food Jokes API</p>
-                  <h1>What is in your fridge?</h1>
-                  <h3>Just add your ingredients and FridgeMate will help find recipes personlised to you!</h3>
-                  <SearchRecipeButton/>
-                  <h4>
-                    {userLoggedIn ? "you are logged in" : "please log in you loser"}
-                  </h4>
-                  <div>
-                      {userLoggedIn ? (
-                  <Fragment>
-                    <UserSettings /> <Preferences />
-
-                  </Fragment>
-                ) : (
-                  <Fragment>
-                    <button
-                      onClick={() => {
-                        setModalOpen("login");
-                        openModal();
-                      }}
-                    >
-                      Login
-                    </button>
-                    <button
-                      onClick={() => {
-                        setModalOpen("register");
-                        openModal();
-                      }}
-                    >
-                      Register
-                    </button>
-              
-                  </Fragment>
-                )}
-                <Modal
-                  isOpen={modalIsOpen}
-                  onRequestClose={closeModal}
-                  style={customStyles}
-                  ariaHideApp={false}
-                  contentLabel="Example Modal"
-                >
-                  {modalOpen && modals[modalOpen]}
-                  <button
-                    class="modalLoginButton"
-                    onClick={() => {
-                      setModalOpen("login");
-                      openModal();
-                    }}
-                  >
-                    Login
-                  </button>
-                  <button
-                    class="modalRegisterButton"
-                    onClick={() => {
-                      setModalOpen("register");
-                      openModal();
-                    }}
-                  >
-                    Register
-                  </button>
-                  <button
-                    class="modalCancelButton"
-                    onClick={() => {
-                      closeModal();
-                    }}
-                  >
-                    Cancel
-                  </button>
-                </Modal>
-              </div>
-          
-              </div>
-     
-         </main>
-
-
-
-      
+      <Nav />
+      <main className={` ${styles.homeContent}`}>
+        <div className={styles.homeBox}>
+          <p>Random Food Jokes API</p>
+          <h1>What is in your fridge?</h1>
+          <h3>
+            Just add your ingredients and FridgeMate will help find recipes
+            personlised to you!
+          </h3>
+          <SearchRecipeButton />
+          <AuthenticationModal />
+          <div>
+            {userLoggedIn ? (
+              <Fragment>
+                <UserSettings /> <Preferences />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <button onClick={() => setModalOpen("login")}>Login</button>
+                <button onClick={() => setModalOpen("register")}>
+                  Register
+                </button>
+              </Fragment>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
@@ -130,7 +50,16 @@ const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    setModalOpen: (modalId) => {
+      dispatch({ type: "openModal", payload: modalId });
+    },
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+//
 
 // routes for later
 
