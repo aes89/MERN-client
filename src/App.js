@@ -42,7 +42,7 @@ const App = ({ userLoggedIn }) => {
   return (
     <div className={styles.homeLayoutOnly}>
            <Nav />
-          <main className={` ${styles.homeContent}`}>
+          <main className={`${styles.homeContent}`}>
               <div className={styles.homeBox}>
                   <p>Random Food Jokes API</p>
                   <h1>What is in your fridge?</h1>
