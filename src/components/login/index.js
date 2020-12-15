@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
+import store from "../../index";
 
 const validate = (values) => {
   const errors = {};
@@ -85,9 +86,13 @@ const Login = ({ actions, loggedIn }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  loggedIn: state.userLoggedIn.username,
-});
+const mapStateToProps = (state) => (
+  {
+    loggedIn: state.userLoggedIn.username,
+  },
+  console.log("TYPE COMPONENTS LOG IN JS STORE", typeof store.getState()),
+  console.log("COMPONENTS LOG IN JS STORE", store.getState())
+);
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {

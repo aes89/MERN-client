@@ -6,13 +6,14 @@ const logout = createAction("logout");
 const initialState = { username: false };
 
 const userLoggedIn = createReducer(initialState, (builder) => {
-  //   name: "authenticated",
   builder
     .addCase(login, (state) => {
       state.username = true;
+      console.log("reducers state", state.username);
     })
     .addCase(logout, (state) => {
       state.username = false;
+      console.log("reducers state", state.username);
     });
 });
 

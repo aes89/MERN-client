@@ -1,29 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Formik, Field, Form } from "formik";
+import preferencesList from "./list";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const preferencesList = [
-  "vegetarian",
-  "gluten free",
-  "ketogenic",
-  "vegan",
-  "pescetarian",
-  "paleo",
-  "dairy",
-  "egg",
-  "gluten",
-  "grain",
-  "peanut",
-  "seafood",
-  "sesame",
-  "shellfish",
-  "soy",
-  "sulphite",
-  "tree nuts",
-  "wheat",
-];
+// const preferencesList = [
+//   "vegetarian",
+//   "gluten free",
+//   "ketogenic",
+//   "vegan",
+//   "pescetarian",
+//   "paleo",
+//   "dairy",
+//   "egg",
+//   "gluten",
+//   "grain",
+//   "peanut",
+//   "seafood",
+//   "sesame",
+//   "shellfish",
+//   "soy",
+//   "sulphite",
+//   "tree nuts",
+//   "wheat",
+// ];
 
 const mappedValues = preferencesList.map((preference) => [preference, false]);
 

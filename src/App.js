@@ -1,15 +1,16 @@
 import { connect } from "react-redux";
 import React, { Fragment } from "react";
-import Login from "./components/login";
-import Register from "./components/register";
+// import Login from "./components/login";
+// import Register from "./components/register";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import SearchRecipeButton from "./components/resuables/searchButton";
 import Nav from "./components/nav";
 import "./App.css";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import styles from "./components/styles/app.module.css";
 import AuthenticationModal from "./components/AuthenticationModal";
+import store from "./index";
 
 const App = ({ actions, userLoggedIn }) => {
   const { setModalOpen } = actions;
@@ -53,7 +54,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     setModalOpen: (modalId) => {
-      dispatch({ type: "openModal", payload: modalId });
+      store.dispatch({ type: "openModal", payload: modalId });
+      console.log("APP JS STORE", store.getState());
     },
   },
 });
