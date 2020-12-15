@@ -40,17 +40,16 @@ const navBar = ({ actions, userLoggedIn }) => {
 
   return (
     <div class={styles.navBox}>
-        
       <AuthenticationModal />
       <a class={styles.trigger} href="#0">
         <i>
           <MoreVertIcon />
         </i>
-        
+       
       </a>
-      <div>
+      <p class={styles.logo}>
         FridgeMate
-      </div>
+      </p>
       <nav class={styles.nav}>
         <ul>
           <li> 

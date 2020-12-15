@@ -13,15 +13,27 @@
     left: 0;
     width: 100%;
     height: 4em;
+    
  }
- 
  .trigger  i {
     display: inline-block;
     margin: 1.5em 0 0 1.5em;
     color: black;
- 
  }
- 
+
+ .logo {
+   position:absolute;
+   top:0;
+   right:0; 
+   padding: 10px;
+   margin: 10px;
+   font-family: "Paytone One", serif;
+   font-size: 1em;
+   color: #3F7209;
+   overflow: hidden;
+   background-color: #ffffff;
+   border-radius: 25px;
+}
  .nav {
     margin: 1em;
     border-radius: 50px;
@@ -137,8 +149,11 @@
  @media only screen and (min-width: 672px) and (max-width: 1087px){
     /* Sidebar */
     .trigger {
-       width: 4em;
+      width: 100%;
     }
+    .logo {
+      font-size: 1.4em;
+   }
     .nav {
        width: 4em;
        left: -15;
@@ -155,8 +170,10 @@
 
 
  
- @media (min-width: 1088px) {
-   
+ @media only screen and (min-width:1088px)  {
+   .logo {
+      font-size: 1.8em;
+   }
     /* Sidebar */
     .trigger {
        display: none;
