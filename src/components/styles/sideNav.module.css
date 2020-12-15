@@ -15,25 +15,13 @@
     height: 4em;
     
  }
- .trigger  i {
+ .trigger > i {
     display: inline-block;
     margin: 1.5em 0 0 1.5em;
     color: black;
  }
 
- .logo {
-   position:absolute;
-   top:0;
-   right:0; 
-   padding: 10px;
-   margin: 10px;
-   font-family: "Paytone One", serif;
-   font-size: 1em;
-   color: #3F7209;
-   overflow: hidden;
-   background-color: #ffffff;
-   border-radius: 25px;
-}
+
  .nav {
     margin: 1em;
     border-radius: 50px;
@@ -48,7 +36,9 @@
     color: #3F7209;
     overflow-y: scroll;
  }
- 
+ .trigger:hover {
+   cursor: pointer;
+ }
  .nav:hover,
  .nav:focus,
  .trigger:focus + .nav,
@@ -149,11 +139,8 @@
  @media only screen and (min-width: 672px) and (max-width: 1087px){
     /* Sidebar */
     .trigger {
-      width: 100%;
+      width: 4em;
     }
-    .logo {
-      font-size: 1.4em;
-   }
     .nav {
        width: 4em;
        left: -15;
@@ -170,9 +157,7 @@
 
  
  @media only screen and (min-width:1088px)  {
-   .logo {
-      font-size: 1.8em;
-   }
+
     /* Sidebar */
     .trigger {
        display: none;

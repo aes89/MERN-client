@@ -1,17 +1,19 @@
 import { connect } from "react-redux";
 import React, { Fragment } from "react";
+
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
 import SearchRecipeButton from "../resuables/searchButton";
 import styles from "../styles/home.module.css";
 import AuthenticationModal from "../AuthenticationModal";
-
+import Logo from "../resuables/logo";
 
 const Home = ({ actions, userLoggedIn }) => {
   const { setModalOpen } = actions;
   return (
     <Fragment>
     <div className={styles.homeLayoutOnly}>
+      <Logo />
       <main className={` ${styles.homeContent}`}>
         <div className={styles.homeBox}>
           <p>Random Food Jokes API</p>
