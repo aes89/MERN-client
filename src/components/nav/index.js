@@ -47,9 +47,11 @@ const navBar = ({ actions, userLoggedIn }) => {
         </i>
        
       </a>
+      <Link to={`/`} >
       <p class={styles.logo}>
         FridgeMate
       </p>
+      </Link>
       <nav class={styles.nav}>
         <ul>
           <li> 

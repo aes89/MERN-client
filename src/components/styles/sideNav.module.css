@@ -157,9 +157,8 @@
     .nav {
        width: 4em;
        left: -15;
-   
     }
-    
+   
     .nav:hover,
     .nav:focus,
     .trigger:hover + .nav,
