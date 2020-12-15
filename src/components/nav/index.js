@@ -112,8 +112,7 @@ const navBar = ({ actions, userLoggedIn }) => {
               )}
               <button
                 class={styles.loginSignupButtons}
-                onClick={actions.logout}
-              >
+                onClick={actions.logout}>
                 {userLoggedIn ? <Fragment>1</Fragment> : <Fragment>2</Fragment>}
                 LOG OUT
               </button>

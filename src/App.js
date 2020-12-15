@@ -7,20 +7,22 @@ import Preferences from "./components/preferences";
 import NotFound from "./components/resuables/404";
 import Nav from "./components/nav";
 import Home from "./components/home";
-//import Modal from "react-modal";
 import styles from "./components/styles/app.module.css";
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-
 
 const App = ({ actions, userLoggedIn }) => {
  // const { setModalOpen } = actions;
   return (
     
     <Fragment>
-    <CssBaseline /> 
+      <Helmet>
+          <title>FridgeMate</title>
+          <meta name="description" content="Helmet application" />
+      </Helmet>
+      <CssBaseline />
    
-    <div className={styles.homeLayoutOnly}>
+  
       <BrowserRouter> 
        <Nav />
           <Switch>
@@ -37,33 +39,7 @@ const App = ({ actions, userLoggedIn }) => {
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
-      {/*<main className={` ${styles.homeContent}`}>
-        <div className={styles.homeBox}>
-          <p>Random Food Jokes API</p>
-          <h1>What is in your fridge?</h1>
-          <h3>
-            Just add your ingredients and FridgeMate will help find recipes
-            personlised to you!
-          </h3>
-          <SearchRecipeButton />
-          <AuthenticationModal />
-          <div>
-            {userLoggedIn ? (
-              <Fragment>
-                <UserSettings /> <Preferences />
-              </Fragment>
-            ) : (
-              <Fragment>
-                <button onClick={() => setModalOpen("login")}>Login</button>
-                <button onClick={() => setModalOpen("register")}>
-                  Register
-                </button>
-              </Fragment>
-            )}
-          </div>
-        </div>
-      </main> */}
-    </div>
+
     </Fragment>
   );
 };
@@ -71,7 +47,6 @@ const App = ({ actions, userLoggedIn }) => {
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
 });
-
 
 
 export default connect(mapStateToProps)(App);
