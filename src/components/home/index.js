@@ -1,13 +1,10 @@
 import { connect } from "react-redux";
 import React, { Fragment } from "react";
-
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
 import SearchRecipeButton from "../resuables/searchButton";
-//import Modal from "react-modal";
 import styles from "../styles/home.module.css";
 import AuthenticationModal from "../AuthenticationModal";
-import Modal from "react-modal";
 
 
 const Home = ({ actions, userLoggedIn }) => {

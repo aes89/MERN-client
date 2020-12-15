@@ -7,7 +7,6 @@ import Preferences from "./components/preferences";
 import NotFound from "./components/resuables/404";
 import Nav from "./components/nav";
 import Home from "./components/home";
-import styles from "./components/styles/app.module.css";
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -15,16 +14,14 @@ const App = ({ actions, userLoggedIn }) => {
  // const { setModalOpen } = actions;
   return (
     
-    <Fragment>
+    <Fragment> 
       <Helmet>
           <title>FridgeMate</title>
           <meta name="description" content="Helmet application" />
       </Helmet>
       <CssBaseline />
-   
-  
       <BrowserRouter> 
-       <Nav />
+       <Nav/>
           <Switch>
             <Route exact path="/" component={Home}  />
             <Route exact path="/user/:username/preferences" component={Preferences} />
@@ -39,7 +36,7 @@ const App = ({ actions, userLoggedIn }) => {
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
-
+  
     </Fragment>
   );
 };

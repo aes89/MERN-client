@@ -46,7 +46,11 @@ const navBar = ({ actions, userLoggedIn }) => {
         <i>
           <MoreVertIcon />
         </i>
+        
       </a>
+      <div>
+        FridgeMate
+      </div>
       <nav class={styles.nav}>
         <ul>
           <li> 
