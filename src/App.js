@@ -1,48 +1,43 @@
 import { connect } from "react-redux";
 import React, { Fragment } from "react";
-import Login from "./components/login";
-import Register from "./components/register";
+import { Helmet } from 'react-helmet';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
-import SearchRecipeButton from "./components/resuables/searchButton";
+import NotFound from "./components/resuables/404";
 import Nav from "./components/nav";
-import "./App.css";
-import Modal from "react-modal";
-import styles from "./components/styles/app.module.css";
-import AuthenticationModal from "./components/AuthenticationModal";
+import Home from "./components/home";
+
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const App = ({ actions, userLoggedIn }) => {
-  const { setModalOpen } = actions;
+ // const { setModalOpen } = actions;
   return (
-    <div className={styles.homeLayoutOnly}>
-      <Nav />
-      <main className={` ${styles.homeContent}`}>
-        <div className={styles.homeBox}>
-          <p>Random Food Jokes API</p>
-          <h1>What is in your fridge?</h1>
-          <h3>
-            Just add your ingredients and FridgeMate will help find recipes
-            personlised to you!
-          </h3>
-          <SearchRecipeButton />
-          <AuthenticationModal />
-          <div>
-            {userLoggedIn ? (
-              <Fragment>
-                <UserSettings /> <Preferences />
-              </Fragment>
-            ) : (
-              <Fragment>
-                <button onClick={() => setModalOpen("login")}>Login</button>
-                <button onClick={() => setModalOpen("register")}>
-                  Register
-                </button>
-              </Fragment>
-            )}
-          </div>
-        </div>
-      </main>
-    </div>
+    
+    <Fragment> 
+      <Helmet>
+          <title>FridgeMate</title>
+          <meta name="description" content="Helmet application" />
+      </Helmet>
+      <CssBaseline />
+      <BrowserRouter> 
+       <Nav/>
+          <Switch>
+            <Route exact path="/" component={Home}  />
+            <Route exact path="/user/:username/preferences" component={Preferences} />
+            <Route exact path="/user/:username/account-settings" component={UserSettings} />
+             {/*
+            <Route exact path="/ingredients/:username/fridge" component={fridge} />
+            <Route exact path="/ingredients/:username/pantry" component={pantry} />
+            <Route exact path="/recipes/browse" component={browseRecipes} />
+            <Route exact path="/recipes/single-recipe" component={singleRecipe} />
+            <Route exact path="/recipes/saved-recipes" component={userSavedRecipe} />
+            */}
+            <Route component={NotFound} />
+          </Switch>
+        </BrowserRouter>
+  
+    </Fragment>
   );
 };
 
@@ -50,15 +45,8 @@ const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: {
-    setModalOpen: (modalId) => {
-      dispatch({ type: "openModal", payload: modalId });
-    },
-  },
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
 //
 
 // routes for later
