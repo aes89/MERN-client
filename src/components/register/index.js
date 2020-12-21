@@ -73,6 +73,10 @@ const Register = ({ actions, registerd }) => {
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email Address</label>
 
+        {formik.status && (
+          <div>Error: {formik.status}. Please try registering in again.</div>
+        )}
+
         <input
           id="registerEmail"
           class="registerEmail"
