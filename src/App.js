@@ -12,6 +12,7 @@ import Nav from "./components/nav";
 // import AuthenticationModal from "./components/AuthenticationModal";
 import store from "./index";
 import Home from "./components/home";
+import Fridge from "./components/fridge";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -38,8 +39,12 @@ const App = ({ actions, userLoggedIn }) => {
             path="/user/:username/account-settings"
             component={UserSettings}
           />
+          <Route
+            exact
+            path="/ingredients/:username/fridge"
+            component={Fridge}
+          />
           {/*
-            <Route exact path="/ingredients/:username/fridge" component={fridge} />
             <Route exact path="/ingredients/:username/pantry" component={pantry} />
             <Route exact path="/recipes/browse" component={browseRecipes} />
             <Route exact path="/recipes/single-recipe" component={singleRecipe} />
