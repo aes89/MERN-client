@@ -34,7 +34,7 @@ const Login = ({ actions, loggedIn }) => {
           .post("/auth/login", { ...values })
           .then(() => actions.logIn());
       } catch (error) {
-        console.log("err", JSON.parse(JSON.stringify(error)));
+        console.log("login err", JSON.parse(JSON.stringify(error)));
         formik.setStatus(JSON.parse(JSON.stringify(error)).message);
       }
     },
@@ -92,13 +92,9 @@ const Login = ({ actions, loggedIn }) => {
   );
 };
 
-const mapStateToProps = (state) => (
-  {
-    loggedIn: state.userLoggedIn.username,
-  },
-  console.log("TYPE COMPONENTS LOG IN JS STORE", typeof store.getState()),
-  console.log("COMPONENTS LOG IN JS STORE", store.getState())
-);
+const mapStateToProps = (state) => ({
+  loggedIn: state.userLoggedIn.username,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
