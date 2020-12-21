@@ -12,15 +12,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 4em;  
+    height: 4em;
+    
  }
- 
  .trigger > i {
     display: inline-block;
     margin: 1.5em 0 0 1.5em;
     color: black;
  }
- 
+
+
  .nav {
     margin: 1em;
     border-radius: 50px;
@@ -35,7 +36,9 @@
     color: #3F7209;
     overflow-y: scroll;
  }
- 
+ .trigger:hover {
+   cursor: pointer;
+ }
  .nav:hover,
  .nav:focus,
  .trigger:focus + .nav,
@@ -50,15 +53,15 @@
     margin: 0;
     padding: 0;
     width: 15em;
+    
  }
- 
  .nav ul li {
    width: 100%;
    text-align: center;
    margin-top: 1.5em;
  }
  .nav ul li:nth-child(2){
-   margin-top: 50px;
+   margin-top: 70px;
    margin-bottom: 40px;
  }
  .nav ul li:nth-child(3), .nav ul li:nth-child(4), .nav ul li:nth-child(5), .nav ul li:nth-child(6) {
@@ -81,7 +84,7 @@
  
  .navLink > div {
    display: inline-block;
-   margin-left: 10px;
+   margin-left: 5px;
    padding-left: 15px;
    
    
@@ -136,14 +139,13 @@
  @media only screen and (min-width: 672px) and (max-width: 1087px){
     /* Sidebar */
     .trigger {
-       width: 4em;
+      width: 4em;
     }
     .nav {
        width: 4em;
        left: -15;
-   
     }
-    
+   
     .nav:hover,
     .nav:focus,
     .trigger:hover + .nav,
@@ -154,8 +156,8 @@
 
 
  
- @media (min-width: 1088px) {
-   
+ @media only screen and (min-width:1088px)  {
+
     /* Sidebar */
     .trigger {
        display: none;
