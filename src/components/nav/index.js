@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import SearchRecipeButton from "../resuables/searchButton";
 import styles from "../styles/sideNav.module.css";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -48,43 +48,52 @@ const navBar = ({ actions, userLoggedIn }) => {
       </a>
       <nav class={styles.nav}>
         <ul>
-          <li> 
-          <Link to={`/user/${userLoggedIn}/account-settings`} >
+          <li>
+            <Link to={`/user/${userLoggedIn}/account-settings`}>
               <div class={styles.userProfile}>
                 <img alt="Users profile image" src={fridge} />
                 <div>User's Name</div>
               </div>
             </Link>
           </li>
-      
+
           <li>
             {" "}
             <SearchRecipeButton />
             <a class={styles.navLink}></a>
           </li>
           <li>
-          <Link to= {`/ingredients/ ${userLoggedIn}/fridge`} class={styles.navLink}>
+            <Link
+              to={`/ingredients/ ${userLoggedIn}/fridge`}
+              class={styles.navLink}
+            >
               <img alt="Fridge" src={fridge} />
               <div>My Fridge</div>
-              </Link>
+            </Link>
           </li>
           <li>
-          <Link to={`/ingredients/ ${userLoggedIn}/fridge`} class={styles.navLink}>
+            <Link
+              to={`/ingredients/ ${userLoggedIn}/fridge`}
+              class={styles.navLink}
+            >
               <img alt="Pantry" src={pantry} />
               <div>Pantry Staples</div>
-          </Link>
+            </Link>
           </li>
           <li>
-          <Link to="/recipes/saved-recipes" class={styles.navLink}>
+            <Link to="/recipes/saved-recipes" class={styles.navLink}>
               <img alt="list" src={list} />
               <div>Saved Recipes</div>
-          </Link>
+            </Link>
           </li>
           <li>
-          <Link to={`/user/${userLoggedIn}/preferences`}class={styles.navLink}>
+            <Link
+              to={`/user/${userLoggedIn}/preferences`}
+              class={styles.navLink}
+            >
               <img alt="preference" src={pref} />
               <div> My Preferences</div>
-          </Link>
+            </Link>
           </li>
           <li class={styles.foodPic}>
             <img alt="picture of food" src={randomFoodImg} />
@@ -109,12 +118,6 @@ const navBar = ({ actions, userLoggedIn }) => {
                   </button>
                 </Fragment>
               )}
-              <button
-                class={styles.loginSignupButtons}
-                onClick={actions.logout}>
-                {userLoggedIn ? <Fragment>1</Fragment> : <Fragment>2</Fragment>}
-                LOG OUT
-              </button>
             </Fragment>
           </li>
         </ul>
