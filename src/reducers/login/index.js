@@ -8,12 +8,11 @@ const initialState = { username: false };
 const userLoggedIn = createReducer(initialState, (builder) => {
   builder
     .addCase(login, (state) => {
+      console.log("state updated for login!");
       state.username = true;
-      console.log("reducers state", state.username);
     })
     .addCase(logout, (state) => {
       state.username = false;
-      console.log("reducers state", state.username);
     });
 });
 

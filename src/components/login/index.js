@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 import store from "../../index";
+import api from "../../config/api";
 
 const validate = (values) => {
   const errors = {};
@@ -27,8 +28,15 @@ const Login = ({ actions, loggedIn }) => {
     },
     validate,
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        await api
+          .post("/auth/login", { ...values })
+          .then(() => actions.logIn());
+      } catch (error) {
+        console.log("err", JSON.parse(JSON.stringify(error)));
+        formik.setStatus(JSON.parse(JSON.stringify(error)).message);
+      }
     },
   });
 
@@ -37,7 +45,9 @@ const Login = ({ actions, loggedIn }) => {
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email </label>
-
+        {formik.status && (
+          <div>Error: {formik.status}. Please try signing in again.</div>
+        )}
         <input
           id="loginEmail"
           name="email"
@@ -48,13 +58,10 @@ const Login = ({ actions, loggedIn }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
         />
-
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
-
         <label htmlFor="password">Password</label>
-
         <input
           id="loginPassword"
           name="password"
@@ -65,7 +72,6 @@ const Login = ({ actions, loggedIn }) => {
           onBlur={formik.handleBlur}
           value={formik.values.password}
         />
-
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
@@ -73,7 +79,7 @@ const Login = ({ actions, loggedIn }) => {
           <button
             class={styles.loginSignupButtons}
             type="submit"
-            onClick={actions.logIn}
+            onClick={formik.handleSubmit}
           >
             Log In
           </button>
@@ -96,7 +102,8 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    logIn: () => dispatch({ type: "login" }),
+    logIn: ({ email, password }) =>
+      dispatch({ type: "login", payload: { email, password } }),
     logout: () => dispatch({ type: "logout" }),
   },
 });
