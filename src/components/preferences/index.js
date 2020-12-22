@@ -9,17 +9,23 @@ import getUserPreferences from "../../utils/get-user-preferences";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+//need to write input validation - boolean only
 const validate = (values) => {
   const errors = {};
   return errors;
 };
 
+// preferences component, is passed:
+// userPreferences which is state?
+// actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences }) => {
   const formik = useFormik({
+    //calls boolean validation
     validate,
+    // when submits, goes to patch route and sends values from form
     onSubmit: async (values) => {
       try {
-        await api.pospatcht("/:username/edit", { ...values });
+        await api.patch("/:username/edit", { ...values });
         // .then(() => actions.logIn());
       } catch (error) {
         console.log("preferences err err", JSON.parse(JSON.stringify(error)));
@@ -28,11 +34,13 @@ const Preferences = ({ actions, userPreferences }) => {
     },
   });
 
+  //if no userPreferences (preferences in state returned from db) then show no selections
   if (!userPreferences.preferences) {
     return null;
   }
 
   return (
+    // the form and HTML
     <div>
       <h1>User Preferences</h1>
       <Formik
@@ -51,6 +59,7 @@ const Preferences = ({ actions, userPreferences }) => {
       >
         {({ values }) => (
           <Form>
+            {/* form maps over list in ./list.js, can update more easily if needed */}
             {preferencesList.map((preference, index) => (
               <label key={index}>
                 <Field type="checkbox" name={preference} />
@@ -69,10 +78,12 @@ const Preferences = ({ actions, userPreferences }) => {
   );
 };
 
+//checks state
 const mapStateToProps = (state) => ({
   userPreferences: state.userPreferences,
 });
 
+//updates state
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     updatePreferences: (data) =>
@@ -81,4 +92,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+//sends to reducer
 export default connect(mapStateToProps, mapDispatchToProps)(Preferences);

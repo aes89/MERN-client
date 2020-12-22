@@ -16,7 +16,6 @@ import Home from "./components/home";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = ({ actions, userLoggedIn }) => {
-  // const { setModalOpen } = actions;
   return (
     <Fragment>
       <Helmet>
@@ -28,6 +27,7 @@ const App = ({ actions, userLoggedIn }) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* link to preferences component */}
           <Route
             exact
             path="/user/:username/preferences"
