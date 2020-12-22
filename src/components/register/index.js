@@ -2,7 +2,9 @@ import React from "react";
 
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
-
+import api from "../../config/api";
+import { CallToActionSharp } from "@material-ui/icons";
+import { connect } from "react-redux";
 
 const validate = (values) => {
   const errors = {};
@@ -41,7 +43,7 @@ const validate = (values) => {
   return errors;
 };
 
-const Register = () => {
+const Register = ({ actions, registerd }) => {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -53,8 +55,15 @@ const Register = () => {
 
     validate,
 
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        await api
+          .post("/auth/register", { ...values })
+          .then(() => actions.register());
+      } catch (error) {
+        console.log("register err", JSON.parse(JSON.stringify(error)));
+        formik.setStatus(JSON.parse(JSON.stringify(error)).message);
+      }
     },
   });
 
@@ -63,6 +72,10 @@ const Register = () => {
       <h1>Sign Up</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email Address</label>
+
+        {formik.status && (
+          <div>Error: {formik.status}. Please try registering in again.</div>
+        )}
 
         <input
           id="registerEmail"
@@ -109,12 +122,29 @@ const Register = () => {
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
           <div>{formik.errors.confirmPassword}</div>
         ) : null}
-        <div>  
-        <button class={styles.loginSignupButtons}  type="submit">Sign Up</button>
+        <div>
+          <button
+            class={styles.loginSignupButtons}
+            type="submit"
+            onClick={formik.handleSubmit}
+          >
+            Sign Up
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Register;
+const mapStateToProps = (state) => ({
+  registered: state.userLoggedIn.username,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    register: ({ email, password }) =>
+      dispatch({ type: "register", payload: { email, password } }),
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
