@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
-import NotFound from "./components/resuables/404";
+import NotFound from "./components/notFound";
 import Nav from "./components/nav";
 import Home from "./components/home";
 

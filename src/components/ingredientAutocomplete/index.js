@@ -19,7 +19,7 @@ export default function AutocompleteIngredients() {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Search input"
+              label="Add Ingredient"
               margin="normal"
               variant="outlined"
               InputProps={{ ...params.InputProps, type: 'search' }}
