@@ -4,14 +4,15 @@ import React, { Fragment } from "react";
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
 import SearchRecipeButton from "../resuables/searchButton";
+import LoggedIn from "../logged-in";
 import styles from "../styles/home.module.css";
 import AuthenticationModal from "../AuthenticationModal";
 import Logo from "../resuables/logo";
+import { BorderBottom } from "@material-ui/icons";
 
 const Home = ({ actions, userLoggedIn }) => {
   const { setModalOpen } = actions;
   return (
-    <Fragment>
     <div className={styles.homeLayoutOnly}>
       <Logo />
       <main className={` ${styles.homeContent}`}>
@@ -26,9 +27,7 @@ const Home = ({ actions, userLoggedIn }) => {
           <AuthenticationModal />
           <div>
             {userLoggedIn ? (
-              <Fragment>
-                <UserSettings /> <Preferences />
-              </Fragment>
+              <LoggedIn />
             ) : (
               <Fragment>
                 <button onClick={() => setModalOpen("login")}>Login</button>
@@ -41,14 +40,13 @@ const Home = ({ actions, userLoggedIn }) => {
         </div>
       </main>
     </div>
-    </Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
-    userLoggedIn: state.userLoggedIn.username,
-  });
-  
+  userLoggedIn: state.userLoggedIn.username,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     setModalOpen: (modalId) => {

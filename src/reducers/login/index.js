@@ -3,7 +3,7 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 const login = createAction("login");
 const logout = createAction("logout");
 
-const initialState = { username: false };
+const initialState = { username: true };
 
 const userLoggedIn = createReducer(initialState, (builder) => {
   builder
