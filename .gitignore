@@ -2,5 +2,10 @@ node_modules/
 .DS_Store
 cypress.json
 cypress.env.json
+<<<<<<< HEAD
 node_modules
 
+=======
+.eslintcache
+// eslint-disable-next-line
+>>>>>>> a3564f46ec6f446ab5dd5e7d709acc089dbbbf99

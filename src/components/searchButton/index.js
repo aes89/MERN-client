@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/searchButton.module.css";
+import styles from "./searchButton.module.css";
 
 const SearchRecipeButton = () => {
  

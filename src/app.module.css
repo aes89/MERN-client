@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Paytone+One&display=swap');
+
+*, *::before, *::after {
+   box-sizing: border-box;
+   font-family: 'Lato', sans-serif;
+}
+
+html, body {
+   height: 100%;
+   min-height: 100vh;
+}
+
+
+em {
+   font-style: normal;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+} 
+
+/* Layout All Pages Except Hoome*/
+.layout {
+   display: flex;
+   width: 100%;  
+}
+
+.layoutContent {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex: 1;
+}
+
+/* Phone Styles */ 
+@media only screen and (max-width: 600px) {
+  
+   
+}
+ 
+ /* Tablet Styles */ 
+ @media only screen 
+ and (min-device-width: 601px) 
+ and (-webkit-min-device-pixel-ratio: 1) {
+  
+  
+ }
+ /* Desktop Styles */ 
+ @media only screen and (min-width:1201px) {
+   
+
+  }

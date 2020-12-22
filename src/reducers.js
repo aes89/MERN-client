@@ -6,5 +6,4 @@ import userLoggedIn from "./reducers/login";
 export default combineReducers({
   modalOpen,
   userLoggedIn,
-  //   authentication: authenticationReducer,
 });
