@@ -6,9 +6,9 @@ const logout = createAction("logout");
 const initialState = { username: false };
 
 const userLoggedIn = createReducer(initialState, (builder) => {
-  //   name: "authenticated",
   builder
     .addCase(login, (state) => {
+      console.log("state updated for login!");
       state.username = true;
     })
     .addCase(logout, (state) => {
