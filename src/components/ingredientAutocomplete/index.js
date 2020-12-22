@@ -12,8 +12,8 @@ export default function AutocompleteIngredients() {
       <div style={{ width: 300 }}>
        
         <Autocomplete
-          freeSolo
-          id="free-solo-2-demo"
+          ingredientAutocomplete
+          id="ingredient-autocomplete"
           disableClearable
           options={ingredients.map((option) => option.name)}
           renderInput={(params) => (

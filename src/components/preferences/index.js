@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Formik, Field, Form } from "formik";
+import styles from "../../app.module.css";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -28,7 +29,8 @@ const preferencesList = [
 const mappedValues = preferencesList.map((preference) => [preference, false]);
 
 const Preferences = () => (
-  <div>
+  <div class={styles.layout}>
+    <div class={styles.layoutContent}>
     <h1>User Preferences</h1>
     <Formik
       initialValues={Object.fromEntries(mappedValues)}
@@ -53,6 +55,7 @@ const Preferences = () => (
         );
       }}
     </Formik>
+    </div>
   </div>
 );
 
