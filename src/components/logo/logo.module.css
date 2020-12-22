@@ -12,7 +12,6 @@
     border-radius: 25px;
  }
 
-
  /* Mobile First */
  @media only screen and (min-width: 672px) and (max-width: 1087px){
   
@@ -21,8 +20,6 @@
    }
    
  }
-
-
  
  @media only screen and (min-width:1088px)  {
    .logo {
