@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
 import SearchRecipeButton from "../resuables/searchButton";
+import AutocompleteIngredients from "../autocomplete";
 import styles from "../styles/home.module.css";
 import AuthenticationModal from "../AuthenticationModal";
 import Logo from "../resuables/logo";
@@ -23,6 +24,7 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
+          <AutocompleteIngredients/>
           <AuthenticationModal />
           <div>
             {userLoggedIn ? (
