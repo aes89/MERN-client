@@ -6,7 +6,6 @@ const closeModal = createAction("closeModal");
 const initialState = { modal: null };
 
 const modalOpen = createReducer(initialState, (builder) => {
-  //   name: "authenticated",
   builder
     .addCase(openModal, (state, action) => {
       state.modal = action.payload;

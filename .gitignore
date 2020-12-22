@@ -3,3 +3,4 @@ node_modules/
 cypress.json
 cypress.env.json
 .eslintcache
+// eslint-disable-next-line
