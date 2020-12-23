@@ -5,6 +5,7 @@ import styles from "../styles/loginSignup.module.css";
 import api from "../../config/api";
 import { CallToActionSharp } from "@material-ui/icons";
 import { connect } from "react-redux";
+import loginStateFunctions from "../login";
 
 const validate = (values) => {
   const errors = {};
@@ -59,7 +60,8 @@ const Register = ({ actions, registerd }) => {
       try {
         await api
           .post("/auth/register", { ...values })
-          .then(() => actions.register());
+          //wat dis
+          .then(() => loginStateFunctions.actions.logIn());
       } catch (error) {
         console.log("register err", JSON.parse(JSON.stringify(error)));
         formik.setStatus(JSON.parse(JSON.stringify(error)).message);
