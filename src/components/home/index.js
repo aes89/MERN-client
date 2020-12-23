@@ -3,16 +3,17 @@ import React, { Fragment } from "react";
 
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
+import LoggedIn from "../logged-in";
+import AuthenticationModal from "../AuthenticationModal";
+import { BorderBottom } from "@material-ui/icons";
 import SearchRecipeButton from "../searchButton";
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import styles from "./home.module.css";
-import AuthenticationModal from "../AuthenticationModal";
 import Logo from "../logo";
 
 const Home = ({ actions, userLoggedIn }) => {
   const { setModalOpen } = actions;
   return (
-    <Fragment>
     <div className={styles.homeLayoutOnly}>
       <Logo />
       <main className={` ${styles.homeContent}`}>
@@ -24,13 +25,11 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
-          <AutocompleteIngredients/>
+          <AutocompleteIngredients />
           <AuthenticationModal />
           <div>
             {userLoggedIn ? (
-              <Fragment>
-                <UserSettings /> <Preferences />
-              </Fragment>
+              <LoggedIn />
             ) : (
               <Fragment>
                 <button onClick={() => setModalOpen("login")}>Login</button>
@@ -43,14 +42,13 @@ const Home = ({ actions, userLoggedIn }) => {
         </div>
       </main>
     </div>
-    </Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
-    userLoggedIn: state.userLoggedIn.username,
-  });
-  
+  userLoggedIn: state.userLoggedIn.username,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     setModalOpen: (modalId) => {
