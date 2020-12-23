@@ -3,16 +3,17 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 const login = createAction("login");
 const logout = createAction("logout");
 
-const initialState = { username: false };
+const initialState = { username: "" };
 
 const userLoggedIn = createReducer(initialState, (builder) => {
   builder
-    .addCase(login, (state) => {
+    .addCase(login, (state, action) => {
       console.log("state updated for login!");
-      state.username = true;
+      //console.log(action.payload)
+      state.username = action.payload.email;
     })
     .addCase(logout, (state) => {
-      state.username = false;
+      state.username = "empty";
     });
 });
 

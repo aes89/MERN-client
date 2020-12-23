@@ -26,7 +26,7 @@ const Preferences = ({ actions, userPreferences }) => {
     onSubmit: async (values) => {
       try {
         await api.patch("/:username/edit", { ...values });
-        // .then(() => actions.logIn());
+        // .then(() => actions.updatePreferences());
       } catch (error) {
         console.log("preferences err err", JSON.parse(JSON.stringify(error)));
         formik.setStatus(JSON.parse(JSON.stringify(error)).message);

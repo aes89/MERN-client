@@ -26,9 +26,9 @@ const Home = ({ actions, userLoggedIn }) => {
           </h3>
           <SearchRecipeButton />
           <AutocompleteIngredients />
-    
-          <div>
           <AuthenticationModal />
+          <div>
+    
             {userLoggedIn ? (
               <LoggedIn />
             ) : (

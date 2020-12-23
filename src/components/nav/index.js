@@ -61,7 +61,7 @@ const navBar = ({ actions, userLoggedIn }) => {
       <nav class={styles.nav}>
         <ul>
           <li>
-            <Link to={`/user/${userLoggedIn}/account-settings`}>
+            <Link to={"/user/"+userLoggedIn+"/account-settings"}>
               <div class={styles.userProfile}>
                 <img alt="Users profile image" src={fridge} />
                 <div>User's Name</div>
@@ -76,7 +76,7 @@ const navBar = ({ actions, userLoggedIn }) => {
           </li>
           <li>
             <Link
-              to={`/ingredients/ ${userLoggedIn}/fridge`}
+              to={"/ingredients/"+userLoggedIn+"/fridge"}
               class={styles.navLink}
             >
               <img alt="Fridge" src={fridge} />
@@ -85,7 +85,7 @@ const navBar = ({ actions, userLoggedIn }) => {
           </li>
           <li>
             <Link
-              to={`/ingredients/ ${userLoggedIn}/fridge`}
+              to={"/ingredients/"+userLoggedIn+"pantry"}
               class={styles.navLink}
             >
               <img alt="Pantry" src={pantry} />
@@ -100,7 +100,7 @@ const navBar = ({ actions, userLoggedIn }) => {
           </li>
           <li>
             <Link
-              to={`/user/${userLoggedIn}/preferences`}
+              to={"/user/"+userLoggedIn+"/preferences"}
               class={styles.navLink}
             >
               <img alt="preference" src={pref} />

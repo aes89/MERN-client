@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {loginUser} from '../../services/authServices'
+import { useHistory } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -20,7 +21,8 @@ const validate = (values) => {
   return errors;
 };
 
-const Login = ({ actions, loggedIn, history}) => {
+const Login = ({ actions, loggedIn}) => {
+  let history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: "",

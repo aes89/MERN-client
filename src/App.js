@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import React, { Fragment } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+import { browserHistory } from "react-router";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import NotFound from "./components/notFound";
