@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import SearchRecipeButton from "../resuables/searchButton";
-import styles from "../styles/sideNav.module.css";
+import { Link } from 'react-router-dom'
+import SearchRecipeButton from "../searchButton";
+import styles from "./nav.module.css";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { connect } from "react-redux";
 import Modal from "react-modal";
