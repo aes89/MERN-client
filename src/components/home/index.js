@@ -3,12 +3,13 @@ import React, { Fragment } from "react";
 
 import UserSettings from "../userSettings";
 import Preferences from "../preferences";
-import SearchRecipeButton from "../resuables/searchButton";
 import LoggedIn from "../logged-in";
-import styles from "../styles/home.module.css";
 import AuthenticationModal from "../AuthenticationModal";
-import Logo from "../resuables/logo";
 import { BorderBottom } from "@material-ui/icons";
+import SearchRecipeButton from "../searchButton";
+import AutocompleteIngredients from "../ingredientAutocomplete";
+import styles from "./home.module.css";
+import Logo from "../logo";
 
 const Home = ({ actions, userLoggedIn }) => {
   const { setModalOpen } = actions;
@@ -24,6 +25,7 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
+          <AutocompleteIngredients />
           <AuthenticationModal />
           <div>
             {userLoggedIn ? (
