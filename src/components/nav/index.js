@@ -6,6 +6,8 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import AuthenticationModal from "../AuthenticationModal";
+import {logoutUser} from '../../services/authServices'
+
 
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
@@ -37,6 +39,16 @@ const navBar = ({ actions, userLoggedIn }) => {
   ];
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
+
+  function handleLogout() {
+      logoutUser().then((response) => {
+          console.log("Got back response on logout", response.status)
+      }).catch ((error) => {
+          console.log("The server may be down - caught an exception on logout:", error)
+      })
+      // Even if we catch an error, logout the user locally
+      actions.logout()
+  }
 
   return (
     <div class={styles.navBox}>
@@ -105,7 +117,7 @@ const navBar = ({ actions, userLoggedIn }) => {
                   {" "}
                   <button
                     class={styles.loginSignupButtons}
-                    onClick={actions.logout}
+                    onClick={ handleLogout}
                   >
                     Log out
                   </button>

@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from 'react-router-dom';
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 import api from "../../config/api";
@@ -57,37 +56,17 @@ const Register = ({ actions, register, history }) => {
     },
 
     validate,
-
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values }).then(() => {
         actions.register() //add value in params{ ...values }
         history.push("/")
-          
       }).catch((error) => {
         console.log("errors")
         console.log(error.response)
         console.log(`An error occurred authenticating: ${error}`)
         //formik.setStatus(error.response.data.errors[0].email)
       })
-
-
-
-      // try {
-      //   await api
-      //     .post("/user/register", { ...values })
-      //     .then(() => actions.register({ ...values }));
-      //    history.push("/");
-      // } catch (error) {
-      //   console.log("errors")
-      //   console.log(error.response)
-      //   console.log("register err", JSON.parse(JSON.stringify(error)));
-      //   formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-
-
-      //   this needs to iterate over error
-      //   formik.setStatus(error.response.data.errors[0].email);
-      // }
     },
   });
 
