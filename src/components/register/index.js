@@ -61,7 +61,7 @@ const Register = ({ actions, register, history }) => {
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values }).then(() => {
-        actions.register({ ...values })
+        actions.register() //add value in params{ ...values }
         history.push("/")
           
       }).catch((error) => {
