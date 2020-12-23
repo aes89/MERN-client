@@ -85,7 +85,7 @@ const navBar = ({ actions, userLoggedIn }) => {
           </li>
           <li>
             <Link
-              to={"/ingredients/"+userLoggedIn+"pantry"}
+              to={"/ingredients/"+userLoggedIn+"/pantry"}
               class={styles.navLink}
             >
               <img alt="Pantry" src={pantry} />

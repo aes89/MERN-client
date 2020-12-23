@@ -10,10 +10,10 @@ const userLoggedIn = createReducer(initialState, (builder) => {
     .addCase(login, (state, action) => {
       console.log("state updated for login!");
       //console.log(action.payload)
-      state.username = action.payload.email;
+      state.username = action.payload.username;
     })
     .addCase(logout, (state) => {
-      state.username = "empty";
+      state.username = null;
     });
 });
 
