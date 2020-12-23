@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import AuthenticationModal from "../AuthenticationModal";
 import {logoutUser} from '../../services/authServices'
-
+import { useHistory } from "react-router-dom";
 
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
@@ -25,7 +25,8 @@ import radish from "../styles/imgs/radish.png";
 import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
-const navBar = ({ actions, userLoggedIn }) => {
+const NavBar = ({ actions, userLoggedIn }) => {
+  let history = useHistory();
   const { setModalOpen } = actions;
   const listFoodImg = [
     carrot,
@@ -43,6 +44,7 @@ const navBar = ({ actions, userLoggedIn }) => {
   function handleLogout() {
       logoutUser().then((response) => {
           console.log("Got back response on logout", response.status)
+          history.push("/")
       }).catch ((error) => {
           console.log("The server may be down - caught an exception on logout:", error)
       })
@@ -100,7 +102,7 @@ const navBar = ({ actions, userLoggedIn }) => {
           </li>
           <li>
             <Link
-              to={"/user/"+userLoggedIn+"/preferences"}
+              to={"/preferences/"+userLoggedIn}
               class={styles.navLink}
             >
               <img alt="preference" src={pref} />
@@ -154,4 +156,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 // export default navBar;
 
-export default connect(mapStateToProps, mapDispatchToProps)(navBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
