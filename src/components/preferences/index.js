@@ -6,6 +6,7 @@ import { Formik, Field, Form, useFormik } from "formik";
 import preferencesList from "./list";
 import api from "../../config/api";
 import getUserPreferences from "../../utils/get-user-preferences";
+import Checkbox from '@material-ui/core/Checkbox';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -18,7 +19,7 @@ const validate = (values) => {
 // preferences component, is passed:
 // userPreferences which is state?
 // actions: which is submit (to db) and get payload/data from db.
-const Preferences = ({ actions, userPreferences }) => {
+const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
   const formik = useFormik({
     //calls boolean validation
     validate,
@@ -81,6 +82,7 @@ const Preferences = ({ actions, userPreferences }) => {
 //checks state
 const mapStateToProps = (state) => ({
   userPreferences: state.userPreferences,
+  userLoggedIn: state.userLoggedIn.username,
 });
 
 //updates state

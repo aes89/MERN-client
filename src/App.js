@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import React, { Fragment } from "react";
+import React, { Fragment,useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Switch} from "react-router-dom";
-import { browserHistory } from "react-router";
+import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { userAuthenticated, setLoggedInUser, getLoggedInUser } from "./services/authServices"
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import NotFound from "./components/notFound";
@@ -18,6 +18,18 @@ import Fridge from "./components/fridge";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = ({ actions, userLoggedIn }) => {
+
+  useEffect(() => {
+		userAuthenticated().then(() => {	
+      actions.logIn(getLoggedInUser())		 
+		}).catch((error) => {
+			console.log("got an error trying to check authenticated user:", error)
+      setLoggedInUser(null) 
+      actions.logout()
+		})
+    // return a function that specifies any actions on component unmount
+    return () => {}
+  },[])
   return (
     <Fragment>
       <Helmet>
@@ -32,7 +44,7 @@ const App = ({ actions, userLoggedIn }) => {
           {/* link to preferences component */}
           <Route
             exact
-            path="/user/:username/preferences"
+            path="/preferences/:username"
             component={Preferences}
           />
           <Route
@@ -68,10 +80,13 @@ const mapDispatchToProps = (dispatch) => ({
       store.dispatch({ type: "openModal", payload: modalId });
       console.log("APP JS STORE", store.getState());
     },
+    logIn: ({ username }) =>
+      dispatch({ type: "login", payload: { username  } }),
+    logout: () => dispatch({ type: "logout" }),
   },
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 //
 
 // routes for later

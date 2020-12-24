@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
-import {loginUser} from '../../services/authServices'
+import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
 import { useHistory } from "react-router-dom";
 
 const validate = (values) => {
@@ -31,10 +31,16 @@ const Login = ({ actions, loggedIn}) => {
     validate,
 
     onSubmit: async (values) => {
-      loginUser({ ...values }).then(() => {
-        actions.logIn({ ...values })
+      loginUser({ ...values }).then((r) => {
+        //console.log(r.user)
+        setLoggedInUser(r.cookie.jwt)
+        setUsername(r.user.username)
+        actions.logIn({ ...r.user })
+        //console.log(getLoggedInUser())
+       // console.log("aa")
+       // console.log(loggedIn)
         history.push("/")
-
+        //console.log(document.cookie)
     }).catch((error) => {
       //console.log("errors")
       //console.log(error.response)
@@ -101,8 +107,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    logIn: ({ email, password }) =>
-      dispatch({ type: "login", payload: { email, password } }),
+    logIn: ({ email, password, username }) =>
+      dispatch({ type: "login", payload: { email, password, username  } }),
     logout: () => dispatch({ type: "logout" }),
   },
 });

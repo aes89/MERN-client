@@ -127,11 +127,10 @@
   }
  
 .navButtons > button{
-   all: unset;
-   padding: 10px;
-   margin: 20px;
+
+   margin: 5px;
    cursor: pointer;
-   color: black;
+  
  }
 
 

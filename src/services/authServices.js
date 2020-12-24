@@ -14,6 +14,7 @@ export async function loginUser(userInfo) {
     // return user info if successful and error if not
     const response = await api.post("/user/login", userInfo)
     console.log("got user back from server", response) 
+   // console.log(response) 
     return response.data
 }
 
@@ -45,3 +46,38 @@ export async function updatePreference(userInfo,username) {
     console.log("got user back from server", response)
     return response.data
 }  
+
+
+// Get loggedInUser from localStorage
+export function getLoggedInUser() {
+   return localStorage.getItem("token")
+}
+
+// Store loggedInUser token in local storage
+export function setLoggedInUser(token) {
+    token ? localStorage.setItem("token", token) : localStorage.removeItem("token")
+    console.log("local storage Updated")
+}
+
+    
+export async function userAuthenticated() {
+    try {
+        const response =  await api.get("/user/user")
+        console.log(response)
+        return response
+    }
+    catch(error) {
+        console.log("an error occurred checking for authenticated user")
+        throw(error)
+    }
+}
+
+// Get loggedInUser from localStorage
+export function getUsername() {
+    return localStorage.getItem("username")
+}
+
+// Store loggedInUser username in local storage
+export function setUsername(user) {
+    user ? localStorage.setItem("username", user) : localStorage.removeItem("username")
+}
