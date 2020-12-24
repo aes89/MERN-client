@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Fragment,useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import { userAuthenticated, setLoggedInUser, getLoggedInUser } from "./services/authServices"
+import { userAuthenticated, setLoggedInUser, getLoggedInUser, getUsername, setUsername } from "./services/authServices"
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import NotFound from "./components/notFound";
@@ -20,13 +20,16 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 const App = ({ actions, userLoggedIn }) => {
 
   useEffect(() => {
-		userAuthenticated().then(() => {	
-      actions.logIn(getLoggedInUser())		 
-		}).catch((error) => {
-			console.log("got an error trying to check authenticated user:", error)
+    try {
+      actions.logIn(getUsername())	
+      actions.token	(getLoggedInUser())	 
+    } catch (error) {
+      console.log("got an error trying to check authenticated user:", error)
       setLoggedInUser(null) 
+      setUsername(null)
       actions.logout()
-		})
+
+    }
     // return a function that specifies any actions on component unmount
     return () => {}
   },[])
@@ -80,8 +83,10 @@ const mapDispatchToProps = (dispatch) => ({
       store.dispatch({ type: "openModal", payload: modalId });
       console.log("APP JS STORE", store.getState());
     },
-    logIn: ({ username }) =>
-      dispatch({ type: "login", payload: { username  } }),
+    logIn: (username ) =>
+      dispatch({ type: "login", payload: username}),
+    token: ( jwt ) =>
+      dispatch({ type: "token", payload:  jwt  }),
     logout: () => dispatch({ type: "logout" }),
   },
 });

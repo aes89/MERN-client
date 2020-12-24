@@ -57,20 +57,10 @@ export function getLoggedInUser() {
 export function setLoggedInUser(token) {
     token ? localStorage.setItem("token", token) : localStorage.removeItem("token")
     console.log("local storage Updated")
+    console.log(token)
 }
 
-    
-export async function userAuthenticated() {
-    try {
-        const response =  await api.get("/user/user")
-        console.log(response)
-        return response
-    }
-    catch(error) {
-        console.log("an error occurred checking for authenticated user")
-        throw(error)
-    }
-}
+
 
 // Get loggedInUser from localStorage
 export function getUsername() {
@@ -80,4 +70,6 @@ export function getUsername() {
 // Store loggedInUser username in local storage
 export function setUsername(user) {
     user ? localStorage.setItem("username", user) : localStorage.removeItem("username")
+    console.log("local username Updated")
+    console.log(user)
 }
