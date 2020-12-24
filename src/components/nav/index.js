@@ -66,6 +66,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
       // Even if we catch an error, logout the user locally
       // Remove the token from localStorage
       localStorage.removeItem("token")
+      localStorage.removeItem("username")
       actions.logout()
   }
 

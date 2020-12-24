@@ -60,8 +60,6 @@ export function setLoggedInUser(token) {
     console.log(token)
 }
 
-
-
 // Get loggedInUser from localStorage
 export function getUsername() {
     return localStorage.getItem("username")

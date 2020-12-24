@@ -20,6 +20,7 @@ const userLoggedIn = createReducer(initialState, (builder) => {
     })
     .addCase(logout, (state) => {
       state.username = null;
+      state.jwt = null;
     });
 });
 
