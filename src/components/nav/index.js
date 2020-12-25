@@ -17,6 +17,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 //IMAGES-icons
@@ -35,7 +36,7 @@ import radish from "../styles/imgs/radish.png";
 import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
-const NavBar = ({ actions, userLoggedIn }) => {
+const NavBar = ({ actions, userLoggedIn, currentUserSettings}) => {
   let history = useHistory();
   const { setModalOpen } = actions;
   const listFoodImg = [
@@ -85,10 +86,9 @@ const NavBar = ({ actions, userLoggedIn }) => {
                 <li>
                   <Link to={"/user/"+userLoggedIn+"/account-settings"}>
                     <div class={styles.userProfile}>
-                    
-                      <img alt="Users profile image" src={fridge} />
-                      <div>{userLoggedIn}</div>
-                    
+                    {currentUserSettings.profile ? (<img  alt="Users profile image"  src={currentUserSettings.profile} />) : (
+          <AccountCircleIcon  fontSize="large"/>)}
+                      {userLoggedIn? (<div>{userLoggedIn}</div>) : (<div></div>)}
                     </div>
                   </Link>
                 </li>
@@ -137,19 +137,12 @@ const NavBar = ({ actions, userLoggedIn }) => {
               {userLoggedIn ? (
                 <Fragment>
                   {" "}
-                  <button
-                    class={styles.loginSignupButtons}
-                    onClick={ handleLogout}
-                  >
-                    Log out
-                  </button>
+                  <Button variant="outlined" onClick={ handleLogout} >Log out</Button>
                 </Fragment>
               ) : (
                 <Fragment>
-              
                   <Button variant="outlined" onClick={() => setModalOpen("login")} >Login</Button>
                   <Button variant="outlined" onClick={() => setModalOpen("register")} >Register</Button>
-                
                 </Fragment>
               )}
             </Fragment>
@@ -162,6 +155,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
 
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
+  currentUserSettings: state.currentUserSettings,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -17,6 +17,8 @@ const initialState = { vegetarian: false,
 const userPreferences = createReducer(initialState, (builder) => {
   builder.addCase(updatePreferences, (state, action) => {
     state.preferences = action.payload;
+    console.log("updated pref")
+    console.log(action.payload)
   });
 });
 
