@@ -27,7 +27,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
-    getPreference(userLoggedIn).then((pref) => {
+    getPreference(getUsername()).then((pref) => {
       actions.updatePreferences( { ...pref })
   }).then(() => {console.log(userPreferences)
  }).catch((error) => {
@@ -43,6 +43,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
   const formik = useFormik({
     //calls boolean validation
     validate,
+
    // This is calling the DB patch request to update the initial user preference data
     onSubmit: (values) => {
       //alert(JSON.stringify(values, null, 2));

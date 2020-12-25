@@ -51,7 +51,7 @@ const validate = (values) => {
 const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
 
   useEffect(() => {
-    getUserSettings(userLoggedIn).then((user) => {
+    getUserSettings(getUsername()).then((user) => {
       actions.settings(user)
   }).then(() => {console.log(currentUserSettings)
  }).catch((error) => {
