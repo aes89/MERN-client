@@ -1,6 +1,9 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { useFormik } from "formik";
+import styles from "./userSettings.module.css";
+import {getUserSettings, updateUserSettings} from '../../services/authServices'
+
 
 const validate = (values) => {
   const errors = {};
@@ -44,10 +47,25 @@ const validate = (values) => {
   return errors;
 };
 
-const UserSettings = () => {
+const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
+
+  useEffect(() => {
+    getUserSettings(userLoggedIn).then((user) => {
+      actions.settings(user)
+  }).then(() => {console.log(currentUserSettings)
+ }).catch((error) => {
+      console.log("errors")
+      console.log(error.response)
+      if (error.response && error.response.status === 404)
+      formik.setStatus("Error getting user information ")
+      else   
+      formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
+  })
+ 
+  },[])
   const formik = useFormik({
     initialValues: {
-      name: "",
+      username: "",
 
       email: "",
 
@@ -62,11 +80,24 @@ const UserSettings = () => {
 
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      updateUserSettings({ ...values }).then((user) => {
+        console.log(user)
+        actions.settings( { ...user })
+    }).catch((error) => {
+      //console.log("errors")
+      //console.log(error.response)
+      if (error.response && error.response.status === 404)
+      formik.setStatus("Error getting user information ")
+      else   
+      formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
+    })
     },
   });
 
   return (
-    <div>
+    <div class={styles.layout}>
+      <div class={styles.layoutContent}>
+      <div className={styles.settingsBox}>
       <h1>User Settings:</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="photo">Photo</label>
@@ -89,19 +120,20 @@ const UserSettings = () => {
           }}
         />
 
-        <label htmlFor="name">Name</label>
+        <label htmlFor="username">Username</label>
 
         <input
           id="userSettingsName"
           name="name"
           type="text"
+          placeholder={currentUserSettings.username}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.name}
+          value={formik.values.username}
         />
 
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
         ) : null}
 
         <label htmlFor="email">Email Address</label>
@@ -110,6 +142,7 @@ const UserSettings = () => {
           id="userSettingsEmail"
           name="email"
           type="email"
+          placeholder={currentUserSettings.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -151,8 +184,24 @@ const UserSettings = () => {
 
         <button type="submit">Update Details</button>
       </form>
+      </div>
+    </div>
     </div>
   );
 };
 
-export default UserSettings;
+
+const mapStateToProps = (state) => ({
+  currentUserSettings: state.currentUserSettings,
+  userLoggedIn: state.userLoggedIn.username,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    settings: ({email, username}) =>
+      dispatch({ type: "settings", payload: {email, username}}),
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);
+

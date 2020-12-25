@@ -51,11 +51,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
 
-  const items = [
-      { name: 'home', label: 'Home' },
-      { name: 'billing', label: 'Billing' },
-      { name: 'settings', label: 'Settings' },
-    ]
+
   function handleLogout() {
       logoutUser().then((response) => {
           console.log("Got back response on logout", response.status)

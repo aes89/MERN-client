@@ -32,11 +32,11 @@ const Login = ({ actions, loggedIn}) => {
 
     onSubmit: async (values) => {
       loginUser({ ...values }).then((r) => {
-        console.log(r.user)
+        console.log(r)
         setLoggedInUser(r.cookie.jwt)
         setUsername(r.user)
         actions.logIn(r.user)
-        actions.token(r.cookie.jwt)
+        actions.getToken(r.cookie.jwt)
         //console.log(getLoggedInUser())
        // console.log("aa")
        // console.log(loggedIn)
@@ -110,7 +110,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username ) =>
       dispatch({ type: "login", payload: username }),
-    token: (jwt ) =>
+    getToken: (jwt ) =>
       dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
   },
