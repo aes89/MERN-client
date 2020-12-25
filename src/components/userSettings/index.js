@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import styles from "./userSettings.module.css";
 import {getUserSettings, updateUserSettings ,getUsername, setUsername } from '../../services/authServices'
 import Logo from "../logo";
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const validate = (values) => {
   const errors = {};
@@ -106,6 +106,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
           <div>Error: {formik.status}. </div>
         )}
       <h1>User Settings:</h1>
+      {currentUserSettings.profile ? (<img src={currentUserSettings.profile} width="20%"/>) : (
+          <AccountCircleIcon/>
+          )}
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="photo">Photo</label>
 
@@ -205,8 +208,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    settings: ({email, username}) =>
-      dispatch({ type: "settings", payload: {email, username}}),
+    settings: ({email, username, profile}) =>
+      dispatch({ type: "settings", payload: {email, username, profile}}),
     updateUsername: (username ) =>
       dispatch({ type: "updateUsername", payload: username}),
   },
