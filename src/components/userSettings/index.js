@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "./userSettings.module.css";
-import {getUserSettings, updateUserSettings} from '../../services/authServices'
+import {getUserSettings, updateUserSettings ,getUsername, setUsername } from '../../services/authServices'
+import Logo from "../logo";
 
 
 const validate = (values) => {
   const errors = {};
 
-  if (!values.name) {
-    errors.name = "Required";
-  } else if (values.name.length > 15) {
-    errors.name = "Must be 15 characters or less";
+  if (!values.username) {
+    errors.username = "Required";
+  } else if (values.username.length > 15) {
+    errors.username = "Must be 15 characters or less";
   }
 
   if (!values.email) {
@@ -79,10 +80,12 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
     validate,
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      updateUserSettings({ ...values }).then((user) => {
+      //alert(JSON.stringify(values, null, 2));
+      updateUserSettings({ ...values }, userLoggedIn).then((user) => {
         console.log(user)
         actions.settings( { ...user })
+        actions.updateUsername(user.username)
+        setUsername(user.username)
     }).catch((error) => {
       //console.log("errors")
       //console.log(error.response)
@@ -96,6 +99,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
 
   return (
     <div class={styles.layout}>
+        <Logo />
       <div class={styles.layoutContent}>
       <div className={styles.settingsBox}>
       <h1>User Settings:</h1>
@@ -113,7 +117,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
           // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
           onSubmit={(values) => {
             console.log({
-              fileName: values.file.name,
+              fileName: values.file.username,
               type: values.file.type,
               size: `${values.file.size} bytes`,
             });
@@ -124,7 +128,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
 
         <input
           id="userSettingsName"
-          name="name"
+          name="username"
           type="text"
           placeholder={currentUserSettings.username}
           onChange={formik.handleChange}
@@ -200,6 +204,8 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     settings: ({email, username}) =>
       dispatch({ type: "settings", payload: {email, username}}),
+    updateUsername: (username ) =>
+      dispatch({ type: "updateUsername", payload: username}),
   },
 });
 

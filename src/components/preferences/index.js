@@ -7,6 +7,7 @@ import preferencesList from "./list";
 import api from "../../config/api";
 import getUserPreferences from "../../utils/get-user-preferences";
 import Checkbox from '@material-ui/core/Checkbox';
+import Logo from "../logo";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -43,6 +44,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
   return (
     // the form and HTML
     <div>
+    <Logo/>
       <h1>User Preferences</h1>
       <Formik
         initialValues={Object.fromEntries(

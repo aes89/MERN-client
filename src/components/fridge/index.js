@@ -4,10 +4,11 @@ import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 import api from "../../config/api";
 import AutocompleteIngredients from "../ingredientAutocomplete";
-
+import Logo from "../logo";
 
 const Fridge = () => {
-  return <div>It's a fridge!
+  return <div>
+        <Logo />It's a fridge!
         <AutocompleteIngredients /></div>;
 };
 

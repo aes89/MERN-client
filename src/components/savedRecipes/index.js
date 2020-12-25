@@ -1,10 +1,10 @@
 import React from "react";
-
+import Logo from "../logo";
 
 const SavedRecipes = () => {
  
   return (
-    <div >
+    <div ><Logo/>
     This is saved Recipe page
     </div>
   );

@@ -47,12 +47,22 @@ export async function uploadProfileImage(image,username) {
 }  
 
 
+export async function getPreference(username) {
+    // call to server to register user
+    const response = await api.get("/preferences/"+username)
+    console.log("got user back from server", response)
+    return response.data
+}  
+
+
 export async function updatePreference(userInfo,username) {
     // call to server to register user
     const response = await api.post("/preferences/"+username+"/edit", userInfo)
     console.log("got user back from server", response)
     return response.data
 }  
+
+//LOCAL STORAGE
 
 //Right now we are saving the token - but as token is in a cookie this does not need to be in local storage- remove later
 // Get loggedInUser from localStorage
