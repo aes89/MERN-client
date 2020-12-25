@@ -4,7 +4,9 @@ import Logo from "../logo";
 const SavedRecipes = () => {
  
   return (
-    <div ><Logo/>
+    <div >
+      
+    <Logo/>
     This is saved Recipe page
     </div>
   );

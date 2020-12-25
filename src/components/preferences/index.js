@@ -8,6 +8,9 @@ import api from "../../config/api";
 import getUserPreferences from "../../utils/get-user-preferences";
 import Checkbox from '@material-ui/core/Checkbox';
 import Logo from "../logo";
+import {getPreference, updatePreference ,getUsername, setUsername } from '../../services/authServices'
+
+
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -21,18 +24,39 @@ const validate = (values) => {
 // userPreferences which is state?
 // actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
+
+  // On page load- This is calling the DB get request to get the initial user preference data
+  useEffect(() => {
+    getPreference(userLoggedIn).then((pref) => {
+      actions.updatePreferences( { ...pref })
+  }).then(() => {console.log(userPreferences)
+ }).catch((error) => {
+      console.log("errors")
+      console.log(error.response)
+      if (error.response && error.response.status === 404)
+      formik.setStatus("Error getting pref information ")
+      else   
+      formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
+  })
+},[])
+
   const formik = useFormik({
     //calls boolean validation
     validate,
-    // when submits, goes to patch route and sends values from form
-    onSubmit: async (values) => {
-      try {
-        await api.patch("/:username/edit", { ...values });
-        // .then(() => actions.updatePreferences());
-      } catch (error) {
-        console.log("preferences err err", JSON.parse(JSON.stringify(error)));
-        formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-      }
+   // This is calling the DB patch request to update the initial user preference data
+    onSubmit: (values) => {
+      //alert(JSON.stringify(values, null, 2));
+      updatePreference({ ...values }, userLoggedIn).then((pref) => {
+        console.log(pref)
+        actions.updatePreferences( { ...pref })
+    }).catch((error) => {
+      //console.log("errors")
+      //console.log(error.response)
+      if (error.response && error.response.status === 404)
+      formik.setStatus("Error getting pref information ")
+      else   
+      formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
+    })
     },
   });
 
@@ -46,6 +70,9 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
     <div>
     <Logo/>
       <h1>User Preferences</h1>
+      {formik.status && (
+          <div>Error: {formik.status}. </div>
+        )}
       <Formik
         initialValues={Object.fromEntries(
           preferencesList.map((preference) => [

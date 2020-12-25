@@ -102,6 +102,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
         <Logo />
       <div class={styles.layoutContent}>
       <div className={styles.settingsBox}>
+      {formik.status && (
+          <div>Error: {formik.status}. </div>
+        )}
       <h1>User Settings:</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="photo">Photo</label>
