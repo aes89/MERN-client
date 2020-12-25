@@ -10,7 +10,25 @@ export default function AutocompleteIngredients() {
 
     return (
       <div style={{ width: 300 }}>
-       
+
+        <Autocomplete
+        multiple
+        id="tags-standard"
+        options={ingredients}
+        getOptionLabel={(option) => option.name}
+        defaultValue={[ingredients[13]]}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="standard"
+            label="Add Ingredients"
+            placeholder="Ingredients"
+          />
+        )}
+      />
+
+
+
         <Autocomplete
           ingredientAutocomplete
           id="ingredient-autocomplete"
