@@ -78,22 +78,14 @@ const NavBar = ({ actions, userLoggedIn }) => {
           <MoreVertIcon />
         </i>
       </a>
-
-
-     
-  
-
-     
-
       <nav class={styles.nav}>
-      
         <ul>
-        
+        {/*
         <List disablePadding dense>
           <ListItem button>
                 <ListItemText>User's Name</ListItemText>
                 </ListItem>
-        </List>
+        </List> */}
                 <li>
                   <Link to={"/user/"+userLoggedIn+"/account-settings"}>
                     <div class={styles.userProfile}>
