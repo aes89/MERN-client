@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import React, { Fragment } from "react";
+import React, { Fragment,useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { userAuthenticated, setLoggedInUser, getLoggedInUser, getUsername, setUsername } from "./services/authServices"
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import NotFound from "./components/notFound";
@@ -17,6 +18,21 @@ import Fridge from "./components/fridge";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = ({ actions, userLoggedIn }) => {
+
+  useEffect(() => {
+    try {
+      actions.logIn(getUsername())	
+      actions.token	(getLoggedInUser())	 
+    } catch (error) {
+      console.log("got an error trying to check authenticated user:", error)
+      setLoggedInUser(null) 
+      setUsername(null)
+      actions.logout()
+
+    }
+    // return a function that specifies any actions on component unmount
+    return () => {}
+  },[])
   return (
     <Fragment>
       <Helmet>
@@ -31,7 +47,7 @@ const App = ({ actions, userLoggedIn }) => {
           {/* link to preferences component */}
           <Route
             exact
-            path="/user/:username/preferences"
+            path="/preferences/:username"
             component={Preferences}
           />
           <Route
@@ -67,10 +83,15 @@ const mapDispatchToProps = (dispatch) => ({
       store.dispatch({ type: "openModal", payload: modalId });
       console.log("APP JS STORE", store.getState());
     },
+    logIn: (username ) =>
+      dispatch({ type: "login", payload: username}),
+    token: ( jwt ) =>
+      dispatch({ type: "token", payload:  jwt  }),
+    logout: () => dispatch({ type: "logout" }),
   },
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 //
 
 // routes for later

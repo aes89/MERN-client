@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
-import api from "../../config/api";
+import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
+import { useHistory } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -20,7 +21,8 @@ const validate = (values) => {
   return errors;
 };
 
-const Login = ({ actions, loggedIn }) => {
+const Login = ({ actions, loggedIn}) => {
+  let history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -29,14 +31,25 @@ const Login = ({ actions, loggedIn }) => {
     validate,
 
     onSubmit: async (values) => {
-      try {
-        await api
-          .post("/auth/login", { ...values })
-          .then(() => actions.logIn());
-      } catch (error) {
-        console.log("login err", JSON.parse(JSON.stringify(error)));
-        formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-      }
+      loginUser({ ...values }).then((r) => {
+        console.log(r.user)
+        setLoggedInUser(r.cookie.jwt)
+        setUsername(r.user)
+        actions.logIn(r.user)
+        actions.token(r.cookie.jwt)
+        //console.log(getLoggedInUser())
+       // console.log("aa")
+       // console.log(loggedIn)
+        history.push("/")
+        //console.log(document.cookie)
+    }).catch((error) => {
+      //console.log("errors")
+      //console.log(error.response)
+        if (error.response && error.response.status === 401)
+        formik.setStatus("Authentication failed. Please check your username and password.")
+        else   
+        formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
+    })	
     },
   });
 
@@ -83,9 +96,6 @@ const Login = ({ actions, loggedIn }) => {
           >
             Log In
           </button>
-          <button class={styles.loginSignupButtons} onClick={actions.logout}>
-            Log out
-          </button>
         </div>
       </form>
     </div>
@@ -98,8 +108,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    logIn: ({ email, password }) =>
-      dispatch({ type: "login", payload: { email, password } }),
+    logIn: (username ) =>
+      dispatch({ type: "login", payload: username }),
+    token: (jwt ) =>
+      dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
   },
 });

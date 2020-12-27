@@ -1,12 +1,9 @@
 import React from "react";
-import { withRouter } from 'react-router-dom';
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
-import api from "../../config/api";
-import { CallToActionSharp } from "@material-ui/icons";
 import { connect } from "react-redux";
 import {registerUser} from '../../services/authServices'
-
+import { useHistory } from "react-router-dom";
 
 
 const validate = (values) => {
@@ -16,6 +13,12 @@ const validate = (values) => {
     errors.email = "Required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email address";
+  }
+
+  if (!values.username) {
+    errors.username = "Required";
+  } else if (!/^[a-zA-Z0-9._]$/i.test(values.username)) {
+    errors.username = "Invalid username characters";
   }
 
   if (!values.password) {
@@ -46,48 +49,28 @@ const validate = (values) => {
   return errors;
 };
 
-const Register = ({ actions, register, history }) => {
+const Register = ({ actions, register }) => {
+  let history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: "",
-
+      username: "",
       password: "",
-
       confirmPassword: "",
     },
 
     validate,
-
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values }).then(() => {
-        actions.register() //add value in params{ ...values }
+        actions.logIn({ ...values }) //add value in params{ ...values }
         history.push("/")
-          
       }).catch((error) => {
         console.log("errors")
         console.log(error.response)
         console.log(`An error occurred authenticating: ${error}`)
         //formik.setStatus(error.response.data.errors[0].email)
       })
-
-
-
-      // try {
-      //   await api
-      //     .post("/user/register", { ...values })
-      //     .then(() => actions.register({ ...values }));
-      //    history.push("/");
-      // } catch (error) {
-      //   console.log("errors")
-      //   console.log(error.response)
-      //   console.log("register err", JSON.parse(JSON.stringify(error)));
-      //   formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-
-
-      //   this needs to iterate over error
-      //   formik.setStatus(error.response.data.errors[0].email);
-      // }
     },
   });
 
@@ -113,6 +96,22 @@ const Register = ({ actions, register, history }) => {
 
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
+        ) : null}
+
+        <label htmlFor="username">Username</label>
+
+        <input
+          id="registerUsername"
+          class="registerUsername"
+          name="username"
+          type="username"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.username}
+        />
+
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
         ) : null}
 
         <label htmlFor="password">Password</label>
@@ -166,8 +165,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    register: ({ email, password }) =>
-      dispatch({ type: "register", payload: { email, password } }),
+    register: ({ email, password, username }) =>
+      dispatch({ type: "register", payload: { email, password, username } }),
+    logIn: ({ email, password, username}) =>
+      dispatch({ type: "login", payload: { email, password, username } }),
   },
 });
 
