@@ -1,14 +1,11 @@
 
 /* Search Button */
-.searchButtonOutline{
-  
-  }
 
-.searchButtonOutline > button{
+.searchButtonOutline {
     all: unset;
     background-color: #3F7209;
     color: white;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
   }

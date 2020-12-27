@@ -6,6 +6,9 @@ import {getUserSettings, updateUserSettings ,getUsername, setUsername } from '..
 import Logo from "../logo";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
+//MATERIAL
+import Button from '@material-ui/core/Button';
+
 const validate = (values) => {
   const errors = {};
 
@@ -102,13 +105,17 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
         <Logo />
       <div class={styles.layoutContent}>
       <div className={styles.settingsBox}>
+  
       {formik.status && (
           <div>Error: {formik.status}. </div>
         )}
       <h1>User Settings:</h1>
+      <div>
       {currentUserSettings.profile ? (<img src={currentUserSettings.profile} width="20%"/>) : (
           <AccountCircleIcon/>
           )}
+      </div>
+      
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="photo">Photo</label>
 
@@ -192,8 +199,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
           <div>{formik.errors.confirmPassword}</div>
         ) : null}
 
-        <button type="submit">Update Details</button>
+        <Button className={styles.updateButton} type="submit">Update Details</Button>
       </form>
+
       </div>
     </div>
     </div>

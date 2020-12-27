@@ -77,11 +77,24 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings}) => {
       </a>
       <nav class={styles.nav}>
         <ul>
-        {/*
-        <List disablePadding dense>
-          <ListItem button>
-                <ListItemText>User's Name</ListItemText>
-                </ListItem>
+      
+        {/* <List disablePadding dense>
+            <ListItem button>
+            <img alt="Fridge" src={fridge} width="20%"/>
+              <ListItemText>My Fridge</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={pantry} width="20%"/>
+              <ListItemText>My Pantry</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={list} width="20%"/>
+              <ListItemText>Saved Recipes</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={pref} width="20%"/>
+              <ListItemText>My Preferences</ListItemText>
+            </ListItem>
         </List> */}
                 <li>
                   <Link to={"/user/"+userLoggedIn+"/account-settings"}>
