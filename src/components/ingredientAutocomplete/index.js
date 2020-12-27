@@ -27,8 +27,6 @@ export default function AutocompleteIngredients() {
         )}
       />
 
-
-
         <Autocomplete
           ingredientAutocomplete
           id="ingredient-autocomplete"

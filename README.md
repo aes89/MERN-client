@@ -24,6 +24,10 @@ Deployed App:
 |:---:|:---:|:---:|
 | 07/12/2020 | Preferences creates false/true object | Form completed manually, able to console log returned object showing { "vegetarian": true, "vegan": false ...} |
 | 08/12/2020 | Log in and Register Modals | Able to click on Log in or Register, modal appears. Able to click on Log in or Register within modal to switch forms. |
+| 24/12/2020 | User register | Manual Testing via the console checking if the redux state, and local storage was updated on register then login. |
+| 24/12/2020 | User login | Manual Testing via the console checking if the redux state, and local storage was updated on login. Additionally checking the JWT storage as cookie.|
+| 25/12/2020 | User Settings | Manual Testing via the console checking if the redux state, and local storage was updated on useEffect calling the DB get request and returning the user data.|
+| 25/12/2020 | User Settings Update | |
 
 </details>
 
@@ -68,14 +72,14 @@ Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots
 &check;
 &cross; 
 
-| Date | Tasks Allocated | Completed? |
-|:---:|:---:|:---:|
+| Date | Tasks Allocated | Completed? |Allocated to? |
+|:---:|:---:|:---:|:---:|
 |**Adrienne** |
-| 08/12/2020 | Create testing logs in ReadMe. | &check; |
-|| Create daily task log | &check; |
-|| Cypress tests for preferences, log in, register, user settings. | &check; Login &check; Register &cross; User settings &cross; Preferences |
-|| Routes | &cross;|
-|09/12/2020| Finalise Part A documentation and presentation | &check; |
-| | Set up Redux (global state management) so can test components thoroughly | |
-|| Cypress tests for preferences and user settings. |  |
+| 08/12/2020 | Create testing logs in ReadMe. | &check; | Adrienne |
+|| Create daily task log | &check; |Adrienne |
+|| Cypress tests for preferences, log in, register, user settings. | &check; Login &check; Register &cross; User settings &cross; Preferences | Adrienne |
+|| Routes | &cross;| Adrienne |
+|09/12/2020| Finalise Part A documentation and presentation | &check; | Adrienne |
+| | Set up Redux (global state management) so can test components thoroughly | |Adrienne |
+|| Cypress tests for preferences and user settings. |  |Adrienne |
 </details>
