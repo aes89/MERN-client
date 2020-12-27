@@ -4,6 +4,11 @@ import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import { userAuthenticated, setLoggedInUser, getLoggedInUser, getUsername, setUsername } from "./services/authServices"
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import notify from "./utils/notifications.js";
+
 // import "./App.css";
 // import Modal from "react-modal";
 // import styles from "./components/styles/app.module.css";
@@ -25,6 +30,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = ({ actions }) => {
 
+  
   useEffect(() => {
     try {
       actions.logIn(getUsername())	
@@ -60,6 +66,7 @@ const App = ({ actions }) => {
           <Route exact path="/ingredients/:username/pantry" component={Pantry} />
           <Route component={NotFound} />
         </Switch>
+        <ToastContainer />
       </BrowserRouter>
       <Footer/>
     </Fragment>

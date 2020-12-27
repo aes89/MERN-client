@@ -5,6 +5,10 @@ import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import notify from "../../utils/notifications.js";
+
 
 const validate = (values) => {
   const errors = {};
@@ -21,8 +25,9 @@ const validate = (values) => {
   return errors;
 };
 
-const Login = ({ actions, loggedIn}) => {
+const Login = ({ actions, loggedIn,modalId}) => {
   let history = useHistory();
+  
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -37,6 +42,8 @@ const Login = ({ actions, loggedIn}) => {
         setUsername(r.user)
         actions.logIn(r.user)
         actions.getToken(r.cookie.jwt)
+        actions.closeModal() 
+    
         //console.log(getLoggedInUser())
        // console.log("aa")
        // console.log(loggedIn)
@@ -92,18 +99,21 @@ const Login = ({ actions, loggedIn}) => {
           <button
             class={styles.loginSignupButtons}
             type="submit"
-            onClick={formik.handleSubmit}
+            onClick={formik.handleSubmit, notify}
           >
             Log In
           </button>
         </div>
       </form>
+   
+      
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   loggedIn: state.userLoggedIn.username,
+  modalId: state.modalOpen.modal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -113,6 +123,8 @@ const mapDispatchToProps = (dispatch) => ({
     getToken: (jwt ) =>
       dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
+    openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
+     closeModal: () => dispatch({ type: "closeModal" }),
   },
 });
 

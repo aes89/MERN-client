@@ -49,7 +49,7 @@ const validate = (values) => {
   return errors;
 };
 
-const Register = ({ actions, userLoggedIn }) => {
+const Register = ({ actions, userLoggedIn, modalId }) => {
   let history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -64,7 +64,8 @@ const Register = ({ actions, userLoggedIn }) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values }).then((r) => {
         console.log(r.username)
-        actions.logIn(r.username) //add value in params{ ...values }
+        actions.logIn(r.username)
+        actions.closeModal() //add value in params{ ...values }
         history.push("/")
       }).catch((error) => {
         console.log("errors")
@@ -162,12 +163,15 @@ const Register = ({ actions, userLoggedIn }) => {
 
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
+  modalId: state.modalOpen.modal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username) =>
       dispatch({ type: "login", payload: username }),
+      openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
+     closeModal: () => dispatch({ type: "closeModal" }),
   },
 });
 
