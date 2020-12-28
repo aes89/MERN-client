@@ -17,9 +17,8 @@ import Grid from '@material-ui/core/Grid';
 const SavedRecipes = ({savedRecipes}) => {
   const classes = useStyles();
 
-//get saved receipes from local storage and assigne to state first then use that state to display recipes
+//get saved receipes from local storage and assign to state first then use that state to display recipes
  
-
 
 
   return  (

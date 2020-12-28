@@ -8,6 +8,7 @@ import {getUserSettings, updateUserSettings ,getUsername, setUsername } from '..
 import Logo from "../logo";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
+import ProfileDefault from "../styles/imgs/profileDefault.png";
 //MATERIAL
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -118,38 +119,37 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
               </Grid>  
               <Grid item xs={12} spacing={2}>
                 <div class={appstyles.layoutContent}>
-                  <div className={styles.settingsBox}>
+                  <div class={styles.settingsBox}>
                       {formik.status && (
                           <div>Error: {formik.status}. </div>
                         )}
-                     
-                      <div>
-                      {currentUserSettings.profile ? (<img src={currentUserSettings.profile} width="20%"/>) : (
-                          <AccountCircleIcon/>
-                          )}
-                      </div>
-                      
+
                       <form onSubmit={formik.handleSubmit}>
-                        <label htmlFor="photo">Photo</label>
-
-                        <input
-                          id="file"
-                          name="file"
-                          type="file"
-                          onChange={(event) => {
-                            formik.setFieldValue("file", event.currentTarget.files[0]);
-                          }}
-                          //not sure what this does
-                          // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
-                          onSubmit={(values) => {
-                            console.log({
-                              fileName: values.file.username,
-                              type: values.file.type,
-                              size: `${values.file.size} bytes`,
-                            });
-                          }}
-                        />
-
+                          <div class={styles.profileBox}>
+                          {currentUserSettings.profile ? (<img src={currentUserSettings.profile} />) : (
+                              <img src={ProfileDefault}/>
+                              )}
+                          </div>
+                        <label htmlFor="photo" class={styles.profileBox} >Update Profile Picture</label>
+                            <div class={styles.fileBox}>
+                                                  <input
+                                                    id="file"
+                                                    name="file"
+                                                    type="file"                                  
+                                                    onChange={(event) => {
+                                                      formik.setFieldValue("file", event.currentTarget.files[0]);
+                                                    }}
+                                                    //not sure what this does
+                                                    // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
+                                                    onSubmit={(values) => {
+                                                      console.log({
+                                                        fileName: values.file.username,
+                                                        type: values.file.type,
+                                                        size: `${values.file.size} bytes`,
+                                                      });
+                                                    }}
+                                                  />
+                                </div>
                         <label htmlFor="username">Username</label>
 
                         <input
@@ -212,7 +212,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
                           <div>{formik.errors.confirmPassword}</div>
                         ) : null}
 
-                        <Button className={styles.updateButton} type="submit">Update Details</Button>
+                        <Button class={styles.updateButton} type="submit">Update Details</Button>
                       </form>
                       </div>
                 </div>
