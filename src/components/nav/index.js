@@ -9,7 +9,7 @@ import styles from "./nav.module.css";
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
 import {logoutUser} from '../../services/authServices'
-
+import Logo from "../logo";
 
 //MATERIAL
 import Button from '@material-ui/core/Button';
