@@ -30,9 +30,9 @@ const recipes = TestBrowseData()
                 <Logo />
                 <Grid item xs={12} spacing={2}>
                 <h1 class={appstyles.headings}>Browse Recipes</h1>
-                <div className={styles.searchButtonMove}>
-                <SearchRecipeButton  />
-                </div>
+                  <div className={styles.searchButtonMove}>
+                  <SearchRecipeButton  />
+                  </div>
                 </Grid>  
                  <Grid item xs={12} spacing={2} >
                     <div class={appstyles.layoutContent}>
