@@ -11,8 +11,8 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
 
-
 //MATERIAL
+import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -32,6 +32,13 @@ const validate = (values) => {
 // actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
   const classes = useStyles();
+
+//change this to get user preferences from DB
+ useEffect(() => {
+     actions.updatePreferences(getUserPreferences());
+  }, []);
+
+
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
@@ -69,10 +76,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
     },
   });
 
-  // //if no userPreferences (preferences in state returned from db) then show no selections
-  // if (!userPreferences.preferences) {
-  //   return null;
-  // }
+  //if no userPreferences (preferences in state returned from db) then show no selections
+  if (!userPreferences.preferences) {
+    return null;
+  }
 
   return (
     <div className={classes.root}>
@@ -85,8 +92,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
               <Grid item xs={12} spacing={2}>
                 <div class={appstyles.layoutContent}>
                   <div className={styles.prefBox}>
-                <Logo/>
-                  <h1>User Preferences</h1>
+
                   {formik.status && (
                       <div>Error: {formik.status}. </div>
                     )}
@@ -116,9 +122,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
                         ))}
                         {/* what was the name of your preference name tag on the checkbox? Preferences? plural? */}
                         {/* so the reqest will be req.body.preference ? */}
-                        <button type="submit" onClick={formik.handleSubmit}>
-                          Submit
-                        </button>
+            
+                          <Button class={styles.updateButton} type="submit" onClick={formik.handleSubmit}>Update Preferences</Button>
                       </Form>
                     )}
                   </Formik>
