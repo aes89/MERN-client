@@ -34,11 +34,11 @@ const recipes = TestBrowseData()
                 <SearchRecipeButton  />
                 </div>
                 </Grid>  
-                 <Grid item xs={12} spacing={2}>
+                 <Grid item xs={12} spacing={2} >
                     <div class={appstyles.layoutContent}>
-                    <div>You can make 8 possible recipes! </div>
+                    <div class={styles.possibleStatement}>You can make 8 possible recipes! </div>
                     <div className={styles.browseBox}>
-                        <Grid container spacing={3} wrap="wrap">
+                        <Grid container spacing={3} wrap="wrap" alignItems="center" justify="center">
                           {recipes.map((recipe) => <ListedRecipe key={recipe.id} recipe={recipe} />)}           
                          </Grid> 
                       </div>

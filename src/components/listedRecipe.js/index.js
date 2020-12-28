@@ -18,14 +18,16 @@ const ListedRecipe = ({recipe}) => {
     return (
         <div>
             {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
-           <Grid item xs spacing={2}  justify-content="space-evenly" wrap="wrap">
+           <Grid item sm spacing={3}   wrap="wrap">
                 <Paper className={classes.paper} variant="outlined" > 
-                <p>You have {usedIngred}/{usedIngred+ missedIngred} ingredients! </p>
-                <img alt="picture of food" src={image} width="190px" />        
-                <div>{title}</div>
-                <p>Serves: {servings}</p>
-                <p>Prep time: {convert}</p>
-              
+                <div className={styles.listItem}>
+                    <div>You have {usedIngred}/{usedIngred+ missedIngred} ingredients! </div>
+                    <img alt="picture of food" src={image} />        
+                    <h3>{title}</h3>
+                    <p>Serves: {servings}</p>
+                    <p>Prep time: {convert}</p>
+                </div>
+               
                </Paper>
         </Grid>
         </div>

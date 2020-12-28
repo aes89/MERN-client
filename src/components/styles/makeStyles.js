@@ -7,9 +7,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: theme.spacing(2),
-    textAlign: 'center',
-    alignItems: 'center',
-    
+    height: "400px",
+    maxWidth: "300px",
     color: theme.palette.text.secondary,
   },
 }));

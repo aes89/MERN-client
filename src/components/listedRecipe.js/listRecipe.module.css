@@ -1,0 +1,24 @@
+.listItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.listItem  h3{
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    font-size: 1em;
+    word-wrap: break-word;
+}
+.listItem  div{ 
+padding: 10px 0 10px 0;
+}
+.listItem  p{
+    all: unset;
+    font-size: 1em;
+    padding: 5px 0 5px 0;
+}
+.listItem  img{
+    width: 100%;
+ 
+}
