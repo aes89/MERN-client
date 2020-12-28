@@ -188,6 +188,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
                           id="userSettingsPassword"
                           name="password"
                           type="password"
+                          placeholder="Password"
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.password}
@@ -203,6 +204,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
                           id="userSettingsConfirmPassword"
                           name="confirmPassword"
                           type="password"
+                          placeholder="Retype Password"
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.confirmPassword}
