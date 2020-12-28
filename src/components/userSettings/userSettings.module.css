@@ -4,10 +4,6 @@
    justify-content: center;
    align-content: center;
    flex-direction: column;
-   width: 100%;
-   background: #EAEBF1;
-   border-radius: 10px;
-   margin: 3em;
    padding: 1em;
    padding-bottom: 40px;
  }
@@ -41,7 +37,7 @@
 }
 
 .updateButton {
-   all: unset;
+
    background-color: #3F7209;
    color: white;
    padding: 10px;
