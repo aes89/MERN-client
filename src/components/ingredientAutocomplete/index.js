@@ -26,7 +26,7 @@ export default function AutocompleteIngredients() {
           />
         )}
       />
-
+{/* 
         <Autocomplete
           ingredientAutocomplete
           id="ingredient-autocomplete"
@@ -41,7 +41,7 @@ export default function AutocompleteIngredients() {
               InputProps={{ ...params.InputProps, type: 'search' }}
             />
           )}
-        />
+        /> */}
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "./userSettings.module.css";
+import appstyles from "../../app.module.css";
 import {getUserSettings, updateUserSettings ,getUsername, setUsername } from '../../services/authServices'
 import Logo from "../logo";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -101,9 +102,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
   });
 
   return (
-    <div class={styles.layout}>
+    <div class={appstyles.layout}>
         <Logo />
-      <div class={styles.layoutContent}>
+      <div class={appstyles.layoutContent}>
       <div className={styles.settingsBox}>
   
       {formik.status && (

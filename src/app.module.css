@@ -15,7 +15,7 @@ em {
    font-style: normal;
 }
 
-a {
+a {    
    text-decoration: none;
    color: inherit;
 } 
@@ -26,11 +26,27 @@ a {
    width: 100%;  
 }
 
+.headings {
+   display: flex;
+   margin: 0.5em;
+   margin-top: 80px;
+   overflow: hidden;
+   font-family: "Paytone One", serif;
+   color: #FB8D02;
+   font-size: 3em;
+}
+
 .layoutContent {
    display: flex;
    justify-content: center;
-   align-items: center;
-   flex: 1;
+   align-content: center;
+   flex-direction: column;
+   background: #EAEBF1;
+   border-radius: 10px;
+   margin: 1.5em;
+   margin-top: 1em;
+   padding: 1em;
+   
 }
 
 /* Phone Styles */ 
@@ -46,8 +62,13 @@ a {
   
   
  }
- /* Desktop Styles */ 
- @media only screen and (min-width:1201px) {
-   
+ @media only screen and (min-width:1088px)  {
+   .layoutContent {
+      margin-left: 17em;
+   }
+   .headings {
+      margin-left: 250px;
+   }
+  
+}
 
-  }

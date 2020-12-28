@@ -9,6 +9,7 @@ import getUserPreferences from "../../utils/get-user-preferences";
 import Checkbox from '@material-ui/core/Checkbox';
 import Logo from "../logo";
 import styles from "./preferences.module.css";
+import appstyles from "../../app.module.css";
 import {getPreference, updatePreference ,getUsername, setUsername } from '../../services/authServices'
 
 
@@ -69,10 +70,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
 
   return (
     // the form and HTML
-    <div class={styles.layout}>
+    <div class={appstyles.layout}>
         <Logo />
-      <div class={styles.layoutContent}>
-      <div className={styles.settingsBox}>
+      <div class={appstyles.layoutContent}>
+      <div className={styles.prefBox}>
     <Logo/>
       <h1>User Preferences</h1>
       {formik.status && (
