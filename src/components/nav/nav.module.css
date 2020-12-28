@@ -60,8 +60,12 @@
  .nav ul li {
    width: 100%;
    text-align: center;
-   margin-top: 1.5em;
+   margin-top: 1.9em;
    color: black;
+ }
+ .nav ul li:nth-child(1){
+   margin-top: 40px;
+  
  }
  .nav ul li:nth-child(2){
    margin-top: 70px;

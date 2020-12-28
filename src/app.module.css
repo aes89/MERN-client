@@ -29,12 +29,13 @@ a {
 .headings {
    display: flex;
    /* position: fixed; */
-   margin: 0.5em;
+   margin: 0.8em;
    margin-top: 80px;
    overflow: hidden;
    font-family: "Paytone One", serif;
    color: #FB8D02;
-   font-size: 3em;
+   font-size: 2em;
+  
 }
 
 .layoutContent {
@@ -69,6 +70,7 @@ a {
    }
    .headings {
       margin-left: 250px;
+      font-size: 3em;
    }
   
 }
