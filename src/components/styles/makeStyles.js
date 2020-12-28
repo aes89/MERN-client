@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: theme.spacing(2),
     height: "400px",
-    maxWidth: "300px",
-    color: theme.palette.text.secondary,
+    maxWidth: "275px"
+  
   },
 }));
   

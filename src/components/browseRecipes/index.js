@@ -38,7 +38,7 @@ const recipes = TestBrowseData()
                     <div class={appstyles.layoutContent}>
                     <div class={styles.possibleStatement}>You can make 8 possible recipes! </div>
                     <div className={styles.browseBox}>
-                        <Grid container spacing={3} wrap="wrap" alignItems="center" justify="center">
+                        <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
                           {recipes.map((recipe) => <ListedRecipe key={recipe.id} recipe={recipe} />)}           
                          </Grid> 
                       </div>

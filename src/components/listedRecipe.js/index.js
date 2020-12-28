@@ -6,6 +6,8 @@ import useStyles from "../styles/makeStyles.js";
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+
 import carrot from "../styles/imgs/carrot.png";
 
 const ListedRecipe = ({recipe}) => {
@@ -18,16 +20,16 @@ const ListedRecipe = ({recipe}) => {
     return (
         <div>
             {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
-           <Grid item sm spacing={3}   wrap="wrap">
+           <Grid item sm spacing={1}   wrap="wrap">
                 <Paper className={classes.paper} variant="outlined" > 
-                <div className={styles.listItem}>
+                <div class={styles.listItem}>
                     <div>You have {usedIngred}/{usedIngred+ missedIngred} ingredients! </div>
                     <img alt="picture of food" src={image} />        
                     <h3>{title}</h3>
                     <p>Serves: {servings}</p>
                     <p>Prep time: {convert}</p>
                 </div>
-               
+                <Button variant="outlined" class={styles.savedButton} >Save Recipe!</Button>
                </Paper>
         </Grid>
         </div>
