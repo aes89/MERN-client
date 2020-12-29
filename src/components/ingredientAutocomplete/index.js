@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Autocomplete } from "@material-ui/lab";
-import ingredients from "../../data/ingredients.json";
-import { Field, Formik, useFormik } from "formik";
 
-export default function AutocompleteIngredients() {
-  const formik = useFormik({
-    initialValues: {
-      ingredient: "",
-    },
-    //will need to validate?
-  });
+export default function AutocompleteIngredients({
+  handleDelete,
+  handleSubmit,
+  handleEmpty,
+  items,
+}) {
   const [selectedIngredient, setSelectedIngredient] = useState(null);
   const [values, setValues] = useState([]);
-  // useEffect(() => {
-  const handleClick = () => {
+
+  // item taken from list and put into array "values"
+  const handleAdd = () => {
     if (!values.includes(selectedIngredient)) {
       setValues([...values, selectedIngredient]);
     }
+    console.log("values", values);
   };
-  console.log("values", values);
-  //useEffect, when value not null/empty then add to local
+
+  //async try/catch tried to delete from DB then if sucessful, will remove from state. catch = doesn't remove
+  // send network request with parameters
 
   return (
+    // autocomplete list
     <div style={{ marginLeft: "100px", marginTop: "100px", width: 300 }}>
       <Autocomplete
         ingredientAutocomplete
         id="ingredient-autocomplete"
         disableClearable
-        options={ingredients.map((option) => option.name)}
+        options={items.map((option) => option.name)}
         renderInput={(params) => {
           console.log("params", params.inputProps.value);
           setSelectedIngredient(params.inputProps.value);
@@ -43,13 +44,42 @@ export default function AutocompleteIngredients() {
           );
         }}
       />
-      <button onClick={handleClick}>Add</button>
-      {/* <ul>
-      {value.map((value) => (
-        <li key={value}>{value}</li>
-      ))}
-      ;
-    </ul> */}
+      <button onClick={handleAdd}>Add</button>
+
+      {values &&
+        values.map((value) => (
+          <div>
+            {value}{" "}
+            <button
+              onClick={() => {
+                try {
+                  handleDelete(value);
+                  setValues([...values.filter((val) => val !== value)]);
+                } catch (error) {
+                  console.log("delete error");
+                }
+              }}
+            >
+              {" "}
+              X
+            </button>
+          </div>
+        ))}
+
+      <button onClick={() => handleSubmit(values)}>Save your selections</button>
+
+      <button
+        onClick={() => {
+          try {
+            handleEmpty(values);
+            setValues([]);
+          } catch (err) {
+            console.log("err", err);
+          }
+        }}
+      >
+        Empty Fridge
+      </button>
     </div>
   );
 }

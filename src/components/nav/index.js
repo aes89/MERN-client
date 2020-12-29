@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import SearchRecipeButton from "../searchButton";
 import styles from "./nav.module.css";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -72,10 +72,7 @@ const navBar = ({ actions, userLoggedIn }) => {
             </Link>
           </li>
           <li>
-            <Link
-              to={`/ingredients/ ${userLoggedIn}/fridge`}
-              class={styles.navLink}
-            >
+            <Link to={`/items/ ${userLoggedIn}/pantry`} class={styles.navLink}>
               <img alt="Pantry" src={pantry} />
               <div>Pantry Staples</div>
             </Link>
