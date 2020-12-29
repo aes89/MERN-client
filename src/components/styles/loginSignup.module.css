@@ -47,7 +47,7 @@
     margin: 10px;
     border-radius: 15px;
     cursor: pointer;
-    
+    margin-bottom: 20px;
   }
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {

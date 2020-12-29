@@ -1,0 +1,82 @@
+
+ .settingsBox{
+   display: flex;
+    justify-content: space-between;
+   align-content: center;
+   flex-direction: column;
+   padding: 1em;
+   margin: 0.5em;
+   padding-bottom: 40px;
+ }
+ .profileBox{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    float: right; 
+   align-self: right;
+   text-align:right;
+ }
+.fileBox{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+   margin-right: -90px;
+ }
+
+.profileBox img{
+    width: 100px;
+
+ }
+
+
+
+.settingsBox > form{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+   align-self: center;
+   
+  
+}
+
+.settingsBox label{
+  margin: 10px;
+  font-size: 1.1em;
+}
+
+.settingsBox input{
+   height: 50px;
+   margin: 10px;
+}
+
+.updateButton {
+   all: unset;
+   background-color: #3F7209;
+   color: white;
+   padding: 10px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 100px;
+ }
+ /* Phone Styles */ 
+ @media only screen and (max-width: 600px) {
+   
+    
+ }
+  
+  /* Tablet Styles */ 
+  @media only screen 
+  and (min-device-width: 601px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+   
+   
+  }
+  /* Desktop Styles */ 
+  @media only screen and (min-width:1024px) {
+      .settingsBox > form{
+         width: 70%;
+      }
+   }

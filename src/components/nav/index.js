@@ -9,7 +9,7 @@ import styles from "./nav.module.css";
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
 import {logoutUser} from '../../services/authServices'
-
+import Logo from "../logo";
 
 //MATERIAL
 import Button from '@material-ui/core/Button';
@@ -17,6 +17,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 //IMAGES-icons
@@ -35,7 +36,7 @@ import radish from "../styles/imgs/radish.png";
 import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
-const NavBar = ({ actions, userLoggedIn }) => {
+const NavBar = ({ actions, userLoggedIn, currentUserSettings}) => {
   let history = useHistory();
   const { setModalOpen } = actions;
   const listFoodImg = [
@@ -51,11 +52,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
 
-  const items = [
-      { name: 'home', label: 'Home' },
-      { name: 'billing', label: 'Billing' },
-      { name: 'settings', label: 'Settings' },
-    ]
+
   function handleLogout() {
       logoutUser().then((response) => {
           console.log("Got back response on logout", response.status)
@@ -80,19 +77,31 @@ const NavBar = ({ actions, userLoggedIn }) => {
       </a>
       <nav class={styles.nav}>
         <ul>
-        {/*
-        <List disablePadding dense>
-          <ListItem button>
-                <ListItemText>User's Name</ListItemText>
-                </ListItem>
+      
+        {/* <List disablePadding dense>
+            <ListItem button>
+            <img alt="Fridge" src={fridge} width="20%"/>
+              <ListItemText>My Fridge</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={pantry} width="20%"/>
+              <ListItemText>My Pantry</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={list} width="20%"/>
+              <ListItemText>Saved Recipes</ListItemText>
+            </ListItem>
+            <ListItem button>
+            <img alt="Fridge" src={pref} width="20%"/>
+              <ListItemText>My Preferences</ListItemText>
+            </ListItem>
         </List> */}
                 <li>
                   <Link to={"/user/"+userLoggedIn+"/account-settings"}>
                     <div class={styles.userProfile}>
-                    
-                      <img alt="Users profile image" src={fridge} />
-                      <div>{userLoggedIn}</div>
-                    
+                    {currentUserSettings.profile ? (<img  alt="Users profile image"  src={currentUserSettings.profile} />) : (
+          <AccountCircleIcon  fontSize="large"/>)}
+                      {userLoggedIn? (<div>{userLoggedIn}</div>) : (<div></div>)}
                     </div>
                   </Link>
                 </li>
@@ -141,19 +150,12 @@ const NavBar = ({ actions, userLoggedIn }) => {
               {userLoggedIn ? (
                 <Fragment>
                   {" "}
-                  <button
-                    class={styles.loginSignupButtons}
-                    onClick={ handleLogout}
-                  >
-                    Log out
-                  </button>
+                  <Button variant="outlined" onClick={ handleLogout} >Log out</Button>
                 </Fragment>
               ) : (
                 <Fragment>
-              
                   <Button variant="outlined" onClick={() => setModalOpen("login")} >Login</Button>
                   <Button variant="outlined" onClick={() => setModalOpen("register")} >Register</Button>
-                
                 </Fragment>
               )}
             </Fragment>
@@ -166,6 +168,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
 
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
+  currentUserSettings: state.currentUserSettings,
 });
 
 const mapDispatchToProps = (dispatch) => ({

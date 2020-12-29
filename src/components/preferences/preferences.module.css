@@ -1,0 +1,70 @@
+
+ .prefBox{
+     display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 1em;
+      margin: 0.5em;
+      padding-bottom: 40px; 
+      width: 100%;
+ }
+
+ .prefBox form{
+     display: flex;
+      align-content: center;
+      flex-direction: column;
+      padding: 1em;
+      margin: 0.5em;
+      padding-bottom: 40px;
+ }
+.imgBox {
+      display: flex;
+      justify-content: flex-end;
+      margin: 30px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #FB8D02;
+      max-width: 300px;
+}
+ .prefBox img{
+    width: 100%;
+    padding: 30px;
+ }
+
+ .prefBox label{
+      margin: 1em;
+ }
+
+ .updateButton {
+   all: unset;
+   background-color: #3F7209;
+   color: white;
+   padding: 10px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 140px;
+   text-align: center;
+ }
+ /* Phone Styles */ 
+ @media only screen and (max-width: 600px) {
+   
+    
+ }
+  
+  /* Tablet Styles */ 
+  @media only screen 
+  and (min-device-width: 601px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+   
+   
+  }
+  /* Desktop Styles */ 
+  @media only screen and (min-width:1023px) {
+         .imgBox {
+            
+               padding: 30px;
+               
+         }
+   }

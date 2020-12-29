@@ -23,10 +23,17 @@ export async function logoutUser() {
     return api.get("/user/logout")
 }
 
+export async function getUserSettings(username) {
+    // call to server to register user
+    const response = await api.get("/user/"+username+"/account-settings")
+    console.log("got user back from server", response)
+    return response.data
+}  
+
 
 export async function updateUserSettings(settingInfo,username) {
     // call to server to register user
-    const response = await api.patch("/user/"+username+"account-settings", settingInfo)
+    const response = await api.patch("/user/"+username+"/account-settings", settingInfo)
     console.log("got user back from server", response)
     return response.data
 }  
@@ -34,7 +41,15 @@ export async function updateUserSettings(settingInfo,username) {
 
 export async function uploadProfileImage(image,username) {
     // call to server to register user
-    const response = await api.post("/user/"+username+"add-profile-picture", image)
+    const response = await api.post("/user/"+username+"/add-profile-picture", image)
+    console.log("got user back from server", response)
+    return response.data
+}  
+
+
+export async function getPreference(username) {
+    // call to server to register user
+    const response = await api.get("/preferences/"+username)
     console.log("got user back from server", response)
     return response.data
 }  
@@ -42,10 +57,12 @@ export async function uploadProfileImage(image,username) {
 
 export async function updatePreference(userInfo,username) {
     // call to server to register user
-    const response = await api.post("/preferences/"+username+"edit", userInfo)
+    const response = await api.post("/preferences/"+username+"/edit", userInfo)
     console.log("got user back from server", response)
     return response.data
 }  
+
+//LOCAL STORAGE
 
 //Right now we are saving the token - but as token is in a cookie this does not need to be in local storage- remove later
 // Get loggedInUser from localStorage
@@ -56,7 +73,7 @@ export function getLoggedInUser() {
 // Store loggedInUser token in local storage
 export function setLoggedInUser(token) {
     token ? localStorage.setItem("token", token) : localStorage.removeItem("token")
-    console.log("local storage Updated")
+    console.log("local token Updated")
     console.log(token)
 }
 

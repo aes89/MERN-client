@@ -9,8 +9,24 @@ export default function AutocompleteIngredients() {
 
 
     return (
-      <div style={{ width: 300 }}>
-       
+      <div style={{ width: 300, padding: 20 } }>
+
+        <Autocomplete
+        multiple
+        id="tags-standard"
+        options={ingredients}
+        getOptionLabel={(option) => option.name}
+        defaultValue={[ingredients[3]]}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="standard"
+            label="Add Ingredients"
+            placeholder="Ingredients"
+          />
+        )}
+      />
+{/* 
         <Autocomplete
           ingredientAutocomplete
           id="ingredient-autocomplete"
@@ -25,7 +41,7 @@ export default function AutocompleteIngredients() {
               InputProps={{ ...params.InputProps, type: 'search' }}
             />
           )}
-        />
+        /> */}
       </div>
     );
   }

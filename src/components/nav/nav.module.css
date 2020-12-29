@@ -4,7 +4,7 @@
 <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 */
 .navBox {
-
+  
 }
 .trigger {
     z-index: 2;
@@ -13,25 +13,27 @@
     left: 0;
     width: 100%;
     height: 4em;
-    
  }
  .trigger > i {
     display: inline-block;
-    margin: 1.5em 0 0 1.5em;
+    padding: 15px;
     color: black;
+  
  }
 
 
  .nav {
+   z-index: 1;
     margin: 1em;
-    border-radius: 50px;
+    margin-bottom: 2em;
+    border-radius: 10px;
     position: fixed;
     top: 0;
     left: -25em;
     overflow: hidden;
     transition: all .3s ease-in;
     width: 15em;
-    height: 100%;
+    height: 94%;
     background: #EAEBF1;
     color: #3F7209;
     overflow-y: scroll;
@@ -58,7 +60,12 @@
  .nav ul li {
    width: 100%;
    text-align: center;
-   margin-top: 1.5em;
+   margin-top: 1.9em;
+   color: black;
+ }
+ .nav ul li:nth-child(1){
+   margin-top: 40px;
+  
  }
  .nav ul li:nth-child(2){
    margin-top: 70px;
@@ -73,7 +80,7 @@
    margin-top: 50px;
  }
  .nav ul li:nth-child(6) {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
  }
 
  .navLink {
@@ -107,7 +114,7 @@
 
  .userProfile, .foodPic {
  
-   margin-bottom: 20px;
+   margin-bottom: 10px;
  }
 
  .userProfile > div {
@@ -123,7 +130,8 @@
 
  .navButtons{
     list-style: none;
-    margin-top: 40px !important;
+    margin-top: 35px !important;
+    margin-bottom: 10px !important;
   }
  
 .navButtons > button{
@@ -139,6 +147,7 @@
     /* Sidebar */
     .trigger {
       width: 4em;
+      width: 100%;
     }
     .nav {
        width: 4em;
