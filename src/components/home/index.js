@@ -7,7 +7,6 @@ import LoggedIn from "../logged-in";
 import AuthenticationModal from "../AuthenticationModal";
 import { BorderBottom } from "@material-ui/icons";
 import SearchRecipeButton from "../searchButton";
-import AutocompleteIngredients from "../ingredientAutocomplete";
 import styles from "./home.module.css";
 import Logo from "../logo";
 
@@ -25,6 +24,19 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
+          <AuthenticationModal />
+          <div>
+            {userLoggedIn ? (
+              <LoggedIn />
+            ) : (
+              <Fragment>
+                <button onClick={() => setModalOpen("login")}>Login</button>
+                <button onClick={() => setModalOpen("register")}>
+                  Register
+                </button>
+              </Fragment>
+            )}
+          </div>
         </div>
       </main>
     </div>

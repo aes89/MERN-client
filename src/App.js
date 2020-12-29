@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
-import React, { Fragment,useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import { userAuthenticated, setLoggedInUser, getLoggedInUser, getUsername, setUsername } from "./services/authServices"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {
+  userAuthenticated,
+  setLoggedInUser,
+  getLoggedInUser,
+  getUsername,
+  setUsername,
+} from "./services/authServices";
 
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import notify from "./utils/notifications.js";
 
 // import "./App.css";
@@ -29,23 +34,19 @@ import Footer from "./components/footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const App = ({ actions }) => {
-
-  
   useEffect(() => {
     try {
-      actions.logIn(getUsername())	
-      actions.getToken(getLoggedInUser())	 
-    
+      actions.logIn(getUsername());
+      actions.getToken(getLoggedInUser());
     } catch (error) {
-      console.log("got an error trying to check authenticated user:", error)
-      setLoggedInUser(null) 
-      setUsername(null)
-      actions.logout()
-
+      console.log("got an error trying to check authenticated user:", error);
+      setLoggedInUser(null);
+      setUsername(null);
+      actions.logout();
     }
     // return a function that specifies any actions on component unmount
-    return () => {}
-  },[])
+    return () => {};
+  }, []);
   return (
     <Fragment>
       <Helmet>
@@ -55,27 +56,38 @@ const App = ({ actions }) => {
       <CssBaseline />
       <BrowserRouter>
         <Nav />
-        <Switch> 
+        <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/preferences/:username" component={Preferences}/>
-          <Route exact path="/user/:username/account-settings" component={UserSettings}/>
-          <Route exact path="/ingredients/:username/fridge" component={Fridge}/>
+          <Route exact path="/preferences/:username" component={Preferences} />
+          <Route
+            exact
+            path="/user/:username/account-settings"
+            component={UserSettings}
+          />
+          <Route
+            exact
+            path="/ingredients/:username/fridge"
+            component={Fridge}
+          />
           <Route exact path="/recipes/browse" component={BrowseRecipes} />
           <Route exact path="/recipes/:id" component={SingleRecipe} />
           <Route exact path="/recipes/saved-recipes" component={SavedRecipes} />
-          <Route exact path="/ingredients/:username/pantry" component={Pantry} />
+          <Route
+            exact
+            path="/ingredients/:username/pantry"
+            component={Pantry}
+          />
           <Route component={NotFound} />
         </Switch>
         <ToastContainer />
       </BrowserRouter>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
- 
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -84,14 +96,10 @@ const mapDispatchToProps = (dispatch) => ({
       store.dispatch({ type: "openModal", payload: modalId });
       console.log("APP JS STORE", store.getState());
     },
-    logIn: (username ) =>
-      dispatch({ type: "login", payload: username}),
-    getToken: ( jwt ) =>
-      dispatch({ type: "token", payload:  jwt  }),
+    logIn: (username) => dispatch({ type: "login", payload: username }),
+    getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
-   
   },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

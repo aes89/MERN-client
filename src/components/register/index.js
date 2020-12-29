@@ -1,10 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
-import { connect } from "react-redux";
-import {registerUser} from '../../services/authServices'
+import { registerUser } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
-
 
 const validate = (values) => {
   const errors = {};
@@ -62,17 +61,45 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     validate,
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
-      registerUser({ ...values }).then((r) => {
-        console.log(r.username)
-        actions.logIn(r.username)
-        actions.closeModal() //add value in params{ ...values }
-        history.push("/")
-      }).catch((error) => {
-        console.log("errors")
-        console.log(error.response)
-        console.log(`An error occurred authenticating: ${error}`)
-        //formik.setStatus(error.response.data.errors[0].email)
-      })
+      // registerUser({ ...values })
+      //   .then(() => {
+      //     actions.register(); //add value in params{ ...values }
+      //     history.push("/");
+      //   })
+      //   .catch((error) => {
+      //     console.log("errors");
+      //     console.log(error.response);
+      //     console.log(`An error occurred authenticating: ${error}`);
+      //     //formik.setStatus(error.response.data.errors[0].email)
+      //   });
+
+      // // try {
+      // //   await api
+      // //     .post("/user/register", { ...values })
+      // //     .then(() => actions.register({ ...values }));
+      // //    history.push("/");
+      // // } catch (error) {
+      // //   console.log("errors")
+      // //   console.log(error.response)
+      // //   console.log("register err", JSON.parse(JSON.stringify(error)));
+      // //   formik.setStatus(JSON.parse(JSON.stringify(error)).message);
+
+      // //   this needs to iterate over error
+      // //   formik.setStatus(error.response.data.errors[0].email);
+      // // }
+      registerUser({ ...values })
+        .then((r) => {
+          console.log(r.username);
+          actions.logIn(r.username);
+          actions.closeModal(); //add value in params{ ...values }
+          history.push("/");
+        })
+        .catch((error) => {
+          console.log("errors");
+          console.log(error.response);
+          console.log(`An error occurred authenticating: ${error}`);
+          //formik.setStatus(error.response.data.errors[0].email)
+        });
     },
   });
 
@@ -168,10 +195,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    logIn: (username) =>
-      dispatch({ type: "login", payload: username }),
-      openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
-     closeModal: () => dispatch({ type: "closeModal" }),
+    // register: ({ email, password, username }) =>
+    //   dispatch({ type: "register", payload: { email, password, username } }),
+    // logIn: ({ email, password, username }) =>
+    //   dispatch({ type: "login", payload: { email, password, username } }),
+    logIn: (username) => dispatch({ type: "login", payload: username }),
+    openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
+    closeModal: () => dispatch({ type: "closeModal" }),
   },
 });
 
