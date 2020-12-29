@@ -9,26 +9,35 @@ import {
   getUsername,
   setUsername,
 } from "./services/authServices";
-import UserSettings from "./components/userSettings";
-import Preferences from "./components/preferences";
-import NotFound from "./components/notFound";
-import Nav from "./components/nav";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import notify from "./utils/notifications.js";
+
 // import "./App.css";
 // import Modal from "react-modal";
 // import styles from "./components/styles/app.module.css";
 // import AuthenticationModal from "./components/AuthenticationModal";
 import store from "./index";
+import UserSettings from "./components/userSettings";
+import Preferences from "./components/preferences";
+import BrowseRecipes from "./components/browseRecipes";
+import SavedRecipes from "./components/savedRecipes";
+import SingleRecipe from "./components/singleRecipe";
+import NotFound from "./components/notFound";
+import Nav from "./components/nav";
 import Home from "./components/home";
 import Fridge from "./components/fridge";
 import Pantry from "./components/pantry";
+import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-const App = ({ actions, userLoggedIn }) => {
+const App = ({ actions }) => {
   useEffect(() => {
     try {
       actions.logIn(getUsername());
-      actions.token(getLoggedInUser());
+      actions.getToken(getLoggedInUser());
     } catch (error) {
       console.log("got an error trying to check authenticated user:", error);
       setLoggedInUser(null);
@@ -49,7 +58,6 @@ const App = ({ actions, userLoggedIn }) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* link to preferences component */}
           <Route exact path="/preferences/:username" component={Preferences} />
           <Route
             exact
@@ -61,15 +69,19 @@ const App = ({ actions, userLoggedIn }) => {
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <Route exact path="/items/:username/pantry" component={Pantry} />
-          {/*
-            <Route exact path="/recipes/browse" component={browseRecipes} />
-            <Route exact path="/recipes/single-recipe" component={singleRecipe} />
-            <Route exact path="/recipes/saved-recipes" component={userSavedRecipe} />
-            */}
+          <Route exact path="/recipes/browse" component={BrowseRecipes} />
+          <Route exact path="/recipes/:id" component={SingleRecipe} />
+          <Route exact path="/recipes/saved-recipes" component={SavedRecipes} />
+          <Route
+            exact
+            path="/ingredients/:username/pantry"
+            component={Pantry}
+          />
           <Route component={NotFound} />
         </Switch>
+        <ToastContainer />
       </BrowserRouter>
+      <Footer />
     </Fragment>
   );
 };
@@ -85,7 +97,7 @@ const mapDispatchToProps = (dispatch) => ({
       console.log("APP JS STORE", store.getState());
     },
     logIn: (username) => dispatch({ type: "login", payload: username }),
-    token: (jwt) => dispatch({ type: "token", payload: jwt }),
+    getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
   },
 });

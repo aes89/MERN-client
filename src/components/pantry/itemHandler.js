@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import AutocompleteIngredients from "../ingredientAutocomplete/index";
+import AutocompleteIngredients from "../ingredientAutocomplete";
 import items from "../../data/pantry.json";
 import api from "../../config/api";
 

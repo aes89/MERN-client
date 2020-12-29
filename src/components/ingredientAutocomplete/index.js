@@ -8,18 +8,18 @@ export default function AutocompleteIngredients({
   handleEmpty,
   items,
 }) {
-  const [selectedIngredient, setSelectedIngredient] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
 
   // item taken from list and put into array "values"
   const handleAdd = () => {
-    if (!values.includes(selectedIngredient)) {
-      setValues([...values, selectedIngredient]);
+    if (!values.includes(selectedItem)) {
+      setValues([...values, selectedItem]);
     }
     console.log("values", values);
   };
 
-  //async try/catch tried to delete from DB then if sucessful, will remove from state. catch = doesn't remove
+  //async try/catch tried to delete from DB then if successful, will remove from state. catch = doesn't remove
   // send network request with parameters
 
   return (
@@ -29,10 +29,10 @@ export default function AutocompleteIngredients({
         ingredientAutocomplete
         id="ingredient-autocomplete"
         disableClearable
+        getOptionLabel={(option) => option.name}
         options={items.map((option) => option.name)}
         renderInput={(params) => {
-          console.log("params", params.inputProps.value);
-          setSelectedIngredient(params.inputProps.value);
+          setSelectedItem(params.inputProps.value);
           return (
             <TextField
               {...params}
