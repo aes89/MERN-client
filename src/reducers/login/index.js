@@ -1,18 +1,26 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const login = createAction("login");
+const token = createAction("token");
 const logout = createAction("logout");
 
-const initialState = { username: true };
+const initialState = { username: null, jwt: null };
 
 const userLoggedIn = createReducer(initialState, (builder) => {
   builder
-    .addCase(login, (state) => {
+    .addCase(login, (state, action) => {
+      state.username = action.payload;
       console.log("state updated for login!");
-      state.username = true;
+      console.log(action.payload)
+    })
+    .addCase(token, (state, action) => {
+      state.jwt = action.payload;
+      console.log("jwt state updated");
+      console.log(action.payload)
     })
     .addCase(logout, (state) => {
-      state.username = false;
+      state.username = null;
+      state.jwt = null;
     });
 });
 
