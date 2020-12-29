@@ -10,7 +10,7 @@ import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
-
+import Kitchen from "../styles/imgs/kitchen.png";
 //MATERIAL
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -96,6 +96,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn}) => {
                   {formik.status && (
                       <div>Error: {formik.status}. </div>
                     )}
+                    <div class={styles.imgBox}>
+                   <img alt="Picture of cartoon kitchen" src={Kitchen}/>
+                    </div>
+                  
                   <Formik
                     initialValues={Object.fromEntries(
                       preferencesList.map((preference) => [

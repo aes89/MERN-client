@@ -80,7 +80,7 @@
    margin-top: 50px;
  }
  .nav ul li:nth-child(6) {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
  }
 
  .navLink {
@@ -114,7 +114,7 @@
 
  .userProfile, .foodPic {
  
-   margin-bottom: 20px;
+   margin-bottom: 10px;
  }
 
  .userProfile > div {
@@ -130,7 +130,8 @@
 
  .navButtons{
     list-style: none;
-    margin-top: 40px !important;
+    margin-top: 35px !important;
+    margin-bottom: 10px !important;
   }
  
 .navButtons > button{

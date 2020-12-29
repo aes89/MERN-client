@@ -16,7 +16,7 @@ export default function AutocompleteIngredients() {
         id="tags-standard"
         options={ingredients}
         getOptionLabel={(option) => option.name}
-        defaultValue={[ingredients[13]]}
+        defaultValue={[ingredients[3]]}
         renderInput={(params) => (
           <TextField
             {...params}

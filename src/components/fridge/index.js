@@ -26,8 +26,12 @@ const Fridge = () => {
               </Grid>  
               <Grid item xs={12} spacing={2}>
                   <div class={appstyles.layoutContent}>
-                    It's a fridge!
                     <AutocompleteIngredients />
+
+
+
+
+
                 </div>
               </Grid>   
             </Grid>
