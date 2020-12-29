@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import styles from "./notFound.module.css";
 import appstyles from "../../app.module.css";
 
@@ -30,7 +31,9 @@ return  (
                         <div class={styles.textBox}>
                             <h1>Oops!</h1>
                             <p>We can't seem to find the page your looking for.</p>
-                          <Button class={styles.homeButton}>Go to Home</Button>
+                               <Link to={`/`} >
+                                  <Button class={styles.homeButton}>Go to Home</Button>
+                              </Link>
                         </div>
                         
                     

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import appstyles from "../../app.module.css";
 import AutocompleteIngredients from "../ingredientAutocomplete";
+import Ingredients from "../ingredient";
 import Logo from "../logo";
 
 import Container from '@material-ui/core/Container';
@@ -27,11 +28,9 @@ const Fridge = () => {
               <Grid item xs={12} spacing={2}>
                   <div class={appstyles.layoutContent}>
                     <AutocompleteIngredients />
-
-
-
-
-
+                        <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
+                         <Ingredients />
+                      </Grid> 
                 </div>
               </Grid>   
             </Grid>

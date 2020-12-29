@@ -9,7 +9,7 @@ export default function AutocompleteIngredients() {
 
 
     return (
-      <div style={{ width: 300 }}>
+      <div style={{ width: 300, padding: 20 } }>
 
         <Autocomplete
         multiple

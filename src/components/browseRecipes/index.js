@@ -18,7 +18,7 @@ import carrot from "../styles/imgs/carrot.png";
 
 import TestBrowseData from "../../data/testBrowseRecipeData"
 
-const BrowseRecipes = ({browseRecipes}) => {
+const BrowseRecipes = ({browseRecipes}) => {   
   const classes = useStyles();
 
 const recipes = TestBrowseData()
