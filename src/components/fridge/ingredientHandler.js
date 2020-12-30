@@ -1,39 +1,64 @@
-import React, { Fragment } from "react";
-import AutocompleteIngredients from "../ingredientAutocomplete/index";
-import ingredients from "../../data/ingredients.json";
-import api from "../../config/api";
+// import React, { Fragment, useState, useEffect  } from "react";
+// import AutocompleteIngredients from "../ingredientAutocomplete/index";
+// import ingredients from "../../data/ingredients.json";
+// import {addFridgeItem,deleteFridgeItem, deleteAllFridge } from '../../services/ingredientServices'
+// import {getUsername} from '../../services/authServices'
 
-const IngredientHandler = () => {
-  const submitFridge = async (values) => {
-    try {
-      //     db path
-      await api.patch(`/:username/fridge/`, values);
-    } catch (error) {
-      console.log("preferences err err", JSON.parse(JSON.stringify(error)));
-      // JSON.parse(JSON.stringify(error)).message;
-    }
-  };
+// const IngredientHandler = () => {
 
-  const deleteFridgeIngredient = (value) =>
-    // <button onClick={() => handleDelete(value)}>X</button>
-    // await api.delete("/:username/fridge")
-    console.log("delete fridge ingredient", value);
+//   const [errors, setErrors] = useState(null);
 
-  const emptyFridge = async () =>
-    // await api.delete("/:username/fridge")
-    console.log("emptying fridge");
+//   const submitFridge = async (values) => {    
+//       addFridgeItem(getUsername(),{ ...values }).then((r) => {
+//               console.log(r)
+//               actions.addToFridge(r.fridgeIngredients)
+//               history.push("/ingredients/"+getUsername()+"/fridge")
+//           }).catch((error) => {
+//             //console.log("errors")
+//             //console.log(error.response)
+//               if (error.response && error.response.status === 401)
+//               setErrors("Error adding to your Fridge")
+//               else   
+//               setErrors("There may be a problem with the server. Please try again after a few moments.")
+//           })
 
-  return (
-    <Fragment>
-      <AutocompleteIngredients
-        handleDelete={deleteFridgeIngredient}
-        path="fridge"
-        handleSubmit={submitFridge}
-        handleEmpty={emptyFridge}
-        items={ingredients}
-      />
-    </Fragment>
-  );
-};
+//   }
+//       const deleteFridgeIngredient = (value) =>
+//         // <button onClick={() => handleDelete(value)}>X</button>
+//         // await api.delete("/:username/fridge")
+//         console.log("delete fridge ingredient", value);
 
-export default IngredientHandler;
+// }
+
+// const emptyFridge = async () =>
+//         // await api.delete("/:username/fridge")
+//         console.log("emptying all fridge");
+//          deleteAllFridge(getUsername()).then((r) => {
+//               console.log(r)
+//               actions.addToFridge(r.user)
+//               history.push("/ingredients/"+getUsername()+"/fridge")
+//           }).catch((error) => {
+//             //console.log("errors")
+//             //console.log(error.response)
+//               if (error.response && error.response.status === 401)
+//               setErrors("Error clearing your Fridge")
+//               else   
+//               setErrors("There may be a problem with the server. Please try again after a few moments.")
+//           })
+
+// }
+  
+
+
+// const mapStateToProps = (state) => ({
+//   fridgeIngredients: state.fridgeIngredients,
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   actions: {
+//     addToFridge: ( newIngredients ) =>
+//       dispatch({ type: "fridgeIngredients", payload: newIngredients }),
+//   },
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(IngredientHandler);

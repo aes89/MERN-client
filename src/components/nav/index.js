@@ -127,7 +127,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
             </Link>
           </li>
           <li>
-            <Link to={`/items/ ${userLoggedIn}/pantry`} class={styles.navLink}>
+            <Link to={`/ingredients/${userLoggedIn}/pantry`} class={styles.navLink}>
               <img alt="Pantry" src={pantry} />
               <div>Pantry Staples</div>
             </Link>

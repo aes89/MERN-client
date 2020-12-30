@@ -3,6 +3,9 @@ import AutocompleteIngredients from "../ingredientAutocomplete";
 import items from "../../data/pantry.json";
 import api from "../../config/api";
 
+import {deleteAllPantry, deletePantryItem, addPantryItem } from '../../services/ingredientServices'
+
+
 const ItemHandler = () => {
   const submitPantry = async (values) => {
     try {
