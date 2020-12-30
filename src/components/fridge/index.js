@@ -80,7 +80,7 @@ const handleClearIngredient = async (values) => {
     if (fridgeIngredients === []) {
          pageDisplay = <NoIngredients type="fridge"/>
     } else {
-         pageDisplay = <Ingredients ingredients={fridgeIngredients} />
+         pageDisplay = <Ingredients ingredients={fridgeIngredients}  />
     }
 
   return (
@@ -93,7 +93,7 @@ const handleClearIngredient = async (values) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
-              <AutocompleteIngredients />
+              <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
                  {pageDisplay}
               </Grid>

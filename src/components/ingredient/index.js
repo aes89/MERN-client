@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const Ingredient = ({ recipe, ingredients }) => {
+const Ingredient = ({ recipe, ingredients, deleteIngredient }) => {
   const classes = useStyles();
   
 console.log("hit")
