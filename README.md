@@ -83,3 +83,11 @@ Collaboratively tracked in Trello, see <a href="#trellologs">Trello Screen Shots
 | | Set up Redux (global state management) so can test components thoroughly | |Adrienne |
 || Cypress tests for preferences and user settings. |  |Adrienne |
 </details>
+
+Rubric notes:
+
+- complete and detailed description of libraries used in the app
+- frequent commits, merges and pull requests from all team members/multiple feature branches/README and gitignore with appropriate content
+- project results demonstrating consideration of strength and weaknesses of team members and project/team conditions/ Kanban board of tickets assigned to team members labelled with difficulty level and corresponding Git commits.
+- cloud hosting service, uses environment variables, use same database type in development/testing as production, uses custom domain name
+- evidence of user testing of site in development and production, and framework testing for both
