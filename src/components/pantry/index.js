@@ -1,48 +1,62 @@
-import React, {useEffect } from "react";
+import React, {useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import appstyles from "../../app.module.css";
-import {getAllPantryIngredients } from '../../services/ingredientServices'
+import {getAllPantryIngredients,deleteAllPantry,setPantry, getPantry } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 import ItemHandler from "./itemHandler";
 import Logo from "../logo";
 import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
-
+import AutocompleteIngredients from "../ingredientAutocomplete";
 
 import useStyles from "../styles/makeStyles.js";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-
+import Button from "@material-ui/core/Button";
 
 
 const Pantry = ({actions, pantryIngredients}) => {
 
   const classes = useStyles();
   let history = useHistory();
+  const [errors, setErrors] = useState(null);
+
 
   useEffect(() => {
-  getAllPantryIngredients(getUsername()).then((r) => {
+    getAllPantryIngredients(getUsername()).then((r) => {
+                console.log(r)
+                actions.addToPantry(r.pantryIngredients)
+                setPantry(r.pantryIngredients)
+                history.push("/ingredients/"+getUsername()+"/pantry")
+            }).catch((error) => {
+              //console.log("errors")
+              console.log(error)
+                if (error.response && error.response.status === 401)
+                actions.changeError("Error getting pantry ingredients")
+                else   
+                actions.changeError("There may be a problem with the server. Please try again after a few moments.")
+            })   
+          
+  },[])
+
+  const handleClearPantry = async () => {
+        console.log("emptying all pantry");
+         deleteAllPantry(getUsername()).then((r) => {
               console.log(r)
-              actions.addToFridge(r.pantryIngredients)
+              actions.clearPantry()
+              setPantry()
               history.push("/ingredients/"+getUsername()+"/pantry")
           }).catch((error) => {
             //console.log("errors")
-            console.log(error)
-              // if (error.response && error.response.status === 401)
-              //  actions.changeError("Error getting pantry ingredients")
-              // else   
-              //  actions.changeError("There may be a problem with the server. Please try again after a few moments.")
-          })    
-  },[])
-
-var pageDisplay;
-    if (pantryIngredients === []) {
-         pageDisplay = <NoIngredients type="fridge"/>
-    } else {
-         pageDisplay = <Ingredients ingredients={pantryIngredients}/>
-    }
+            //console.log(error.response)
+              if (error.response && error.response.status === 401)
+              setErrors("Error clearing your Pantry")
+              else   
+              setErrors("There may be a problem with the server. Please try again after a few moments.")
+          })
+  };
 
   return (
     <div className={classes.root}>
@@ -55,9 +69,11 @@ var pageDisplay;
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
             <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              <ItemHandler />
-                 {pageDisplay}
+              {/* <ItemHandler /> */}
+              <AutocompleteIngredients type="pantry"/>
+                {pantryIngredients !== []  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry"/>  } 
                </Grid>
+                <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button>
               </div>
           </Grid>
         </Grid> 
@@ -73,8 +89,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    addToFridge: ( newIngredients ) =>
+    addToPantry: ( newIngredients ) =>
       dispatch({ type: "pantryIngredients", payload: newIngredients }),
+    clearPantry: () => dispatch({ type: "deleteAllPantry" }),
     changeError: ( error ) =>
       dispatch({ type: "error", payload: error }),
   },

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 
 import ingredients from "../../data/ingredients.json"
+import pantry from "../../data/pantry.json"
 import {addFridgeItem, addPantryItem, getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
@@ -19,6 +20,12 @@ function AutocompleteIngredients({actions, type}) {
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
 
+//for fridge pantry difference
+  if (type === "fridge" ) {
+    const usedIngredients = ingredients
+  } else {
+    const usedIngredients = pantry
+  }
 
  function handleAddFridge(event) {
    //  event.preventDefault()

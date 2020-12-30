@@ -22,6 +22,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
+  console.log(fridgeIngredients)
 
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
@@ -41,23 +42,6 @@ const Fridge = ({actions, fridgeIngredients}) => {
   },[])
 
 
-const handleClearIngredient = async (values) => {
-        console.log("deleted 1 Item");
-         deleteFridgeItem(getUsername(),{ ...values }).then((r) => {
-              console.log(r)
-              actions.deleteItemFromFridge()
-              setFridge(r.fridgeIngredients)
-              history.push("/ingredients/"+getUsername()+"/fridge")
-          }).catch((error) => {
-            //console.log("errors")
-            //console.log(error.response)
-              if (error.response && error.response.status === 401)
-              setErrors("Error deleting fridge ingredient")
-              else   
-              setErrors("There may be a problem with the server. Please try again after a few moments.")
-          })
-  };
-
   const handleClearFridge = async () => {
         console.log("emptying all fridge");
          deleteAllFridge(getUsername()).then((r) => {
@@ -76,13 +60,6 @@ const handleClearIngredient = async (values) => {
   };
 
 
-  var pageDisplay;
-    if (fridgeIngredients === []) {
-         pageDisplay = <NoIngredients type="fridge"/>
-    } else {
-         pageDisplay = <Ingredients ingredients={fridgeIngredients}  />
-    }
-
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
@@ -95,7 +72,7 @@ const handleClearIngredient = async (values) => {
             <div class={appstyles.layoutContent}>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-                 {pageDisplay}
+              {fridgeIngredients !== []  ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
               </Grid>
               <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button>
             </div>

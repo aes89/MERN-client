@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import styles from "./noIngredients.module.css"
 import useStyles from "../styles/makeStyles.js";
 
 //MATERIAL
@@ -15,9 +15,10 @@ const NoIngredients = ({ type }) => {
 
   return (
     <div>
-      {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
       <Grid item sm spacing={1} wrap="wrap">
+      <div class={styles.noBox}>
         There are no ingredients here.
+        </div>
       </Grid>
     </div>
   );
