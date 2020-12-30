@@ -28,7 +28,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
     getAllFridgeIngredients(getUsername()).then((r) => {
                 console.log(r)
                 actions.addToFridge(r.fridgeIngredients)
-                setFridge(fridgeIngredients)
+                setFridge(r.fridgeIngredients)
                 history.push("/ingredients/"+getUsername()+"/fridge")
             }).catch((error) => {
               //console.log("errors")
@@ -46,7 +46,7 @@ const handleClearIngredient = async (values) => {
          deleteFridgeItem(getUsername(),{ ...values }).then((r) => {
               console.log(r)
               actions.deleteItemFromFridge()
-              setFridge(fridgeIngredients)
+              setFridge(r.fridgeIngredients)
               history.push("/ingredients/"+getUsername()+"/fridge")
           }).catch((error) => {
             //console.log("errors")
@@ -114,10 +114,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    addToFridge: ( newIngredients ) =>
-      dispatch({ type: "fridgeIngredients", payload: newIngredients }),
-    deleteItemFromFridge: ( newIngredients ) =>
-      dispatch({ type: "fridgeIngredients", payload: newIngredients }),
+    addToFridge: ( ingredients ) =>
+      dispatch({ type: "fridgeIngredients", payload: ingredients }),
     clearFridge: () => dispatch({ type: "deleteAllFridge" }),
     changeError: ( error ) =>
       dispatch({ type: "error", payload: error }),

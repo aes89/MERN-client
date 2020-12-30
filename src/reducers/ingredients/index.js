@@ -7,6 +7,7 @@ const deleteAllPantry = createAction("deleteAllPantry");
 
 const initialState = { fridgeIngredients: [], pantryIngredients: [] };
 
+
 const userIngredients = createReducer(initialState, (builder) => {
   builder     
     .addCase(fridgeIngredients, (state, action) => {

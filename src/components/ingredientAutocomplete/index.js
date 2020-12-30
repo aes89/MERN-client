@@ -39,7 +39,7 @@ function AutocompleteIngredients({actions, type}) {
               setErrors("There may be a problem with the server. Please try again after a few moments.")
         })
   };
-  
+
 
  function handleAddPantry(event) {
    //   event.preventDefault()
@@ -47,9 +47,9 @@ function AutocompleteIngredients({actions, type}) {
    const newValues = values.map(i => i.name)
    console.log(newValues.join(", "))   
     addPantryItem(getUsername(), { item: newValues }).then((r) => {
-              console.log(r)
-              actions.addToPantry(r.fridgeIngredients)
-              history.push("/ingredients/"+getUsername()+"/pantry")
+           console.log(r)
+           actions.addToPantry(r.pantryIngredients)
+           history.push("/ingredients/"+getUsername()+"/pantry")
           }).catch((error) => {
             console.log("errors")
             console.log(error.response)
@@ -64,6 +64,7 @@ function AutocompleteIngredients({actions, type}) {
  return (
    // autocomplete list
    <div style={{ width: 300, padding: 20 }}> 
+      {errors && <div>{errors}</div>}
       <Autocomplete
         multiple
         id="tags-standard"
