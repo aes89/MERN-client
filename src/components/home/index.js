@@ -11,7 +11,9 @@ import styles from "./home.module.css";
 import Logo from "../logo";
 
 const Home = ({ actions, userLoggedIn }) => {
+
   const { setModalOpen } = actions;
+
   return (
     <div className={styles.homeLayoutOnly}>
       <Logo />
@@ -24,7 +26,7 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
-          <AuthenticationModal />
+          {/* <AuthenticationModal />
           <div>
             {userLoggedIn ? (
               <LoggedIn />
@@ -36,7 +38,7 @@ const Home = ({ actions, userLoggedIn }) => {
                 </button>
               </Fragment>
             )}
-          </div>
+          </div> */}
         </div>
       </main>
     </div>

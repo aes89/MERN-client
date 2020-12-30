@@ -126,7 +126,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn}) => {
 
                       <form onSubmit={formik.handleSubmit}>
                           <div class={styles.profileBox}>
-                          {currentUserSettings.profile ? (<img src={currentUserSettings.profile} />) : (
+                          {currentUserSettings.profile  ? (<img src={currentUserSettings.profile} />) : (
                               <img src={ProfileDefault}/>
                               )}
                           </div>

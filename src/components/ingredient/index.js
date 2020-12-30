@@ -10,34 +10,21 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClearIcon from "@material-ui/icons/Clear";
 
-const ListedRecipe = ({ recipe }) => {
+const Ingredient = ({ recipe, ingredients }) => {
   const classes = useStyles();
+  
+console.log("hit")
+console.log(ingredients)
 
-  const testIngredients = [
-    "chicken",
-    "cheese",
-    "olives",
-    "chicken",
-    "cheese",
-    "olives",
-    "chicken",
-    "cheese",
-    "olives",
-    "chicken",
-    "cheese",
-    "olives",
-    "chicken",
-    "cheese",
-    "olives",
-  ];
-  const pantryIngredients = ["salt", "pepper", "olive oil"];
+  const testIngredients = ["chicken","cheese", "olives"];
+
 
   return (
     <div>
       {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
       <Grid item sm spacing={1} wrap="wrap">
         <div class={styles.ingredient}>
-          {testIngredients.map((ingredient) => (
+          {ingredients.map((ingredient) => (
             <Paper className={classes.paperIngredient} variant="outlined">
               <div class={styles.ingredientText}>
                 <p>{ingredient} </p>
@@ -51,4 +38,4 @@ const ListedRecipe = ({ recipe }) => {
   );
 };
 
-export default ListedRecipe;
+export default Ingredient;

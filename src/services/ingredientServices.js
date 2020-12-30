@@ -21,8 +21,8 @@ export async function deleteFridgeItem(username,item) {
 }
 
 // Clears all fridge items from server
-export async function deleteAllFridge(username,item) {
-    const response = await api.delete("/ingredients/"+username+"/fridge/clear-all", item)
+export async function deleteAllFridge(username) {
+    const response = await api.delete("/ingredients/"+username+"/fridge/clear-all")
     return response.data
 }
 
@@ -53,3 +53,25 @@ export async function deleteAllPantry(username,item) {
 }
 
 
+
+
+export function getFridge() {
+    return localStorage.getItem("fridge")
+}
+
+
+export function setFridge(items) {
+    items ? localStorage.setItem("fridge", items) : localStorage.removeItem("fridge")
+    console.log("local fridge Updated")
+    console.log(items)
+}
+
+export function getPantry() {
+    return localStorage.getItem("pantry")
+}
+
+export function setPantry(user) {
+    user ? localStorage.setItem("pantry", user) : localStorage.removeItem("pantry")
+    console.log("local pantry Updated")
+    console.log(user)
+}

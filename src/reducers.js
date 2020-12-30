@@ -6,6 +6,7 @@ import userPreferences from "./reducers/preferences";
 import currentUserSettings from "./reducers/userInfo";
 import userIngredients from "./reducers/ingredients";
 import recipes from "./reducers/recipes";
+import errors from "./reducers/errors";
 
 export default combineReducers({
   modalOpen,
@@ -13,5 +14,6 @@ export default combineReducers({
   userLoggedIn,
   currentUserSettings,
   recipes,
-  userIngredients
+  userIngredients,
+  errors
 });
