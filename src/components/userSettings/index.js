@@ -85,6 +85,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           );
       });
   }, []);
+
   const formik = useFormik({
     initialValues: {
       username: "",
