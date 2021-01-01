@@ -17,13 +17,8 @@ const ProfileImage = ({ actions, userLoggedIn }) => {
     },
 
     onSubmit: (values) => {
-      console.log("values", values.file);
-      console.log("FILE DETAILS", {
-        fileName: values.file.name,
-        type: values.file.type,
-        size: `${values.file.size} bytes`,
-      });
-      uploadProfileImage({ ...values }, userLoggedIn)
+      console.log("valeus", values.file);
+      uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
           console.log("IMAGE??", image);
           actions.uploadImage({ ...image });

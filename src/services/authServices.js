@@ -40,13 +40,22 @@ export async function updateUserSettings(settingInfo, username) {
 
 export async function uploadProfileImage(image, username) {
   // call to server to register user
-  console.log("uploadUserImage hit", image);
-  const response = await api.post(
-    "/user/" + username + "/add-profile-picture",
-    image
-  );
-  console.log("got user image from server", response);
-  return response.data;
+  console.log("image", image);
+  try {
+    //file from event - axios doesn't read as an object so wrapped in formData
+    var formData = new FormData();
+    formData.append("image", image);
+    console.log("form data", formData);
+    const response = await api.post(
+      `/user/${username}/add-profile-picture`,
+      formData
+    );
+    console.log("hello?");
+    console.log("got user image from server", response);
+    return response.data;
+  } catch (error) {
+    console.log("error in image upload", error);
+  }
 }
 
 export async function getPreference(username) {
