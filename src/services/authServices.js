@@ -50,7 +50,6 @@ export async function uploadProfileImage(image, username) {
       `/user/${username}/add-profile-picture`,
       formData
     );
-    console.log("hello?");
     console.log("got user image from server", response);
     return response.data;
   } catch (error) {

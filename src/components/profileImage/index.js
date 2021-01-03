@@ -1,16 +1,13 @@
 import {
   uploadProfileImage,
-  //   getUserSettings,
-  //   updateUserSettings,
-  //   getUsername,
-  //   setUsername,
+  updateUserSettings,
 } from "../../services/authServices";
 import { Formik, useFormik } from "formik";
 import React, { Fragment } from "react";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 
-const ProfileImage = ({ actions, userLoggedIn }) => {
+const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
   const formik = useFormik({
     initialValues: {
       file: "",
@@ -20,12 +17,13 @@ const ProfileImage = ({ actions, userLoggedIn }) => {
       console.log("valeus", values.file);
       uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
-          console.log("IMAGE??", image);
-          actions.uploadImage({ ...image });
+          console.log("IMAGE??", image.user.profile);
+          const {
+            user: { profile },
+          } = image;
+          actions.updateProfile({ profile });
         })
         .catch((error) => {
-          //console.log("errors")
-          //console.log(error.response)
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting user information ");
           else
@@ -66,13 +64,17 @@ const ProfileImage = ({ actions, userLoggedIn }) => {
 // So it doesn’t need to be connected to user settings form really since it will update the user Db itself
 
 const mapStateToProps = (state) => ({
-  //   currentUserSettings: state.currentUserSettings,
+  currentUserSettings: state.currentUserSettings.profile,
   userLoggedIn: state.userLoggedIn.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    uploadImage: ({ file }) => dispatch({ type: "image", payload: { file } }),
+    updateProfile: ({ profile }) => {
+      console.log("profile", profile);
+      return dispatch({ type: "updateProfile", payload: { profile } });
+    },
+    // uploadImage: ({ file }) => dispatch({ type: "image", payload: { file } }),
     // uploadImage: (image) => dispatch({ type: "uploadImage", payload: image }),
   },
 });
