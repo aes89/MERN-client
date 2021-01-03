@@ -14,6 +14,7 @@ const validate = (values) => {
     errors.email = "Invalid email address";
   }
 
+  //only accepting one character - look into later https://stackoverflow.com/questions/1721602/regex-for-matching-a-z-a-z-0-9-and
   if (!values.username) {
     errors.username = "Required";
   } else if (!/^[A-Z0-9._%+-]$/i.test(values.username)) {
