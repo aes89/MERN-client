@@ -20,13 +20,6 @@ function AutocompleteIngredients({actions, type}) {
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
 
-//for fridge pantry difference
-  if (type === "fridge" ) {
-    const usedIngredients = ingredients
-  } else {
-    const usedIngredients = pantry
-  }
-
  function handleAddFridge(event) {
    //  event.preventDefault()
    console.log(values)

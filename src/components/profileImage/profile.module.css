@@ -1,0 +1,26 @@
+
+
+/* Phone Styles */ 
+ @media only screen and (max-width: 767px) {
+
+ .imageUpload {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+   }
+
+ .imageUpload form{
+    margin: 0 auto;
+   }
+
+ .imageUpload  input{
+    align-items: center;
+    text-align: center;
+     
+   }
+   .imageUpload button{
+    margin: 10px;
+   }
+      
+ }

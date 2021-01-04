@@ -8,19 +8,17 @@
    margin: 0.5em;
    padding-bottom: 40px;
  }
+
  .profileBox{
     display: flex;
     justify-content: flex-end;
     margin: 20px;
-    float: right; 
-   align-self: right;
-   text-align:right;
+    
  }
 .fileBox{
     display: flex;
     justify-content: flex-end;
-    padding-top: 20px;
-   margin-right: -90px;
+    padding-top: 20px;  
  }
 
 .profileBox img{
@@ -62,9 +60,22 @@
    width: 100px;
  }
  /* Phone Styles */ 
- @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 767px) {
+
+   .profileBox{
+      display: flex;
+      justify-content: center;      
+   }
+
+   .fileBox{
+    display: flex;
+    justify-content: center;
+   }
+
    
-    
+   
+
+      
  }
   
   /* Tablet Styles */ 

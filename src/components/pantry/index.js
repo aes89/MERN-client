@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import appstyles from "../../app.module.css";
 import {getAllPantryIngredients,deleteAllPantry,setPantry, getPantry } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
-import ItemHandler from "./itemHandler";
+//import ItemHandler from "./itemHandler";
 import Logo from "../logo";
 import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";

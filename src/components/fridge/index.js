@@ -72,7 +72,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <div class={appstyles.layoutContent}>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {fridgeIngredients !== []  ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
+              {fridgeIngredients === []   ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
               </Grid>
               <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
-import { registerUser } from "../../services/authServices";
+import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 
 const validate = (values) => {
@@ -15,9 +15,12 @@ const validate = (values) => {
   }
 
   //only accepting one character - look into later https://stackoverflow.com/questions/1721602/regex-for-matching-a-z-a-z-0-9-and
+  //[a-zA-Z0-9_]{5,} to match at least five alphanumerics and the underscore
+  //[a-zA-Z]+ to have at least one letter
+  //[0-9]* to match zero to any occurrence of the given numbers range
   if (!values.username) {
     errors.username = "Required";
-  } else if (!/^[A-Z0-9._%+-]$/i.test(values.username)) {
+  } else if (!/^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/i.test(values.username)) {
     errors.username = "Invalid username characters";
   }
 
@@ -62,36 +65,11 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     validate,
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
-      // registerUser({ ...values })
-      //   .then(() => {
-      //     actions.register(); //add value in params{ ...values }
-      //     history.push("/");
-      //   })
-      //   .catch((error) => {
-      //     console.log("errors");
-      //     console.log(error.response);
-      //     console.log(`An error occurred authenticating: ${error}`);
-      //     //formik.setStatus(error.response.data.errors[0].email)
-      //   });
-
-      // // try {
-      // //   await api
-      // //     .post("/user/register", { ...values })
-      // //     .then(() => actions.register({ ...values }));
-      // //    history.push("/");
-      // // } catch (error) {
-      // //   console.log("errors")
-      // //   console.log(error.response)
-      // //   console.log("register err", JSON.parse(JSON.stringify(error)));
-      // //   formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-
-      // //   this needs to iterate over error
-      // //   formik.setStatus(error.response.data.errors[0].email);
-      // // }
       registerUser({ ...values })
         .then((r) => {
           console.log(r.username);
           actions.logIn(r.username);
+          setUsername(r.username)
           actions.closeModal(); //add value in params{ ...values }
           history.push("/");
         })
@@ -99,7 +77,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           console.log("errors");
           console.log(error.response);
           console.log(`An error occurred authenticating: ${error}`);
-          //formik.setStatus(error.response.data.errors[0].email)
+          formik.setStatus(error.response.data.errors[0].email)
         });
     },
   });
