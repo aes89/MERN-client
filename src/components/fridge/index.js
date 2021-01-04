@@ -18,11 +18,25 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";
 
+
+function storageChecker () {
+
+
+}
+
+
+
+
+
+
 const Fridge = ({actions, fridgeIngredients}) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
   console.log(fridgeIngredients)
+
+  const checker = getFridge()
+  console.log(checker)
 
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
@@ -72,7 +86,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <div class={appstyles.layoutContent}>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {fridgeIngredients === []   ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
+              {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
               </Grid>
               <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button>
             </div>

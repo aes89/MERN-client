@@ -23,6 +23,8 @@ const Pantry = ({actions, pantryIngredients}) => {
   let history = useHistory();
   const [errors, setErrors] = useState(null);
 
+ const checker = getPantry()
+ console.log(checker)
 
   useEffect(() => {
     getAllPantryIngredients(getUsername()).then((r) => {
@@ -68,10 +70,9 @@ const Pantry = ({actions, pantryIngredients}) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
+             <AutocompleteIngredients type="pantry"/>
             <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {/* <ItemHandler /> */}
-              <AutocompleteIngredients type="pantry"/>
-                {pantryIngredients !== []  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry"/>  } 
+                {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry"/>  } 
                </Grid>
                 <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button>
               </div>

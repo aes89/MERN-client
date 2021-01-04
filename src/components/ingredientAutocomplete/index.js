@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 
-
+import styles from "./auto.module.css"
 import ingredients from "../../data/ingredients.json"
 import pantry from "../../data/pantry.json"
-import {addFridgeItem, addPantryItem, getFridge, setFridge } from '../../services/ingredientServices'
+import {addFridgeItem, addPantryItem, getFridge, setFridge, setPantry } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
 
@@ -29,6 +29,7 @@ function AutocompleteIngredients({actions, type}) {
     addFridgeItem(getUsername(), { item: newValues }).then((r) => {
               console.log(r)
               actions.addToFridge(r.fridgeIngredients)
+              setFridge(r.fridgeIngredients)
               history.push("/ingredients/"+getUsername()+"/fridge")
           }).catch((error) => {
             console.log("errors")
@@ -49,6 +50,7 @@ function AutocompleteIngredients({actions, type}) {
     addPantryItem(getUsername(), { item: newValues }).then((r) => {
            console.log(r)
            actions.addToPantry(r.pantryIngredients)
+            setPantry(r.pantryIngredients)
            history.push("/ingredients/"+getUsername()+"/pantry")
           }).catch((error) => {
             console.log("errors")
@@ -83,7 +85,7 @@ function AutocompleteIngredients({actions, type}) {
               );
         }}
       />
-      <Button variant="outlined" onClick={type=== "fridge" ? handleAddFridge : handleAddPantry}> Add Ingredients</Button>
+      <Button className={styles.button} variant="outlined" onClick={type=== "fridge" ? handleAddFridge : handleAddPantry}> Add Ingredients</Button>
       </div> 
   );
 }
