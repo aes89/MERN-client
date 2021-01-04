@@ -15,7 +15,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-
+import pantry from "../styles/imgs/pantry.png";
 
 const Pantry = ({actions, pantryIngredients}) => {
 
@@ -72,9 +72,9 @@ const Pantry = ({actions, pantryIngredients}) => {
             <div class={appstyles.layoutContent}>
              <AutocompleteIngredients type="pantry"/>
             <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-                {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry"/>  } 
+                {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
                </Grid>
-                <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button>
+                {checker  ?  <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button> : <div></div>  } 
               </div>
           </Grid>
         </Grid> 

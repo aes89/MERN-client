@@ -1,4 +1,21 @@
-.noBox{
-   margin: 200px;
-    background-color: pink;
+
+.imgBox {
+      display: flex;
+      justify-content: center;
+      margin: 30px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #FB8D02;
+      max-width: 300px;
 }
+
+ .noBox img{
+    width: 100%;
+    padding: 30px;
+ }
+
+ .noBox p {
+     text-align: center;
+     padding: 5px;
+     font-size: 1.3em;
+ }

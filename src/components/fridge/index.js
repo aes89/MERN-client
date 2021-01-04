@@ -18,14 +18,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";
 
-
-function storageChecker () {
-
-
-}
-
-
-
+import fridge from "../styles/imgs/fridge.png";
 
 
 
@@ -86,9 +79,9 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <div class={appstyles.layoutContent}>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
+              {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>
-              <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button>
+              {checker  ?   <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button> : <div></div>  } 
             </div>
           </Grid>
         </Grid>
