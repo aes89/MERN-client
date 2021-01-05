@@ -127,8 +127,8 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           toast.success("User information updated!")
         })
         .catch((error) => {
-          //console.log("errors")
-          //console.log(error.response)
+          console.log("errors")
+          console.log(error.response)
            toast.error("Oh no, error!")
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting user information ");

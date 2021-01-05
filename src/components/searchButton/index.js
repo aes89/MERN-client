@@ -4,6 +4,7 @@ import styles from "./searchButton.module.css";
 
 //MATERIAL
 import Button from '@material-ui/core/Button';
+import {getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
 
 
 const SearchRecipeButton = () => {
@@ -11,10 +12,16 @@ const SearchRecipeButton = () => {
    const [errors, setErrors] = useState(null);
    const [loading, setloading] = useState(false);
 
+  if (getBrowsedRecipes !== null) {
 
+  
+  } else {
+
+
+  }
   return (
     <Link to={"/recipes/browse"}>
-      <Button variant="outlined" class={styles.searchButtonOutline} >Search Recipes!</Button>
+      <Button variant="outlined" class={styles.searchButtonOutline} >Find Recipes!</Button>
 
     </Link>
   );
