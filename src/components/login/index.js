@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import Fade from "react-reveal/Fade";
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {
@@ -9,9 +10,11 @@ import {
   setUsername,
 } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
+
+import Button from "@material-ui/core/Button";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import notify from "../../utils/notifications.js";
 
 const validate = (values) => {
   const errors = {};
@@ -31,6 +34,10 @@ const validate = (values) => {
 const Login = ({ actions, loggedIn, modalId }) => {
   let history = useHistory();
 
+  const text = {
+    color: "red",
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -39,26 +46,20 @@ const Login = ({ actions, loggedIn, modalId }) => {
     validate,
 
     onSubmit: async (values) => {
-      console.log("values before loginUser", values);
       loginUser({ ...values })
         .then((r) => {
-          console.log("values", values);
           console.log(r);
           setLoggedInUser(r.cookie.jwt);
           setUsername(r.user);
           actions.logIn(r.user);
           actions.getToken(r.cookie.jwt);
           actions.closeModal();
-
-          //console.log(getLoggedInUser())
-          // console.log("aa")
-          // console.log(loggedIn)
           history.push("/");
-          //console.log(document.cookie)
+          toast.success("You are logged in!");
         })
         .catch((error) => {
-          //console.log("errors")
-          //console.log(error.response)
+          console.log(error);
+          toast.error("Oh no!");
           if (error.response && error.response.status === 401)
             formik.setStatus(
               "Authentication failed. Please check your username and password."
@@ -75,10 +76,14 @@ const Login = ({ actions, loggedIn, modalId }) => {
     <div class={styles.loginSignupBox}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email </label>
         {formik.status && (
-          <div>Error: {formik.status}. Please try signing in again.</div>
+          <Fade bottom>
+            <div style={text}>
+              Error: {formik.status}. Please try signing in again.
+            </div>
+          </Fade>
         )}
+        <label htmlFor="email">Email </label>
         <input
           id="loginEmail"
           name="email"
@@ -90,7 +95,9 @@ const Login = ({ actions, loggedIn, modalId }) => {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <Fade bottom>
+            <div style={text}>{formik.errors.email}</div>
+          </Fade>
         ) : null}
         <label htmlFor="password">Password</label>
         <input
@@ -104,16 +111,35 @@ const Login = ({ actions, loggedIn, modalId }) => {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <Fade bottom>
+            <div>{formik.errors.password}</div>
+          </Fade>
         ) : null}
         <div>
-          <button
+          <Button
+            variant="contained"
             class={styles.loginSignupButtons}
             type="submit"
-            onClick={(formik.handleSubmit, notify)}
+            onClick={formik.handleSubmit}
           >
             Log In
-          </button>
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            class={styles.modalButton}
+            onClick={() => actions.openModal("register")}
+          >
+            Register
+          </Button>
+          <Button
+            variant="contained"
+            class={styles.modalCancelButton}
+            onClick={actions.closeModal}
+          >
+            Cancel
+          </Button>
         </div>
       </form>
     </div>

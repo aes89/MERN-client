@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 
+import styles from "./auto.module.css";
 import ingredients from "../../data/ingredients.json";
 import pantry from "../../data/pantry.json";
 import {
@@ -10,7 +11,12 @@ import {
   addPantryItem,
   getFridge,
   setFridge,
+  setPantry,
 } from "../../services/ingredientServices";
+import { getUsername } from "../../services/authServices";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import TextField from "@material-ui/core/TextField";
 import { Autocomplete } from "@material-ui/lab";
@@ -34,32 +40,31 @@ function AutocompleteIngredients({
   const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
-
-  //for fridge pantry difference - not working, only ingredients list
-  if (type === "fridge") {
-    const usedIngredients = ingredients;
-  } else {
-    const usedIngredients = pantry;
-  }
+  // still need this?
+  // if (type === "fridge") {
+  //   const usedIngredients = ingredients;
+  // } else {
+  //   const usedIngredients = pantry;
+  // }
 
   function handleAddFridge(event) {
-    // event.preventDefault();
-    const newValues = values.map((value) => value.name);
+    //  event.preventDefault()
+    console.log(values);
+    const newValues = values.map((i) => i.name);
+    console.log(newValues.join(", "));
 
-    console.log("get username and newVales", {
-      username,
-      newValues,
-    });
-    addFridgeItem(username, { item: newValues })
+    addFridgeItem(getUsername(), { item: newValues })
       .then((r) => {
-        console.log("here", r);
+        console.log(r);
         actions.addToFridge(r.fridgeIngredients);
-        history.push("/ingredients/" + username + "/fridge");
-        setValues([]);
+        setFridge(r.fridgeIngredients);
+        history.push("/ingredients/" + getUsername() + "/fridge");
+        toast.success(" New Fridge Ingredient Added!");
       })
       .catch((error) => {
         console.log("errors");
         console.log(error.response);
+        toast.error("Oh no error!");
         if (error.response && error.response.status === 401)
           setErrors("Error adding to your Fridge");
         else
@@ -74,16 +79,18 @@ function AutocompleteIngredients({
     console.log(values);
     const newValues = values.map((i) => i.name);
     console.log(newValues.join(", "));
-    addPantryItem(username, { item: newValues })
+    addPantryItem(getUsername(), { item: newValues })
       .then((r) => {
         console.log(r);
         actions.addToPantry(r.pantryIngredients);
-        history.push("/ingredients/" + username + "/pantry");
-        setValues([]);
+        setPantry(r.pantryIngredients);
+        history.push("/ingredients/" + getUsername() + "/pantry");
+        toast.success(" New pantry Ingredient Added!");
       })
       .catch((error) => {
         console.log("errors");
         console.log(error.response);
+        toast.error("Oh no error!");
         if (error.response && error.response.status === 401)
           setErrors("Error adding to your pantry");
         else
@@ -116,6 +123,7 @@ function AutocompleteIngredients({
         }}
       />
       <Button
+        className={styles.button}
         variant="outlined"
         onClick={type === "fridge" ? handleAddFridge : handleAddPantry}
       >

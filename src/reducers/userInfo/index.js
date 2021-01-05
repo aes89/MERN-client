@@ -9,14 +9,14 @@ const initialState = { username: "Username", email: "Email", profile: null };
 const currentUserSettings = createReducer(initialState, (builder) => {
   builder.addCase(settings, (state, action) => {
     console.log("hitting start");
-    state.username = action.payload.username;
+    state.username = action.payload.username;   
     state.email = action.payload.email;
     state.profile = action.payload.profile;
     console.log("user settings updated");
     console.log(action.payload);
   });
   builder.addCase(updateProfile, (state, actions) => {
-    console.log("hitting this action", actions);
+    console.log("hitting this action", actions.payload.profile);
     state.profile = actions.payload.profile;
   });
 });

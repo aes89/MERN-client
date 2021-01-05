@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
+import Fade from 'react-reveal/Fade';
 import styles from "./userSettings.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -20,6 +22,12 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const validate = (values) => {
   const errors = {};
@@ -65,15 +73,24 @@ const validate = (values) => {
 
 const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
   const classes = useStyles();
+  const text = {
+      color: 'red',
+      marginLeft: "10px"
+    }; 
 
+
+ let history = useHistory();
   useEffect(() => {
     getUserSettings(getUsername())
       .then((user) => {
+        console.log(user)
         actions.settings(user);
+        actions.updateUsername(user.username);
+        setUsername(user.username);
       })
       .then(() => {
         console.log(currentUserSettings);
-      })
+      })   
       .catch((error) => {
         console.log("errors");
         console.log(error.response);
@@ -97,7 +114,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
       confirmPassword: "",
     },
 
-    validate,
+    validate,   
 
     onSubmit: (values) => {
       updateUserSettings({ ...values }, userLoggedIn)
@@ -106,10 +123,13 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           actions.settings({ ...user });
           actions.updateUsername(user.username);
           setUsername(user.username);
+          history.push("/user/"+getUsername()+"/account-settings")
+          toast.success("User information updated!")
         })
         .catch((error) => {
           //console.log("errors")
           //console.log(error.response)
+           toast.error("Oh no, error!")
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting user information ");
           else
@@ -131,8 +151,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
               <div class={styles.settingsBox}>
-                {formik.status && <div>Error: {formik.status}. </div>}
-
+                 <Fade bottom >
+                {formik.status && <div style={text}>Error: {formik.status}. </div>}
+                 </Fade>
                 <form onSubmit={formik.handleSubmit}>
                   <div class={styles.profileBox}>
                     {currentUserSettings.profile ? (
@@ -144,29 +165,29 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   <label htmlFor="photo" class={styles.profileBox}>
                     Update Profile Picture
                   </label>
-                  <div class={styles.fileBox}>
-                    <ProfileImage />
-                    {/* <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      onChange={(event) => {
-                        formik.setFieldValue(
-                          "file",
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                      //not sure what this does
-                      // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
-                      onSubmit={(values) => {
-                        console.log({
-                          fileName: values.file.username,
-                          type: values.file.type,
-                          size: `${values.file.size} bytes`,
-                        });
-                      }}
-                    /> */}
-                  </div>
+                      <div class={styles.fileBox}>
+                        <ProfileImage />
+                        {/* <input
+                          id="file"
+                          name="file"
+                          type="file"
+                          onChange={(event) => {
+                            formik.setFieldValue(
+                              "file",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                          //not sure what this does
+                          // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
+                          onSubmit={(values) => {
+                            console.log({
+                              fileName: values.file.username,
+                              type: values.file.type,
+                              size: `${values.file.size} bytes`,
+                            });
+                          }}
+                        /> */}
+                      </div>
                   <label htmlFor="username">Username</label>
 
                   <input
@@ -180,8 +201,11 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   />
 
                   {formik.touched.username && formik.errors.username ? (
-                    <div>{formik.errors.username}</div>
+                    <Fade bottom >
+                    <div style={text}>{formik.errors.username}</div>
+                    </Fade>
                   ) : null}
+         
 
                   <label htmlFor="email">Email Address</label>
 
@@ -196,7 +220,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   />
 
                   {formik.touched.email && formik.errors.email ? (
-                    <div>{formik.errors.email}</div>
+                    <Fade bottom >
+                    <div style={text}>{formik.errors.email}</div>
+                    </Fade>
                   ) : null}
 
                   <label htmlFor="password">Password</label>
@@ -212,7 +238,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   />
 
                   {formik.touched.password && formik.errors.password ? (
-                    <div>{formik.errors.password}</div>
+                     <Fade bottom >
+                    <div style={text}>{formik.errors.password}</div>
+                    </Fade>
                   ) : null}
 
                   <label htmlFor="confirmPassword">Password</label>
@@ -229,10 +257,12 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
 
                   {formik.touched.confirmPassword &&
                   formik.errors.confirmPassword ? (
-                    <div>{formik.errors.confirmPassword}</div>
+                     <Fade bottom >
+                    <div style={text}>{formik.errors.confirmPassword}</div>
+                     </Fade>
                   ) : null}
 
-                  <Button class={styles.updateButton} type="submit">
+                  <Button variant="contained" class={styles.updateButton} type="submit">
                     Update Details
                   </Button>
                 </form>

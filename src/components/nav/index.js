@@ -35,6 +35,11 @@ import radish from "../styles/imgs/radish.png";
 import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
   let history = useHistory();
   const { setModalOpen } = actions;
@@ -56,8 +61,10 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
       .then((response) => {
         console.log("Got back response on logout", response.status);
         history.push("/");
+        toast.info("Goodbye")
       })
       .catch((error) => {
+        toast.error("Oh no, error loggin out!", error)
         console.log(
           "The server may be down - caught an exception on logout:",
           error
@@ -67,6 +74,9 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
     // Remove the token from localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("fridge");
+    localStorage.removeItem("pantry"); 
+    localStorage.removeItem("browsedRecipes");  
     actions.logout();
   }
 

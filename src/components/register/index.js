@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import Fade from 'react-reveal/Fade';
 import styles from "../styles/loginSignup.module.css";
-import { registerUser } from "../../services/authServices";
+import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const validate = (values) => {
   const errors = {};
@@ -15,9 +21,12 @@ const validate = (values) => {
   }
 
   //only accepting one character - look into later https://stackoverflow.com/questions/1721602/regex-for-matching-a-z-a-z-0-9-and
+  //[a-zA-Z0-9_]{5,} to match at least five alphanumerics and the underscore
+  //[a-zA-Z]+ to have at least one letter
+  //[0-9]* to match zero to any occurrence of the given numbers range
   if (!values.username) {
     errors.username = "Required";
-  } else if (!/^[A-Z0-9._%+-]$/i.test(values.username)) {
+  } else if (!/^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/i.test(values.username)) {
     errors.username = "Invalid username characters";
   }
 
@@ -51,6 +60,11 @@ const validate = (values) => {
 
 const Register = ({ actions, userLoggedIn, modalId }) => {
   let history = useHistory();
+
+   const text = {
+      color: 'red',
+    }; 
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -62,44 +76,21 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     validate,
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
-      // registerUser({ ...values })
-      //   .then(() => {
-      //     actions.register(); //add value in params{ ...values }
-      //     history.push("/");
-      //   })
-      //   .catch((error) => {
-      //     console.log("errors");
-      //     console.log(error.response);
-      //     console.log(`An error occurred authenticating: ${error}`);
-      //     //formik.setStatus(error.response.data.errors[0].email)
-      //   });
-
-      // // try {
-      // //   await api
-      // //     .post("/user/register", { ...values })
-      // //     .then(() => actions.register({ ...values }));
-      // //    history.push("/");
-      // // } catch (error) {
-      // //   console.log("errors")
-      // //   console.log(error.response)
-      // //   console.log("register err", JSON.parse(JSON.stringify(error)));
-      // //   formik.setStatus(JSON.parse(JSON.stringify(error)).message);
-
-      // //   this needs to iterate over error
-      // //   formik.setStatus(error.response.data.errors[0].email);
-      // // }
       registerUser({ ...values })
         .then((r) => {
           console.log(r.username);
           actions.logIn(r.username);
+          setUsername(r.username)
           actions.closeModal(); //add value in params{ ...values }
           history.push("/");
+          toast.success("Welcome to FridgeMate!")
         })
         .catch((error) => {
           console.log("errors");
+          toast.error("Oh no, error!")
           console.log(error.response);
           console.log(`An error occurred authenticating: ${error}`);
-          //formik.setStatus(error.response.data.errors[0].email)
+          formik.setStatus(error.response.data.errors[0].email)
         });
     },
   });
@@ -111,7 +102,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         <label htmlFor="email">Email Address</label>
 
         {formik.status && (
-          <div>Error: {formik.status}. Please try registering in again.</div>
+             <Fade bottom >
+          <div style={text}>Error: {formik.status}. Please try registering in again.</div>
+            </Fade>
         )}
 
         <input
@@ -125,7 +118,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <Fade bottom >
+          <div style={text}>{formik.errors.email}</div>
+          </Fade>
         ) : null}
 
         <label htmlFor="username">Username</label>
@@ -141,7 +136,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
+          <Fade bottom >
+          <div style={text}>{formik.errors.username}</div>
+          </Fade>
         ) : null}
 
         <label htmlFor="password">Password</label>
@@ -157,7 +154,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+           <Fade bottom >
+          <div style={text}>{formik.errors.password}</div>
+           </Fade>
         ) : null}
 
         <label htmlFor="confirmPassword">Confirm Password</label>
@@ -173,17 +172,28 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-          <div>{formik.errors.confirmPassword}</div>
+             <Fade bottom >
+          <div style={text}>{formik.errors.confirmPassword}</div>
+              </Fade>
         ) : null}
         <div>
-          <button
+          <Button
+          variant="contained"
             class={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}
           >
             Sign Up
-          </button>
-        </div>
+          </Button> 
+          </div>
+           <div>
+           <Button variant="contained" class={styles.modalButton}onClick={() => actions.openModal("login")}>
+              Login
+            </Button>
+            <Button variant="contained" class={styles.modalCancelButton}  onClick={actions.closeModal}>
+              Cancel
+            </Button>
+                </div>
       </form>
     </div>
   );

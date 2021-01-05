@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import Login from "../login";
@@ -32,7 +32,7 @@ const AuthenticationModal = ({ actions, modalId }) => {
       contentLabel="Log In"
     >
       {modalId && logInRegisterModals[modalId]}
-      <button class="modalLoginButton" onClick={() => openModal("login")}>
+      {/* <button class="modalLoginButton" onClick={() => openModal("login")}>
         Login
       </button>
       <button class="modalRegisterButton" onClick={() => openModal("register")}>
@@ -40,7 +40,7 @@ const AuthenticationModal = ({ actions, modalId }) => {
       </button>
       <button class="modalCancelButton" onClick={closeModal}>
         Cancel
-      </button>
+      </button> */}
     </Modal>
   );
 };

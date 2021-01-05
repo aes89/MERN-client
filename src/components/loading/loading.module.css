@@ -1,0 +1,19 @@
+
+
+
+.loadBox{
+    display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+       margin: 200px;
+
+}
+
+.loadBoxInner{
+        width: 80%;
+        height: 190px;
+        margin: 10px;
+        padding: 5px;
+}

@@ -13,7 +13,7 @@ export async function loginUser(userInfo) {
   console.log("user info", userInfo);
   const response = await api.post("/user/login", userInfo);
   console.log("got user back from server", response);
-  // console.log(response)
+  console.log(response)
   return response.data;
 }
 
@@ -24,7 +24,7 @@ export async function logoutUser() {
 
 export async function getUserSettings(username) {
   // call to server to register user
-  const response = await api.get("/user/" + username + "/account-settings");
+  const response = await api.get("/user/"+username+"/account-settings");
   console.log("got user back from server", response);
   return response.data;
 }
@@ -32,7 +32,7 @@ export async function getUserSettings(username) {
 export async function updateUserSettings(settingInfo, username) {
   // call to server to register user
   const response = await api.patch(
-    "/user/" + username + "/account-settings",
+    "/user/"+username+"/account-settings",
     settingInfo
   );
   console.log("got user back from server", response);
