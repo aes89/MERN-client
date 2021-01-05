@@ -78,7 +78,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values })
         .then((r) => {
-          console.log(r.username);
+          console.log(r);
           actions.logIn(r.username);
           setUsername(r.username)
           actions.closeModal(); //add value in params{ ...values }
