@@ -57,7 +57,6 @@ export function getFridge() {
     return localStorage.getItem("fridge")
 }
 
-
 export function setFridge(items) {
     items ? localStorage.setItem("fridge", items) : localStorage.removeItem("fridge")
     console.log("local fridge Updated")
@@ -73,3 +72,6 @@ export function setPantry(items) {
     console.log("local pantry Updated")
     console.log(items)
 }
+
+
+//Store locally json data

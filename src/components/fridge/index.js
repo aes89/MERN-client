@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
-import { useFormik } from "formik";
+
 import { useHistory } from "react-router-dom";
 
-import {addFridgeItem,deleteFridgeItem, deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
+import { deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
 import appstyles from "../../app.module.css";
@@ -12,17 +12,23 @@ import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import Logo from "../logo";
 
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";
+
+import fridge from "../styles/imgs/fridge.png";
+
+
 
 const Fridge = ({actions, fridgeIngredients}) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
   console.log(fridgeIngredients)
+
+  const checker = getFridge()
+  console.log(checker)
 
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
@@ -72,9 +78,9 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <div class={appstyles.layoutContent}>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {fridgeIngredients !== []  ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge"/>  } 
+              {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>
-              <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button>
+              {checker  ?   <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button> : <div></div>  } 
             </div>
           </Grid>
         </Grid>

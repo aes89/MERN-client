@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import appstyles from "../../app.module.css";
 import {getAllPantryIngredients,deleteAllPantry,setPantry, getPantry } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
-import ItemHandler from "./itemHandler";
+//import ItemHandler from "./itemHandler";
 import Logo from "../logo";
 import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
@@ -15,7 +15,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-
+import pantry from "../styles/imgs/pantry.png";
 
 const Pantry = ({actions, pantryIngredients}) => {
 
@@ -23,6 +23,8 @@ const Pantry = ({actions, pantryIngredients}) => {
   let history = useHistory();
   const [errors, setErrors] = useState(null);
 
+ const checker = getPantry()
+ console.log(checker)
 
   useEffect(() => {
     getAllPantryIngredients(getUsername()).then((r) => {
@@ -68,12 +70,11 @@ const Pantry = ({actions, pantryIngredients}) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
+             <AutocompleteIngredients type="pantry"/>
             <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-              {/* <ItemHandler /> */}
-              <AutocompleteIngredients type="pantry"/>
-                {pantryIngredients !== []  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry"/>  } 
+                {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
                </Grid>
-                <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button>
+                {checker  ?  <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button> : <div></div>  } 
               </div>
           </Grid>
         </Grid> 

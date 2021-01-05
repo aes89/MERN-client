@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 import styles from "./userSettings.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -65,15 +66,18 @@ const validate = (values) => {
 
 const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
   const classes = useStyles();
-
+ let history = useHistory();
   useEffect(() => {
     getUserSettings(getUsername())
       .then((user) => {
+        console.log(user)
         actions.settings(user);
+        actions.updateUsername(user.username);
+        setUsername(user.username);
       })
       .then(() => {
         console.log(currentUserSettings);
-      })
+      })   
       .catch((error) => {
         console.log("errors");
         console.log(error.response);
@@ -97,7 +101,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
       confirmPassword: "",
     },
 
-    validate,
+    validate,   
 
     onSubmit: (values) => {
       updateUserSettings({ ...values }, userLoggedIn)
@@ -106,6 +110,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           actions.settings({ ...user });
           actions.updateUsername(user.username);
           setUsername(user.username);
+          history.push("/user/"+getUsername()+"/account-settings")
         })
         .catch((error) => {
           //console.log("errors")
@@ -144,29 +149,29 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   <label htmlFor="photo" class={styles.profileBox}>
                     Update Profile Picture
                   </label>
-                  <div class={styles.fileBox}>
-                    <ProfileImage />
-                    {/* <input
-                      id="file"
-                      name="file"
-                      type="file"
-                      onChange={(event) => {
-                        formik.setFieldValue(
-                          "file",
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                      //not sure what this does
-                      // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
-                      onSubmit={(values) => {
-                        console.log({
-                          fileName: values.file.username,
-                          type: values.file.type,
-                          size: `${values.file.size} bytes`,
-                        });
-                      }}
-                    /> */}
-                  </div>
+                      <div class={styles.fileBox}>
+                        <ProfileImage />
+                        {/* <input
+                          id="file"
+                          name="file"
+                          type="file"
+                          onChange={(event) => {
+                            formik.setFieldValue(
+                              "file",
+                              event.currentTarget.files[0]
+                            );
+                          }}
+                          //not sure what this does
+                          // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
+                          onSubmit={(values) => {
+                            console.log({
+                              fileName: values.file.username,
+                              type: values.file.type,
+                              size: `${values.file.size} bytes`,
+                            });
+                          }}
+                        /> */}
+                      </div>
                   <label htmlFor="username">Username</label>
 
                   <input

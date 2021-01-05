@@ -67,6 +67,8 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
     // Remove the token from localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    localStorage.removeItem("fridge");
+    localStorage.removeItem("pantry");
     actions.logout();
   }
 

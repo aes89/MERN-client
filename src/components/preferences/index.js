@@ -46,6 +46,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   useEffect(() => {
     getPreference(getUsername())
       .then((pref) => {
+        console.log(pref)
         actions.updatePreferences({ ...pref });
       })
       .then(() => {

@@ -48,6 +48,7 @@ const Login = ({ actions, loggedIn,modalId}) => {
        // console.log("aa")
        // console.log(loggedIn)
         history.push("/")
+        //notify()
         //console.log(document.cookie)
     }).catch((error) => {
       //console.log("errors")
@@ -99,8 +100,7 @@ const Login = ({ actions, loggedIn,modalId}) => {
           <button
             class={styles.loginSignupButtons}
             type="submit"
-            onClick={formik.handleSubmit, notify}
-          >
+            onClick={formik.handleSubmit}>
             Log In
           </button>
         </div>
