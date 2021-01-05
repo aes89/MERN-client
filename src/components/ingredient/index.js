@@ -99,23 +99,24 @@ const Ingredient = ({
       {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
       <Grid item sm spacing={1} wrap="wrap">
         <div class={styles.ingredient}>
-          {ingredients.map((ingredient) => (
-            <Paper className={classes.paperIngredient} variant="outlined">
-              <div class={styles.ingredientText}>
-                <p>{ingredient} </p>
-                <Button
-                  value={ingredient}
-                  onClick={
-                    ingredients === fridgeIngredients
-                      ? handleDeleteFromFridge
-                      : handleDeleteFromPantry
-                  }
-                >
-                  <ClearIcon />
-                </Button>
-              </div>
-            </Paper>
-          ))}
+          {ingredients &&
+            ingredients.map((ingredient) => (
+              <Paper className={classes.paperIngredient} variant="outlined">
+                <div class={styles.ingredientText}>
+                  <p>{ingredient} </p>
+                  <Button
+                    value={ingredient}
+                    onClick={
+                      ingredients === fridgeIngredients
+                        ? handleDeleteFromFridge
+                        : handleDeleteFromPantry
+                    }
+                  >
+                    <ClearIcon />
+                  </Button>
+                </div>
+              </Paper>
+            ))}
         </div>
       </Grid>
     </div>

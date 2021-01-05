@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
-import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
+import {
+  loginUser,
+  setLoggedInUser,
+  setUsername,
+} from "../../services/authServices";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import notify from "../../utils/notifications.js";
-
 
 const validate = (values) => {
   const errors = {};
@@ -25,9 +28,9 @@ const validate = (values) => {
   return errors;
 };
 
-const Login = ({ actions, loggedIn,modalId}) => {
+const Login = ({ actions, loggedIn, modalId }) => {
   let history = useHistory();
-  
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -36,27 +39,35 @@ const Login = ({ actions, loggedIn,modalId}) => {
     validate,
 
     onSubmit: async (values) => {
-      loginUser({ ...values }).then((r) => {
-        console.log(r)
-        setLoggedInUser(r.cookie.jwt)
-        setUsername(r.user)
-        actions.logIn(r.user)
-        actions.getToken(r.cookie.jwt)
-        actions.closeModal() 
-    
-        //console.log(getLoggedInUser())
-       // console.log("aa")
-       // console.log(loggedIn)
-        history.push("/")
-        //console.log(document.cookie)
-    }).catch((error) => {
-      //console.log("errors")
-      //console.log(error.response)
-        if (error.response && error.response.status === 401)
-        formik.setStatus("Authentication failed. Please check your username and password.")
-        else   
-        formik.setStatus("There may be a problem with the server. Please try again after a few moments.")
-    })	
+      console.log("values before loginUser", values);
+      loginUser({ ...values })
+        .then((r) => {
+          console.log("values", values);
+          console.log(r);
+          setLoggedInUser(r.cookie.jwt);
+          setUsername(r.user);
+          actions.logIn(r.user);
+          actions.getToken(r.cookie.jwt);
+          actions.closeModal();
+
+          //console.log(getLoggedInUser())
+          // console.log("aa")
+          // console.log(loggedIn)
+          history.push("/");
+          //console.log(document.cookie)
+        })
+        .catch((error) => {
+          //console.log("errors")
+          //console.log(error.response)
+          if (error.response && error.response.status === 401)
+            formik.setStatus(
+              "Authentication failed. Please check your username and password."
+            );
+          else
+            formik.setStatus(
+              "There may be a problem with the server. Please try again after a few moments."
+            );
+        });
     },
   });
 
@@ -99,14 +110,12 @@ const Login = ({ actions, loggedIn,modalId}) => {
           <button
             class={styles.loginSignupButtons}
             type="submit"
-            onClick={formik.handleSubmit, notify}
+            onClick={(formik.handleSubmit, notify)}
           >
             Log In
           </button>
         </div>
       </form>
-   
-      
     </div>
   );
 };
@@ -118,13 +127,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    logIn: (username ) =>
-      dispatch({ type: "login", payload: username }),
-    getToken: (jwt ) =>
-      dispatch({ type: "token", payload: jwt }),
+    logIn: (username) => dispatch({ type: "login", payload: username }),
+    getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
-     closeModal: () => dispatch({ type: "closeModal" }),
+    closeModal: () => dispatch({ type: "closeModal" }),
   },
 });
 

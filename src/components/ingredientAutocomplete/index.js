@@ -11,18 +11,24 @@ import {
   getFridge,
   setFridge,
 } from "../../services/ingredientServices";
-import { getUsername } from "../../services/authServices";
 
 import TextField from "@material-ui/core/TextField";
 import { Autocomplete } from "@material-ui/lab";
 import Button from "@material-ui/core/Button";
 
-function AutocompleteIngredients({ actions, fridgeIngredients, type }) {
+function AutocompleteIngredients({
+  actions,
+  fridgeIngredients,
+  type,
+  username,
+}) {
   console.log("fridge ingredients", fridgeIngredients);
   console.log("ingredients", ingredients);
-  const filteredIngredients = ingredients.filter(
-    (ingredient) => !fridgeIngredients.includes(ingredient.name)
-  );
+  const filteredIngredients = fridgeIngredients
+    ? ingredients.filter(
+        (ingredient) => !fridgeIngredients.includes(ingredient.name)
+      )
+    : ingredients;
 
   let history = useHistory();
   const [selectedItem, setSelectedItem] = useState(null);
@@ -40,11 +46,16 @@ function AutocompleteIngredients({ actions, fridgeIngredients, type }) {
     // event.preventDefault();
     const newValues = values.map((value) => value.name);
 
-    addFridgeItem(getUsername(), { item: newValues })
+    console.log("get username and newVales", {
+      username,
+      newValues,
+    });
+    addFridgeItem(username, { item: newValues })
       .then((r) => {
         console.log("here", r);
         actions.addToFridge(r.fridgeIngredients);
-        history.push("/ingredients/" + getUsername() + "/fridge");
+        history.push("/ingredients/" + username + "/fridge");
+        setValues([]);
       })
       .catch((error) => {
         console.log("errors");
@@ -63,11 +74,12 @@ function AutocompleteIngredients({ actions, fridgeIngredients, type }) {
     console.log(values);
     const newValues = values.map((i) => i.name);
     console.log(newValues.join(", "));
-    addPantryItem(getUsername(), { item: newValues })
+    addPantryItem(username, { item: newValues })
       .then((r) => {
         console.log(r);
         actions.addToPantry(r.pantryIngredients);
-        history.push("/ingredients/" + getUsername() + "/pantry");
+        history.push("/ingredients/" + username + "/pantry");
+        setValues([]);
       })
       .catch((error) => {
         console.log("errors");
@@ -90,11 +102,9 @@ function AutocompleteIngredients({ actions, fridgeIngredients, type }) {
         id="tags-standard"
         options={filteredIngredients}
         getOptionLabel={(option) => option.name}
-        // defaultValue={[ingredients[3]]}
+        filterSelectedOptions="true"
         onChange={(event, value) => setValues(value)}
         renderInput={(params) => {
-          //setSelectedItem(params.inputProps.value);
-          console.log("params", params);
           return (
             <TextField
               {...params}
@@ -117,6 +127,7 @@ function AutocompleteIngredients({ actions, fridgeIngredients, type }) {
 }
 
 const mapStateToProps = (state) => ({
+  username: state.userLoggedIn.username,
   fridgeIngredients: state.userIngredients.fridgeIngredients,
   pantryIngredients: state.userIngredients.pantryIngredients,
   error: state.errorsMessages,
