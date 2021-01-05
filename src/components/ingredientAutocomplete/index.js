@@ -28,8 +28,8 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-  console.log("fridge ingredients", fridgeIngredients);
-  console.log("ingredients", ingredients);
+  //console.log("fridge ingredients", fridgeIngredients);
+  //console.log("ingredients", ingredients);
   const filteredIngredients = fridgeIngredients
     ? ingredients.filter(
         (ingredient) => !fridgeIngredients.includes(ingredient.name)
@@ -40,12 +40,7 @@ function AutocompleteIngredients({
   const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
-  // still need this?
-  // if (type === "fridge") {
-  //   const usedIngredients = ingredients;
-  // } else {
-  //   const usedIngredients = pantry;
-  // }
+
 
   function handleAddFridge(event) {
     //  event.preventDefault()
@@ -153,4 +148,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AutocompleteIngredients);
-
