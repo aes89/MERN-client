@@ -125,10 +125,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                     ])
                   )}
                   onSubmit={async (values) => {
-                    await sleep(500);
+                    // await sleep(500);
                     // actions.submit;
                     //needs to submit to database first, then need to update local state from database. Load on log in?? Can be slower but I don't think users can really doing anything else - they'll need the data immediately..
-                    alert(JSON.stringify(values, null, 2));
+                    // alert(JSON.stringify(values, null, 2));
                   }}
                 >
                   {({ values }) => (
@@ -137,12 +137,9 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                       {preferencesList.map((preference, index) => (
                         <label key={index}>
                           <Field type="checkbox" name={preference} />
-                          {/*<Checkbox/>*/}
                           {preference}
                         </label>
                       ))}
-                      {/* what was the name of your preference name tag on the checkbox? Preferences? plural? */}
-                      {/* so the reqest will be req.body.preference ? */}
 
                       <Button
                         class={styles.updateButton}

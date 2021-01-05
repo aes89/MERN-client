@@ -3,7 +3,6 @@ import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {
-
   setLoggedInUser,
   getLoggedInUser,
   getUsername,
@@ -33,24 +32,23 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-
 const PrivateRoute = ({ component: Component, ...rest }) => {
   // Add your own authentication on the below line.
-  const isLoggedIn = getUsername() 
+  const isLoggedIn = getUsername();
 
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         isLoggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
         )
       }
     />
-  )
-}
+  );
+};
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //   <Route {...rest} render={(props) => (
@@ -61,7 +59,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 // )
 
 const App = ({ actions }) => {
-  let checkUser = getUsername() 
+  let checkUser = getUsername();
   useEffect(() => {
     try {
       actions.logIn(getUsername());
@@ -83,11 +81,14 @@ const App = ({ actions }) => {
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
-         
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/preferences/:username" component={Preferences} />
+          <PrivateRoute
+            exact
+            path="/preferences/:username"
+            component={Preferences}
+          />
           <PrivateRoute
             exact
             path="/user/:username/account-settings"
@@ -98,9 +99,17 @@ const App = ({ actions }) => {
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <PrivateRoute exact path="/recipes/browse" component={BrowseRecipes} />
+          <PrivateRoute
+            exact
+            path="/recipes/browse"
+            component={BrowseRecipes}
+          />
           <PrivateRoute exact path="/recipes/:id" component={SingleRecipe} />
-          <PrivateRoute exact path="/recipes/saved-recipes" component={SavedRecipes} />
+          <PrivateRoute
+            exact
+            path="/recipes/saved-recipes"
+            component={SavedRecipes}
+          />
           <PrivateRoute
             exact
             path="/ingredients/:username/pantry"
