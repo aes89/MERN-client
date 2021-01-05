@@ -6,7 +6,10 @@ import styles from "../styles/loginSignup.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import notify from "../../utils/notifications.js";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const validate = (values) => {
   const errors = {};
@@ -80,9 +83,11 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           setUsername(r.username)
           actions.closeModal(); //add value in params{ ...values }
           history.push("/");
-        }).then(notify())
+          toast.success("Welcome to FridgeMate!")
+        })
         .catch((error) => {
           console.log("errors");
+          toast.error("Oh no, error!")
           console.log(error.response);
           console.log(`An error occurred authenticating: ${error}`);
           formik.setStatus(error.response.data.errors[0].email)
