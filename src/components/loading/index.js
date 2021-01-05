@@ -4,13 +4,17 @@ import Lottie from "react-lottie";
 import ReactLoading from "react-loading";
 
 
+import styles from "./loading.module.css"
 
 
 export default function Loading () {
+     
       return(
-            <div>
-                <ReactLoading type={"bars"} color={"grey"} />
-        </div>
+            <div class={styles.loadBox}>
+           
+                <ReactLoading className={styles.loadBoxInner} type={"spinningBubbles"} color={"grey"} height={150} width={150} />
+          
+            </div>
       )
    
 }

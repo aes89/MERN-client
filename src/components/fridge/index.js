@@ -12,7 +12,7 @@ import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import Logo from "../logo";
 
-
+import Loading from "../loading";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";
@@ -25,7 +25,8 @@ const Fridge = ({actions, fridgeIngredients}) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
-  console.log(fridgeIngredients)
+   const [loading, setloading] = useState({ done: false });
+  
 
   const checker = getFridge()
   console.log(checker)
@@ -45,6 +46,10 @@ const Fridge = ({actions, fridgeIngredients}) => {
                 else   
                 actions.changeError("There may be a problem with the server. Please try again after a few moments.")
             })    
+      setTimeout(() => {
+      setloading({ done: true })
+      console.log("check loading done")  
+            }, 2500);
   },[])
 
 
@@ -76,11 +81,17 @@ const Fridge = ({actions, fridgeIngredients}) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
+            {!loading.done ? (
+           <Loading/>
+              ) : (  
+            <>
               <AutocompleteIngredients type="fridge"/>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>
               {checker  ?   <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button> : <div></div>  } 
+               </>
+              )}
             </div>
           </Grid>
         </Grid>

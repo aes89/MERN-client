@@ -5,6 +5,7 @@ import Fade from 'react-reveal/Fade';
 import styles from "../styles/loginSignup.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const validate = (values) => {
   const errors = {};
@@ -170,21 +171,22 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
               </Fade>
         ) : null}
         <div>
-          <button
+          <Button
+          variant="contained"
             className={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}
           >
             Sign Up
-          </button> 
+          </Button> 
           </div>
            <div>
-           <button className={styles.modalButton}onClick={() => actions.openModal("login")}>
+           <Button variant="contained" className={styles.modalButton}onClick={() => actions.openModal("login")}>
               Login
-            </button>
-            <button className={styles.modalCancelButton}  onClick={actions.closeModal}>
+            </Button>
+            <Button variant="contained" className={styles.modalCancelButton}  onClick={actions.closeModal}>
               Cancel
-            </button>
+            </Button>
                 </div>
       </form>
     </div>

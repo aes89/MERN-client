@@ -9,6 +9,7 @@ import Logo from "../logo";
 import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import AutocompleteIngredients from "../ingredientAutocomplete";
+import Loading from "../loading";
 
 import useStyles from "../styles/makeStyles.js";
 import Container from "@material-ui/core/Container";
@@ -22,6 +23,7 @@ const Pantry = ({actions, pantryIngredients}) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
+  const [loading, setloading] = useState({ done: false });
 
  const checker = getPantry()
  console.log(checker)
@@ -39,8 +41,11 @@ const Pantry = ({actions, pantryIngredients}) => {
                 actions.changeError("Error getting pantry ingredients")
                 else   
                 actions.changeError("There may be a problem with the server. Please try again after a few moments.")
-            })   
-          
+            })
+      setTimeout(() => {
+      setloading({ done: true })
+      console.log("check loading done")  
+            }, 2500);        
   },[])
 
   const handleClearPantry = async () => {
@@ -69,13 +74,22 @@ const Pantry = ({actions, pantryIngredients}) => {
             <h1 class={appstyles.headings}>My Pantry Staples</h1>
           </Grid>
           <Grid item xs={12} spacing={2}>
-            <div class={appstyles.layoutContent}>
+          <div class={appstyles.layoutContent}>
+           {!loading.done ? (
+           <Loading/>
+              ) : (  
+            <>
              <AutocompleteIngredients type="pantry"/>
-            <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
-                {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
-               </Grid>
-                {checker  ?  <Button onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button> : <div></div>  } 
+                <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
+                    {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
+                
+                </Grid>
+                 {checker  ?  <Button  variant="outlined" width="100px" onClick={() => { handleClearPantry() }}>Clear Pantry Contents</Button> : <div></div>  } 
+
+              </>
+              )}
               </div>
+             
           </Grid>
         </Grid> 
       </Grid>

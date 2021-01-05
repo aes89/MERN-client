@@ -254,7 +254,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                      </Fade>
                   ) : null}
 
-                  <Button class={styles.updateButton} type="submit">
+                  <Button variant="contained" class={styles.updateButton} type="submit">
                     Update Details
                   </Button>
                 </form>

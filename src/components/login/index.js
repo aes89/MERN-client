@@ -68,13 +68,16 @@ const Login = ({ actions, loggedIn,modalId}) => {
     <div class={styles.loginSignupBox}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email </label>
+
+
+        
       
         {formik.status && (
           <Fade bottom >
           <div style={text}>Error: {formik.status}. Please try signing in again.</div>
           </Fade>
         )}
+        <label htmlFor="email">Email </label>
         <input
           id="loginEmail"
           name="email"
@@ -108,6 +111,7 @@ const Login = ({ actions, loggedIn,modalId}) => {
         ) : null}
         <div>
           <Button
+          variant="contained"
             className={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}>
@@ -116,10 +120,10 @@ const Login = ({ actions, loggedIn,modalId}) => {
           
         </div>
          <div>
-         <Button className={styles.modalButton} onClick={() => actions.openModal("register")}>
+          <Button variant="contained" className={styles.modalButton} onClick={() => actions.openModal("register")}>
               Register
             </Button>
-            <Button className={styles.modalCancelButton} onClick={actions.closeModal}>
+            <Button variant="contained" className={styles.modalCancelButton} onClick={actions.closeModal}>
               Cancel
             </Button>
           </div>
