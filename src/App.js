@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {
 
   setLoggedInUser,
@@ -33,15 +33,43 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  // Add your own authentication on the below line.
+  const isLoggedIn = getUsername() 
+
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+        )
+      }
+    />
+  )
+}
+
+// const PrivateRoute = ({ component: Component, ...rest }) => (
+//   <Route {...rest} render={(props) => (
+//       getLoggedInUser() === true
+//         ? <Component {...props} />
+//         : <Redirect to='/' />
+//   )} />
+// )
+
 const App = ({ actions }) => {
+  let checkUser = getUsername() 
   useEffect(() => {
     try {
       actions.logIn(getUsername());
       actions.getToken(getLoggedInUser());
     } catch (error) {
       console.log("got an error trying to check authenticated user:", error);
-      setLoggedInUser(null);
-      setUsername(null);
+      setLoggedInUser();
+      setUsername();
       actions.logout();
     }
     // return a function that specifies any actions on component unmount
@@ -55,24 +83,25 @@ const App = ({ actions }) => {
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
+         
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/preferences/:username" component={Preferences} />
-          <Route
+          <PrivateRoute exact path="/preferences/:username" component={Preferences} />
+          <PrivateRoute
             exact
             path="/user/:username/account-settings"
             component={UserSettings}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <Route exact path="/recipes/browse" component={BrowseRecipes} />
-          <Route exact path="/recipes/:id" component={SingleRecipe} />
-          <Route exact path="/recipes/saved-recipes" component={SavedRecipes} />
-          <Route
+          <PrivateRoute exact path="/recipes/browse" component={BrowseRecipes} />
+          <PrivateRoute exact path="/recipes/:id" component={SingleRecipe} />
+          <PrivateRoute exact path="/recipes/saved-recipes" component={SavedRecipes} />
+          <PrivateRoute
             exact
             path="/ingredients/:username/pantry"
             component={Pantry}

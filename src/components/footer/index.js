@@ -7,7 +7,7 @@ import Container from "@material-ui/core/Container";
 const Footer = () => (
   <div class={styles.footerBox}>
     <div>
-      {" "}
+     
       <CopyrightIcon fontSize="small" />
       Adrienne Smith & Shelby El-rassi 2020
     </div>

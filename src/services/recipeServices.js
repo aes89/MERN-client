@@ -4,7 +4,7 @@ import api from '../config/api'
 // Returns Recipes to browse
 export async function browseSearchRecipes() {
     const response = await api.get("/recipes/browse")
-   // await setBrowsedRecipes(response.data)
+     await setBrowsedRecipes(response.data)
     console.log("server check", response.data)
     //console.log("length check", response.data.length)
   
@@ -43,7 +43,7 @@ export function getBrowsedRecipes() {
 }
 
 export function setBrowsedRecipes(items) {
-    items ? localStorage.setItem("browsedRecipes", items) : localStorage.removeItem("browsedRecipes")
+    items ? localStorage.setItem("browsedRecipes", JSON.stringify(items)) : localStorage.removeItem("browsedRecipes")
     console.log("local browsedRecipes Updated")
     console.log(items)
 }

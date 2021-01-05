@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import Logo from "../logo";
@@ -23,26 +23,48 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
 
   const testrecipes = TestBrowseData();
-   //const recipes =getBrowsedRecipes()
-   const [loading, setloading] = useState({ done: false });
+   const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
-   const r = React.useRef(null)
-  //const recipes = getBrowsedRecipes()
-    useEffect(() => {
-          let recipeLocal = getBrowsedRecipes()
-          setRecipesState(recipeLocal)
-          actions.updatedBrowseRecipes(recipeLocal)
-          r.current = recipeLocal
-          const recipesDisplay = recipeLocal
-         
-           console.log("test r", r)
-          setTimeout(() => {
-            setloading({ done: true })
-            console.log("check loading done") 
-            //setRecipes(getBrowsedRecipes())
-              
-            }, 5000);
+   const [errors, setErrors] = useState(null);
+
+  useEffect(() => {
+   if (getBrowsedRecipes() === null) {
+       browseSearchRecipes()
+            .then((recipes) => {
+                    //console.log(JSON.stringify(recipes[0].id))
+                      console.log("hit here testing")
+                      setRecipesState(recipes) //state 
+                      setBrowsedRecipes(recipes) //local storage
+                      actions.updatedBrowseRecipes(recipes)  //redux
+                      console.log("gfdfdf", recipes)
+               }).then (
+                  setTimeout(() => {
+                  setloading(true)
+                  console.log("check loading done") 
+                  //setRecipes(getBrowsedRecipes()
+                  }, 5000)
+               )
+              .catch((error) => {
+                  console.log("errors")
+                  console.log(error)
+                if (error.response && error.response.status === 401)
+                  setErrors(" failed. ")
+                  else   
+                  setErrors("There may be a problem with the server. Please try again after a few moments.")
+                     
+                  });
+        } else {
+         setRecipesState(JSON.parse(getBrowsedRecipes()))
+         actions.updatedBrowseRecipes(JSON.parse(getBrowsedRecipes())) 
+         setTimeout(() => {
+                  setloading(true)
+                  console.log("check loading done") 
+                  //setRecipes(getBrowsedRecipes()
+                  }, 5000)
+         }
+       
    },[])
+
 
   console.log("check") 
   console.log("local store", getBrowsedRecipes())
@@ -55,12 +77,8 @@ let check = getBrowsedRecipes()
   console.log("check ffff", check[0].title);
 }
 
-if (!loading.done ) return <Loading/>
-
   return (
-
       <div className={classes.root}>
-         
         <Grid container spacing={0}>
           <Grid container item xs={12} spacing={0}>
             <Logo />
@@ -72,32 +90,27 @@ if (!loading.done ) return <Loading/>
             </Grid>
             <Grid item xs={12} spacing={2}>
               <div class={appstyles.layoutContent}>
-              {/* {!loading.done ? (
+               {loading === false ? (
                 <Loading/>
-                    ) : (  */}
+                    ) : (  
                       <div>
-                      <div class={styles.possibleStatement}>
-                        You can make 8 possible recipes!{" "}
-                      </div>
-                      <div className={styles.browseBox}>
-                        <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
-                        
-                          
-                            
-        
-{/*                 
-                     {recipesDisplay.map((recipe) => (
-                          
-                            <ListedRecipe key={recipe.id} recipe={recipe} />
-                           
-                          ))}     */}
+                          <div class={styles.possibleStatement}>
+                            You can make {"  "} possible recipes!{" "}
+                          </div>
+                          <div className={styles.browseBox}>
+                          <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
+                          {browseRecipes && browseRecipes.map((recipe) => (
+                                
+                                  <ListedRecipe key={recipe.id} recipe={recipe} />
+                                
+                                ))}     
 
-                        
-                     
-                        </Grid>
-                      </div>
+                              
+                          
+                              </Grid>
+                            </div>
                     </div>
-                  {/* )} */}
+                 )} 
               </div>
             </Grid>
           </Grid>

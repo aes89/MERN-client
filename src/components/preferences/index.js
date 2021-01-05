@@ -23,6 +23,12 @@ import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 //need to write input validation - boolean only
@@ -75,10 +81,12 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         .then((pref) => {
           console.log(pref);
           actions.updatePreferences({ ...pref });
+          toast.success("Preferences Updated!")
         })
         .catch((error) => {
           //console.log("errors")
           //console.log(error.response)
+          toast.error("Oh no, error!")
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting pref information ");
           else
@@ -107,10 +115,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
             <div class={appstyles.layoutContent}>
               <div className={styles.prefBox}>
                 {formik.status && <div>Error: {formik.status}. </div>}
-                <div class={styles.imgBox}>
-                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
-                </div>
-
+               
+                <div class={styles.formBox}>
                 <Formik
                   initialValues={Object.fromEntries(
                     preferencesList.map((preference) => [
@@ -148,6 +154,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                     </Form>
                   )}
                 </Formik>
+               </div>
+                <div class={styles.imgBox}>
+                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                </div>
               </div>
             </div>
           </Grid>
