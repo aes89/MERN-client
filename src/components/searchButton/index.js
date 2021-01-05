@@ -16,18 +16,34 @@ const SearchRecipeButton = () => {
 
 async function searchHandler () {
   setBrowsedRecipes()
-      await browseSearchRecipes().then((r) => {
-              console.log(JSON.stringify(r[0].id))
-              //console.log(JSON.parse(JSON.stringify(r)))
-              const toSave = []
-               r.map((recipe) => (
-                     toSave.push(recipe)     
-                ))
-                console.log("checktosave", toSave)
-               //setBrowsedRecipes(JSON.parse(JSON.stringify(r)))
-               setBrowsedRecipes(toSave)
-              history.push("/recipes/browse")
+      await browseSearchRecipes().then((recipe) => {
+              console.log(JSON.stringify(recipe[0].id))
+              console.log("hit here testing")
+               
+              // const newArray = []
+
+              // recipe.map(recipe => {
+              //   newArray.push({
+              //     "id": JSON.stringify(recipe.id),
+              //     "usedIngred": JSON.stringify(recipe.usedIngred), 
+              //     "missedIngred": JSON.stringify(recipe.usedIngred),
+              //     "title": JSON.stringify(recipe.title),
+              //     "readyInMinutes": JSON.stringify(recipe.readyInMinutes),
+              //     "servings": JSON.stringify(recipe.servings),
+              //     "image": JSON.stringify(recipe.image),
+              //     })
+              //   });
+              console.log("testing", {recipes: recipe})
+
+             console.log("hit here again")
+             setBrowsedRecipes({recipes: recipe}) 
+             console.log("gfdfdf", {recipes: recipe})
+             console.log("check loading done") 
+
+             setTimeout(() => {
              
+             history.push("/recipes/browse")
+             }, 5000);
           }).catch((error) => {
               console.log("errors")
               console.log(error)

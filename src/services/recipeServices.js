@@ -4,8 +4,8 @@ import api from '../config/api'
 // Returns Recipes to browse
 export async function browseSearchRecipes() {
     const response = await api.get("/recipes/browse")
-    await setBrowsedRecipes(response.data)
-    //console.log("server check", response.data)
+   // await setBrowsedRecipes(response.data)
+    console.log("server check", response.data)
     //console.log("length check", response.data.length)
   
     return response.data

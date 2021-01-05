@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
-import { useFormik } from "formik";
+
 import { useHistory } from "react-router-dom";
 
-import {addFridgeItem,deleteFridgeItem, deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
+import { deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
 import appstyles from "../../app.module.css";
@@ -12,8 +12,7 @@ import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import Logo from "../logo";
 
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";

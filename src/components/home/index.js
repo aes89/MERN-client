@@ -1,11 +1,7 @@
 import { connect } from "react-redux";
-import React, { Fragment } from "react";
+import React from "react";
 
-import UserSettings from "../userSettings";
-import Preferences from "../preferences";
-import LoggedIn from "../logged-in";
-import AuthenticationModal from "../AuthenticationModal";
-import { BorderBottom } from "@material-ui/icons";
+
 import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";

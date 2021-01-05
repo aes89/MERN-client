@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import {
-  userAuthenticated,
+
   setLoggedInUser,
   getLoggedInUser,
   getUsername,

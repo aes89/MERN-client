@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import Logo from "../logo";
@@ -12,10 +12,9 @@ import ListedRecipe from "../listedRecipe";
 import Loading from "../loading";
 
 //MATERIAL
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
+
 import Grid from "@material-ui/core/Grid";
-import carrot from "../styles/imgs/carrot.png";
+
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
@@ -26,38 +25,42 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const testrecipes = TestBrowseData();
    //const recipes =getBrowsedRecipes()
    const [loading, setloading] = useState({ done: false });
-   const [recipes, setRecipes] = useState([]);
-
+   const [recipesState, setRecipesState] = useState(null);
+   const r = React.useRef(null)
   //const recipes = getBrowsedRecipes()
     useEffect(() => {
-          console.log("check")
-          actions.updatedBrowseRecipes(getBrowsedRecipes())
-          setRecipes(getBrowsedRecipes())
-          console.log("check") 
-          console.log(browseRecipes)
-          console.log(getBrowsedRecipes())
-          
-      setTimeout(() => {
-        setloading({ done: true })
-        //setRecipes(getBrowsedRecipes())
+          let recipeLocal = getBrowsedRecipes()
+          setRecipesState(recipeLocal)
+          actions.updatedBrowseRecipes(recipeLocal)
+          r.current = recipeLocal
+          const recipesDisplay = recipeLocal
          
-        }, 5000);
+           console.log("test r", r)
+          setTimeout(() => {
+            setloading({ done: true })
+            console.log("check loading done") 
+            //setRecipes(getBrowsedRecipes())
+              
+            }, 5000);
+   },[])
 
- },[])
-let data = getBrowsedRecipes()
-let string =JSON.stringify(data)
-let newData = JSON.parse(string)
+  console.log("check") 
+  console.log("local store", getBrowsedRecipes())
+  console.log("useState updated", recipesState)
+  console.log("redux  updated", browseRecipes)
+  ///let display = JSON.stringify(browseRecipes.recipes[0].title)
 
-console.log("ada", newData[0].id)
-// const toCheck = []
-//     data.map((recipe) => (
-//           toCheck.push(recipe)     
-//     ))
-  console.log("check fgffg",  getBrowsedRecipes())
+let check = getBrowsedRecipes()
+  if (check < 0) {
+  console.log("check ffff", check[0].title);
+}
 
+if (!loading.done ) return <Loading/>
 
-    return (
+  return (
+
       <div className={classes.root}>
+         
         <Grid container spacing={0}>
           <Grid container item xs={12} spacing={0}>
             <Logo />
@@ -69,28 +72,32 @@ console.log("ada", newData[0].id)
             </Grid>
             <Grid item xs={12} spacing={2}>
               <div class={appstyles.layoutContent}>
-              {!loading.done ? (
+              {/* {!loading.done ? (
                 <Loading/>
-                    ) : ( 
+                    ) : (  */}
                       <div>
                       <div class={styles.possibleStatement}>
                         You can make 8 possible recipes!{" "}
                       </div>
                       <div className={styles.browseBox}>
                         <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
-                          {/* {recipes === undefined ? (   <div> Error </div>  ) : (   
-                            <div> {data} </div>
+                        
+                          
                             
-                          )} */}
-                          {testrecipes.map((recipe) => (
+        
+{/*                 
+                     {recipesDisplay.map((recipe) => (
+                          
                             <ListedRecipe key={recipe.id} recipe={recipe} />
-                          ))}
+                           
+                          ))}     */}
 
-                    
+                        
+                     
                         </Grid>
                       </div>
-                      </div>
-                  )}
+                    </div>
+                  {/* )} */}
               </div>
             </Grid>
           </Grid>
