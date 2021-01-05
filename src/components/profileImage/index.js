@@ -11,6 +11,9 @@ import { connect } from "react-redux";
 
 import styles from "./profile.module.css";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
    let history = useHistory();
@@ -29,8 +32,10 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
           } = image;
           actions.updateProfile({ profile });
         history.push("/user/"+getUsername()+"/account-settings")
+        toast.success("Profile Picture updated!")
         })
         .catch((error) => {
+          toast.error("Oh no!")
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting user information ");
           else
@@ -56,9 +61,9 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
           //not sure what this does
           // https://stackoverflow.com/questions/56149756/reactjs-how-to-handle-image-file-upload-with-formik
         />
-        <button type="submit" onClick={formik.handleSubmit}>
+        <Button  size="small"  variant="outlined"  component="span" type="submit" onClick={formik.handleSubmit}>
           Upload
-        </button>
+        </Button>
       </form>
   
       </div>

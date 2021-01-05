@@ -6,6 +6,7 @@ import styles from "../styles/loginSignup.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import notify from "../../utils/notifications.js";
 
 const validate = (values) => {
   const errors = {};
@@ -79,7 +80,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           setUsername(r.username)
           actions.closeModal(); //add value in params{ ...values }
           history.push("/");
-        })
+        }).then(notify())
         .catch((error) => {
           console.log("errors");
           console.log(error.response);
@@ -173,7 +174,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         <div>
           <Button
           variant="contained"
-            className={styles.loginSignupButtons}
+            class={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}
           >
@@ -181,10 +182,10 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           </Button> 
           </div>
            <div>
-           <Button variant="contained" className={styles.modalButton}onClick={() => actions.openModal("login")}>
+           <Button variant="contained" class={styles.modalButton}onClick={() => actions.openModal("login")}>
               Login
             </Button>
-            <Button variant="contained" className={styles.modalCancelButton}  onClick={actions.closeModal}>
+            <Button variant="contained" class={styles.modalCancelButton}  onClick={actions.closeModal}>
               Cancel
             </Button>
                 </div>

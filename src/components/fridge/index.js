@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
-
+import styles from "./fridge.module.css";
 import appstyles from "../../app.module.css";
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Ingredients from "../ingredient";
@@ -18,7 +18,8 @@ import Button from "@material-ui/core/Button";
 import useStyles from "../styles/makeStyles.js";
 
 import fridge from "../styles/imgs/fridge.png";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Fridge = ({actions, fridgeIngredients}) => {
@@ -60,9 +61,11 @@ const Fridge = ({actions, fridgeIngredients}) => {
               actions.clearFridge()
               setFridge()
               history.push("/ingredients/"+getUsername()+"/fridge")
+              toast.warn("You have no ingredients left in your fridge!")
           }).catch((error) => {
             //console.log("errors")
             //console.log(error.response)
+              toast.error("Oh no, error!")
               if (error.response && error.response.status === 401)
               setErrors("Error clearing your Fridge")
               else   
@@ -89,7 +92,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>
-              {checker  ?   <Button onClick={() => { handleClearFridge() }}>Clear Fridge Contents</Button> : <div></div>  } 
+              {checker  ?   <Button className={styles.button} variant="outlined" width="100px" onClick={() => { handleClearFridge() }}>Clear All Fridge Contents</Button> : <div></div>  } 
                </>
               )}
             </div>

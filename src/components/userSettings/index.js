@@ -23,6 +23,12 @@ import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 const validate = (values) => {
   const errors = {};
 
@@ -118,10 +124,12 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           actions.updateUsername(user.username);
           setUsername(user.username);
           history.push("/user/"+getUsername()+"/account-settings")
+          toast.success("User information updated!")
         })
         .catch((error) => {
           //console.log("errors")
           //console.log(error.response)
+           toast.error("Oh no, error!")
           if (error.response && error.response.status === 404)
             formik.setStatus("Error getting user information ");
           else

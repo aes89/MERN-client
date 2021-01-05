@@ -9,6 +9,9 @@ import pantry from "../../data/pantry.json"
 import {addFridgeItem, addPantryItem, getFridge, setFridge, setPantry } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import TextField from "@material-ui/core/TextField";
 import { Autocomplete } from "@material-ui/lab";
@@ -31,9 +34,12 @@ function AutocompleteIngredients({actions, type}) {
               actions.addToFridge(r.fridgeIngredients)
               setFridge(r.fridgeIngredients)
               history.push("/ingredients/"+getUsername()+"/fridge")
-          }).catch((error) => {
+              toast.success(" New Fridge Ingredient Added!")
+          })
+        .catch((error) => {
             console.log("errors")
             console.log(error.response)
+            toast.error("Oh no error!")
               if (error.response && error.response.status === 401)
               setErrors("Error adding to your Fridge")
               else   
@@ -52,9 +58,11 @@ function AutocompleteIngredients({actions, type}) {
            actions.addToPantry(r.pantryIngredients)
             setPantry(r.pantryIngredients)
            history.push("/ingredients/"+getUsername()+"/pantry")
+           toast.success(" New pantry Ingredient Added!")
           }).catch((error) => {
             console.log("errors")
             console.log(error.response)
+             toast.error("Oh no error!")
               if (error.response && error.response.status === 401)
               setErrors("Error adding to your pantry")
               else   

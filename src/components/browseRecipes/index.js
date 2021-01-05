@@ -55,12 +55,8 @@ let check = getBrowsedRecipes()
   console.log("check ffff", check[0].title);
 }
 
-if (!loading.done ) return <Loading/>
-
   return (
-
       <div className={classes.root}>
-         
         <Grid container spacing={0}>
           <Grid container item xs={12} spacing={0}>
             <Logo />
@@ -72,32 +68,29 @@ if (!loading.done ) return <Loading/>
             </Grid>
             <Grid item xs={12} spacing={2}>
               <div class={appstyles.layoutContent}>
-              {/* {!loading.done ? (
+               {!loading.done ? (
                 <Loading/>
-                    ) : (  */}
+                    ) : (  
                       <div>
-                      <div class={styles.possibleStatement}>
-                        You can make 8 possible recipes!{" "}
-                      </div>
-                      <div className={styles.browseBox}>
-                        <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
-                        
-                          
-                            
-        
-{/*                 
-                     {recipesDisplay.map((recipe) => (
-                          
-                            <ListedRecipe key={recipe.id} recipe={recipe} />
-                           
-                          ))}     */}
+                          <div class={styles.possibleStatement}>
+                            You can make 8 possible recipes!{" "}
+                          </div>
+                            <div className={styles.browseBox}>
+                              <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
+                                                        
+      {/*                 
+                          {recipesDisplay.map((recipe) => (
+                                
+                                  <ListedRecipe key={recipe.id} recipe={recipe} />
+                                
+                                ))}     */}
 
-                        
-                     
-                        </Grid>
-                      </div>
+                              
+                          
+                              </Grid>
+                            </div>
                     </div>
-                  {/* )} */}
+                 )} 
               </div>
             </Grid>
           </Grid>

@@ -6,10 +6,11 @@ import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
 import { useHistory } from "react-router-dom";
+
+import Button from "@material-ui/core/Button";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import notify from "../../utils/notifications.js";
-import Button from "@material-ui/core/Button";
 
 const validate = (values) => {
   const errors = {};
@@ -49,13 +50,12 @@ const Login = ({ actions, loggedIn,modalId}) => {
         actions.logIn(r.user)
         actions.getToken(r.cookie.jwt)
         actions.closeModal() 
-    
-      
         history.push("/")
-        //notify()
+        toast.success("You are logged in!")
      
     }).catch((error) => {
-     
+     console.log(error)
+        toast.error("Oh no!")
         if (error.response && error.response.status === 401)
         formik.setStatus("Authentication failed. Please check your username and password.")
         else   
@@ -112,7 +112,7 @@ const Login = ({ actions, loggedIn,modalId}) => {
         <div>
           <Button
           variant="contained"
-            className={styles.loginSignupButtons}
+            class={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}>
             Log In
@@ -120,10 +120,10 @@ const Login = ({ actions, loggedIn,modalId}) => {
           
         </div>
          <div>
-          <Button variant="contained" className={styles.modalButton} onClick={() => actions.openModal("register")}>
+          <Button variant="contained" class={styles.modalButton} onClick={() => actions.openModal("register")}>
               Register
             </Button>
-            <Button variant="contained" className={styles.modalCancelButton} onClick={actions.closeModal}>
+            <Button variant="contained" class={styles.modalCancelButton} onClick={actions.closeModal}>
               Cancel
             </Button>
           </div>
