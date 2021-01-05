@@ -107,10 +107,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
             <div class={appstyles.layoutContent}>
               <div className={styles.prefBox}>
                 {formik.status && <div>Error: {formik.status}. </div>}
-                <div class={styles.imgBox}>
-                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
-                </div>
-
+               
+                <div class={styles.formBox}>
                 <Formik
                   initialValues={Object.fromEntries(
                     preferencesList.map((preference) => [
@@ -148,6 +146,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                     </Form>
                   )}
                 </Formik>
+               </div>
+                <div class={styles.imgBox}>
+                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                </div>
               </div>
             </div>
           </Grid>

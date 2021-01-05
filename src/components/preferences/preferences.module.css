@@ -1,8 +1,9 @@
 
  .prefBox{
-     display: flex;
+      display: flex;
       justify-content: space-between;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       padding: 1em;
       margin: 0.5em;
       padding-bottom: 40px; 
@@ -10,25 +11,33 @@
  }
 
  .prefBox form{
-     display: flex;
+      display: flex;
       align-content: center;
       flex-direction: column;
-      padding: 1em;
+      padding: 10px;
       margin: 0.5em;
       padding-bottom: 40px;
+      font-size: 1.2em;
  }
-.imgBox {
-      display: flex;
-      justify-content: flex-end;
-      margin: 30px;
+
+.imgBox  {
+      margin: 60px 120px 20px 20px;
       padding: 10px;
       border-radius: 50%;
       background-color: #FB8D02;
-      max-width: 300px;
+      max-width: 250px;
+      max-height: 250px;
+}
+
+.formBox {
+   display: flex;
+   max-width: 300px;
+  
 }
  .prefBox img{
     width: 100%;
     padding: 30px;
+    
  }
 
  .prefBox label{
@@ -46,11 +55,21 @@
    cursor: pointer;
    width: 140px;
    text-align: center;
+   font-size: 0.8em;
  }
  /* Phone Styles */ 
- @media only screen and (max-width: 600px) {
-   
-    
+ @media only screen and (max-width: 767px) {
+    .prefBox form{
+      font-size: 1em;
+   }
+   .imgBox {
+      max-width: 200px;
+      max-height: 200px;
+      margin: 20px;
+   }
+   .prefBox{
+      flex-wrap: wrap-reverse;  
+      }
  }
   
   /* Tablet Styles */ 
