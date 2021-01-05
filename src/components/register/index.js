@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import Fade from 'react-reveal/Fade';
 import styles from "../styles/loginSignup.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
@@ -54,6 +55,11 @@ const validate = (values) => {
 
 const Register = ({ actions, userLoggedIn, modalId }) => {
   let history = useHistory();
+
+   const text = {
+      color: 'red',
+    }; 
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -89,7 +95,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         <label htmlFor="email">Email Address</label>
 
         {formik.status && (
-          <div>Error: {formik.status}. Please try registering in again.</div>
+             <Fade bottom >
+          <div style={text}>Error: {formik.status}. Please try registering in again.</div>
+            </Fade>
         )}
 
         <input
@@ -103,7 +111,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <Fade bottom >
+          <div style={text}>{formik.errors.email}</div>
+          </Fade>
         ) : null}
 
         <label htmlFor="username">Username</label>
@@ -119,7 +129,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
+          <Fade bottom >
+          <div style={text}>{formik.errors.username}</div>
+          </Fade>
         ) : null}
 
         <label htmlFor="password">Password</label>
@@ -135,7 +147,9 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+           <Fade bottom >
+          <div style={text}>{formik.errors.password}</div>
+           </Fade>
         ) : null}
 
         <label htmlFor="confirmPassword">Confirm Password</label>
@@ -151,17 +165,27 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         />
 
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-          <div>{formik.errors.confirmPassword}</div>
+             <Fade bottom >
+          <div style={text}>{formik.errors.confirmPassword}</div>
+              </Fade>
         ) : null}
         <div>
           <button
-            class={styles.loginSignupButtons}
+            className={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}
           >
             Sign Up
-          </button>
-        </div>
+          </button> 
+          </div>
+           <div>
+           <button className={styles.modalButton}onClick={() => actions.openModal("login")}>
+              Login
+            </button>
+            <button className={styles.modalCancelButton}  onClick={actions.closeModal}>
+              Cancel
+            </button>
+                </div>
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
+import Fade from 'react-reveal/Fade';
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {loginUser, setLoggedInUser, setUsername} from '../../services/authServices'
@@ -8,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import notify from "../../utils/notifications.js";
-
+import Button from "@material-ui/core/Button";
 
 const validate = (values) => {
   const errors = {};
@@ -27,7 +28,12 @@ const validate = (values) => {
 
 const Login = ({ actions, loggedIn,modalId}) => {
   let history = useHistory();
-  
+
+  const text = {
+      color: 'red',
+    }; 
+
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -44,15 +50,12 @@ const Login = ({ actions, loggedIn,modalId}) => {
         actions.getToken(r.cookie.jwt)
         actions.closeModal() 
     
-        //console.log(getLoggedInUser())
-       // console.log("aa")
-       // console.log(loggedIn)
+      
         history.push("/")
         //notify()
-        //console.log(document.cookie)
+     
     }).catch((error) => {
-      //console.log("errors")
-      //console.log(error.response)
+     
         if (error.response && error.response.status === 401)
         formik.setStatus("Authentication failed. Please check your username and password.")
         else   
@@ -66,8 +69,11 @@ const Login = ({ actions, loggedIn,modalId}) => {
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email </label>
+      
         {formik.status && (
-          <div>Error: {formik.status}. Please try signing in again.</div>
+          <Fade bottom >
+          <div style={text}>Error: {formik.status}. Please try signing in again.</div>
+          </Fade>
         )}
         <input
           id="loginEmail"
@@ -80,7 +86,9 @@ const Login = ({ actions, loggedIn,modalId}) => {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+           <Fade bottom >
+          <div style={text}>{formik.errors.email}</div>
+          </Fade>
         ) : null}
         <label htmlFor="password">Password</label>
         <input
@@ -94,16 +102,27 @@ const Login = ({ actions, loggedIn,modalId}) => {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
+           <Fade bottom >
           <div>{formik.errors.password}</div>
+           </Fade>
         ) : null}
         <div>
-          <button
-            class={styles.loginSignupButtons}
+          <Button
+            className={styles.loginSignupButtons}
             type="submit"
             onClick={formik.handleSubmit}>
             Log In
-          </button>
+          </Button>
+          
         </div>
+         <div>
+         <Button className={styles.modalButton} onClick={() => actions.openModal("register")}>
+              Register
+            </Button>
+            <Button className={styles.modalCancelButton} onClick={actions.closeModal}>
+              Cancel
+            </Button>
+          </div>
       </form>
    
       
