@@ -23,13 +23,13 @@
     padding-right: 15px;
 }
 .imgBox {
-    margin: 100px;
+    margin: 50px;
     padding: 10px;
     border-radius: 50%;
     background-color: #3F7209;
     max-width: 250px;
     max-height: 250px;
-    float: right;
+  
 }
 
 .imgBox img{
@@ -59,6 +59,7 @@
             
          .imgBox {
                padding: 30px;
-               
+               display: inline-block;
+               float: right;
          }
    }
