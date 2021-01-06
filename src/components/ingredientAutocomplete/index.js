@@ -117,6 +117,7 @@ function AutocompleteIngredients({
         options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
+        // defaultValue={[filteredList[13]]}
         onChange={(event, value) => setValues(value)}
         renderInput={(params) => {
           return (
