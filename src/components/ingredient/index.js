@@ -8,6 +8,7 @@ import {
   deleteFridgeItem,
   deletePantryItem,
   getAllFridgeIngredients,
+  getAllPantryIngredients,
   getFridge,
   setFridge,
   getPantry,
@@ -38,18 +39,13 @@ const Ingredient = ({
 
   console.log("hit");
   console.log("check ing" + ingredients);
-
-  //const testIngredients = ["chicken","cheese", "olives"];
+  console.log("PANTRY INGREDIENTS", pantryIngredients);
 
   const handleDeleteFromFridge = async (event) => {
     console.log("deleted 1 Item fridge");
-    //let newArrayy =  filterIng(fridgeIngredients, event.currentTarget.value)
-    // console.log(newArrayy)
     deleteFridgeItem(getUsername(), { item: event.currentTarget.value })
       .then((r) => {
-        console.log("stupid thing in r", r);
-        //setFridge(newArrayy)
-        //actions.deleteItemFromFridge(getFridge)
+        console.log("r", r);
         history.push("/ingredients/" + getUsername() + "/fridge");
       })
       .then(async (item) => {
@@ -60,8 +56,6 @@ const Ingredient = ({
         actions.updateFridgeIngredients(fridgeIngredients);
       })
       .catch((error) => {
-        //console.log("errors")
-        //console.log(error.response)
         if (error.response && error.response.status === 401)
           setErrors("Error deleting fridge ingredient");
         else
@@ -76,11 +70,18 @@ const Ingredient = ({
 
     deletePantryItem(getUsername(), { item: event.currentTarget.value })
       .then((r) => {
-        console.log(r);
+        console.log("wut?", r);
         //let newArrayy = filterIng(pantryIngredients, event.currentTarget.value)
         //setPantry(newArrayy)
         //actions.deleteItemFromPantry(getPantry)
         history.push("/ingredients/" + getUsername() + "/pantry");
+      })
+      .then(async (item) => {
+        const getPantryIngredients = await getAllPantryIngredients(
+          getUsername()
+        );
+        const { pantryIngredients } = getPantryIngredients;
+        actions.updatePantryIngredients(pantryIngredients);
       })
       .catch((error) => {
         //console.log("errors")
@@ -135,6 +136,8 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch({ type: "fridgeIngredients", payload: ingredients }),
     deleteItemFromFridge: (deleteIngredient) =>
       dispatch({ type: "fridgeIngredients", payload: deleteIngredient }),
+    updatePantryIngredients: (ingredients) =>
+      dispatch({ type: "pantryIngredients", payload: ingredients }),
     deleteItemFromPantry: (deleteIngredient) =>
       dispatch({ type: "pantryIngredients", payload: deleteIngredient }),
     changeError: (error) => dispatch({ type: "error", payload: error }),
