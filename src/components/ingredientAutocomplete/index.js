@@ -15,6 +15,7 @@ import {
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -97,7 +98,7 @@ function AutocompleteIngredients({
 
   return (
     // autocomplete list
-    <div style={{ width: 300, padding: 20 }}>
+    <div class={styles.autoComplete} >
       {errors && <div>{errors}</div>}
       <Autocomplete
         multiple
@@ -125,6 +126,7 @@ function AutocompleteIngredients({
         {" "}
         Add Ingredients
       </Button>
+    
     </div>
   );
 }

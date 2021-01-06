@@ -182,10 +182,13 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
                   </Button>
                 </Fragment>
               )}
+              
             </Fragment>
           </li>
         </ul>
+           
       </nav>
+
     </div>
   );
 };

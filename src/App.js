@@ -84,33 +84,33 @@ const App = ({ actions }) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute
+          <Route
             exact
             path="/preferences/:username"
             component={Preferences}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/user/:username/account-settings"
             component={UserSettings}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/recipes/browse"
             component={BrowseRecipes}
           />
-          <PrivateRoute exact path="/recipes/:id" component={SingleRecipe} />
-          <PrivateRoute
+          <Route exact path="/recipes/:id" component={SingleRecipe} />
+          <Route
             exact
             path="/recipes/saved-recipes"
             component={SavedRecipes}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/ingredients/:username/pantry"
             component={Pantry}

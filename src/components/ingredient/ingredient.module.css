@@ -6,6 +6,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 20px;
+    width: 100%;
 }
 
 .ingredientText{
@@ -15,11 +16,27 @@
     max-height: 35px;
     padding: 10px;
     margin-bottom: 5px;
+    background-color: #EAEBF1;
 }
 
 .ingredientText p{
     padding-right: 15px;
 }
+.imgBox {
+    margin: 100px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #3F7209;
+    max-width: 250px;
+    max-height: 250px;
+    float: right;
+}
+
+.imgBox img{
+    width: 100%;
+    padding: 30px;
+    
+ }
 
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {
@@ -35,7 +52,13 @@
    
   }
   /* Desktop Styles */ 
-  @media only screen and (min-width:1201px) {
-    
-  
+   @media only screen and (min-width:1088px)  {
+    .ingredient{
+             width: 50%;
+        }
+            
+         .imgBox {
+               padding: 30px;
+               
+         }
    }

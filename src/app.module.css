@@ -8,6 +8,7 @@
 html, body {
    height: 100%;
    min-height: 100vh;
+  
 }
 
 
@@ -24,6 +25,7 @@ a {
 .layout {
    display: flex;
    width: 100%;  
+ 
 }
 
 .headings {
@@ -43,12 +45,13 @@ a {
    justify-content: center;
    align-content: center;
    flex-direction: column;
-   background: #EAEBF1;
+   background-color: #EAEBF1;
    border-radius: 10px;
    margin: 1.5em;
    margin-top: 1em;
    padding: 1em;
-  
+   box-shadow:0 0 8px #a0a19f;
+  height: 100%;
 }
 
 /* Phone Styles */ 

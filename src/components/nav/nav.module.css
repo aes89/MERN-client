@@ -29,10 +29,11 @@
     overflow: hidden;
     transition: all .3s ease-in;
     width: 15em;
-    height: 94%;
+    height: 98%;
     background: #EAEBF1;
     color: #3F7209;
     overflow-y: scroll;
+    box-shadow:0 0 8px #a0a19f;
  }
  .trigger:hover {
    cursor: pointer;

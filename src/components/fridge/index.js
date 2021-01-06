@@ -11,7 +11,7 @@ import AutocompleteIngredients from "../ingredientAutocomplete";
 import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import Logo from "../logo";
-
+import SearchRecipeButton from "../searchButton";
 import Loading from "../loading";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -81,20 +81,27 @@ const Fridge = ({actions, fridgeIngredients}) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>My Fridge</h1>
+         
           </Grid>
+        
+      
           <Grid item xs={12} spacing={2}>
+         
+         
             <div class={appstyles.layoutContent}>
             {!loading.done ? (
            <Loading/>
               ) : (  
             <>
-              <AutocompleteIngredients type="fridge"/>
-              <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center">
+              <AutocompleteIngredients type="fridge"/> 
+              {checker ?<div class={styles.buttonBox}><SearchRecipeButton/></div>  : <div></div>  } 
+              <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>
-              {checker  ?   <Button className={styles.button} variant="outlined" width="100px" onClick={() => { handleClearFridge() }}>Clear All Fridge Contents</Button> : <div></div>  } 
+              {checker  ?   <div className={styles.button} ><Button variant="outlined" width="100px" onClick={() => { handleClearFridge() }}>Clear All Fridge Contents</Button></div> : <div></div>  } 
                </>
               )}
+            
             </div>
           </Grid>
         </Grid>
