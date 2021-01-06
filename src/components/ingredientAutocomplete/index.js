@@ -25,6 +25,7 @@ import Button from "@material-ui/core/Button";
 function AutocompleteIngredients({
   actions,
   fridgeIngredients,
+  pantryIngredients,
   type,
   username,
 }) {
@@ -35,6 +36,20 @@ function AutocompleteIngredients({
   console.log("ingredientsList", ingredientsList);
 
   //removes selected ingredient from list
+
+  const filteredFridge = fridgeIngredients
+    ? ingredients.filter(
+        (ingredient) => !fridgeIngredients.includes(ingredient.name)
+      )
+    : ingredients;
+
+  const filteredPantry = pantryIngredients
+    ? pantry.filter(
+        (ingredient) => !pantryIngredients.includes(ingredient.name)
+      )
+    : pantry;
+  const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
+
   // const filteredIngredients = fridgeIngredients
   //   ? ingredients.filter(
   //       (ingredient) => !fridgeIngredients.includes(ingredient.name)
@@ -113,7 +128,8 @@ function AutocompleteIngredients({
       <Autocomplete
         multiple
         id="tags-standard"
-        options={ingredientsList}
+        // options={ingredientsList}
+        options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
         onChange={(event, value) => setValues(value)}
