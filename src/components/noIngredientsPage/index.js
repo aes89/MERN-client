@@ -26,7 +26,7 @@ const NoIngredients = ({ image, type }) => {
     <div>
       <Grid item sm spacing={1} wrap="wrap">
       <div class={styles.noBox}>
-       <div class={styles.imgBox}>
+       <div class={styles.imgBoxPage}>
                   <img alt="Picture of cartoon kitchen" src={image} />
         </div>
         <p>Looks like you have no {type} items! </p> 

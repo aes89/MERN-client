@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: theme.spacing(2),
-    height: "400px",
+    height: "100%",
     maxWidth: "275px",
   },
   paperIngredient: {

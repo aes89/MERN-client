@@ -108,7 +108,7 @@ function AutocompleteIngredients({
 
   return (
     // autocomplete list
-    <div style={{ width: 300, padding: 20 }}>
+    <div class={styles.autoComplete}>
       {errors && <div>{errors}</div>}
       <Autocomplete
         multiple

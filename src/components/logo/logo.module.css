@@ -1,42 +1,42 @@
 .logo {
-  
     position: fixed;
     top: 0;
     right: 0;
     padding: 15px;
-    height: 60px;
-    font-family: "Paytone One", serif;
-    font-size: 1.3em;
+    
     text-align: right;
-    color: #3F7209;
     overflow: hidden;
-    background-color: #ffffff;
-    width: 100%;
-   
+    width: 100%;  
  }
 
  .text {
     font-family: "Paytone One", serif;
     font-size: 1.3em;
     color: #3F7209;
+    background-color: #ffffff;
+    align-self: right;
+    float: right;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow:0 0 8px #a0a19f;
+   
  }
  /* Mobile First */
  @media only screen and (min-width: 672px) and (max-width: 1087px){
   
-    .text {
+     .text {
       font-size: 1.4em;
-   }
+   } 
    
  }
  
  @media only screen and (min-width:1088px)  {
-   .text {
+    .text {
       font-size: 1.8em;
-    
+      width: 200px;
    }
-   .logo{
-     height: 70px; 
-   }
-  
+   
  }
  

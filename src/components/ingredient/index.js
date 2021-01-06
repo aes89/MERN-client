@@ -16,6 +16,7 @@ import {
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
+
 //MATERIAL
 
 import Paper from "@material-ui/core/Paper";
@@ -23,6 +24,13 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClearIcon from "@material-ui/icons/Clear";
+
+import fridge from "../styles/imgs/fridge.png";
+import pantry from "../styles/imgs/pantry.png";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Ingredient = ({
   actions,
@@ -47,6 +55,7 @@ const Ingredient = ({
       .then((r) => {
         console.log("r", r);
         history.push("/ingredients/" + getUsername() + "/fridge");
+        toast.warn("Deleted item from fridge!")
       })
       .then(async (item) => {
         const getFridgeIngredients = await getAllFridgeIngredients(
@@ -75,6 +84,7 @@ const Ingredient = ({
         //setPantry(newArrayy)
         //actions.deleteItemFromPantry(getPantry)
         history.push("/ingredients/" + getUsername() + "/pantry");
+        toast.warn("Deleted item from pantry!")
       })
       .then(async (item) => {
         const getPantryIngredients = await getAllPantryIngredients(
@@ -95,10 +105,18 @@ const Ingredient = ({
       });
   };
 
+ 
   return (
     <div>
       {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
       <Grid item sm spacing={1} wrap="wrap">
+       <div class={styles.imgBox}>
+                <img alt="Picture of cartoon " src={
+                      ingredients === fridgeIngredients
+                        ? fridge
+                        : pantry
+                    } />
+                </div>
         <div class={styles.ingredient}>
           {ingredients &&
             ingredients.map((ingredient) => (

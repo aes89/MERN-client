@@ -81,6 +81,9 @@
     "transform": {
       "^.+\\.jsx?$": "babel-jest",
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
+    },
+    "engines": {
+        "node": "10.x"
     }
   }
 }

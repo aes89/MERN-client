@@ -16,6 +16,7 @@ import Ingredients from "../ingredient";
 import NoIngredients from "../noIngredientsPage";
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Loading from "../loading";
+import SearchRecipeButton from "../searchButton";
 
 import useStyles from "../styles/makeStyles.js";
 import Container from "@material-ui/core/Container";
@@ -93,17 +94,26 @@ const Pantry = ({ actions, pantryIngredients }) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
+              {errors && <div>Error: {errors}</div>}
               {!loading.done ? (
                 <Loading />
               ) : (
                 <>
                   <AutocompleteIngredients type="pantry" />
+                  {checker ? (
+                    <div class={styles.buttonBox}>
+                      <SearchRecipeButton />
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                   <Grid
                     container
                     spacing={1}
                     wrap="wrap"
                     alignItems="center"
                     justify="center"
+                    class={styles.background}
                   >
                     {checker ? (
                       <Ingredients ingredients={pantryIngredients} />
@@ -112,16 +122,17 @@ const Pantry = ({ actions, pantryIngredients }) => {
                     )}
                   </Grid>
                   {checker ? (
-                    <Button
-                      className={styles.button}
-                      variant="outlined"
-                      width="100px"
-                      onClick={() => {
-                        handleClearPantry();
-                      }}
-                    >
-                      Clear All Pantry Contents
-                    </Button>
+                    <div className={styles.button}>
+                      <Button
+                        variant="outlined"
+                        width="100px"
+                        onClick={() => {
+                          handleClearPantry();
+                        }}
+                      >
+                        Clear All Pantry Contents
+                      </Button>
+                    </div>
                   ) : (
                     <div></div>
                   )}
