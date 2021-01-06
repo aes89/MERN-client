@@ -7,7 +7,9 @@
       padding: 1em;
       margin: 0.5em;
       padding-bottom: 40px; 
-      width: 100%;
+ 
+      background-color: white;
+      border-radius: 10px;
  }
 
  .prefBox form{
