@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import styles from "./browse.module.css";
@@ -10,6 +10,7 @@ import SearchRecipeButton from "../searchButton";
 import ListedRecipe from "../listedRecipe";
 
 import Loading from "../loading";
+import Button from "@material-ui/core/Button";
 
 //MATERIAL
 
@@ -18,17 +19,34 @@ import Grid from "@material-ui/core/Grid";
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
+import {getUsername} from '../../services/authServices'
+
+
 import {getFridge, setFridge } from '../../services/ingredientServices'
 
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
+ let history = useHistory();
 
   const testrecipes = TestBrowseData();
    const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);
 
+
+  //This checks if the fridge is empty or not, whether the DB route gets called again
+  function handleNewIngredientsAdded () {
+    let fridgeChecker = getFridge()
+        if (fridgeChecker === []) {
+          setBrowsedRecipes() //local storage
+        history.push("/recipes/browse")
+        } else {   
+      }   
+  }
+
   useEffect(() => {
+    handleNewIngredientsAdded()
+
    if (getBrowsedRecipes() === null) {
        browseSearchRecipes()
             .then((recipes) => {
@@ -55,17 +73,26 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                      
                   });
         } else {
+
          setRecipesState(JSON.parse(getBrowsedRecipes()))
          actions.updatedBrowseRecipes(JSON.parse(getBrowsedRecipes())) 
+
          setTimeout(() => {
-                  setloading(true)
-                  console.log("check loading done") 
-                  //setRecipes(getBrowsedRecipes()
+              setloading(true)
+              console.log("check loading done") 
+              //setRecipes(getBrowsedRecipes()
                   }, 5000)
          }
        
    },[])
 
+//if search again button is clicked, clear local storage and call the route again so the search initalizes again
+  function handleSearchAgain () {
+       setBrowsedRecipes() //local storage
+      //  setRecipesState(recipes) //state 
+     history.push("/recipes/browse")
+      //  actions.updatedBrowseRecipes(recipes) 
+  }
 
   console.log("check") 
   console.log("local store", getBrowsedRecipes())
@@ -105,6 +132,7 @@ let check = getBrowsedRecipes()
                            {randomRecipe} 
                             </div>
                           )}
+                          <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
                           <div className={styles.browseBox}>
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
