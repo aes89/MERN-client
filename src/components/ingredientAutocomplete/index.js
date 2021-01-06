@@ -30,16 +30,22 @@ function AutocompleteIngredients({
 }) {
   console.log("fridge ingredients", fridgeIngredients);
   console.log("ingredients", ingredients);
-  const filteredIngredients = fridgeIngredients
-    ? ingredients.filter(
-        (ingredient) => !fridgeIngredients.includes(ingredient.name)
-      )
-    : ingredients;
+
+  const ingredientsList = type === "fridge" ? ingredients : pantry;
+  console.log("ingredientsList", ingredientsList);
+
+  //removes selected ingredient from list
+  // const filteredIngredients = fridgeIngredients
+  //   ? ingredients.filter(
+  //       (ingredient) => !fridgeIngredients.includes(ingredient.name)
+  //     )
+  //   : ingredients;
 
   let history = useHistory();
   const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
+
   // still need this?
   // if (type === "fridge") {
   //   const usedIngredients = ingredients;
@@ -107,7 +113,7 @@ function AutocompleteIngredients({
       <Autocomplete
         multiple
         id="tags-standard"
-        options={filteredIngredients}
+        options={ingredientsList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
         onChange={(event, value) => setValues(value)}
