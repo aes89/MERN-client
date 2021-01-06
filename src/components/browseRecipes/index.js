@@ -95,7 +95,7 @@ let check = getBrowsedRecipes()
                     ) : (  
                       <div>
                           <div class={styles.possibleStatement}>
-                            You can make {"  "} possible recipes!{" "}
+                            You can make {recipesState.length} possible recipes!{" "}
                           </div>
                           <div className={styles.browseBox}>
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >

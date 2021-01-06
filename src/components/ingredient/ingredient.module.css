@@ -23,12 +23,12 @@
     padding-right: 15px;
 }
 .imgBox {
-    margin: 50px;
+    margin: 90px;
     padding: 10px;
     border-radius: 50%;
     background-color: #3F7209;
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 200px;
+    max-height: 200px;
   
 }
 
@@ -49,12 +49,14 @@
   /* Tablet Styles */ 
   @media only screen and (min-width: 669px) and (max-width: 1200px)  {
    
-   
+    .ingredient{
+             width: 60%;
+        }
   }
   /* Desktop Styles */ 
    @media only screen and (min-width:1088px)  {
     .ingredient{
-             width: 50%;
+             width: 60%;
         }
             
          .imgBox {
