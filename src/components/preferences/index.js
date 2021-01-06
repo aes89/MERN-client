@@ -9,6 +9,8 @@ import {
   updatePreference,
   getUsername,
   setUsername,
+  getPref,
+  setPref
 } from "../../services/authServices";
 import Logo from "../logo";
 import styles from "./preferences.module.css";
@@ -43,6 +45,7 @@ const validate = (values) => {
 const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
 
+
   //change this to get user preferences from DB
   useEffect(() => {
     actions.updatePreferences(getUserPreferences());
@@ -53,6 +56,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
     getPreference(getUsername())
       .then((pref) => {
         console.log(pref)
+        setPref({ ...pref })
         actions.updatePreferences({ ...pref });
       })
       .then(() => {
@@ -118,12 +122,23 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                
                 <div class={styles.formBox}>
                 <Formik
-                  initialValues={Object.fromEntries(
-                    preferencesList.map((preference) => [
-                      preference,
-                      userPreferences.preferences[preference] || false,
-                    ])
-                  )}
+                  // initialValues={Object.fromEntries(
+                  //   preferencesList.map((preference) => [
+                  //     preference,
+                  //     userPreferences.preferences[preference] || false,
+                  //   ])
+                  // )}
+                 
+                 initialValues={{ "Vegetarian": userPreferences.vegetarian,
+                  "Vegan": userPreferences.vegan,
+                  "Gluten-free": userPreferences.glutenFree,
+                  "Dairy-Free": userPreferences.dairyFree,
+                  "Very Healthy": userPreferences.veryHealthy,
+                  "Cheap": userPreferences.cheap,
+                  "Very Popular": userPreferences.veryPopular,
+                  "Sustainable": userPreferences.sustainable}}
+                  
+              
                   onSubmit={async (values) => {
                     // await sleep(500);
                     // actions.submit;
@@ -136,11 +151,11 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                       {/* form maps over list in ./list.js, can update more easily if needed */}
                       {preferencesList.map((preference, index) => (
                         <label key={index}>
-                          <Field type="checkbox" name={preference} />
+                          <Field  type="checkbox" name={preference}/>
                           {preference}
                         </label>
                       ))}
-
+                  
                       <Button
                         class={styles.updateButton}
                         type="submit"

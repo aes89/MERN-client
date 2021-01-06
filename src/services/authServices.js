@@ -61,7 +61,7 @@ export async function uploadProfileImage(image, username) {
 export async function getPreference(username) {
   // call to server to register user
   const response = await api.get("/preferences/" + username);
-  console.log("got user back from server", response);
+  console.log("got user back from server", response.data);
   return response.data;
 }
 
@@ -104,4 +104,19 @@ export function setUsername(user) {
     : localStorage.removeItem("username");
   console.log("local username Updated");
   console.log(user);
+}
+
+
+// Get preferences from localStorage
+export function getPref() {
+  return localStorage.getItem("preferences");
+}
+
+// Store preferences username in local storage
+export function setPref(pref) {
+  pref
+    ? localStorage.setItem("preferences", pref)
+    : localStorage.removeItem("preferences");
+  console.log("local preferences Updated");
+  console.log(pref);
 }

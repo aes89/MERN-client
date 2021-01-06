@@ -2,8 +2,7 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const updatePreferences = createAction("updatePreferences");
 
-//const initialState = { preferences: null };
-const initialState = { vegetarian: false,
+const initialState = { vegetarian: true,
                        vegan: false,
                        glutenFree: false,
                        dairyFree: false,
