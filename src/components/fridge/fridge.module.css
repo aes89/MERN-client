@@ -1,4 +1,43 @@
 
-.button{
-    width: 250px;
+
+
+.background {
+
+    /* background-image: url(../styles/imgs/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+    border-radius: 10px;
+     background-color: white; 
 }
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.button{
+    align-self: center;
+    margin-top: 20px;
+    width: 250px;
+}  
+
+   /* Tablet Styles */ 
+  @media only screen 
+  and (min-device-width: 601px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+   
+   
+  }
+  /* Desktop Styles */ 
+ @media only screen and (min-width:1088px)  {
+    .buttonBox {
+        display: flex;
+         justify-content: flex-end;
+         margin-top: -60px;
+        }
+   }

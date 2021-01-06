@@ -15,6 +15,7 @@ import {
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,8 +29,8 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-  console.log("fridge ingredients", fridgeIngredients);
-  console.log("ingredients", ingredients);
+  //console.log("fridge ingredients", fridgeIngredients);
+  //console.log("ingredients", ingredients);
   const filteredIngredients = fridgeIngredients
     ? ingredients.filter(
         (ingredient) => !fridgeIngredients.includes(ingredient.name)
@@ -40,12 +41,7 @@ function AutocompleteIngredients({
   const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
-  // still need this?
-  // if (type === "fridge") {
-  //   const usedIngredients = ingredients;
-  // } else {
-  //   const usedIngredients = pantry;
-  // }
+
 
   function handleAddFridge(event) {
     //  event.preventDefault()
@@ -102,7 +98,7 @@ function AutocompleteIngredients({
 
   return (
     // autocomplete list
-    <div style={{ width: 300, padding: 20 }}>
+    <div class={styles.autoComplete} >
       {errors && <div>{errors}</div>}
       <Autocomplete
         multiple
@@ -130,6 +126,7 @@ function AutocompleteIngredients({
         {" "}
         Add Ingredients
       </Button>
+    
     </div>
   );
 }
@@ -153,4 +150,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AutocompleteIngredients);
-

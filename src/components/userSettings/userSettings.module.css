@@ -1,12 +1,14 @@
 
  .settingsBox{
    display: flex;
-    justify-content: space-between;
+   justify-content: space-between;
    align-content: center;
    flex-direction: column;
    padding: 1em;
    margin: 0.5em;
    padding-bottom: 40px;
+  
+  
  }
 
  .profileBox{
@@ -46,6 +48,7 @@
 .settingsBox input{
    height: 50px;
    margin: 10px;
+
 }
 
 .updateButton {

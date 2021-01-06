@@ -58,8 +58,9 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
 
   function handleLogout() {
     logoutUser()
-      .then((response) => {
-        console.log("Got back response on logout", response.status);
+      .then((r) => {
+        console.log("Got back response on logout", r);
+        console.log("logout")
         history.push("/");
         toast.info("Goodbye")
       })
@@ -70,15 +71,14 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
           error
         );
       });
-    // Even if we catch an error, logout the user locally
-    // Remove the token from localStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("fridge");
-    localStorage.removeItem("pantry"); 
-    localStorage.removeItem("browsedRecipes");  
-    actions.logout();
-  }
+    //clear storage if errrot
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    localStorage.removeItem("fridge")
+    localStorage.removeItem("pantry")
+    localStorage.removeItem("browsedRecipes")
+    actions.logout()
+}
 
   return (
     <div class={styles.navBox}>
@@ -182,10 +182,13 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
                   </Button>
                 </Fragment>
               )}
+              
             </Fragment>
           </li>
         </ul>
+           
       </nav>
+
     </div>
   );
 };
