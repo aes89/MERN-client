@@ -18,6 +18,7 @@ import Grid from "@material-ui/core/Grid";
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
+import {getFridge, setFridge } from '../../services/ingredientServices'
 
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
@@ -71,6 +72,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   console.log("useState updated", recipesState)
   console.log("redux  updated", browseRecipes)
   ///let display = JSON.stringify(browseRecipes.recipes[0].title)
+  const fridgeChecker = getFridge()
+  const randomRecipe = "You have no ingredients in your fridge or pantry, so here are some recipe ideas!"
 
 let check = getBrowsedRecipes()
   if (check < 0) {
@@ -94,9 +97,14 @@ let check = getBrowsedRecipes()
                 <Loading/>
                     ) : (  
                       <div>
+                      {fridgeChecker ? (
                           <div class={styles.possibleStatement}>
-                            You can make {recipesState.length} possible recipes!{" "}
-                          </div>
+                            You can make {recipesState.length} possible recipes!  
+                          </div> ) : ( 
+                           <div class={styles.possibleStatement}>
+                           {randomRecipe} 
+                            </div>
+                          )}
                           <div className={styles.browseBox}>
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
