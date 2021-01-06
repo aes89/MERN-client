@@ -19,6 +19,12 @@
 .possibleStatement {
     text-align: center;
     font-size: 1.5em;
+    
+}
+.newSearchButton {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 /* Phone Styles */ 
@@ -32,15 +38,20 @@
  and (min-device-width: 601px) 
  and (-webkit-min-device-pixel-ratio: 1) {
    
-  
+ 
  }
- @media only screen and (min-width:1024px)  {
+ @media only screen and (min-width:1025px)  {
     .searchButtonMove {
-     
-        margin-top: -50px;
-       
-        
+        margin-top: -50px;    
     }
+
+    .newSearchButton {
+     justify-content: flex-start;
+   }
+
+    .possibleStatement {
+     margin-bottom: -20px;
+   }
   
 }
 

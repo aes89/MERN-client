@@ -19,10 +19,13 @@ import Grid from "@material-ui/core/Grid";
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
+import {getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import {getFridge, setFridge } from '../../services/ingredientServices'
+
 
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
@@ -56,12 +59,15 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
                       console.log("gfdfdf", recipes)
+                      toast.success("Here are your recipes!")
                }).then (
                   setTimeout(() => {
                   setloading(true)
                   console.log("check loading done") 
                   //setRecipes(getBrowsedRecipes()
+                  //  toast.success("Here are your recipes!")
                   }, 5000)
+                
                )
               .catch((error) => {
                   console.log("errors")
@@ -102,10 +108,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const fridgeChecker = getFridge()
   const randomRecipe = "You have no ingredients in your fridge or pantry, so here are some recipe ideas!"
 
-let check = getBrowsedRecipes()
-  if (check < 0) {
-  console.log("check ffff", check[0].title);
-}
 
   return (
       <div className={classes.root}>
@@ -124,6 +126,9 @@ let check = getBrowsedRecipes()
                 <Loading/>
                     ) : (  
                       <div>
+                      <div class={styles.newSearchButton}>
+                          <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
+                          </div>
                       {fridgeChecker ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  
@@ -132,7 +137,7 @@ let check = getBrowsedRecipes()
                            {randomRecipe} 
                             </div>
                           )}
-                          <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
+                      
                           <div className={styles.browseBox}>
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (

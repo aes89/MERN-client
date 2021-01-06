@@ -1,17 +1,17 @@
 .listItem {
     display: flex;
     flex-direction: column;
-   
+    height: 100%;
 }
 .listItem  h3{
    
-    height: 20px;
+    height: 40px;
     width: 200px;
     font-size: 1em;
     word-wrap: break-word;
 }
 .listItem  div{ 
-padding: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
 }
 .listItem  p{
     all: unset;
