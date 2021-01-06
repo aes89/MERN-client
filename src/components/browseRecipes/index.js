@@ -52,9 +52,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
    if (getBrowsedRecipes() === null) {
        browseSearchRecipes()
-            .then((recipes) => {
-                    //console.log(JSON.stringify(recipes[0].id))
-                      console.log("hit here testing")
+            .then((recipes) => {   
                       setRecipesState(recipes) //state 
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
@@ -64,19 +62,16 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                   setTimeout(() => {
                   setloading(true)
                   console.log("check loading done") 
-                  //setRecipes(getBrowsedRecipes()
-                  //  toast.success("Here are your recipes!")
                   }, 5000)
                 
                )
               .catch((error) => {
                   console.log("errors")
                   console.log(error)
-                if (error.response && error.response.status === 401)
+                  if (error.response && error.response.status === 401)
                   setErrors(" failed. ")
                   else   
-                  setErrors("There may be a problem with the server. Please try again after a few moments.")
-                     
+                  setErrors("There may be a problem with the server. Please try again after a few moments.")        
                   });
         } else {
 
@@ -122,6 +117,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             </Grid>
             <Grid item xs={12} spacing={2}>
               <div class={appstyles.layoutContent}>
+                 {errors && <div>Error: {errors}</div>}
                {loading === false ? (
                 <Loading/>
                     ) : (  

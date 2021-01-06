@@ -89,6 +89,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
          
          
             <div class={appstyles.layoutContent}>
+                   {errors && <div>Error: {errors}</div>}
             {!loading.done ? (
            <Loading/>
               ) : (  
