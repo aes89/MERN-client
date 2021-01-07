@@ -15,6 +15,7 @@ import {
 } from "../../services/authServices";
 import Logo from "../logo";
 import Loading from "../loading";
+import Card from "../imageParallax";
 import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -132,7 +133,7 @@ const text = {
               ) : (  
             <> 
                     <div className={styles.prefBox}>
-                    
+                   
                           <div class={styles.formBox}>
 
                                   <Formik
@@ -174,6 +175,7 @@ const text = {
                         </div>
                       <div class={styles.imgBox}>
                         <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                        <Card/>
                       </div>
                     </div>
                 </>

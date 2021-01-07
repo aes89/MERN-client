@@ -110,8 +110,13 @@
  }
 
  .userProfile, .foodPic {
- 
+
    margin-bottom: 10px;
+ }
+
+.userProfile img{
+    min-width: 100px;
+    border-radius: 15px;
  }
 
  .userProfile > div {

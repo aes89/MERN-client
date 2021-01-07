@@ -14,7 +14,7 @@
  .profileBox{
     display: flex;
     justify-content: flex-end;
-    margin: 20px;
+  
     
  }
 .fileBox{
@@ -24,8 +24,8 @@
  }
 
 .profileBox img{
-    width: 100px;
-
+    width: 200px;
+    border-radius: 15px;
  }
 
 

@@ -29,8 +29,8 @@
       padding: 10px;
       border-radius: 50%;
       background-color: #FB8D02;
-      max-width: 250px;
-      max-height: 250px;
+      max-width: 350px;
+      max-height: 350px;
       
 }
 
@@ -42,7 +42,7 @@
  .prefBox img{
     width: 100%;
     padding: 30px;
-    
+ 
  }
 
  .prefBox label{
@@ -81,7 +81,7 @@
       max-width: 200px;
       max-height: 200px;
       margin: 20px;
-   }
+    }
    .prefBox{
       flex-wrap: wrap-reverse;  
     }
