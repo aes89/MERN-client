@@ -42,15 +42,16 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
     let fridgeChecker = getFridge()
         if (fridgeChecker === []) {
           setBrowsedRecipes() //local storage
-        history.push("/recipes/browse")
+          console.log(getBrowsedRecipes() )
+          //recipeSearchHandler()
+          history.push("/recipes/browse")
         } else {   
       }   
   }
 
-  useEffect(() => {
-    handleNewIngredientsAdded()
-
-   if (getBrowsedRecipes() === null) {
+  function recipeSearchHandler (){
+   handleNewIngredientsAdded()
+   if (!getBrowsedRecipes()) {
        browseSearchRecipes()
             .then((recipes) => {   
                       setRecipesState(recipes) //state 
@@ -84,14 +85,24 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               //setRecipes(getBrowsedRecipes()
                   }, 5000)
          }
+
+  }
+
+  useEffect(() => {
+    //handleNewIngredientsAdded()
+    recipeSearchHandler()
+   
        
    },[])
 
 //if search again button is clicked, clear local storage and call the route again so the search initalizes again
   function handleSearchAgain () {
+      history.push("/recipes/browse")
+       setloading(false)
        setBrowsedRecipes() //local storage
       //  setRecipesState(recipes) //state 
-     history.push("/recipes/browse")
+      recipeSearchHandler()
+      history.push("/recipes/browse")
       //  actions.updatedBrowseRecipes(recipes) 
   }
 
@@ -101,7 +112,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   console.log("redux  updated", browseRecipes)
   ///let display = JSON.stringify(browseRecipes.recipes[0].title)
   const fridgeChecker = getFridge()
-  const randomRecipe = "You have no ingredients in your fridge or pantry, so here are some recipe ideas!"
+  const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
 
 
   return (
@@ -122,8 +133,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                 <Loading/>
                     ) : (  
                       <div>
-                      <div class={styles.newSearchButton}>
-                          </div>
                       {fridgeChecker ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  

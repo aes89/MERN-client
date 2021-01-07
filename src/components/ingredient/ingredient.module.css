@@ -23,7 +23,7 @@
     padding-right: 15px;
 }
 .imgBox {
-    margin: 90px;
+    margin: 80px;
     padding: 10px;
     border-radius: 50%;
     background-color: #3F7209;
@@ -56,7 +56,7 @@
   /* Desktop Styles */ 
    @media only screen and (min-width:1088px)  {
     .ingredient{
-             width: 60%;
+             width: 50%;
         }
             
          .imgBox {
