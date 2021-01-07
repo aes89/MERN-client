@@ -35,15 +35,10 @@
   /* Tablet Styles */ 
   @media only screen and (min-width: 669px) and (max-width: 1200px)  {
    
-    .ingredient{
-             width: 60%;
-        }
+    
   }
   /* Desktop Styles */ 
    @media only screen and (min-width:1088px)  {
-    .ingredient{
-             width: 50%;
-        }
-            
+     
         
    }
