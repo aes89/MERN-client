@@ -21,7 +21,7 @@
       padding-bottom: 40px;
       font-size: 1.2em;
  }
-
+    
 
 .imgBox  {
       margin: 60px 120px 20px 20px;
@@ -46,6 +46,11 @@
  .prefBox label{
       margin: 1em;
  }
+ .prefItem{
+    text-align: center;
+    padding-left: 15px;
+
+ }
 
  .updateButton {
    all: unset;
@@ -53,7 +58,7 @@
    color: white;
    padding: 10px;
    margin: 10px;
-   margin-top: 20px;
+   margin-top: 50px;
    border-radius: 5px;
    cursor: pointer;
    width: 140px;
@@ -83,10 +88,10 @@
    
   }
   /* Desktop Styles */ 
-  @media only screen and (min-width:1023px) {
-         .imgBox {
-            
+  @media only screen and (min-width:1088px) {
+        .imgBox {
                padding: 30px;
-               
+               display: inline-block;
+               float: right;
          }
    }

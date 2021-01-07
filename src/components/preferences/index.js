@@ -146,13 +146,11 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                                       {preferencesList.map((preference, index) => (
                                   
                                               <label key={index}>
-                                                <Field  type="checkbox" name={preference}/>
-                                                {preference}
-
+                                                <Field  type="checkbox" name={preference}/>  
+                                                 <span class={styles.prefItem}>{preferencesName[index]}</span>  
                                               </label>
                                     
-                                      ))}
-                                    
+                                       ))}
                                       <Button
                                         class={styles.updateButton}
                                         type="submit"   
