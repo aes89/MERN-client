@@ -6,11 +6,13 @@ import { useHistory } from "react-router-dom";
 import styles from "./auto.module.css";
 import ingredients from "../../data/ingredients.json";
 import pantry from "../../data/pantry.json";
+
 import {
   addFridgeItem,
   addPantryItem,
   getFridge,
   setFridge,
+  getPantry,
   setPantry,
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
@@ -26,11 +28,12 @@ import Button from "@material-ui/core/Button";
 function AutocompleteIngredients({
   actions,
   fridgeIngredients,
+  pantryIngredients,
   type,
   username,
 }) {
-  //console.log("fridge ingredients", fridgeIngredients);
-  //console.log("ingredients", ingredients);
+
+  //NEED TO REFACTOR TO ACCOUNT FOR BELOW WITH PANTRY OR FRIDGE PAGE- this still works. Just need to use type to choose either pantry or fridge
   const filteredIngredients = fridgeIngredients
     ? ingredients.filter(
         (ingredient) => !fridgeIngredients.includes(ingredient.name)
@@ -103,7 +106,7 @@ function AutocompleteIngredients({
       <Autocomplete
         multiple
         id="tags-standard"
-        options={filteredIngredients}
+        options={type == "fridge" ? ingredients : pantry}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
         onChange={(event, value) => setValues(value)}
