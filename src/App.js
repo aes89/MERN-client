@@ -104,7 +104,7 @@ const App = ({ actions }) => {
             path="/recipes/browse"
             component={BrowseRecipes}
           />
-          <Route exact path="/recipes/:id" component={SingleRecipe} />
+          <Route exact path="/recipes/:id/recipe" component={SingleRecipe} />
           <Route
             exact
             path="/recipes/saved-recipes"

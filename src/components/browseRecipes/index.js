@@ -6,7 +6,7 @@ import appstyles from "../../app.module.css";
 import styles from "./browse.module.css";
 import useStyles from "../styles/makeStyles.js";
 
-import SearchRecipeButton from "../searchButton";
+
 import ListedRecipe from "../listedRecipe";
 
 import Loading from "../loading";
@@ -111,8 +111,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             <Logo />
             <Grid item xs={12} spacing={2}>
               <h1 class={appstyles.headings}>Browse Recipes</h1>
-              <div className={styles.searchButtonMove}>
-                <SearchRecipeButton />
+              <div class={styles.searchButtonMove}>
+                <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
               </div>
             </Grid>
             <Grid item xs={12} spacing={2}>
@@ -123,7 +123,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                     ) : (  
                       <div>
                       <div class={styles.newSearchButton}>
-                          <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
                           </div>
                       {fridgeChecker ? (
                           <div class={styles.possibleStatement}>

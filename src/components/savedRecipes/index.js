@@ -7,8 +7,6 @@ import styles from "./saved.module.css";
 
 import ListedRecipe from "../listedRecipe";
 //MATERIAL
-
-import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
@@ -36,9 +34,9 @@ const SavedRecipes = ({ savedRecipes }) => {
                   alignItems="center"
                   justify="center"
                 >
-                  {savedRecipes.map((recipe) => (
+                  {/* {savedRecipes.map((recipe) => (
                     <ListedRecipe key={recipe.id} recipe={recipe} />
-                  ))}
+                  ))} */}
                 </Grid>
               </div>
             </div>
