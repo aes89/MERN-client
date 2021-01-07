@@ -2,7 +2,6 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const updatePreferences = createAction("updatePreferences");
 
-//const initialState = { preferences: null };
 const initialState = { vegetarian: false,
                        vegan: false,
                        glutenFree: false,
@@ -17,7 +16,7 @@ const initialState = { vegetarian: false,
 const userPreferences = createReducer(initialState, (builder) => {
   builder.addCase(updatePreferences, (state, action) => {
     state.preferences = action.payload;
-    console.log("updated pref")
+    console.log("updated redux pref")
     console.log(action.payload)
   });
 });

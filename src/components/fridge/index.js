@@ -81,12 +81,14 @@ const Fridge = ({actions, fridgeIngredients}) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>My Fridge</h1>
-         
+             <div class={styles.searchButtonMove}>
+                <SearchRecipeButton/>
+              </div>
           </Grid>
         
       
           <Grid item xs={12} spacing={2}>
-         
+      
          
             <div class={appstyles.layoutContent}>
                    {errors && <div>Error: {errors}</div>}
@@ -94,8 +96,10 @@ const Fridge = ({actions, fridgeIngredients}) => {
            <Loading/>
               ) : (  
             <>
+               <div class={styles.fridgeAutoBox}> 
               <AutocompleteIngredients type="fridge"/> 
-              {checker ?<div class={styles.buttonBox}><SearchRecipeButton/></div>  : <div></div>  } 
+              <div class={styles.fridge}> <img alt="Picture of cartoon fridge " src={fridge} /></div>
+              </div>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
               </Grid>

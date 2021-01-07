@@ -1,15 +1,14 @@
 
 
 .background {
-    
-    /* background-image: url(../styles/imgs/pantrybackground.jpg);
+    border-radius: 10px;
+    min-height: 80vh;
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/pantrybackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; */
-    border-radius: 10px;
-    background-color: white; 
-   
+    background-position: center; 
 }
+
 
 .buttonBox {
     display: flex;
@@ -24,12 +23,52 @@
     align-self: center;
     margin-top: 20px;
     width: 250px;
+}
+.searchButtonMove {
+    float: right;
+    display: inline-block;
+    margin-right: 22px;
+     margin-bottom: 20px;
 }  
+.pantryAutoBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.pantry{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #3F7209;
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 50px; 
+  
+}
+.pantry img {
+    width: 100%;
+    padding: 30px;
+}
+  @media only screen 
+  and (max-width: 767px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+        .pantry{
+                    display: none;
+                }
+        .pantryAutoBox{
+                justify-content: center;
+                
+            }
+  }
   /* Desktop Styles */ 
  @media only screen and (min-width:1088px)  {
     .buttonBox {
         display: flex;
          justify-content: flex-end;
          margin-top: -60px;
+        }
+      .searchButtonMove {
+        margin-top: -50px;    
         }
    }

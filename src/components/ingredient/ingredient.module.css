@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     padding: 20px;
     width: 100%;
-}
+}     
 
 .ingredientText{
     display: flex;
@@ -22,21 +22,7 @@
 .ingredientText p{
     padding-right: 15px;
 }
-.imgBox {
-    margin: 90px;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #3F7209;
-    max-width: 200px;
-    max-height: 200px;
-  
-}
 
-.imgBox img{
-    width: 100%;
-    padding: 30px;
-    
- }
 
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {
@@ -49,19 +35,10 @@
   /* Tablet Styles */ 
   @media only screen and (min-width: 669px) and (max-width: 1200px)  {
    
-    .ingredient{
-             width: 60%;
-        }
+    
   }
   /* Desktop Styles */ 
    @media only screen and (min-width:1088px)  {
-    .ingredient{
-             width: 60%;
-        }
-            
-         .imgBox {
-               padding: 30px;
-               display: inline-block;
-               float: right;
-         }
+     
+        
    }

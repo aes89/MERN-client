@@ -1,13 +1,13 @@
 
  .prefBox{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-direction: row;
       flex-wrap: wrap;
       padding: 1em;
       margin: 0.5em;
+      
       padding-bottom: 40px; 
- 
       background-color: white;
       border-radius: 10px;
  }
@@ -18,17 +18,20 @@
       flex-direction: column;
       padding: 10px;
       margin: 0.5em;
+      margin-top: 50px;
       padding-bottom: 40px;
       font-size: 1.2em;
  }
+    
 
 .imgBox  {
-      margin: 60px 120px 20px 20px;
+      margin: 90px;
       padding: 10px;
       border-radius: 50%;
       background-color: #FB8D02;
-      max-width: 250px;
-      max-height: 250px;
+      max-width: 350px;
+      max-height: 350px;
+      
 }
 
 .formBox {
@@ -39,11 +42,19 @@
  .prefBox img{
     width: 100%;
     padding: 30px;
-    
+ 
  }
 
  .prefBox label{
       margin: 1em;
+ }
+ 
+ .prefItem{
+    text-align: center;
+    padding: 9px 15px 9px 15px;
+    margin-left: 5px;
+    background-color: #EAEBF1;
+    border-radius: 25px;
  }
 
  .updateButton {
@@ -52,13 +63,15 @@
    color: white;
    padding: 10px;
    margin: 10px;
-   margin-top: 20px;
+   margin-top: 50px;
    border-radius: 5px;
    cursor: pointer;
    width: 140px;
    text-align: center;
    font-size: 0.8em;
  }
+
+
  /* Phone Styles */ 
  @media only screen and (max-width: 767px) {
     .prefBox form{
@@ -68,24 +81,27 @@
       max-width: 200px;
       max-height: 200px;
       margin: 20px;
-   }
+    }
    .prefBox{
       flex-wrap: wrap-reverse;  
-      }
+    }
  }
   
   /* Tablet Styles */ 
-  @media only screen 
-  and (min-device-width: 601px) 
-  and (-webkit-min-device-pixel-ratio: 1) {
-   
-   
+  @media only screen and (min-width: 601px) { 
+        .imgBox {
+               padding: 30px;
+               display: inline-block;
+               float: right;
+         }
   }
   /* Desktop Styles */ 
-  @media only screen and (min-width:1023px) {
+  @media only screen and (min-width:1024px) {
+        
+         .prefBox form{
+            font-size: 1.2em;
+         }
          .imgBox {
-            
-               padding: 30px;
-               
+              margin: 100px;
          }
    }

@@ -24,6 +24,7 @@ import fridge from "../styles/imgs/fridge.png";
 import pantry from "../styles/imgs/pantry.png";
 import pref from "../styles/imgs/preference.png";
 import list from "../styles/imgs/list.png";
+import ProfileDefault from "../styles/imgs/profileDefault.png";
 
 //FOOD IMAGES
 import carrot from "../styles/imgs/carrot.png";
@@ -117,7 +118,8 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
                     src={currentUserSettings.profile}
                   />
                 ) : (
-                  <AccountCircleIcon fontSize="large" />
+                    <img src={ProfileDefault} />
+                
                 )}
                 {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
               </div>

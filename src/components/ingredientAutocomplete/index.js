@@ -6,11 +6,13 @@ import { useHistory } from "react-router-dom";
 import styles from "./auto.module.css";
 import ingredients from "../../data/ingredients.json";
 import pantry from "../../data/pantry.json";
+
 import {
   addFridgeItem,
   addPantryItem,
   getFridge,
   setFridge,
+  getPantry,
   setPantry,
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";

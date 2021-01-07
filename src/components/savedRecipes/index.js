@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
@@ -7,15 +7,36 @@ import styles from "./saved.module.css";
 
 import ListedRecipe from "../listedRecipe";
 //MATERIAL
-
-import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+
+
+import TestSaveData from "../../data/testSaveRecipeData";
+
 
 const SavedRecipes = ({ savedRecipes }) => {
   const classes = useStyles();
 
-  //get saved receipes from local storage and assign to state first then use that state to display recipes
+
+  let TestData = TestSaveData()
+  console.log(TestData)
+    //Call DB to display recipe data
+    //save to local
+    //save to  redux
+    //then display
+    useEffect(() => { 
+
+    
+    }, []);
+
+  
+    //function for removing from saved recipes- this is sent via props to listed recipe
+    function removeSavedRecipeHandler () {
+
+
+
+
+    }
 
   return (
     <div className={classes.root}>
@@ -36,9 +57,9 @@ const SavedRecipes = ({ savedRecipes }) => {
                   alignItems="center"
                   justify="center"
                 >
-                  {savedRecipes.map((recipe) => (
-                    <ListedRecipe key={recipe.id} recipe={recipe} />
-                  ))}
+                   {TestData.map((recipe) => (
+                    <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
+                  ))} 
                 </Grid>
               </div>
             </div>

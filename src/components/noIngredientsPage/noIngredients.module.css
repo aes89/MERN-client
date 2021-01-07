@@ -1,10 +1,10 @@
  .noBox  {
-     margin-bottom: 60px;
+     margin: 70px 0px 60px 0px;
      height: 100%;
-    display: flex;
+     display: flex;
      justify-content: center;
      flex-direction: column;
-     
+     align-items: center;
  }
 
 .imgBoxPage {
@@ -23,9 +23,16 @@
     padding: 30px;
  }
 
+.textBox{
+    background-color: #d3edb7;
+    border-radius: 10px;
+    color: black;
+    padding: 15px;
+}
+
  .noBox p {
      text-align: center;
-     padding: 5px;
      font-size: 1.3em;
+     font-weight: 600;
      
  }

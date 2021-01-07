@@ -6,11 +6,12 @@ import appstyles from "../../app.module.css";
 import styles from "./browse.module.css";
 import useStyles from "../styles/makeStyles.js";
 
-import SearchRecipeButton from "../searchButton";
+
 import ListedRecipe from "../listedRecipe";
 
 import Loading from "../loading";
 import Button from "@material-ui/core/Button";
+
 
 //MATERIAL
 
@@ -18,7 +19,7 @@ import Grid from "@material-ui/core/Grid";
 
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
-import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
+import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
 import {getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
@@ -42,15 +43,16 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
     let fridgeChecker = getFridge()
         if (fridgeChecker === []) {
           setBrowsedRecipes() //local storage
-        history.push("/recipes/browse")
+          console.log(getBrowsedRecipes() )
+          //recipeSearchHandler()
+          history.push("/recipes/browse")
         } else {   
       }   
   }
 
-  useEffect(() => {
-    handleNewIngredientsAdded()
-
-   if (getBrowsedRecipes() === null) {
+  function recipeSearchHandler (){
+   handleNewIngredientsAdded()
+   if (!getBrowsedRecipes()) {
        browseSearchRecipes()
             .then((recipes) => {   
                       setRecipesState(recipes) //state 
@@ -84,24 +86,60 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               //setRecipes(getBrowsedRecipes()
                   }, 5000)
          }
+
+  }
+
+  useEffect(() => {
+    //handleNewIngredientsAdded()
+    recipeSearchHandler()
+   
        
    },[])
 
 //if search again button is clicked, clear local storage and call the route again so the search initalizes again
   function handleSearchAgain () {
+      history.push("/recipes/browse")
+       setloading(false)
        setBrowsedRecipes() //local storage
       //  setRecipesState(recipes) //state 
-     history.push("/recipes/browse")
+      recipeSearchHandler()
+      history.push("/recipes/browse")
       //  actions.updatedBrowseRecipes(recipes) 
   }
+
+
+//Write savedRecipe Handler
+ function saveRecipeHandler(newRecipe) {
+        addNewSavedRecipe(newRecipe)
+          .then((r) => {
+            //saved to redux
+            //save to local storage
+            toast.success(" You have saved this recipe!");
+          })
+          .catch((error) => {
+            console.log("errors");
+            console.log(error.response);
+            toast.error("Oh no error!");
+            if (error.response && error.response.status === 401)
+              setErrors("Error Saving Recipe");
+            else
+              setErrors(
+                "There may be a problem with the server. Please try again after a few moments."
+              );
+        });
+  }
+
+
+
 
   console.log("check") 
   console.log("local store", getBrowsedRecipes())
   console.log("useState updated", recipesState)
   console.log("redux  updated", browseRecipes)
-  ///let display = JSON.stringify(browseRecipes.recipes[0].title)
+
+
   const fridgeChecker = getFridge()
-  const randomRecipe = "You have no ingredients in your fridge or pantry, so here are some recipe ideas!"
+  const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
 
 
   return (
@@ -111,8 +149,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             <Logo />
             <Grid item xs={12} spacing={2}>
               <h1 class={appstyles.headings}>Browse Recipes</h1>
-              <div className={styles.searchButtonMove}>
-                <SearchRecipeButton />
+              <div class={styles.searchButtonMove}>
+                <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
               </div>
             </Grid>
             <Grid item xs={12} spacing={2}>
@@ -122,9 +160,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                 <Loading/>
                     ) : (  
                       <div>
-                      <div class={styles.newSearchButton}>
-                          <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
-                          </div>
                       {fridgeChecker ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  
@@ -138,9 +173,9 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
                                 
-                                  <ListedRecipe key={recipe.id} recipe={recipe} />
+                                  <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler} />
                                 
-                                ))}     
+                                   ))}     
 
                               
                           
