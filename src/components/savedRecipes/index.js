@@ -53,7 +53,7 @@ const SavedRecipes = ({ savedRecipes }) => {
                   justify="center"
                 >
                    {TestData.map((recipe) => (
-                    <ListedRecipe key={recipe.id} recipe={recipe} />
+                    <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes"/>
                   ))} 
                 </Grid>
               </div>
