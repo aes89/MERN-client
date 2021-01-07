@@ -14,6 +14,7 @@ import {
   setPref
 } from "../../services/authServices";
 import Logo from "../logo";
+import Loading from "../loading";
 import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -47,7 +48,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
    let history = useHistory();
   const [checked, setChecked] = useState(null);
-
+   const [loading, setloading] = useState({ done: false });
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
@@ -69,11 +70,12 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-     
-
+        setTimeout(() => {
+        setloading({ done: true })
+        console.log("check loading done")  
+        }, 2500);
   }, []);
 
-  let usedValues = getPref()
 
   const formik = useFormik({
     //calls boolean validation
@@ -85,8 +87,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
           updatePreference({ ...values }, getUsername())
             .then((pref) => {
               console.log(pref);
-              setPref({ ...pref })
-              actions.updatePreferences({ ...pref });
+              setPref(pref)
+              actions.updatePreferences(pref);
               console.log("test returned", JSON.parse(getPref()))
               history.push("/preferences/"+getUsername())
               toast.success("Preferences Updated!")
@@ -113,54 +115,60 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
-              <div className={styles.prefBox}>
-                {formik.status && <div>Error: {formik.status}. </div>}
-               
-                <div class={styles.formBox}>
+          {!loading.done ? (
+           <Loading/>
+              ) : (  
+            <>
+                    <div className={styles.prefBox}>
+                      {formik.status && <div>Error: {formik.status}. </div>}
+                    
+                          <div class={styles.formBox}>
 
-                  <Formik
+                                  <Formik
 
-                    initialValues={{ "vegetarian": userPreferences.vegetarian,
-                      "vegan": userPreferences.vegan,
-                      "glutenFree": userPreferences.glutenFree,
-                      "dairyFree": userPreferences.dairyFree,
-                      "veryHealthy": userPreferences.veryHealthy,
-                      "cheap": userPreferences.cheap,
-                      "veryPopular": userPreferences.veryPopular,
-                      "sustainable": userPreferences.sustainable}}
-          
-                      onSubmit={async (values) => {
-                        await sleep(500);
-                        submitHandler(values)
-                      }}
-                >
-                  {({ values }) => (
-                    <Form>
-                      {/* form maps over list in ./list.js, can update more easily if needed */}
-                      {preferencesList.map((preference, index) => (
-                  
-                              <label key={index}>
-                                <Field  type="checkbox" name={preference}/>
-                                {preference}
+                                    initialValues={{ "vegetarian": userPreferences.vegetarian,
+                                      "vegan": userPreferences.vegan,
+                                      "glutenFree": userPreferences.glutenFree,
+                                      "dairyFree": userPreferences.dairyFree,
+                                      "veryHealthy": userPreferences.veryHealthy,
+                                      "cheap": userPreferences.cheap,
+                                      "veryPopular": userPreferences.veryPopular,
+                                      "sustainable": userPreferences.sustainable}}
+                          
+                                      onSubmit={async (values) => {
+                                        await sleep(500);
+                                        submitHandler(values)
+                                      }}
+                                >
+                                  {({ values }) => (
+                                    <Form>
+                                      {/* form maps over list in ./list.js, can update more easily if needed */}
+                                      {preferencesList.map((preference, index) => (
+                                  
+                                              <label key={index}>
+                                                <Field  type="checkbox" name={preference}/>
+                                                {preference}
 
-                              </label>
-                     
-                       ))}
-                     
-                      <Button
-                        class={styles.updateButton}
-                        type="submit"   
-                      >
-                        Update Preferences
-                      </Button>
-                    </Form>
-                  )}
-                </Formik>
-               </div>
-                <div class={styles.imgBox}>
-                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
-                </div>
-              </div>
+                                              </label>
+                                    
+                                      ))}
+                                    
+                                      <Button
+                                        class={styles.updateButton}
+                                        type="submit"   
+                                      >
+                                        Update Preferences
+                                      </Button>
+                                    </Form>
+                                  )}
+                                </Formik>
+                        </div>
+                      <div class={styles.imgBox}>
+                        <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                      </div>
+                    </div>
+                </>
+              )}
             </div>
           </Grid>
         </Grid>
@@ -171,7 +179,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
 //checks state
 const mapStateToProps = (state) => ({
-  userPreferences: state.userPreferences,
+  userPreferences: state.userPreferences.preferences,
   userLoggedIn: state.userLoggedIn.username,
 });
 
