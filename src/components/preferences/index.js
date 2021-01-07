@@ -120,8 +120,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
               ) : (  
             <>
                     <div className={styles.prefBox}>
-                      {formik.status && <div>Error: {formik.status}. </div>}
-                    
+                      {/* {formik.status && <div>Error: {formik.status}. </div>}
+                     */}
                           <div class={styles.formBox}>
 
                                   <Formik
@@ -177,7 +177,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
 //checks state
 const mapStateToProps = (state) => ({
-  userPreferences: state.userPreferences.preferences,
+  userPreferences: state.userPreferences,
   userLoggedIn: state.userLoggedIn.username,
 });
 
