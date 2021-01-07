@@ -167,7 +167,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                   </label>
                       <div class={styles.fileBox}>
                         <ProfileImage />
-        
+                       
                       </div>
                   <label htmlFor="username">Username</label>
 

@@ -86,7 +86,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
         
       
           <Grid item xs={12} spacing={2}>
-         
+      
          
             <div class={appstyles.layoutContent}>
                    {errors && <div>Error: {errors}</div>}

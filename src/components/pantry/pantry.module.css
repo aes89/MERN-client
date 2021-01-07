@@ -1,15 +1,14 @@
 
 
 .background {
-    
-    /* background-image: url(../styles/imgs/pantrybackground.jpg);
+    border-radius: 10px;
+    min-height: 80vh;
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/pantrybackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; */
-    border-radius: 10px;
-    background-color: white; 
-   
+    background-position: center; 
 }
+
 
 .buttonBox {
     display: flex;

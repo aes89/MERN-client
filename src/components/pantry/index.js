@@ -91,6 +91,7 @@ const Pantry = ({actions, pantryIngredients}) => {
              <AutocompleteIngredients type="pantry"/>
                 {checker ?<div class={styles.buttonBox}><SearchRecipeButton/></div>  : <div></div>  } 
                 <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
+                
                     {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
                 </Grid>
                  {checker  ?  <div className={styles.button}><Button   variant="outlined" width="100px" onClick={() => { handleClearPantry() }}>Clear All Pantry Contents</Button></div>  : <div></div>  } 
