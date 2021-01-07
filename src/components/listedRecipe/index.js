@@ -10,12 +10,15 @@ import Button from '@material-ui/core/Button';
 
 import carrot from "../styles/imgs/carrot.png";
 
-const ListedRecipe = ({recipe}) => {
+const ListedRecipe = ({recipe, saveRecipe}) => {
   const classes = useStyles();
 
  const {id, usedIngred, missedIngred, title, readyInMinutes, servings, image} = recipe 
 
  let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
+
+
+
 
     return (
         <div>
@@ -29,7 +32,7 @@ const ListedRecipe = ({recipe}) => {
                     <p>Serves: {servings}</p>
                     <p>Prep time: {convert}</p>
                 </div>
-                <Button variant="outlined" class={styles.savedButton} >Save Recipe!</Button>
+                <Button variant="outlined" class={styles.savedButton} onClick={saveRecipe}>Save Recipe!</Button>
                </Paper>
         </Grid>
         </div>

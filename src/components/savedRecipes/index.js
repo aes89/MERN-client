@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
@@ -13,7 +13,13 @@ import Grid from "@material-ui/core/Grid";
 const SavedRecipes = ({ savedRecipes }) => {
   const classes = useStyles();
 
-  //get saved receipes from local storage and assign to state first then use that state to display recipes
+     //get saved receipes from local storage and assign to state first then use that state to display recipes
+    useEffect(() => { 
+
+    
+    }, []);
+
+
 
   return (
     <div className={classes.root}>

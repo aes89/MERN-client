@@ -12,13 +12,14 @@ import ListedRecipe from "../listedRecipe";
 import Loading from "../loading";
 import Button from "@material-ui/core/Button";
 
+
 //MATERIAL
 
 import Grid from "@material-ui/core/Grid";
 
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
-import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
+import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
 import {getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
 
@@ -106,11 +107,37 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
       //  actions.updatedBrowseRecipes(recipes) 
   }
 
+
+//Write savedRecipe Handler
+ function saveRecipeHandler(newRecipe) {
+        addNewSavedRecipe(newRecipe)
+          .then((r) => {
+            //saved to redux
+            //save to local storage
+            toast.success(" You have saved this recipe!");
+          })
+          .catch((error) => {
+            console.log("errors");
+            console.log(error.response);
+            toast.error("Oh no error!");
+            if (error.response && error.response.status === 401)
+              setErrors("Error Saving Recipe");
+            else
+              setErrors(
+                "There may be a problem with the server. Please try again after a few moments."
+              );
+        });
+  }
+
+
+
+
   console.log("check") 
   console.log("local store", getBrowsedRecipes())
   console.log("useState updated", recipesState)
   console.log("redux  updated", browseRecipes)
-  ///let display = JSON.stringify(browseRecipes.recipes[0].title)
+
+
   const fridgeChecker = getFridge()
   const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
 
@@ -146,9 +173,9 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
                                 
-                                  <ListedRecipe key={recipe.id} recipe={recipe} />
+                                  <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler} />
                                 
-                                ))}     
+                                   ))}     
 
                               
                           

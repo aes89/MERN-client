@@ -68,7 +68,7 @@ function AutocompleteIngredients({
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-  }
+   }
 
   function handleAddPantry(event) {
     //   event.preventDefault()
