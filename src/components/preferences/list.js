@@ -1,14 +1,14 @@
 import React from "react";
 
 const preferencesList = [
-  "Vegetarian",
-  "Vegan",
-  "Gluten-free",
-  "Dairy-Free",
-  "Very Healthy",
-  "Cheap",
-  "Very Popular",
-  "Sustainable",
+  "vegetarian",
+  "vegan",
+  "glutenFree",
+  "dairyFree",
+  "veryHealthy",
+  "cheap",
+  "veryPopular",
+  "sustainable",
 ];
 
 export default preferencesList;

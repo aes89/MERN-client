@@ -67,7 +67,7 @@ export async function getPreference(username) {
 
 export async function updatePreference(userInfo, username) {
   // call to server to register user
-  const response = await api.post(
+  const response = await api.patch(
     "/preferences/"+username+"/edit",
     userInfo
   );

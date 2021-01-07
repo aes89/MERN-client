@@ -123,14 +123,14 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
                   <Formik
 
-                    initialValues={{ "Vegetarian": userPreferences.vegetarian,
-                      "Vegan": userPreferences.vegan,
-                      "Gluten-free": userPreferences.glutenFree,
-                      "Dairy-Free": userPreferences.dairyFree,
-                      "Very Healthy": userPreferences.veryHealthy,
-                      "Cheap": userPreferences.cheap,
-                      "Very Popular": userPreferences.veryPopular,
-                      "Sustainable": userPreferences.sustainable}}
+                    initialValues={{ "vegetarian": userPreferences.vegetarian,
+                      "vegan": userPreferences.vegan,
+                      "glutenFree": userPreferences.glutenFree,
+                      "dairyFree": userPreferences.dairyFree,
+                      "veryHealthy": userPreferences.veryHealthy,
+                      "cheap": userPreferences.cheap,
+                      "veryPopular": userPreferences.veryPopular,
+                      "sustainable": userPreferences.sustainable}}
           
                       onSubmit={async (values) => {
                         await sleep(500);
@@ -141,12 +141,12 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                     <Form>
                       {/* form maps over list in ./list.js, can update more easily if needed */}
                       {preferencesList.map((preference, index) => (
-                          <div role="group" aria-labelledby="checkbox-group">
+                  
                               <label key={index}>
                                 <Field  type="checkbox" name={preference}/>
                                 {preference}
                               </label>
-                         </div>
+                     
                       ))}
                      
                       <Button
