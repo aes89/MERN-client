@@ -29,8 +29,10 @@ const NoIngredients = ({ image, type }) => {
        <div class={styles.imgBoxPage}>
                   <img alt="Picture of cartoon kitchen" src={image} />
         </div>
+        <div class={styles.textBox}>
         <p>Looks like you have no {type} items! </p> 
         <p>Would you like to enter some?</p>
+        </div>
         </div>
       </Grid>
     </div>

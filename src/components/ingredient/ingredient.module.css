@@ -22,21 +22,7 @@
 .ingredientText p{
     padding-right: 15px;
 }
-.imgBox {
-    margin: 80px;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #3F7209;
-    max-width: 200px;
-    max-height: 200px;
-  
-}
 
-.imgBox img{
-    width: 100%;
-    padding: 30px;
-    
- }
 
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {
@@ -59,9 +45,5 @@
              width: 50%;
         }
             
-         .imgBox {
-               padding: 30px;
-               display: inline-block;
-               float: right;
-         }
+        
    }
