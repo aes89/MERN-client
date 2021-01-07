@@ -109,13 +109,6 @@ const Ingredient = ({
     <div>
       {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
       <Grid item sm spacing={1} wrap="wrap">
-       <div class={styles.imgBox}>
-                <img alt="Picture of cartoon " src={
-                      ingredients === fridgeIngredients
-                        ? fridge
-                        : pantry
-                    } />
-                </div>
         <div class={styles.ingredient}>
           {ingredients &&
             ingredients.map((ingredient) => (

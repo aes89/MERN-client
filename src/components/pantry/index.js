@@ -80,6 +80,9 @@ const Pantry = ({actions, pantryIngredients}) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>My Pantry Staples</h1>
+            <div class={styles.searchButtonMove}>
+                <SearchRecipeButton/>
+            </div>
           </Grid>
           <Grid item xs={12} spacing={2}>
           <div class={appstyles.layoutContent}>
@@ -88,9 +91,12 @@ const Pantry = ({actions, pantryIngredients}) => {
            <Loading/>
               ) : (  
             <>
+              <div class={styles.pantryAutoBox}> 
              <AutocompleteIngredients type="pantry"/>
-                {checker ?<div class={styles.buttonBox}><SearchRecipeButton/></div>  : <div></div>  } 
+              <div class={styles.pantry}> <img alt="Picture of cartoon pantry " src={pantry} /></div>
+              </div>
                 <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
+                
                     {checker  ?  <Ingredients ingredients={pantryIngredients}/> : <NoIngredients type="pantry" image={pantry} />  } 
                 </Grid>
                  {checker  ?  <div className={styles.button}><Button   variant="outlined" width="100px" onClick={() => { handleClearPantry() }}>Clear All Pantry Contents</Button></div>  : <div></div>  } 

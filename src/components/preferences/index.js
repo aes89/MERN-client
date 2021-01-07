@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import ReactDOM from "react-dom";
+import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, useFormik } from "formik";
-import preferencesList from "./list";
+import {preferencesList, preferencesName } from "./list";
 import getUserPreferences from "../../utils/get-user-preferences";
 import {
   getPreference,
   updatePreference,
   getUsername,
   setUsername,
+  getPref,
+  setPref
 } from "../../services/authServices";
 import Logo from "../logo";
+import Loading from "../loading";
 import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
 import Kitchen from "../styles/imgs/kitchen.png";
+import Fade from 'react-reveal/Fade';
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -42,66 +47,75 @@ const validate = (values) => {
 // actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
+   let history = useHistory();
+   const [checked, setChecked] = useState(null);
+   const [loading, setloading] = useState({ done: false });
 
-  //change this to get user preferences from DB
-  useEffect(() => {
-    actions.updatePreferences(getUserPreferences());
-  }, []);
+
+const text = {
+      color: 'red',
+      marginLeft: "10px",
+
+    }; 
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
     getPreference(getUsername())
       .then((pref) => {
-        console.log(pref)
-        actions.updatePreferences({ ...pref });
-      })
-      .then(() => {
-        console.log(userPreferences);
+        setPref({ ...pref })
+        actions.updatePreferences(JSON.parse(getPref()));
+        setChecked(JSON.parse(getPref()))
+        console.log("check local", JSON.parse(getPref()))
+        console.log("check redux", userPreferences)
       })
       .catch((error) => {
         console.log("errors");
         console.log(error.response);
         if (error.response && error.response.status === 404)
-          formik.setStatus("Error getting pref information ");
+          //formik.setStatus("Error getting pref information ");
+          toast.error("Error getting pref information")
         else
-          formik.setStatus(
-            "There may be a problem with the server. Please try again after a few moments."
-          );
+          // formik.setStatus(
+          //   "There may be a problem with the server. Please try again after a few moments."
+          // );
+          toast.error("There may be a problem with the server. Please try again after a few moments.")
       });
+        setTimeout(() => {
+        setloading({ done: true })
+        console.log("check loading done")  
+        }, 2500);
   }, []);
+
 
   const formik = useFormik({
     //calls boolean validation
     validate,
-
-    // This is calling the DB patch request to update the initial user preference data
-    onSubmit: (values) => {
-      //alert(JSON.stringify(values, null, 2));
-      updatePreference({ ...values }, userLoggedIn)
-        .then((pref) => {
-          console.log(pref);
-          actions.updatePreferences({ ...pref });
-          toast.success("Preferences Updated!")
-        })
-        .catch((error) => {
-          //console.log("errors")
-          //console.log(error.response)
-          toast.error("Oh no, error!")
-          if (error.response && error.response.status === 404)
-            formik.setStatus("Error getting pref information ");
-          else
-            formik.setStatus(
-              "There may be a problem with the server. Please try again after a few moments."
-            );
-        });
-    },
   });
 
-  //if no userPreferences (preferences in state returned from db) then show no selections
-  // this broken, not showing whole page when no prefernces
-  if (!userPreferences.preferences) {
-    return null;
-  }
+  function submitHandler (values) {
+      console.log("check",  values )
+          updatePreference({ ...values }, getUsername())
+            .then((pref) => {
+              console.log(pref);
+              setPref(pref)
+              actions.updatePreferences(pref);
+              console.log("test returned", JSON.parse(getPref()))
+              history.push("/preferences/"+getUsername())
+              toast.success("Preferences Updated!")
+               
+            })
+            .catch((error) => {
+              toast.error("Oh no, error!")
+              if (error.response && error.response.status === 404)
+                //formik.setStatus("Error getting pref information ");
+                toast.error("On no, error updated preferences!")
+              else
+                // formik.setStatus(
+                //   "There may be a problem with the server. Please try again after a few moments."
+                // );
+                 toast.error("There may be a problem with the server. Please try again after a few moments.")
+            });
+    }
 
   return (
     <div className={classes.root}>
@@ -113,49 +127,57 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
-              <div className={styles.prefBox}>
-                {formik.status && <div>Error: {formik.status}. </div>}
-               
-                <div class={styles.formBox}>
-                <Formik
-                  initialValues={Object.fromEntries(
-                    preferencesList.map((preference) => [
-                      preference,
-                      userPreferences.preferences[preference] || false,
-                    ])
-                  )}
-                  onSubmit={async (values) => {
-                    // await sleep(500);
-                    // actions.submit;
-                    //needs to submit to database first, then need to update local state from database. Load on log in?? Can be slower but I don't think users can really doing anything else - they'll need the data immediately..
-                    // alert(JSON.stringify(values, null, 2));
-                  }}
-                >
-                  {({ values }) => (
-                    <Form>
-                      {/* form maps over list in ./list.js, can update more easily if needed */}
-                      {preferencesList.map((preference, index) => (
-                        <label key={index}>
-                          <Field type="checkbox" name={preference} />
-                          {preference}
-                        </label>
-                      ))}
+          {!loading.done ? (
+           <Loading/>
+              ) : (  
+            <> 
+                    <div className={styles.prefBox}>
+                   
+                          <div class={styles.formBox}>
 
-                      <Button
-                        class={styles.updateButton}
-                        type="submit"
-                        onClick={formik.handleSubmit}
-                      >
-                        Update Preferences
-                      </Button>
-                    </Form>
-                  )}
-                </Formik>
-               </div>
-                <div class={styles.imgBox}>
-                  <img alt="Picture of cartoon kitchen" src={Kitchen} />
-                </div>
-              </div>
+                                  <Formik
+
+                                    initialValues={{ "vegetarian": userPreferences.vegetarian,
+                                      "vegan": userPreferences.vegan,
+                                      "glutenFree": userPreferences.glutenFree,
+                                      "dairyFree": userPreferences.dairyFree,
+                                      "veryHealthy": userPreferences.veryHealthy,
+                                      "cheap": userPreferences.cheap,
+                                      "veryPopular": userPreferences.veryPopular,
+                                      "sustainable": userPreferences.sustainable}}
+                          
+                                      onSubmit={async (values) => {
+                                        await sleep(500);
+                                        submitHandler(values)
+                                      }}
+                                >
+                                  {({ values }) => (
+                                    <Form>
+                                      {/* form maps over list in ./list.js, can update more easily if needed */}
+                                      {preferencesList.map((preference, index) => (
+                                  
+                                              <label key={index}>
+                                                <Field  type="checkbox" name={preference}/>  
+                                                 <span class={styles.prefItem}>{preferencesName[index]}</span>  
+                                              </label>
+                                    
+                                       ))}
+                                      <Button
+                                        class={styles.updateButton}
+                                        type="submit"   
+                                      >
+                                        Update Preferences
+                                      </Button>
+                                    </Form>
+                                  )}
+                                </Formik>
+                        </div>
+                      <div class={styles.imgBox}>
+                        <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                      </div>
+                    </div>
+                </>
+              )}
             </div>
           </Grid>
         </Grid>
@@ -166,7 +188,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
 //checks state
 const mapStateToProps = (state) => ({
-  userPreferences: state.userPreferences,
+  userPreferences: state.userPreferences.preferences,
   userLoggedIn: state.userLoggedIn.username,
 });
 

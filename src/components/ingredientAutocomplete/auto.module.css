@@ -1,29 +1,33 @@
 
 .button{
-    
    margin-top: 20px !important;
 }
 .autoComplete{
+   margin-top: 20px;
    width: 270px;
    padding: 20px;
+   background-color: white;
+   border-radius: 10px;
+   margin-bottom: 10px;
 }
-
 
    /* Tablet Styles */ 
    @media only screen 
    and (max-width: 601px) 
    and (-webkit-min-device-pixel-ratio: 1) {
       .autoComplete{
-      align-self: center;
+         align-self: center;
          }
    }
+
+
 /* Desktop Styles */ 
 @media only screen and (min-width:1023px) {
          .imgBox { 
          padding: 30px;       
          }
          .autoComplete{
-            width: 450px;
+            width: 550px;
             padding: 20px;
            
          }
