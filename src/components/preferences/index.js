@@ -44,7 +44,7 @@ const validate = (values) => {
 // actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
-
+  const [checked, setChecked] = useState(null);
 
   //change this to get user preferences from DB
   useEffect(() => {
@@ -58,6 +58,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         console.log(pref)
         setPref({ ...pref })
         actions.updatePreferences({ ...pref });
+        console.log("test", JSON.parse(getPref()))
       })
       .then(() => {
         console.log(userPreferences);
@@ -74,38 +75,36 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
       });
   }, []);
 
+  function changeHandler () {
+    let newState = [...checked, 'Hi buddy'];
+     setChecked(newState);
+  }
+
   const formik = useFormik({
     //calls boolean validation
     validate,
-
-    // This is calling the DB patch request to update the initial user preference data
-    onSubmit: (values) => {
-      //alert(JSON.stringify(values, null, 2));
-      updatePreference({ ...values }, userLoggedIn)
-        .then((pref) => {
-          console.log(pref);
-          actions.updatePreferences({ ...pref });
-          toast.success("Preferences Updated!")
-        })
-        .catch((error) => {
-          //console.log("errors")
-          //console.log(error.response)
-          toast.error("Oh no, error!")
-          if (error.response && error.response.status === 404)
-            formik.setStatus("Error getting pref information ");
-          else
-            formik.setStatus(
-              "There may be a problem with the server. Please try again after a few moments."
-            );
-        });
-    },
   });
 
-  //if no userPreferences (preferences in state returned from db) then show no selections
-  // this broken, not showing whole page when no prefernces
-  if (!userPreferences.preferences) {
-    return null;
-  }
+  function submitHandler (values) {
+      console.log("check",  values )
+          updatePreference({ ...values }, getUsername())
+            .then((pref) => {
+              console.log(pref);
+              actions.updatePreferences({ ...pref });
+              toast.success("Preferences Updated!")
+            })
+            .catch((error) => {
+              //console.log("errors")
+              console.log(error.response)
+              toast.error("Oh no, error!")
+              if (error.response && error.response.status === 404)
+                formik.setStatus("Error getting pref information ");
+              else
+                formik.setStatus(
+                  "There may be a problem with the server. Please try again after a few moments."
+                );
+            });
+    }
 
   return (
     <div className={classes.root}>
@@ -121,45 +120,38 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                 {formik.status && <div>Error: {formik.status}. </div>}
                
                 <div class={styles.formBox}>
-                <Formik
-                  // initialValues={Object.fromEntries(
-                  //   preferencesList.map((preference) => [
-                  //     preference,
-                  //     userPreferences.preferences[preference] || false,
-                  //   ])
-                  // )}
-                 
-                 initialValues={{ "Vegetarian": userPreferences.vegetarian,
-                  "Vegan": userPreferences.vegan,
-                  "Gluten-free": userPreferences.glutenFree,
-                  "Dairy-Free": userPreferences.dairyFree,
-                  "Very Healthy": userPreferences.veryHealthy,
-                  "Cheap": userPreferences.cheap,
-                  "Very Popular": userPreferences.veryPopular,
-                  "Sustainable": userPreferences.sustainable}}
-                  
-              
-                  onSubmit={async (values) => {
-                    // await sleep(500);
-                    // actions.submit;
-                    //needs to submit to database first, then need to update local state from database. Load on log in?? Can be slower but I don't think users can really doing anything else - they'll need the data immediately..
-                    // alert(JSON.stringify(values, null, 2));
-                  }}
+
+                  <Formik
+
+                    initialValues={{ "Vegetarian": userPreferences.vegetarian,
+                      "Vegan": userPreferences.vegan,
+                      "Gluten-free": userPreferences.glutenFree,
+                      "Dairy-Free": userPreferences.dairyFree,
+                      "Very Healthy": userPreferences.veryHealthy,
+                      "Cheap": userPreferences.cheap,
+                      "Very Popular": userPreferences.veryPopular,
+                      "Sustainable": userPreferences.sustainable}}
+          
+                      onSubmit={async (values) => {
+                        await sleep(500);
+                        submitHandler(values)
+                      }}
                 >
                   {({ values }) => (
                     <Form>
                       {/* form maps over list in ./list.js, can update more easily if needed */}
                       {preferencesList.map((preference, index) => (
-                        <label key={index}>
-                          <Field  type="checkbox" name={preference}/>
-                          {preference}
-                        </label>
+                          <div role="group" aria-labelledby="checkbox-group">
+                              <label key={index}>
+                                <Field  type="checkbox" name={preference}/>
+                                {preference}
+                              </label>
+                         </div>
                       ))}
-                  
+                     
                       <Button
                         class={styles.updateButton}
-                        type="submit"
-                        onClick={formik.handleSubmit}
+                        type="submit"   
                       >
                         Update Preferences
                       </Button>

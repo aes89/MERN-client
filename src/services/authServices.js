@@ -68,7 +68,7 @@ export async function getPreference(username) {
 export async function updatePreference(userInfo, username) {
   // call to server to register user
   const response = await api.post(
-    "/preferences/" + username + "/edit",
+    "/preferences/"+username+"/edit",
     userInfo
   );
   console.log("got user back from server", response);
@@ -115,7 +115,7 @@ export function getPref() {
 // Store preferences username in local storage
 export function setPref(pref) {
   pref
-    ? localStorage.setItem("preferences", pref)
+    ? localStorage.setItem("preferences", JSON.stringify(pref))
     : localStorage.removeItem("preferences");
   console.log("local preferences Updated");
   console.log(pref);
