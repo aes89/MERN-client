@@ -1,7 +1,7 @@
 
  .prefBox{
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       flex-direction: row;
       flex-wrap: wrap;
       padding: 1em;
@@ -84,7 +84,7 @@
    }
    .prefBox{
       flex-wrap: wrap-reverse;  
-      }
+    }
  }
   
   /* Tablet Styles */ 

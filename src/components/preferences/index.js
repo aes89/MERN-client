@@ -20,6 +20,7 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
 import Kitchen from "../styles/imgs/kitchen.png";
+import Fade from 'react-reveal/Fade';
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -47,8 +48,15 @@ const validate = (values) => {
 const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
    let history = useHistory();
-  const [checked, setChecked] = useState(null);
+   const [checked, setChecked] = useState(null);
    const [loading, setloading] = useState({ done: false });
+
+
+const text = {
+      color: 'red',
+      marginLeft: "10px",
+
+    }; 
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
@@ -64,11 +72,13 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         console.log("errors");
         console.log(error.response);
         if (error.response && error.response.status === 404)
-          formik.setStatus("Error getting pref information ");
+          //formik.setStatus("Error getting pref information ");
+          toast.error("Error getting pref information")
         else
-          formik.setStatus(
-            "There may be a problem with the server. Please try again after a few moments."
-          );
+          // formik.setStatus(
+          //   "There may be a problem with the server. Please try again after a few moments."
+          // );
+          toast.error("There may be a problem with the server. Please try again after a few moments.")
       });
         setTimeout(() => {
         setloading({ done: true })
@@ -97,11 +107,13 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
             .catch((error) => {
               toast.error("Oh no, error!")
               if (error.response && error.response.status === 404)
-                formik.setStatus("Error getting pref information ");
+                //formik.setStatus("Error getting pref information ");
+                toast.error("On no, error updated preferences!")
               else
-                formik.setStatus(
-                  "There may be a problem with the server. Please try again after a few moments."
-                );
+                // formik.setStatus(
+                //   "There may be a problem with the server. Please try again after a few moments."
+                // );
+                 toast.error("There may be a problem with the server. Please try again after a few moments.")
             });
     }
 
@@ -118,10 +130,9 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
           {!loading.done ? (
            <Loading/>
               ) : (  
-            <>
+            <> 
                     <div className={styles.prefBox}>
-                      {/* {formik.status && <div>Error: {formik.status}. </div>}
-                     */}
+                    
                           <div class={styles.formBox}>
 
                                   <Formik
@@ -177,7 +188,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
 //checks state
 const mapStateToProps = (state) => ({
-  userPreferences: state.userPreferences,
+  userPreferences: state.userPreferences.preferences,
   userLoggedIn: state.userLoggedIn.username,
 });
 
