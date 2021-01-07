@@ -30,8 +30,13 @@ const SavedRecipes = ({ savedRecipes }) => {
     }, []);
 
   
-   //function for removing from saved recipes
+    //function for removing from saved recipes- this is sent via props to listed recipe
+    function removeSavedRecipeHandler () {
 
+
+
+
+    }
 
   return (
     <div className={classes.root}>
@@ -53,7 +58,7 @@ const SavedRecipes = ({ savedRecipes }) => {
                   justify="center"
                 >
                    {TestData.map((recipe) => (
-                    <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes"/>
+                    <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
                   ))} 
                 </Grid>
               </div>

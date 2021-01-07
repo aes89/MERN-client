@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import carrot from "../styles/imgs/carrot.png";
 
-const ListedRecipe = ({recipe, saveRecipe, savedType}) => {
+const ListedRecipe = ({recipe, saveRecipe, savedType, removeSavedRecipe}) => {
   const classes = useStyles();
 
  const {id, usedIngred, missedIngred, title, readyInMinutes, servings, image} = recipe 
@@ -31,7 +31,7 @@ const ListedRecipe = ({recipe, saveRecipe, savedType}) => {
                             <p>Serves: {servings}</p>
                             <p>Prep time: {convert}</p>
                            </div>
-                            <Button variant="outlined" class={styles.removeButton} onClick={saveRecipe}>Remove</Button>
+                            <Button variant="outlined" class={styles.removeButton} onClick={removeSavedRecipe}>Remove</Button>
                     </Paper>
                 </Grid>
             </div>)
