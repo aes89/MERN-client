@@ -30,19 +30,6 @@ const Home = ({ actions, userLoggedIn }) => {
             personlised to you!
           </h3>
           <SearchRecipeButton />
-          {/* <AuthenticationModal />
-          <div>
-            {userLoggedIn ? (
-              <LoggedIn />
-            ) : (
-              <Fragment>
-                <button onClick={() => setModalOpen("login")}>Login</button>
-                <button onClick={() => setModalOpen("register")}>
-                  Register
-                </button>
-              </Fragment>
-            )}
-          </div> */}
         </div>
       </main>
     </div>

@@ -32,6 +32,10 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+
+
+//NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
+//MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
   // Add your own authentication on the below line.
   const isLoggedIn = getUsername();
