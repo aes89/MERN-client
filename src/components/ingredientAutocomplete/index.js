@@ -17,7 +17,6 @@ import {
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,22 +31,33 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
+  console.log("fridge ingredients", fridgeIngredients);
+  console.log("ingredients", ingredients);
 
-  //NEED TO REFACTOR TO ACCOUNT FOR BELOW WITH PANTRY OR FRIDGE PAGE- this still works. Just need to use type to choose either pantry or fridge
-  const filteredIngredients = fridgeIngredients
+  const ingredientsList = type === "fridge" ? ingredients : pantry;
+  console.log("ingredientsList", ingredientsList);
+
+  //removes selected ingredient from list of ingredients to add
+
+  const filteredFridge = fridgeIngredients
     ? ingredients.filter(
         (ingredient) => !fridgeIngredients.includes(ingredient.name)
       )
     : ingredients;
+
+  const filteredPantry = pantryIngredients
+    ? pantry.filter(
+        (ingredient) => !pantryIngredients.includes(ingredient.name)
+      )
+    : pantry;
+  const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
 
   let history = useHistory();
   const [selectedItem, setSelectedItem] = useState(null);
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
 
-
   function handleAddFridge(event) {
-    //  event.preventDefault()
     console.log(values);
     const newValues = values.map((i) => i.name);
     console.log(newValues.join(", "));
@@ -71,10 +81,9 @@ function AutocompleteIngredients({
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-   }
+  }
 
   function handleAddPantry(event) {
-    //   event.preventDefault()
     console.log(values);
     const newValues = values.map((i) => i.name);
     console.log(newValues.join(", "));
@@ -101,14 +110,16 @@ function AutocompleteIngredients({
 
   return (
     // autocomplete list
-    <div class={styles.autoComplete} >
+    <div class={styles.autoComplete}>
       {errors && <div>{errors}</div>}
       <Autocomplete
         multiple
         id="tags-standard"
-        options={type == "fridge" ? ingredients : pantry}
+        // options={ingredientsList}
+        options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
+        // defaultValue={[filteredList[13]]}
         onChange={(event, value) => setValues(value)}
         renderInput={(params) => {
           return (
@@ -129,7 +140,6 @@ function AutocompleteIngredients({
         {" "}
         Add Ingredients
       </Button>
-    
     </div>
   );
 }
@@ -151,5 +161,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(AutocompleteIngredients);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AutocompleteIngredients);
