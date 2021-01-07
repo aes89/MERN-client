@@ -98,8 +98,9 @@
     width: 2em;
     height: 2em;
  }
- .navLink:hover {
+ .navLink:hover{
     color: #FB8D02;
+    font-size: 1.05em;
  }
  
  .navLink img::before {
