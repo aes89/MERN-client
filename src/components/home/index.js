@@ -37,10 +37,10 @@ const Home = ({ actions, userLoggedIn }) => {
            <p>{joke}</p>
          </Fade>
           <Swing>
-          <h1 class={styles.pulsate}>What is in your fridge?</h1>
+          <h1 >What is in your fridge?</h1>
             </Swing>
          <Fade bottom>
-          <h3>
+          <h3 >
             Just add your ingredients and FridgeMate will help find recipes
             personlised to you!
           </h3>
