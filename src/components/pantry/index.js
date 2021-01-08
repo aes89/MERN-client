@@ -22,15 +22,13 @@ import Loading from "../loading";
 import SearchRecipeButton from "../searchButton";
 
 
-import Container from "@material-ui/core/Container";
 import Fadein from '@material-ui/core/Fade';
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
 import pantry from "../styles/imgs/pantry.png";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Pantry = ({ actions, pantryIngredients }) => {
@@ -113,7 +111,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
                     <AutocompleteIngredients type="pantry" />
                     <div class={styles.pantry}>
                       {" "}
-                      <img alt="Picture of cartoon pantry " src={pantry} />
+                      <img alt="cartoon pantry " src={pantry} />
                     </div>
                   </div>
                   <Grid

@@ -7,7 +7,6 @@ import styles from "./saved.module.css";
 
 import ListedRecipe from "../listedRecipe";
 //MATERIAL
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 

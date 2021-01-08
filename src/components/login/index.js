@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const validate = (values) => {

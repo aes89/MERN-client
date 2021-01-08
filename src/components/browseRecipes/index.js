@@ -11,17 +11,16 @@ import ListedRecipe from "../listedRecipe";
 import Loading from "../loading";
 
 import Fadein from '@material-ui/core/Fade';
-import Fade from 'react-reveal/Fade';
+
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
-import TestBrowseData from "../../data/testBrowseRecipeData";
-import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
-import {getFridge, setFridge } from '../../services/ingredientServices'
-import {getUsername} from '../../services/authServices'
 
-import { ToastContainer, toast } from 'react-toastify';
+import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
+import {getFridge } from '../../services/ingredientServices'
+
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -30,7 +29,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
   let history = useHistory();
 
-  const testrecipes = TestBrowseData();
+
    const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);

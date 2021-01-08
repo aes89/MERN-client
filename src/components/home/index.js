@@ -12,9 +12,7 @@ import Fadein from '@material-ui/core/Fade';
 
 const Home = ({ actions, userLoggedIn }) => {
   const [joke, setJoke] = useState("");
-
-  const { setModalOpen } = actions;
-
+  
   const text = {
         color: '#3F7209',
         marginLeft: "10px"
@@ -34,7 +32,7 @@ const Home = ({ actions, userLoggedIn }) => {
       <main class={styles.homeContent}>
         <div class={styles.homeBox}>
          <Fade top>
-           <p>{joke}</p>
+           <p style={text}>{joke}</p>
          </Fade>
           <Swing>
           <h1 >What is in your fridge?</h1>

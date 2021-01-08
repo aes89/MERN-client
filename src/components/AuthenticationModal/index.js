@@ -5,7 +5,7 @@ import Login from "../login";
 import Register from "../register";
 
 const AuthenticationModal = ({ actions, modalId }) => {
-  const { closeModal, openModal } = actions;
+  const { closeModal } = actions;
 
   const logInRegisterModals = {
     register: <Register />,
@@ -32,15 +32,6 @@ const AuthenticationModal = ({ actions, modalId }) => {
       contentLabel="Log In"
     >
       {modalId && logInRegisterModals[modalId]}
-      {/* <button class="modalLoginButton" onClick={() => openModal("login")}>
-        Login
-      </button>
-      <button class="modalRegisterButton" onClick={() => openModal("register")}>
-        Register
-      </button>
-      <button class="modalCancelButton" onClick={closeModal}>
-        Cancel
-      </button> */}
     </Modal>
   );
 };

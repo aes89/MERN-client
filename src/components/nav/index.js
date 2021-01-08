@@ -1,23 +1,19 @@
-import React, { Fragment, useEffect, useState} from "react";
+import React, { Fragment} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Modal from "react-modal";
+
 import { useHistory } from "react-router-dom";
 
 import styles from "./nav.module.css";
 
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
-import {logoutUser, getUserSettings } from "../../services/authServices";
-import Logo from "../logo";
+import {logoutUser } from "../../services/authServices";
+
 
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Fadein from '@material-ui/core/Fade';
 
 //IMAGES-icons
@@ -38,7 +34,7 @@ import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -102,7 +98,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
             <Link to={"/user/" + userLoggedIn + "/account-settings"}>
               <div class={styles.userProfile}>
                 {currentProfile ? (
-                  <img alt="Users profile image" src={currentProfile} /> ) : (
+                  <img alt="profile of user" src={currentProfile} /> ) : (
                   <img src={ProfileDefault} /> )}
                 {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
               </div>

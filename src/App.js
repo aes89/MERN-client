@@ -9,9 +9,8 @@ import {
   setUsername,
 } from "./services/authServices";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import notify from "./utils/notifications.js";
+import { ToastContainer } from "react-toastify";
+
 
 import store from "./index";
 import UserSettings from "./components/userSettings";
@@ -33,7 +32,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 //NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
 //MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  // Add your own authentication on the below line.
+
   const isLoggedIn = getUsername();
 
   return (
@@ -59,8 +58,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 // )
 
 const App = ({ actions }) => {
-  let checkUser = getUsername();
-  useEffect(() => {
+  
+  useEffect(( ) => {
 
     try {
       actions.logIn(getUsername());

@@ -22,7 +22,7 @@ import Fadein from '@material-ui/core/Fade';
 
 import fridge from "../styles/imgs/fridge.png";
 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -103,7 +103,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <>
                <div class={styles.fridgeAutoBox}> 
               <AutocompleteIngredients type="fridge"/> 
-              <div class={styles.fridge}> <img alt="Picture of cartoon fridge " src={fridge} /></div>
+              <div class={styles.fridge}> <img alt="Fridge cartoon" src={fridge} /></div>
               </div>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 

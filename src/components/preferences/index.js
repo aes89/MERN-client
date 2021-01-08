@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import ReactDOM from "react-dom";
 import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, useFormik } from "formik";
 
 import {preferencesList, preferencesName } from "./list";
 
-import getUserPreferences from "../../utils/get-user-preferences";
 import {
   getPreference,
   updatePreference,
   getUsername,
-  setUsername,
   getPref,
   setPref
 } from "../../services/authServices";
@@ -24,17 +21,14 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
 import Kitchen from "../styles/imgs/kitchen.png";
-import Fade from 'react-reveal/Fade';
+
 
 //MATERIAL
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -57,11 +51,6 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
    const [loading, setloading] = useState({ done: false });
 
 
-const text = {
-      color: 'red',
-      marginLeft: "10px",
-
-    }; 
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
@@ -179,7 +168,7 @@ const text = {
                                 </Formik>
                         </div>
                       <div class={styles.imgBox}>
-                        <img alt="Picture of cartoon kitchen" src={Kitchen} />
+                        <img alt="cartoon kitchen" src={Kitchen} />
                       </div>
                     </div>
                 </>

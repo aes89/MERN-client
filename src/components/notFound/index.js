@@ -6,8 +6,6 @@ import useStyles from "../styles/makeStyles.js";
 
 
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 

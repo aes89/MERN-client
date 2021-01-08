@@ -12,7 +12,6 @@ import {
   updateUserSettings,
   getUsername,
   setUsername,
-  getProfile,
   setProfile,
 } from "../../services/authServices";
 
@@ -25,13 +24,10 @@ import ProfileDefault from "../styles/imgs/profileDefault.png";
 import Fade from 'react-reveal/Fade';
 //MATERIAL
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -176,9 +172,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                         <form onSubmit={formik.handleSubmit}>
                           <div class={styles.profileBox}>
                             {currentUserSettings.profile ? (
-                              <img src={currentUserSettings.profile} />
+                              <img alt="profile of user"src={currentUserSettings.profile} />
                             ) : (
-                              <img src={ProfileDefault} />
+                              <img alt="default profile" src={ProfileDefault} />
                             )}
                           </div>
                           <label htmlFor="photo" class={styles.profileBox}>

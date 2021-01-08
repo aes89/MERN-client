@@ -1,5 +1,5 @@
 import { uploadProfileImage, getUsername } from "../../services/authServices";
-import { Formik, useFormik } from "formik";
+import {  useFormik } from "formik";
 import React, { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import styles from "./profile.module.css";
 import Loading from "../loading";
 
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //TODO give upload more time to db etc, sometimes needing manual refresh to show new profile image.

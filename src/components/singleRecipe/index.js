@@ -6,9 +6,7 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 import styles from "./single.module.css";
 
-import ListedRecipe from "../listedRecipe";
 //MATERIAL
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 
@@ -49,7 +47,7 @@ const SingleRecipe = ({ savedRecipes }) => {
                                <a href={sourceUrl} > <p class={styles.url}><strong>View Source URL</strong> </p></a> 
                           </div>  
                             <div class={styles.imageBox}> 
-                              <img alt="picture of food" src={image} />      
+                              <img alt="recipe" src={image} />      
                             </div>
                       </div>
                   <div class={styles.instructBox}> 
