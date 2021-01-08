@@ -1,11 +1,12 @@
 import { uploadProfileImage, getUsername } from "../../services/authServices";
 import { Formik, useFormik } from "formik";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 
 import styles from "./profile.module.css";
+import Loading from "../loading";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,12 +15,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
   let history = useHistory();
+  const [loading, setloading] = useState({ done: true });
+
   const formik = useFormik({
     initialValues: {
       file: "",
     },
 
     onSubmit: (values) => {
+      setloading({ done: false })
       console.log("values", values.file);
       uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
@@ -40,32 +44,39 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
               "There may be a problem with the server. Please try again after a few moments."
             );
         });
+         setTimeout(() => {
+          setloading({ done: true })
+          console.log("check loading done")  
+                }, 4000);
     },
   });
 
   return (
     <Fragment>
       <div class={styles.imageUpload}>
-        <form>
-          <input
-            id="file"
-            name="file"
-            type="file"
-            onChange={(event) => {
-              console.log("event", event.currentTarget.files[0]);
-              formik.setFieldValue("file", event.currentTarget.files[0]);
-            }}
-          />
-          <Button
-            size="small"
-            variant="outlined"
-            component="span"
-            type="submit"
-            onClick={formik.handleSubmit}
-          >
-            Upload
-          </Button>
-        </form>
+      {!loading.done ? (
+        <div> <Loading/></div>
+              ) : ( 
+                <form>
+                  <input
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={(event) => {
+                      console.log("event", event.currentTarget.files[0]);
+                      formik.setFieldValue("file", event.currentTarget.files[0]);
+                    }}
+                  />
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    component="span"
+                    type="submit"
+                    onClick={formik.handleSubmit}
+                  >
+                    Upload
+                </Button>
+            </form> )}
       </div>
     </Fragment>
   );
