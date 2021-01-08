@@ -31,11 +31,11 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-  console.log("fridge ingredients", fridgeIngredients);
-  console.log("ingredients", ingredients);
+  //console.log("fridge ingredients", fridgeIngredients);
+  //console.log("ingredients", ingredients);
 
   const ingredientsList = type === "fridge" ? ingredients : pantry;
-  console.log("ingredientsList", ingredientsList);
+  //console.log("ingredientsList", ingredientsList);
 
   //removes selected ingredient from list of ingredients to add
 
