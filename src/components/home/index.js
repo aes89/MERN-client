@@ -9,6 +9,7 @@ import jokes from "../../data/recipeJokes.json";
 
 const Home = ({ actions, userLoggedIn }) => {
   const [joke, setJoke] = useState("");
+
   const { setModalOpen } = actions;
 
   useEffect(() => {

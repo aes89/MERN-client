@@ -8,6 +8,7 @@ import {
   loginUser,
   setLoggedInUser,
   setUsername,
+  setProfile,
 } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 
@@ -51,7 +52,9 @@ const Login = ({ actions, loggedIn, modalId }) => {
           console.log(r);
           setLoggedInUser(r.cookie.jwt);
           setUsername(r.user);
+          setProfile(r.profile);
           actions.logIn(r.user);
+          actions.updateProfile({...r});
           actions.getToken(r.cookie.jwt);
           actions.closeModal();
           history.push("/");
@@ -154,6 +157,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username) => dispatch({ type: "login", payload: username }),
+    updateProfile: ({ profile }) =>
+      dispatch({ type: "updateProfile", payload: {profile } }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),

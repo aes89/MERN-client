@@ -3,16 +3,16 @@
    margin-top: 20px !important;
 }
 .autoComplete{
-   margin-top: 20px;
+   margin: 20px;
    width: 270px;
    padding: 20px;
    background-color: white;
    border-radius: 10px;
-   margin-bottom: 10px;
+   
 }
 
-   /* Tablet Styles */ 
-   @media only screen 
+/* Mobile Styles */ 
+@media only screen 
    and (max-width: 601px) 
    and (-webkit-min-device-pixel-ratio: 1) {
       .autoComplete{
@@ -20,6 +20,14 @@
          }
    }
 
+/* Tablet Styles */ 
+@media only screen and (min-width:767px) and (max-width: 1023px)  {
+    
+         .autoComplete{
+            width: 350px;
+            padding: 20px;   
+         }
+   }
 
 /* Desktop Styles */ 
 @media only screen and (min-width:1023px) {

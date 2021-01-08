@@ -11,6 +11,8 @@ import {
   updateUserSettings,
   getUsername,
   setUsername,
+  getProfile,
+  setProfile,
 } from "../../services/authServices";
 import ProfileImage from "../profileImage";
 import Logo from "../logo";
@@ -86,6 +88,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
         console.log(user)
         actions.settings(user);
         actions.updateUsername(user.username);
+        setProfile(user.profile)
         setUsername(user.username);
       })
       .then(() => {
@@ -123,6 +126,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           actions.settings({ ...user });
           actions.updateUsername(user.username);
           setUsername(user.username);
+          setProfile(user.profile);
           history.push("/user/"+getUsername()+"/account-settings")
           toast.success("User information updated!")
         })

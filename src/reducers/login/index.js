@@ -22,6 +22,7 @@ const userLoggedIn = createReducer(initialState, (builder) => {
     .addCase(logout, (state) => {
       state.username = null;
       state.jwt = null;
+      state.profile = null;
     })
     .addCase(updateUsername, (state, action) => {
       state.username = action.payload;

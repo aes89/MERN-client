@@ -43,7 +43,7 @@
     background-color: #3F7209;
     max-width: 200px;
     max-height: 200px;
-     margin-right: 50px;
+    margin-right: 65px;
 }
 .fridge img {
     width: 100%;
@@ -71,6 +71,9 @@
         }
         .searchButtonMove {
         margin-top: -50px;    
+        }
+        .fridge{
+        margin-right: 80px; 
         }
 
    }

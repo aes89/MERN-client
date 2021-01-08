@@ -30,7 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
- let history = useHistory();
+  let history = useHistory();
 
   const testrecipes = TestBrowseData();
    const [loading, setloading] = useState(false);
