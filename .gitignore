@@ -9,7 +9,7 @@ cypress.env.json
 /.pnp
 .pnp.js
 
-package-lock.json
+package-lock.json/
 
 # testing
 /coverage
