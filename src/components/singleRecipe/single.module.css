@@ -54,6 +54,18 @@
 
 }
 
+.url{
+    background-color: #FB8D02;
+    border-radius: 10px;
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    
+}
+.url:hover{ 
+    color: white;
+}
+
 
 /* Phone Styles */ 
 @media only screen and (max-width: 600px) {

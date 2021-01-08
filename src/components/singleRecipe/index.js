@@ -44,7 +44,7 @@ const SingleRecipe = ({ savedRecipes }) => {
                               <p><strong>Cuisines:</strong> {cuisines.join(" , ")} </p>
                               <p><strong>Dish Types:</strong> {dishTypes.join(" , ")} </p>
                               <p><strong>Diets:</strong>  {diets.join(" , ")} </p>
-                               <a href={sourceUrl}> <p><strong>View Source URL</strong> </p></a> 
+                               <a href={sourceUrl} > <p class={styles.url}><strong>View Source URL</strong> </p></a> 
                           </div>  
                             <div class={styles.imageBox}> 
                               <img alt="picture of food" src={image} />      
