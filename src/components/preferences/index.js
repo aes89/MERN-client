@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, useFormik } from "formik";
+
 import {preferencesList, preferencesName } from "./list";
+
 import getUserPreferences from "../../utils/get-user-preferences";
 import {
   getPreference,
@@ -13,21 +15,24 @@ import {
   getPref,
   setPref
 } from "../../services/authServices";
+
 import Logo from "../logo";
 import Loading from "../loading";
+
 import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
 import Kitchen from "../styles/imgs/kitchen.png";
 import Fade from 'react-reveal/Fade';
+
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-
+import Fadein from '@material-ui/core/Fade';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -119,6 +124,7 @@ const text = {
 
   return (
     <div className={classes.root}>
+    <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -182,6 +188,7 @@ const text = {
           </Grid>
         </Grid>
       </Grid>
+      </Fadein>
     </div>
   );
 };

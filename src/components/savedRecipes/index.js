@@ -9,7 +9,7 @@ import ListedRecipe from "../listedRecipe";
 //MATERIAL
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-
+import Fadein from '@material-ui/core/Fade';
 
 import TestSaveData from "../../data/testSaveRecipeData";
 
@@ -40,6 +40,7 @@ const SavedRecipes = ({ savedRecipes }) => {
 
   return (
     <div className={classes.root}>
+     <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -66,6 +67,7 @@ const SavedRecipes = ({ savedRecipes }) => {
           </Grid>
         </Grid>
       </Grid>
+     </Fadein>
     </div>
   );
 };

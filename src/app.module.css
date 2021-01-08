@@ -8,7 +8,7 @@
 html, body {
    height: 100%;
    min-height: 100vh;
-  
+   
 }
 
 
@@ -25,11 +25,24 @@ a {
 .layout {
    display: flex;
    width: 100%; 
-   opacity: 0;
-   transition: 2s opacity; 
+   
+}
+.fadeBox{
+   opacity: 1;
+   animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
 }
 
-
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
 .headings {
    display: flex;
@@ -55,6 +68,8 @@ a {
    padding: 1em;
    box-shadow:0 0 8px #a0a19f;
    height: 100%;
+
+ 
 
 }
 

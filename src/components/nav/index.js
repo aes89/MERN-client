@@ -18,6 +18,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Fadein from '@material-ui/core/Fade';
 
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
@@ -94,6 +95,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
           <MoreVertIcon />
         </i>
       </a>
+      <Fadein in={true}  timeout={2000}>
       <nav class={styles.nav}>
         <ul>
           <li>
@@ -171,7 +173,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
         </ul>
            
       </nav>
-
+    </Fadein>
     </div>
   );
 };

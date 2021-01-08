@@ -8,15 +8,13 @@ import useStyles from "../styles/makeStyles.js";
 
 
 import ListedRecipe from "../listedRecipe";
-
 import Loading from "../loading";
-import Button from "@material-ui/core/Button";
 
-
+import Fadein from '@material-ui/core/Fade';
+import Fade from 'react-reveal/Fade';
 //MATERIAL
-
 import Grid from "@material-ui/core/Grid";
-
+import Button from "@material-ui/core/Button";
 
 import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
@@ -144,6 +142,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   return (
       <div className={classes.root}>
+       <Fadein in={true}  timeout={2000}>
         <Grid container spacing={0}>
           <Grid container item xs={12} spacing={0}>
             <Logo />
@@ -187,6 +186,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             </Grid>
           </Grid>
         </Grid>
+        </Fadein>
       </div>
     )
   

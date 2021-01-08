@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
-import Fade from 'react-reveal/Fade';
+
 import styles from "./userSettings.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
+
 import {
   getUserSettings,
   updateUserSettings,
@@ -14,17 +15,21 @@ import {
   getProfile,
   setProfile,
 } from "../../services/authServices";
+
 import ProfileImage from "../profileImage";
 import Logo from "../logo";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Loading from "../loading";
+
 import ProfileDefault from "../styles/imgs/profileDefault.png";
+
+import Fade from 'react-reveal/Fade';
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-
+import Fadein from '@material-ui/core/Fade';
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -151,6 +156,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
 
   return (
     <div className={classes.root}>
+    <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -268,6 +274,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           </Grid>
         </Grid>
       </Grid>
+    </Fadein>
     </div>
   );
 };

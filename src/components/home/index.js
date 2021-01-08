@@ -8,6 +8,7 @@ import Logo from "../logo";
 import jokes from "../../data/recipeJokes.json";
 import Fade from 'react-reveal/Fade';
 import Swing from 'react-reveal/Swing';
+import Fadein from '@material-ui/core/Fade';
 
 const Home = ({ actions, userLoggedIn }) => {
   const [joke, setJoke] = useState("");
@@ -29,23 +30,25 @@ const Home = ({ actions, userLoggedIn }) => {
   return (
     <div className={styles.homeLayoutOnly}>
       <Logo />
+       <Fadein in={true} timeout={2000}  >
       <main className={` ${styles.homeContent}`}>
         <div className={styles.homeBox}>
-          <Fade top >
+         <Fade top>
            <p>{joke}</p>
-          </Fade>
+         </Fade>
           <Swing>
           <h1>What is in your fridge?</h1>
             </Swing>
-         <Fade bottom >
+         <Fade bottom>
           <h3>
             Just add your ingredients and FridgeMate will help find recipes
             personlised to you!
           </h3>
-          </Fade>
+         </Fade>
           <SearchRecipeButton />
         </div>
       </main>
+      </Fadein>
     </div>
   );
 };
