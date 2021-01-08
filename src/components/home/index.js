@@ -31,13 +31,13 @@ const Home = ({ actions, userLoggedIn }) => {
     <div className={styles.homeLayoutOnly}>
       <Logo />
        <Fadein in={true} timeout={2000}  >
-      <main className={` ${styles.homeContent}`}>
-        <div className={styles.homeBox}>
+      <main class={styles.homeContent}>
+        <div class={styles.homeBox}>
          <Fade top>
            <p>{joke}</p>
          </Fade>
           <Swing>
-          <h1>What is in your fridge?</h1>
+          <h1 class={styles.pulsate}>What is in your fridge?</h1>
             </Swing>
          <Fade bottom>
           <h3>
