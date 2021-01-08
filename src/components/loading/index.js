@@ -12,7 +12,7 @@ export default function Loading () {
       return(
             <div class={styles.loadBox}>
            
-                <ReactLoading className={styles.loadBoxInner} type={"spinningBubbles"} color={"grey"} height={150} width={150} />
+                <ReactLoading className={styles.loadBoxInner} type={"spinningBubbles"} color={"green"} height={150} width={150} />
           
             </div>
       )

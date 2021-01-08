@@ -69,8 +69,7 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
                   />
                   <Button
                     size="small"
-                    variant="outlined"
-                    component="span"
+      
                     type="submit"
                     onClick={formik.handleSubmit}
                   >
