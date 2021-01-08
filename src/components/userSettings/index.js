@@ -162,7 +162,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
               {!loading.done ? (
            <Loading/>
               ) : (  
-            <>
+            <> 
                       <div class={styles.settingsBox}>
                         <Fade bottom >
                         {formik.status && <div style={text}>Error: {formik.status}. </div>}
@@ -261,6 +261,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                           </Button>
                         </form>
                     </div>
+                 
                   </>
                 )}     
             </div>

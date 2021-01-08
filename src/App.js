@@ -13,10 +13,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import notify from "./utils/notifications.js";
 
-// import "./App.css";
-// import Modal from "react-modal";
-// import styles from "./components/styles/app.module.css";
-// import AuthenticationModal from "./components/AuthenticationModal";
 import store from "./index";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
@@ -65,6 +61,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const App = ({ actions }) => {
   let checkUser = getUsername();
   useEffect(() => {
+
     try {
       actions.logIn(getUsername());
       actions.getToken(getLoggedInUser());
@@ -74,6 +71,7 @@ const App = ({ actions }) => {
       setUsername();
       actions.logout();
     }
+
     // return a function that specifies any actions on component unmount
     return () => {};
   }, []);

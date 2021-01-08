@@ -24,8 +24,12 @@ a {
 /* Layout All Pages Except Hoome*/
 .layout {
    display: flex;
-   width: 100%;  
+   width: 100%; 
+   opacity: 0;
+   transition: 2s opacity; 
 }
+
+
 
 .headings {
    display: flex;
