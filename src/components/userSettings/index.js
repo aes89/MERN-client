@@ -174,9 +174,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                             {currentUserSettings.profile ? (
                               <img alt="profile of user"src={currentUserSettings.profile} />
                             ) : (
-                              <img alt="default profile" src={ProfileDefault} />
+                              <img alt="default profile " src={ProfileDefault} />
                             )}
-                          </div>
+                          </div>    
                           <label htmlFor="photo" class={styles.profileBox}>
                             Update Profile Picture
                           </label>
