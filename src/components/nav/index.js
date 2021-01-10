@@ -61,7 +61,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
         console.log("Got back response on logout", r);
         console.log("logout")
         history.push("/");
-        toast.info("Goodbye")
+        toast.success("Come back soon!")
       })
       .catch((error) => {
         toast.error("Oh no, error loggin out!", error)

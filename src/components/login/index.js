@@ -130,8 +130,15 @@ const Login = ({ actions, loggedIn, modalId }) => {
           >
             Log In
           </Button>
+          
         </div>
         <div>
+        <div>
+        <Button
+         class={styles.modalCancelButton}>
+            Forgot Password?
+          </Button>
+        </div>
           <Button
             
             class={styles.modalButton}
