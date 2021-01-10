@@ -1,14 +1,18 @@
 
  .notFoundBox{
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-direction: row;
       flex-wrap: wrap;
       padding: 1em;
       margin: 0.5em;
       padding-bottom: 40px; 
-      width: 100%;
       height: 41em;
+      border-radius: 10px;
+     background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/notFound.jpg);
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center; 
  }
 
  .homeButton {
@@ -35,20 +39,26 @@
       height: 150px;
       font-size: 3em;
       font-family: "Paytone One", serif;
-      color:#3F7209;
+      
  }
 
  .textBox{
       display: flex;    
-     flex-direction: column;
-  
+      flex-direction: column; 
+      margin-left: 20px;  
+      text-align: center; 
  }
   .textBox h1{
-    font-size: 3em;
+    font-size: 4em;
     font-family: "Paytone One", serif; 
+    color:#3F7209;
+     
  }
   .textBox p{
     font-size: 1.5em; 
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 800;
  }
 
 
@@ -60,11 +70,7 @@
   
   /* Tablet Styles */ 
    @media only screen and (min-width:767px) {
-    .orangeBox {
-                width: 200px;
-                height: 200px;
-                font-size: 5em;   
-            }
+          
             .textBox{  
                 align-self: center;
             }
@@ -80,6 +86,6 @@
            
          }
           .textBox{
-            margin-right: 200px;
+            margin: 50px;
         }
    }

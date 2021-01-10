@@ -8,11 +8,7 @@ import {
   deleteFridgeItem,
   deletePantryItem,
   getAllFridgeIngredients,
-  getAllPantryIngredients,
-  getFridge,
-  setFridge,
-  getPantry,
-  setPantry,
+  getAllPantryIngredients
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
@@ -22,13 +18,11 @@ import { getUsername } from "../../services/authServices";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
 import ClearIcon from "@material-ui/icons/Clear";
 
-import fridge from "../styles/imgs/fridge.png";
-import pantry from "../styles/imgs/pantry.png";
 
-import { ToastContainer, toast } from 'react-toastify';
+
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -108,7 +102,7 @@ const Ingredient = ({
  
   return (
     <div>
-      {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
+      {errors && <div>{errors}</div>} 
       <Grid item sm spacing={1} wrap="wrap">
         <div class={styles.ingredient}>
           {ingredients &&

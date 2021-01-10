@@ -1,18 +1,33 @@
 
 .button{
-   margin-top: 20px !important;
+    all: unset;
+    background-color: #FB8D02;
+    color: white;  
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 20px ;
 }
+
+.button:hover {
+    color: black;
+    border-radius: 25px;
+    background-color: #f2f4fc; 
+    
+  }
+
 .autoComplete{
-   margin-top: 20px;
+   margin: 20px;
    width: 270px;
    padding: 20px;
    background-color: white;
    border-radius: 10px;
-   margin-bottom: 10px;
+   
 }
 
-   /* Tablet Styles */ 
-   @media only screen 
+/* Mobile Styles */ 
+@media only screen 
    and (max-width: 601px) 
    and (-webkit-min-device-pixel-ratio: 1) {
       .autoComplete{
@@ -20,6 +35,14 @@
          }
    }
 
+/* Tablet Styles */ 
+@media only screen and (min-width:767px) and (max-width: 1023px)  {
+    
+         .autoComplete{
+            width: 350px;
+            padding: 20px;   
+         }
+   }
 
 /* Desktop Styles */ 
 @media only screen and (min-width:1023px) {

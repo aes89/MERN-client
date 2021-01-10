@@ -1,23 +1,20 @@
-import React, { Fragment } from "react";
+import React, { Fragment} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Modal from "react-modal";
+
 import { useHistory } from "react-router-dom";
 
 import styles from "./nav.module.css";
 
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
-import { logoutUser } from "../../services/authServices";
-import Logo from "../logo";
+import {logoutUser } from "../../services/authServices";
+
 
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Fadein from '@material-ui/core/Fade';
 
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
@@ -37,12 +34,13 @@ import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
+const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) => {
   let history = useHistory();
+  //const [profile, setProfile] = useState("");
   const { setModalOpen } = actions;
   const listFoodImg = [
     carrot,
@@ -63,7 +61,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
         console.log("Got back response on logout", r);
         console.log("logout")
         history.push("/");
-        toast.info("Goodbye")
+        toast.success("Come back soon!")
       })
       .catch((error) => {
         toast.error("Oh no, error loggin out!", error)
@@ -72,13 +70,17 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
           error
         );
       });
-    //clear storage if errrot
+      
+    //clear storage if error
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     localStorage.removeItem("fridge")
     localStorage.removeItem("pantry")
     localStorage.removeItem("browsedRecipes")
+    localStorage.removeItem("profile")
+    actions.removeProfile()
     actions.logout()
+    
 }
 
   return (
@@ -89,38 +91,15 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
           <MoreVertIcon />
         </i>
       </a>
+      <Fadein in={true}  timeout={2000}>
       <nav class={styles.nav}>
         <ul>
-          {/* <List disablePadding dense>
-            <ListItem button>
-            <img alt="Fridge" src={fridge} width="20%"/>
-              <ListItemText>My Fridge</ListItemText>
-            </ListItem>
-            <ListItem button>
-            <img alt="Fridge" src={pantry} width="20%"/>
-              <ListItemText>My Pantry</ListItemText>
-            </ListItem>
-            <ListItem button>
-            <img alt="Fridge" src={list} width="20%"/>
-              <ListItemText>Saved Recipes</ListItemText>
-            </ListItem>
-            <ListItem button>
-            <img alt="Fridge" src={pref} width="20%"/>
-              <ListItemText>My Preferences</ListItemText>
-            </ListItem>
-        </List> */}
           <li>
             <Link to={"/user/" + userLoggedIn + "/account-settings"}>
               <div class={styles.userProfile}>
-                {currentUserSettings.profile ? (
-                  <img
-                    alt="Users profile image"
-                    src={currentUserSettings.profile}
-                  />
-                ) : (
-                    <img src={ProfileDefault} />
-                
-                )}
+                {currentProfile ? (
+                  <img alt="profile of user" src={currentProfile} /> ) : (
+                  <img src={ProfileDefault} /> )}
                 {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
               </div>
             </Link>
@@ -164,7 +143,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
               {userLoggedIn ? (
                 <Fragment>
                   {" "}
-                  <Button variant="outlined" onClick={handleLogout}>
+                  <Button variant="outlined" class={styles.navButtonstyle} onClick={handleLogout}>
                     Log out
                   </Button>
                 </Fragment>
@@ -172,12 +151,14 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
                 <Fragment>
                   <Button
                     variant="outlined"
+                    class={styles.navButtonstyle}
                     onClick={() => setModalOpen("login")}
                   >
                     Login
                   </Button>
                   <Button
                     variant="outlined"
+                    class={styles.navButtonstyle}
                     onClick={() => setModalOpen("register")}
                   >
                     Register
@@ -190,7 +171,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
         </ul>
            
       </nav>
-
+    </Fadein>
     </div>
   );
 };
@@ -198,6 +179,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings }) => {
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
   currentUserSettings: state.currentUserSettings,
+  currentProfile: state.currentUserSettings.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -207,6 +189,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     logIn: () => dispatch({ type: "login" }),
     logout: () => dispatch({ type: "logout" }),
+    removeProfile: () => dispatch({ type: "removeProfile" }),
+    updateProfile: ({ profile }) =>
+      dispatch({ type: "updateProfile", payload: {profile } }),
   },
 });
 

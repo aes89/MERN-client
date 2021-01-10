@@ -1,9 +1,113 @@
 .singleBox{
     display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
+   
     padding: 1em;
     padding-bottom: 40px;
     height: 100%;
+    background-color: white;
+    border-radius: 10px;
+   
 }
+.summaryBox {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    border-bottom: 1px dashed #3F7209;
+    padding-bottom: 30px;
+    margin: 0px 30px 0px 30px;
+    
+}
+.summaryText {
+   margin: 25px;
+ 
+}
+
+.summaryText p {
+    max-width: 400px;
+   
+    font-size: 1.3em;
+}
+.imageBox{
+   max-width: 450px;  
+   margin: 10px;
+   margin: 0 auto;
+}
+.imageBox img{
+   width: 100%;
+   border-radius: 10px;
+}
+
+.instructBox {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 10px 60px 60px 60px;
+
+}
+.instructBox h4 {
+    font-size: 1.5em;
+}
+.instructBox p {
+    font-size: 1.3em;
+
+}
+
+.url{
+    background-color: #FB8D02;
+    border-radius: 10px;
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    
+}
+.url:hover{ 
+    color: white;
+}
+
+
+/* Phone Styles */ 
+@media only screen and (max-width: 600px) {
+  .instructBox {
+    margin: 15px;
+
+   }
+    .summaryText {
+    margin: 0px;
+    font-size: 1em;
+    }
+
+   .summaryBox {
+     margin: 15px;
+     }
+    .imageBox{
+  
+    padding-top: 30px;
+    }
+}
+ 
+ /* Tablet Styles */ 
+ @media only screen and (min-width: 600px)  and (max-width:1024px) {
+           .imageBox{
+              
+              margin: 0 auto;
+              padding-top: 30px;
+            }
+ 
+ }
+ @media only screen and (min-width:1025px)  {
+            .summaryText p {
+                 max-width: 450px;  
+            }
+            .summaryBox { 
+                justify-content: center;
+            }
+            .imageBox{
+                margin: 30px;
+                
+                }
+     
+            
+ }
+
