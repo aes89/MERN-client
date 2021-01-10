@@ -2,7 +2,7 @@
 .loginSignupBox{
     display: flex;
     justify-content: center;
-    align-content: center;
+    
     flex-direction: column;
     background-color: #EAEBF1;
     border-radius: 25px;
@@ -38,38 +38,46 @@
     margin: 10px;
  }
 
-
  .loginSignupButtons {
     all: unset;
     background-color: #FB8D02;
     color: white;
-    padding: 13px;
+    padding: 10px;
     margin: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+   
+  }
+
+ .loginSignupButtons:hover {
+    border-radius: 25px;
+    background-color: #f2f4fc;
+    color: black;
+ }
+
+  .modalButton{
+    all: unset;
+    text-decoration: underline;
+    color: #3F7209;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
   }
 
-  .modalButton{
-     all: unset;
-    background-color: #3F7209;
-    color: white;
-    padding: 13px;
-    margin: 10px;
-    border-radius: 15px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  .modalCancelButton{
+  .modalCancelButton{  
     all: unset;
-    background-color: #74716D;
-    color: white;
-    padding: 13px;
+    text-decoration: underline;
+    padding: 5px;
     margin: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
   }
+
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {
     .loginSignupBox{

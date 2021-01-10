@@ -127,8 +127,7 @@ function AutocompleteIngredients({
         }}
       />
       <Button
-        className={styles.button}
-        variant="outlined"
+        class={styles.button}
         onClick={type === "fridge" ? handleAddFridge : handleAddPantry}
       >
         {" "}

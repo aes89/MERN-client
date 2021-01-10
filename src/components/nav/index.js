@@ -143,7 +143,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
               {userLoggedIn ? (
                 <Fragment>
                   {" "}
-                  <Button variant="outlined" onClick={handleLogout}>
+                  <Button variant="outlined" class={styles.navButtonstyle} onClick={handleLogout}>
                     Log out
                   </Button>
                 </Fragment>
@@ -151,12 +151,14 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
                 <Fragment>
                   <Button
                     variant="outlined"
+                    class={styles.navButtonstyle}
                     onClick={() => setModalOpen("login")}
                   >
                     Login
                   </Button>
                   <Button
                     variant="outlined"
+                    class={styles.navButtonstyle}
                     onClick={() => setModalOpen("register")}
                   >
                     Register

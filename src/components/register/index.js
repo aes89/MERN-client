@@ -187,10 +187,10 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           </Button> 
           </div>
            <div>
-           <Button variant="contained" class={styles.modalButton}onClick={() => actions.openModal("login")}>
-              Login
+           <Button  class={styles.modalButton}onClick={() => actions.openModal("login")}>
+              Have an account? .. Login here
             </Button>
-            <Button variant="contained" class={styles.modalCancelButton}  onClick={actions.closeModal}>
+            <Button  class={styles.modalCancelButton}  onClick={actions.closeModal}>
               Cancel
             </Button>
                 </div>

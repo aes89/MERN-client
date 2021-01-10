@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
-import Fade from "react-reveal/Fade";
+
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {
@@ -13,6 +13,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
+import Fade from 'react-reveal/Fade';
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -76,6 +77,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
   });
 
   return (
+
     <div class={styles.loginSignupBox}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
@@ -130,14 +132,14 @@ const Login = ({ actions, loggedIn, modalId }) => {
         </div>
         <div>
           <Button
-            variant="contained"
+            
             class={styles.modalButton}
             onClick={() => actions.openModal("register")}
           >
-            Register
+            New?..  Register here.
           </Button>
           <Button
-            variant="contained"
+          
             class={styles.modalCancelButton}
             onClick={actions.closeModal}
           >
@@ -146,6 +148,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
         </div>
       </form>
     </div>
+
   );
 };
 
