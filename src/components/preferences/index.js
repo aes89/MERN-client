@@ -20,7 +20,7 @@ import styles from "./preferences.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 
-import Kitchen from "../styles/imgs/kitchen.png";
+import List from "../styles/imgs/list.png";
 
 
 //MATERIAL
@@ -168,7 +168,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                                 </Formik>
                         </div>
                       <div class={styles.imgBox}>
-                        <img alt="cartoon kitchen" src={Kitchen} />
+                        <img alt="cartoon List" src={List} />
                       </div>
                     </div>
                 </>

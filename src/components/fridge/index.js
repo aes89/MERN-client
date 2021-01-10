@@ -11,7 +11,7 @@ import useStyles from "../styles/makeStyles.js";
 
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Ingredients from "../ingredient";
-import NoIngredients from "../noIngredientsPage";
+import NoIngredients from "../noItemsPage";
 import Logo from "../logo";
 import SearchRecipeButton from "../searchButton";
 import Loading from "../loading";

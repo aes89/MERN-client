@@ -69,8 +69,8 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
                   />
                   <Button
                     size="small"
-      
                     type="submit"
+                    class={styles.imageUploadButton}
                     onClick={formik.handleSubmit}
                   >
                     Upload

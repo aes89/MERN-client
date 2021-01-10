@@ -68,7 +68,13 @@
    cursor: pointer;
    width: 140px;
    text-align: center;
-   font-size: 0.8em;
+   font-size: 0.8em;     
+ }
+
+  .updateButton:hover {
+    border-radius: 25px;
+    background-color: #f2f4fc;   
+    color: black;
  }
 
 

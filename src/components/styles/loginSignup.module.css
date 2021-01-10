@@ -2,7 +2,6 @@
 .loginSignupBox{
     display: flex;
     justify-content: center;
-    
     flex-direction: column;
     background-color: #EAEBF1;
     border-radius: 25px;
@@ -30,12 +29,14 @@
  }
 
  .loginSignupBox label{
-   margin: 10px;
+    margin: 10px 0px 10px 0px;
+   text-align: left;
+   font-weight: 600;
  }
 
  .loginSignupBox input{
     height: 50px;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
  }
 
  .loginSignupButtons {
@@ -43,12 +44,12 @@
     background-color: #FB8D02;
     color: white;
     padding: 10px;
-    margin: 10px;
+    margin: 25px 0px 10px 0px;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
     transition: all 0.5s;
-   
+    width: 50%;
   }
 
  .loginSignupButtons:hover {

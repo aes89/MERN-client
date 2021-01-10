@@ -8,7 +8,7 @@ const Logo = () => {
 
   
     <div class={styles.logo}>
-        <Link to={`/`} >
+         <Link to={"/"}>
       <div class={styles.text}>
       FridgeMate
       </div>

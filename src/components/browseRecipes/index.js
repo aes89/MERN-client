@@ -68,7 +68,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                   console.log("errors")
                   console.log(error)
                   if (error.response && error.response.status === 401)
-                  setErrors(" failed. ")
+                  setErrors(" Recipe search failed. Try again. ")
                   else   
                   setErrors("There may be a problem with the server. Please try again after a few moments.")        
                   });
@@ -148,7 +148,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             <Grid item xs={12} spacing={2}>
               <h1 class={appstyles.headings}>Browse Recipes</h1>
               <div class={styles.searchButtonMove}>
-                <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
+                <Button class={styles.newSearch} onClick={handleSearchAgain}> Search again!</Button>
               </div>
             </Grid>
             <Grid item xs={12} spacing={2}>

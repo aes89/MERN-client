@@ -16,7 +16,7 @@ import { getUsername } from "../../services/authServices";
 
 import Logo from "../logo";
 import Ingredients from "../ingredient";
-import NoIngredients from "../noIngredientsPage";
+import NoIngredients from "../noItemsPage";
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Loading from "../loading";
 import SearchRecipeButton from "../searchButton";

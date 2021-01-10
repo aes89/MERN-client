@@ -13,6 +13,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Fade from 'react-reveal/Fade';
 
 import { toast } from "react-toastify";
@@ -88,7 +89,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
             </div>
           </Fade>
         )}
-        <label htmlFor="email">Email </label>
+        <label htmlFor="email">Email Address:</label>
         <input
           id="loginEmail"
           name="email"
@@ -104,7 +105,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
             <div style={text}>{formik.errors.email}</div>
           </Fade>
         ) : null}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Password:</label>
         <input
           id="loginPassword"
           name="password"
