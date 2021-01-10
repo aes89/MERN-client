@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import LockIcon from '@material-ui/icons/Lock';
 import Fade from 'react-reveal/Fade';
+import Loading from "../loading";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -78,7 +79,7 @@ const ForgotPassword = ({ actions, loggedIn, modalId }) => {
       <LockIcon/>
       </div>
       {!loading.done ? (
-              <div>Loading....</div>
+              <div style={{maxHeight: "400px"}}><Loading/></div>
               ) : (
                 <>
               <form onSubmit={formik.handleSubmit}>

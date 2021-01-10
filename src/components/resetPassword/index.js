@@ -12,7 +12,7 @@ import { useHistory,useParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import LockIcon from '@material-ui/icons/Lock';
 import Fade from 'react-reveal/Fade';
-
+import Loading from "../loading";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -105,7 +105,7 @@ const ResetPassword = ({ actions, user, modalId }) => {
       <LockIcon/>
       </div>
        {!loading.done ? (
-              <div>Loading....</div>
+              <div style={{maxHeight: "400px"}}><Loading/></div>
               ) : (
                 <>
                 <div style={{alignSelf: "center"}}>
