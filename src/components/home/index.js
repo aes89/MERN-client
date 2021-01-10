@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { useState,useEffect } from "react";
 
-
+import pantrycartoon from "../styles/imgs/pantrycartoon.png";
 import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";
@@ -16,7 +16,13 @@ const Home = ({ actions, userLoggedIn }) => {
   const text = {
         color: '#3F7209',
         marginLeft: "10px"
-      }; 
+  }; 
+
+  const img = {
+        width: '10%',
+        alignSelf: "center",
+        borderRadius: "50%"
+  }; 
 
   useEffect(() => {
        let randomObject = jokes[Math.floor(Math.random() * jokes.length)];
@@ -34,10 +40,12 @@ const Home = ({ actions, userLoggedIn }) => {
          <Fade top>
            <p style={text}>{joke}</p>
          </Fade>
+           
           <Swing>
           <h1 >What is in your fridge?</h1>
             </Swing>
-         <Fade bottom>
+        
+          <Fade bottom>
           <h3 >
             Just add your ingredients and FridgeMate will help find recipes
             personlised to you!

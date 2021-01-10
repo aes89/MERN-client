@@ -4,7 +4,7 @@
 .background {
     border-radius: 10px;
     min-height: 80vh;
-    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/fridgebackground.jpg);
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/background copy.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
