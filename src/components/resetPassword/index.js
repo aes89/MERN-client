@@ -74,11 +74,13 @@ const ResetPassword = ({ actions, user, modalId }) => {
         },)
         .then(async (r) => {
           setloading({ done: false });
-           await console.log(r);
+          await console.log(r);
+          setTimeout(() => {
            toast.success("Password Updated!");
            setloading({ done: true });
-           actions.logout()
            history.push("/");
+           actions.logout()
+            }, 6000); 
         })
         .catch((error) => {
           console.log(error);
