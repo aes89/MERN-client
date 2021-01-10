@@ -13,7 +13,6 @@ import {
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Fade from 'react-reveal/Fade';
 
 import { toast } from "react-toastify";
@@ -135,7 +134,8 @@ const Login = ({ actions, loggedIn, modalId }) => {
         <div>
         <div>
         <Button
-         class={styles.modalCancelButton}>
+         class={styles.modalCancelButton}
+          onClick={() => actions.openModal("forgotPassword")}>
             Forgot Password?
           </Button>
         </div>
