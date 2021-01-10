@@ -9,7 +9,6 @@ import {
 } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 
-import Loading from "../loading";
 
 import Button from "@material-ui/core/Button";
 import LockIcon from '@material-ui/icons/Lock';
@@ -46,13 +45,15 @@ const ForgotPassword = ({ actions, loggedIn, modalId }) => {
       setloading({ done: false });
       forgotPassword({ ...values })
         .then(async (r) => {
+            //let res = await r
            await console.log(r);
-           if (r === 'recovery email sent') {
-           toast.success("Reset Link Sent to your Email!");
-           setloading({ done: true });
-           actions.closeModal();
-           history.push("/");
-          }
+           setTimeout(() => {
+              setloading({ done: true });
+              console.log("check loading done");
+              toast.success("Reset Link Sent to your Email!");
+              actions.closeModal();
+              history.push("/");
+            }, 6000); 
         })
         .catch((error) => {
           console.log(error);

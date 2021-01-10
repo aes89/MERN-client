@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 
@@ -42,7 +42,8 @@ const validate = (values) => {
 const ResetPassword = ({ actions, user, modalId }) => {
   let history = useHistory();
   const { token } = useParams();
-
+  const [loading, setloading] = useState({ done: true });
+ 
   const text = {
     color: "red",
   };
@@ -51,6 +52,7 @@ const ResetPassword = ({ actions, user, modalId }) => {
        resetPassword(token).then(r =>{
          console.log(r)
          actions.setUsername(r.username)
+         setloading({ done: true });
        }).catch((error) => { 
            console.log(error)
        })
@@ -59,22 +61,24 @@ const ResetPassword = ({ actions, user, modalId }) => {
   
   const formik = useFormik({
     initialValues: {
-      email: "",
+      password: "",
     },
     validate,
 
     onSubmit: async (values) => {
+        console.log(values.password)
       updatePasswordViaReset({
           username: user,
-          password: values,
+          password: values.password,
           resetPasswordToken: token,
         },)
-        .then((r) => {
-          console.log(r);
-           if (r.data.message === 'password updated') {
+        .then(async (r) => {
+          setloading({ done: false });
+           await console.log(r);
            toast.success("Password Updated!");
-           }
-          history.push("/");
+           setloading({ done: true });
+           actions.logout()
+           history.push("/");
         })
         .catch((error) => {
           console.log(error);
@@ -92,92 +96,98 @@ const ResetPassword = ({ actions, user, modalId }) => {
   });
 
   return (
-
+   <div class={styles.resetBox}>
     <div class={styles.loginSignupBox}>
       <h1>Reset Password</h1>
       <div style={{alignSelf: "center"}}>
       <LockIcon/>
       </div>
-      <div style={{alignSelf: "center"}}>
-           User: {user && user}
-      </div>
-      <form onSubmit={formik.handleSubmit}>
-        {formik.status && (
-          <Fade bottom>
-            <div style={text}>
-              Error: {formik.status}. Please try again.
-            </div>
-          </Fade>
-        )}
-            <label htmlFor="password">Password:</label>
+       {!loading.done ? (
+              <div>Loading....</div>
+              ) : (
+                <>
+                <div style={{alignSelf: "center"}}>
+                    User: {user && user}
+                </div>
+                <form onSubmit={formik.handleSubmit}>
+                    {formik.status && (
+                    <Fade bottom>
+                        <div style={text}>
+                        Error: {formik.status}. Please try again.
+                        </div>
+                    </Fade>
+                    )}
+                        <label htmlFor="password">Password:</label>
 
-            <input
-            id="resetPassword"
-            class="resetPassword"
-            name="password"
-            placeholder="Password (8 + Characters, 1 Lowercase, 1 Uppercase, 1 Number & 1 Special)"
-            type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            />
+                        <input
+                        id="resetPassword"
+                        class="resetPassword"
+                        name="password"
+                        placeholder="Password (8 + Characters, 1 Lowercase, 1 Uppercase, 1 Number & 1 Special)"
+                        type="password"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password}
+                        />
 
-            {formik.touched.password && formik.errors.password ? (
-            <Fade bottom >
-            <div style={text}>{formik.errors.password}</div>
-            </Fade>
-            ) : null}
+                        {formik.touched.password && formik.errors.password ? (
+                        <Fade bottom >
+                        <div style={text}>{formik.errors.password}</div>
+                        </Fade>
+                        ) : null}
 
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+                        <label htmlFor="confirmPassword">Confirm Password:</label>
 
-            <input
-            id="resetConfirmPassword"
-            class="resetConfirmPassword"
-            name="confirmPassword"
-            type="password"
-            placeholder="Retype Password "
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
-            />
+                        <input
+                        id="resetConfirmPassword"
+                        class="resetConfirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Retype Password "
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.confirmPassword}
+                        />
 
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                <Fade bottom >
-            <div style={text}>{formik.errors.confirmPassword}</div>
-                </Fade>
-            ) : null}
-        <div>
-          <Button
-            variant="contained"
-            class={styles.loginSignupButtons}
-            type="submit"
-            onClick={formik.handleSubmit}
-          >
-            Reset Password
-          </Button>
-          
-        </div>
-        <div>
-        <div>
-       OR
-        </div>
-          <Button
-            
-            class={styles.modalButton}
-            onClick={() => actions.openModal("register")}
-          >
-           Create New Account
-          </Button>
-          <Button
-            class={styles.modalCancelButton}
-            onClick={() => actions.openModal("login")}
-          >
-            Back to Login
-          </Button>
-        </div>
-      </form>
+                        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                            <Fade bottom >
+                        <div style={text}>{formik.errors.confirmPassword}</div>
+                            </Fade>
+                        ) : null}
+                    <div>
+                    <Button
+                        variant="contained"
+                        class={styles.loginSignupButtons}
+                        type="submit"
+                        onClick={formik.handleSubmit}
+                    >
+                        Reset Password
+                    </Button>
+                    
+                    </div>
+                    <div>
+                    <div>
+                OR
+                    </div>
+                    <Button
+                        
+                        class={styles.modalButton}
+                        onClick={() => actions.openModal("register")}
+                    >
+                    Create New Account
+                    </Button>
+                    <Button
+                        class={styles.modalCancelButton}
+                        onClick={() => actions.openModal("login")}
+                    >
+                        Back to Login
+                    </Button>
+                    </div>
+                </form>
+                  </>
+              )}
     </div>
-
+  </div>
   );
 };
 
@@ -191,6 +201,7 @@ const mapDispatchToProps = (dispatch) => ({
     setUsername: (username) => dispatch({ type: "login", payload: username }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
     closeModal: () => dispatch({ type: "closeModal" }),
+     logout: () => dispatch({ type: "logout" }),
   },
 });
 

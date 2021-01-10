@@ -82,7 +82,14 @@
     cursor: pointer;
     margin-bottom: 20px;
   }
+.resetBox{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
+}
  /* Phone Styles */ 
 @media only screen and (max-width: 668px) {
     .loginSignupBox{
