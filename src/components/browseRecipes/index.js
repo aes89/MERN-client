@@ -8,31 +8,28 @@ import useStyles from "../styles/makeStyles.js";
 
 
 import ListedRecipe from "../listedRecipe";
-
 import Loading from "../loading";
+
+import Fadein from '@material-ui/core/Fade';
+
+//MATERIAL
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 
-//MATERIAL
-
-import Grid from "@material-ui/core/Grid";
-
-
-import TestBrowseData from "../../data/testBrowseRecipeData";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
-import {getFridge, setFridge } from '../../services/ingredientServices'
-import {getUsername} from '../../services/authServices'
+import {getFridge } from '../../services/ingredientServices'
 
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
- let history = useHistory();
+  let history = useHistory();
 
-  const testrecipes = TestBrowseData();
+
    const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);
@@ -71,7 +68,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                   console.log("errors")
                   console.log(error)
                   if (error.response && error.response.status === 401)
-                  setErrors(" failed. ")
+                  setErrors(" Recipe search failed. Try again. ")
                   else   
                   setErrors("There may be a problem with the server. Please try again after a few moments.")        
                   });
@@ -144,13 +141,14 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   return (
       <div className={classes.root}>
+       <Fadein in={true}  timeout={2000}>
         <Grid container spacing={0}>
           <Grid container item xs={12} spacing={0}>
             <Logo />
             <Grid item xs={12} spacing={2}>
               <h1 class={appstyles.headings}>Browse Recipes</h1>
               <div class={styles.searchButtonMove}>
-                <Button variant="contained" onClick={handleSearchAgain}> Search again!</Button>
+                <Button class={styles.newSearch} onClick={handleSearchAgain}> Search again!</Button>
               </div>
             </Grid>
             <Grid item xs={12} spacing={2}>
@@ -187,6 +185,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             </Grid>
           </Grid>
         </Grid>
+        </Fadein>
       </div>
     )
   

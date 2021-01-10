@@ -2,20 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./notFound.module.css";
 import appstyles from "../../app.module.css";
+import useStyles from "../styles/makeStyles.js";
+
 
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Fadein from '@material-ui/core/Fade';
+
 import Logo from "../logo";
 
-import useStyles from "../styles/makeStyles.js";
+
 
 const NotFoundPage = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+      <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -38,6 +41,7 @@ const NotFoundPage = () => {
           </Grid>
         </Grid>
       </Grid>
+    </Fadein>
     </div>
   );
 };

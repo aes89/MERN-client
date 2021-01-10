@@ -5,17 +5,24 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 import styles from "./saved.module.css";
 
-import ListedRecipe from "../listedRecipe";
-//MATERIAL
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { getSavedRecipes } from "../../services/recipeServices";
 
+import ListedRecipe from "../listedRecipe";
+import NoIngredients from "../noItemsPage";
+
+import list from "../styles/imgs/list.png";
+//MATERIAL
+import Grid from "@material-ui/core/Grid";
+import Fadein from '@material-ui/core/Fade';
 
 import TestSaveData from "../../data/testSaveRecipeData";
 
 
 const SavedRecipes = ({ savedRecipes }) => {
   const classes = useStyles();
+
+  const checker = getSavedRecipes();
+  console.log(checker);
 
 
   let TestData = TestSaveData()
@@ -40,6 +47,7 @@ const SavedRecipes = ({ savedRecipes }) => {
 
   return (
     <div className={classes.root}>
+     <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -57,15 +65,23 @@ const SavedRecipes = ({ savedRecipes }) => {
                   alignItems="center"
                   justify="center"
                 >
-                   {TestData.map((recipe) => (
-                    <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
-                  ))} 
+                {checker ? (
+                  <div>
+                        {TestData.map((recipe) => (
+                        <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
+                      ))} 
+                    </div>
+                    ) : (
+                      <NoIngredients type="recipes" image={list} />
+                  )}
+                   
                 </Grid>
               </div>
             </div>
           </Grid>
         </Grid>
       </Grid>
+     </Fadein>
     </div>
   );
 };

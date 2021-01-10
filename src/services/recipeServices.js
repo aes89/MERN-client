@@ -47,3 +47,13 @@ export function setBrowsedRecipes(items) {
     console.log("local browsedRecipes Updated")
     console.log(items)
 }
+
+export function getSavedRecipes() {
+    return localStorage.getItem("savedRecipes")
+}
+
+export function setSavedRecipes(items) {
+    items ? localStorage.setItem("savedRecipes", JSON.stringify(items)) : localStorage.removeItem("savedRecipes")
+    console.log("local savedRecipes Updated")
+    console.log(items)
+}

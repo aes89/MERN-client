@@ -1,31 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from 'react-router-dom'
+import React from "react";
+import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
 import styles from "./searchButton.module.css";
-
+import {getUsername } from "../../services/authServices";
 //MATERIAL
 import Button from '@material-ui/core/Button';
-import {getBrowsedRecipes, setBrowsedRecipes} from '../../services/recipeServices'
 
 
-const SearchRecipeButton = () => {
-   let history = useHistory();
-   const [errors, setErrors] = useState(null);
-   const [loading, setloading] = useState(false);
+const SearchRecipeButton = ({actions,userLoggedIn}) => {
+  const { setModalOpen } = actions;
+    if (userLoggedIn){
+      return(
+          <Link to={"/recipes/browse"}>
+            <Button variant="outlined" class={styles.searchButtonOutline}>
+               Search Recipes! 
+            </Button>
+          </Link>
+      )
 
-  if (getBrowsedRecipes !== null) {
+    } else {
+      return(
 
-  
-  } else {
+      <Button variant="outlined" 
+      onClick={() => setModalOpen("register")}
+      class={styles.searchButtonOutline}>
+      Start Searching!
+      </Button>
 
-
-  }
-  return (
-    <Link to={"/recipes/browse"}>
-      <Button variant="outlined" class={styles.searchButtonOutline} >Find Recipes!</Button>
-
-    </Link>
-  );
+        )}
 };
 
+const mapStateToProps = (state) => ({
+  userLoggedIn: state.userLoggedIn.username
+});
 
-export default SearchRecipeButton
+const mapDispatchToProps = (dispatch) => ({
+  actions: {
+    setModalOpen: (modalId) => {
+      dispatch({ type: "openModal", payload: modalId });
+    },
+  },
+});
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchRecipeButton);
+

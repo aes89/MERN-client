@@ -1,19 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
-import Fade from "react-reveal/Fade";
+
 import styles from "../styles/loginSignup.module.css";
 // import store from "../../index";
 import {
   loginUser,
   setLoggedInUser,
   setUsername,
+  setProfile,
 } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import Fade from 'react-reveal/Fade';
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const validate = (values) => {
@@ -51,7 +54,9 @@ const Login = ({ actions, loggedIn, modalId }) => {
           console.log(r);
           setLoggedInUser(r.cookie.jwt);
           setUsername(r.user);
+          setProfile(r.profile);
           actions.logIn(r.user);
+          actions.updateProfile({...r});
           actions.getToken(r.cookie.jwt);
           actions.closeModal();
           history.push("/");
@@ -73,6 +78,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
   });
 
   return (
+
     <div class={styles.loginSignupBox}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
@@ -83,7 +89,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
             </div>
           </Fade>
         )}
-        <label htmlFor="email">Email </label>
+        <label htmlFor="email">Email Address:</label>
         <input
           id="loginEmail"
           name="email"
@@ -99,7 +105,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
             <div style={text}>{formik.errors.email}</div>
           </Fade>
         ) : null}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Password:</label>
         <input
           id="loginPassword"
           name="password"
@@ -124,17 +130,24 @@ const Login = ({ actions, loggedIn, modalId }) => {
           >
             Log In
           </Button>
+          
         </div>
         <div>
+        <div>
+        <Button
+         class={styles.modalCancelButton}>
+            Forgot Password?
+          </Button>
+        </div>
           <Button
-            variant="contained"
+            
             class={styles.modalButton}
             onClick={() => actions.openModal("register")}
           >
-            Register
+            New?..  Register here.
           </Button>
           <Button
-            variant="contained"
+          
             class={styles.modalCancelButton}
             onClick={actions.closeModal}
           >
@@ -143,6 +156,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
         </div>
       </form>
     </div>
+
   );
 };
 
@@ -154,6 +168,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username) => dispatch({ type: "login", payload: username }),
+    updateProfile: ({ profile }) =>
+      dispatch({ type: "updateProfile", payload: {profile } }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),

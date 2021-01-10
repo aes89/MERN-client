@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
@@ -10,14 +10,12 @@ import pantry from "../../data/pantry.json";
 import {
   addFridgeItem,
   addPantryItem,
-  getFridge,
   setFridge,
-  getPantry,
   setPantry,
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import TextField from "@material-ui/core/TextField";
@@ -31,11 +29,7 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-  console.log("fridge ingredients", fridgeIngredients);
-  console.log("ingredients", ingredients);
 
-  const ingredientsList = type === "fridge" ? ingredients : pantry;
-  console.log("ingredientsList", ingredientsList);
 
   //removes selected ingredient from list of ingredients to add
 
@@ -53,7 +47,7 @@ function AutocompleteIngredients({
   const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
 
   let history = useHistory();
-  const [selectedItem, setSelectedItem] = useState(null);
+
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
 
@@ -133,8 +127,7 @@ function AutocompleteIngredients({
         }}
       />
       <Button
-        className={styles.button}
-        variant="outlined"
+        class={styles.button}
         onClick={type === "fridge" ? handleAddFridge : handleAddPantry}
       >
         {" "}

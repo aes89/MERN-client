@@ -7,7 +7,7 @@ import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -99,7 +99,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     <div class={styles.loginSignupBox}>
       <h1>Sign Up</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Email Address:</label>
 
         {formik.status && (
              <Fade bottom >
@@ -112,6 +112,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           class="registerEmail"
           name="email"
           type="email"
+          placeholder="Email Address"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -123,12 +124,13 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           </Fade>
         ) : null}
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username:</label>
 
         <input
           id="registerUsername"
           class="registerUsername"
           name="username"
+          placeholder="Username (5 + Characters)"
           type="username"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -141,12 +143,13 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           </Fade>
         ) : null}
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Password:</label>
 
         <input
           id="registerPassword"
           class="registerPassword"
           name="password"
+          placeholder="Password (8 + Characters, 1 Lowercase, 1 Uppercase, 1 Number & 1 Special)"
           type="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -159,13 +162,14 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
            </Fade>
         ) : null}
 
-        <label htmlFor="confirmPassword">Confirm Password</label>
+        <label htmlFor="confirmPassword">Confirm Password:</label>
 
         <input
           id="registerConfirmPassword"
           class="registerConfirmPassword"
           name="confirmPassword"
           type="password"
+          placeholder="Retype Password "
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.confirmPassword}
@@ -187,10 +191,10 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           </Button> 
           </div>
            <div>
-           <Button variant="contained" class={styles.modalButton}onClick={() => actions.openModal("login")}>
-              Login
+           <Button  class={styles.modalButton}onClick={() => actions.openModal("login")}>
+              Have an account? .. Login here
             </Button>
-            <Button variant="contained" class={styles.modalCancelButton}  onClick={actions.closeModal}>
+            <Button  class={styles.modalCancelButton}  onClick={actions.closeModal}>
               Cancel
             </Button>
                 </div>

@@ -106,6 +106,20 @@ export function setUsername(user) {
   console.log(user);
 }
 
+// Get profile from localStorage
+export function getProfile() {
+  return localStorage.getItem("profile");
+}
+
+// Store profile  in local storage
+export function setProfile(image) {
+  image
+    ? localStorage.setItem("profile", image)
+    : localStorage.removeItem("profile");
+  console.log("local profile Updated");
+  console.log(image);
+}
+
 
 // Get preferences from localStorage
 export function getPref() {

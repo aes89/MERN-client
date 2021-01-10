@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import appstyles from "../../app.module.css";
 import styles from "./pantry.module.css";
+import useStyles from "../styles/makeStyles.js";
+
 import {
   getAllPantryIngredients,
   deleteAllPantry,
@@ -10,21 +13,22 @@ import {
   getPantry,
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
-//import ItemHandler from "./itemHandler";
+
 import Logo from "../logo";
 import Ingredients from "../ingredient";
-import NoIngredients from "../noIngredientsPage";
+import NoIngredients from "../noItemsPage";
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Loading from "../loading";
 import SearchRecipeButton from "../searchButton";
 
-import useStyles from "../styles/makeStyles.js";
-import Container from "@material-ui/core/Container";
+
+import Fadein from '@material-ui/core/Fade';
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+
 import pantry from "../styles/imgs/pantry.png";
-import { ToastContainer, toast } from "react-toastify";
+
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Pantry = ({ actions, pantryIngredients }) => {
@@ -86,6 +90,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
 
   return (
     <div className={classes.root}>
+     <Fadein in={true}  timeout={2000}>
       <Grid container spacing={0}>
         <Grid container item xs={12} spacing={0}>
           <Logo />
@@ -106,7 +111,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
                     <AutocompleteIngredients type="pantry" />
                     <div class={styles.pantry}>
                       {" "}
-                      <img alt="Picture of cartoon pantry " src={pantry} />
+                      <img alt="cartoon pantry " src={pantry} />
                     </div>
                   </div>
                   <Grid
@@ -144,6 +149,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
           </Grid>
         </Grid>
       </Grid>
+     </Fadein>
     </div>
   );
 };

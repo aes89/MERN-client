@@ -137,14 +137,25 @@
     margin-bottom: 10px !important;
   }
  
-.navButtons > button{
 
-   margin: 5px;
-   cursor: pointer;
-  
+ .navButtonstyle {
+    all: unset;
+    background-color: #f2f4fc;
+    color: black; 
+    padding: 5px;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    text-decoration: underline;
  }
 
-
+.navButtonstyle:hover {
+    color: black;
+    border-radius: 25px;
+    background-color: #f2f4fc; 
+    
+  }
  /* Mobile First */
  @media only screen and (min-width: 672px) and (max-width: 1087px){
     /* Sidebar */

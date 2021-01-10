@@ -2,6 +2,7 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const settings = createAction("settings");
 const updateProfile = createAction("updateProfile");
+const removeProfile = createAction("removeProfile");
 
 const initialState = { username: "Username", email: "Email", profile: null };
 
@@ -19,6 +20,10 @@ const currentUserSettings = createReducer(initialState, (builder) => {
     console.log("hitting this action", actions.payload.profile);
     state.profile = actions.payload.profile;
   });
+  builder.addCase(removeProfile, (state) => {
+      state.profile = null;
+    })
+  
 });
 
 export default currentUserSettings;

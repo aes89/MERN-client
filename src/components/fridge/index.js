@@ -1,24 +1,28 @@
 import React, { Fragment, useEffect,useState } from "react";
 import { connect } from "react-redux";
-
 import { useHistory } from "react-router-dom";
 
 import { deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
 import {getUsername} from '../../services/authServices'
+
 import styles from "./fridge.module.css";
 import appstyles from "../../app.module.css";
+import useStyles from "../styles/makeStyles.js";
+
 import AutocompleteIngredients from "../ingredientAutocomplete";
 import Ingredients from "../ingredient";
-import NoIngredients from "../noIngredientsPage";
+import NoIngredients from "../noItemsPage";
 import Logo from "../logo";
 import SearchRecipeButton from "../searchButton";
 import Loading from "../loading";
+
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import useStyles from "../styles/makeStyles.js";
+import Fadein from '@material-ui/core/Fade';
 
 import fridge from "../styles/imgs/fridge.png";
-import { ToastContainer, toast } from 'react-toastify';
+
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -76,7 +80,8 @@ const Fridge = ({actions, fridgeIngredients}) => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={0}>
+      <Fadein in={true}  timeout={2000}>
+      <Grid container spacing={0} >
         <Grid container item xs={12} spacing={0}>
           <Logo />
           <Grid item xs={12} spacing={2}>
@@ -98,7 +103,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
             <>
                <div class={styles.fridgeAutoBox}> 
               <AutocompleteIngredients type="fridge"/> 
-              <div class={styles.fridge}> <img alt="Picture of cartoon fridge " src={fridge} /></div>
+              <div class={styles.fridge}> <img alt="Fridge cartoon" src={fridge} /></div>
               </div>
               <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
               {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
@@ -111,6 +116,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
           </Grid>
         </Grid>
       </Grid>
+      </Fadein>
     </div>
   );
 };

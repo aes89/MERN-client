@@ -4,7 +4,7 @@
 .background {
     border-radius: 10px;
     min-height: 80vh;
-    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/fridgebackground.jpg);
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url(../styles/imgs/background copy.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
@@ -43,7 +43,7 @@
     background-color: #3F7209;
     max-width: 200px;
     max-height: 200px;
-     margin-right: 50px;
+    margin-right: 65px;
 }
 .fridge img {
     width: 100%;
@@ -71,6 +71,9 @@
         }
         .searchButtonMove {
         margin-top: -50px;    
+        }
+        .fridge{
+        margin-right: 80px; 
         }
 
    }
