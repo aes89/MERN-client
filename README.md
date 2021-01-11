@@ -91,3 +91,6 @@ Rubric notes:
 - project results demonstrating consideration of strength and weaknesses of team members and project/team conditions/ Kanban board of tickets assigned to team members labelled with difficulty level and corresponding Git commits.
 - cloud hosting service, uses environment variables, use same database type in development/testing as production, uses custom domain name
 - evidence of user testing of site in development and production, and framework testing for both
+  
+  cypress coverage:
+npx nyc report --reporter=text-summary
