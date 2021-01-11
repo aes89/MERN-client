@@ -1,4 +1,48 @@
 describe("Log In", () => {
+  it("Pass: should have the right initial state", function () {
+    cy.visit("http://localhost:3000/ingredients/Testuser/fridge");
+    cy.window()
+      .its("store")
+      .invoke("getState")
+      // .should("deep.equal", { userLoggedIn: { username: "Testuser" } });
+      .should("deep.equal", {
+        modalOpen: {
+          modal: null,
+        },
+        userPreferences: {
+          vegetarian: false,
+          vegan: false,
+          glutenFree: false,
+          dairyFree: false,
+          veryHealthy: false,
+          cheap: false,
+          veryPopular: false,
+          sustainable: false,
+        },
+        userLoggedIn: {
+          username: null,
+          jwt: null,
+        },
+        currentUserSettings: {
+          username: "Username",
+          email: "Email",
+          profile: null,
+        },
+        recipes: {
+          browseRecipes: null,
+          savedRecipes: null,
+          singleRecipe: null,
+        },
+        userIngredients: {
+          fridgeIngredients: [],
+          pantryIngredients: [],
+        },
+        errors: {
+          error: "Error getting fridge ingredients",
+        },
+      });
+  });
+
   it("Pass: Shows login modal", () => {
     cy.visit("localhost:3000");
 
@@ -21,7 +65,7 @@ describe("Log In", () => {
     cy.contains("What is in your fridge?");
   });
 
-  it("Pass: Logs in and loads homepage with username in nav", () => {
+  it("Pass: Logs in and changes state", () => {
     cy.visit("localhost:3000");
 
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
@@ -40,6 +84,46 @@ describe("Log In", () => {
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
     cy.get(".nav_nav__3AJrQ").scrollIntoView();
     cy.contains("Testuser");
+    cy.window()
+      .its("store")
+      .invoke("getState")
+      // .should("deep.equal", { userLoggedIn: { username: "Testuser" } });
+      .should("deep.equal", {
+        modalOpen: {
+          modal: null,
+        },
+        userPreferences: {
+          vegetarian: false,
+          vegan: false,
+          glutenFree: false,
+          dairyFree: false,
+          veryHealthy: false,
+          cheap: false,
+          veryPopular: false,
+          sustainable: false,
+        },
+        userLoggedIn: {
+          username: "Testuser",
+          jwt: undefined,
+        },
+        currentUserSettings: {
+          username: "Username",
+          email: "Email",
+          profile: undefined,
+        },
+        recipes: {
+          browseRecipes: null,
+          savedRecipes: null,
+          singleRecipe: null,
+        },
+        userIngredients: {
+          fridgeIngredients: [],
+          pantryIngredients: [],
+        },
+        errors: {
+          error: null,
+        },
+      });
   });
 
   it("Fail: Logs in and loads homepage with incorrect username in nav", () => {
@@ -63,7 +147,7 @@ describe("Log In", () => {
     cy.contains("Barry");
   });
 
-  it("Pass: Logs in with incorrect credentials", () => {
+  it("Pass: Deson't log in with incorrect credentials", () => {
     cy.visit("localhost:3000");
 
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
@@ -134,6 +218,6 @@ describe("Log In", () => {
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
     cy.get(".nav_nav__3AJrQ").scrollIntoView();
     cy.contains("Log out").click({ force: true });
-    cy.contains("Goodbye");
+    cy.contains("Come back soon");
   });
 });
