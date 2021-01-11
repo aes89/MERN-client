@@ -9,11 +9,8 @@ export async function registerUser(userInfo) {
 
 export async function loginUser(userInfo) {
   // call to server to login user
-  // return user info if successful and error if not
-  console.log("user info", userInfo);
   const response = await api.post("/user/login", userInfo);
   console.log("got user back from server", response);
-  console.log(response)
   return response.data;
 }
 
@@ -21,6 +18,36 @@ export async function logoutUser() {
   // call to server to logout user
   return api.get("/user/logout");
 }
+
+export async function forgotPassword(email) {
+  // call to server to login user
+  // return user info if successful and error if not
+  const response = await api.post("/user/forgot-password", email);
+  console.log("got user back from server", response);
+  return response.data;
+}
+
+export async function resetPassword(token) {
+  // call to server to login user
+  // return user info if successful and error if not
+  const response = await api.get("/user/reset-password", {
+        params: {
+          resetPasswordToken: token,
+        },});
+  console.log("got user back from server", response);
+  return response.data;
+}
+
+
+export async function updatePasswordViaReset(password) {
+  // call to server to login user
+  // return user info if successful and error if not
+  const response = await api.put("/user/update-password", password);
+  console.log("back from server", response);
+  return response.data;
+}
+
+
 
 export async function getUserSettings(username) {
   // call to server to register user

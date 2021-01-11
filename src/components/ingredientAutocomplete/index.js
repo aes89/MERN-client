@@ -54,7 +54,7 @@ function AutocompleteIngredients({
   function handleAddFridge(event) {
     console.log(values);
     const newValues = values.map((i) => i.name);
-    console.log(newValues.join(", "));
+       console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((r) => {
@@ -80,7 +80,7 @@ function AutocompleteIngredients({
   function handleAddPantry(event) {
     console.log(values);
     const newValues = values.map((i) => i.name);
-    console.log(newValues.join(", "));
+       console.log("check pantry", newValues);
     addPantryItem(getUsername(), { item: newValues })
       .then((r) => {
         console.log(r);

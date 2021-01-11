@@ -5,10 +5,13 @@ import pantrycartoon from "../styles/imgs/pantrycartoon.png";
 import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";
+import Carousel from "../carousel";
 import jokes from "../../data/recipeJokes.json";
 import Fade from 'react-reveal/Fade';
 import Swing from 'react-reveal/Swing';
 import Fadein from '@material-ui/core/Fade';
+
+
 
 const Home = ({ actions, userLoggedIn }) => {
   const [joke, setJoke] = useState("");
