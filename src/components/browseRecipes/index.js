@@ -29,7 +29,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
   let history = useHistory();
 
-
+   const [fridgeChecker, setFridgeChecker] = useState("");
    const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);
@@ -89,7 +89,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   useEffect(() => {
     //handleNewIngredientsAdded()
     recipeSearchHandler()
-   
+    setFridgeChecker(getFridge())
+    //console.log("get fridge", getFridge())
        
    },[])
 
@@ -135,7 +136,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   console.log("redux  updated", browseRecipes)
 
 
-  const fridgeChecker = getFridge()
+  //const fridgeChecker = getFridge()
   const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
 
 
@@ -158,14 +159,14 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                 <Loading/>
                     ) : (  
                       <div>
-                      {fridgeChecker ? (
+                      {/* {fridgeChecker  ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  
                           </div> ) : ( 
                            <div class={styles.possibleStatement}>
                            {randomRecipe} 
                             </div>
-                          )}
+                          )} */}
                       
                           <div className={styles.browseBox}>
                           <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
