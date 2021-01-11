@@ -53,17 +53,17 @@ describe("Log In", () => {
     cy.contains("Password");
   });
 
-  it("Pass: Closes login modal", () => {
-    cy.visit("localhost:3000");
+  // it("Pass: Closes login modal", () => {
+  //   cy.visit("localhost:3000");
 
-    cy.get(".nav_trigger__3BDFX").trigger("mouseover");
-    cy.get(".nav_nav__3AJrQ").scrollIntoView();
-    cy.contains("Login").click({ force: true });
-    cy.contains("Email");
-    cy.contains("Password");
-    cy.contains("Cancel").click({ force: true });
-    cy.contains("What is in your fridge?");
-  });
+  //   cy.get(".nav_trigger__3BDFX").trigger("mouseover");
+  //   cy.get(".nav_nav__3AJrQ").scrollIntoView();
+  //   cy.contains("Login").click({ force: true });
+  //   cy.contains("Email");
+  //   cy.contains("Password");
+  //   cy.contains("Cancel").click({ force: true });
+  //   cy.contains("What is in your fridge?");
+  // });
 
   it("Pass: Logs in and changes state", () => {
     cy.visit("localhost:3000");

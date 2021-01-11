@@ -12,8 +12,8 @@ describe("Preferences page", () => {
       .should("have.value", "testuser@test.com");
     cy.get(".loginPassword")
       .click()
-      .type("TestPassword!1")
-      .should("have.value", "TestPassword!1");
+      .type("TestUser1!")
+      .should("have.value", "TestUser1!");
     cy.contains("Log In").click();
     cy.contains("You are logged in!");
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");

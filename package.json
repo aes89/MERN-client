@@ -69,23 +69,5 @@
     "enzyme-to-json": "^3.6.1",
     "identity-obj-proxy": "^3.0.0",
     "jest-transform-stub": "^2.0.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass)$": "identity-obj-proxy"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.svg$": "<rootDir>/svgTransform.js"
-    },
-    "engines": {
-      "node": "10.x"
-    }
   }
 }

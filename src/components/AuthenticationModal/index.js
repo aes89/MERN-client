@@ -20,7 +20,7 @@ const AuthenticationModal = ({ actions, modalId }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "#EAEBF1"
+      backgroundColor: "#EAEBF1",
     },
   };
 
@@ -52,3 +52,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AuthenticationModal);
+
+export { mapStateToProps, mapDispatchToProps };

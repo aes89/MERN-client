@@ -94,3 +94,10 @@ Rubric notes:
   
   cypress coverage:
 npx nyc report --reporter=text-summary
+
+# see just the coverage summary
+$ npx nyc report --reporter=text-summary
+# see just the coverage file by file
+$ npx nyc report --reporter=text
+# save the HTML report again
+$ npx nyc report --reporter=lcov
