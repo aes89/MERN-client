@@ -27,7 +27,7 @@ const validate = (values) => {
   if (!values.username) {
     errors.username = "Required";
   } else if (!/^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/i.test(values.username)) {
-    errors.username = "Invalid username characters";
+    errors.username = "Invalid username characters - Must have 1 capitol. ";
   }
 
   if (!values.password) {

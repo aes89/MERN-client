@@ -55,6 +55,7 @@
     margin-bottom: 20px;
     transition: all 0.5s;
     width: 50%;
+     box-shadow:0 0 4px #a0a19f;
   }
 
  .loginSignupButtons:hover {
@@ -72,6 +73,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
+
   }
 
   .modalCancelButton{  
@@ -82,6 +84,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
+
   }
 .resetBox{
     display: flex;

@@ -47,14 +47,14 @@ const Home = ({ actions, userLoggedIn }) => {
           <Swing>
           <h1 >What is in your fridge?</h1>
             </Swing>
-           <Carousel/>
+          
           <Fade bottom>
           <h3 >
             Just add ingredients to your fridge and FridgeMate will help find recipes
             personlised to you!
           </h3>
          </Fade>
-          <SearchRecipeButton />
+           <Carousel/>
         </div>
       </main>
       </Fadein>

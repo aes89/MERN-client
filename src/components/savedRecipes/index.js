@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 import styles from "./saved.module.css";
 
-import { getSavedRecipes } from "../../services/recipeServices";
+import { getAllUserSavedRecipes, getSavedRecipes, setSavedRecipes } from "../../services/recipeServices";
 
 import ListedRecipe from "../listedRecipe";
 import NoIngredients from "../noItemsPage";
@@ -17,23 +18,48 @@ import Fadein from '@material-ui/core/Fade';
 
 import TestSaveData from "../../data/testSaveRecipeData";
 
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SavedRecipes = ({ savedRecipes }) => {
+const SavedRecipes = ({ actions, savedRecipes }) => {
   const classes = useStyles();
-
+  let history = useHistory(); 
+  const [errors, setErrors] = useState(null);
+  const [savedUserRecipes, setSavedUserRecipes] = useState([]);
   const checker = getSavedRecipes();
   console.log(checker);
 
 
   let TestData = TestSaveData()
   console.log(TestData)
-    //Call DB to display recipe data
-    //save to local
-    //save to  redux
-    //then display
-    useEffect(() => { 
 
-    
+    //Call DB to display recipe data
+    async function getSavedHandler() {
+              await getAllUserSavedRecipes()
+                .then((r) => {
+                  console.log("hit saved here")
+                  console.log(r)
+                  //saved to redux
+                  actions.AddToSavedRecipes(r)
+                  //save to local storage
+                  setSavedRecipes(r)
+                  setErrors("")
+                  history.push("/recipes/saved-recipes")
+                })
+                .catch((error) => {
+                  console.log("errors");
+                  console.log(error);
+                  if (error.response && error.response.status === 401)
+                  toast.error("Error getting all your recipes");
+                  else
+                  toast.error( "There may be a problem with the server. Please try again after a few moments.");
+                    history.push("/recipes/saved-recipes")
+              });
+        }
+
+    useEffect(() => { 
+      getSavedHandler()
+      setSavedUserRecipes(JSON.parse(getSavedRecipes()))
     }, []);
 
   
@@ -67,7 +93,7 @@ const SavedRecipes = ({ savedRecipes }) => {
                 >
                 {checker ? (
                   <div>
-                        {TestData.map((recipe) => (
+                        {savedUserRecipes && savedUserRecipes.map((recipe) => (
                         <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
                       ))} 
                     </div>
@@ -96,6 +122,8 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch({ type: "settings", payload: { email, username, profile } }),
     updateUsername: (username) =>
       dispatch({ type: "updateUsername", payload: username }),
+    AddToSavedRecipes: (recipes) =>
+      dispatch({ type: "savedRecipes", payload: recipes }),
   },
 });
 
