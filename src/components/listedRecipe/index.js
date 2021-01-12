@@ -26,6 +26,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
     
     },[])
   async function collectRecipeHandler () {
+    //console.log("state updated for setAddrecipe")
       //setAddRecipe(recipe)
       // const testRecipe = {
       //             username: userLoggedIn,
@@ -72,6 +73,8 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
           }, 5000)
         console.log("hit here")
    }
+
+   
    if (savedType ==="saved recipes") {
    //This is for save Recipe page
     return (

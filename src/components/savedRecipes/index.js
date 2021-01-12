@@ -38,10 +38,11 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   let TestData = TestSaveData()
   //console.log(TestData)
 
-    //Call DB to display recipe data
-    async function getSavedHandler() {
+  //Call DB to display recipe data
+  async function getSavedHandler() {
               await getAllUserSavedRecipes()
                 .then((r) => {
+                  setSavedRecipes()
                   console.log("hit saved here")
                   console.log(r)
                   //saved to redux
@@ -77,14 +78,17 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
       setloading({ done: false });
       removedSavedRecipe(id).then((r) => { 
         console.log(r)
-        setSavedRecipes()
+        //setSavedRecipes()
         setTimeout(() => {
           setloading({ done: true });
           console.log("check loading done");
         }, 2500);
         toast.success("Removed from Saved Recipes");
         history.push("/recipes/saved-recipes")
-      }).catch((error) => {
+      }).then(async (item) => {
+         await getSavedHandler()
+         setSavedUserRecipes(JSON.parse(getSavedRecipes()))
+        }).catch((error) => {
         //console.log("errors")
         //console.log(error.response)
         if (error.response && error.response.status === 401)

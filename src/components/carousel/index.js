@@ -11,7 +11,7 @@ import pref from "../styles/imgs/supermarket.jpg";
 import recipelist from "../styles/imgs/recipelist2.jpg";
 import styles from "./carousel.module.css";
 import { Slide } from 'material-auto-rotating-carousel'
-
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const { lightGreen } = require('@material-ui/core/colors');
 const Button = require('@material-ui/core/Button').default;
@@ -24,7 +24,7 @@ const [state, setState] = useState({ open: false });
 
  function onCloseHandler (){
        setState({ open: false })
-       history.push("/");
+       //history.push("/");
        actions.setModalOpen("register")
     
  }
@@ -33,11 +33,12 @@ return (
         <div style={{ position: 'relative', width: '100%', height: 30 }}>
         <Button class={styles.ButtonOutline} onClick={() => setState({ open: true })}>Where to start?</Button>
         <AutoRotatingCarousel
-            label='Get started!'
+            label='Get started'
             open={state.open}
             onClose={{onCloseHandler}}
             onStart={() => setState({ open: false })}
             style={{ position: 'absolute' }}
+            ButtonProps={{color: "secondary", endIcon: <KeyboardArrowRightIcon/>}} 
         >
             <Slide
             media={<img src={fridge} class={styles.slideImage} />}
