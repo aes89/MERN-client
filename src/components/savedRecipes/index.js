@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -15,6 +15,7 @@ import list from "../styles/imgs/list.png";
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
+import Button from "@material-ui/core/Button";
 
 import TestSaveData from "../../data/testSaveRecipeData";
 
@@ -53,7 +54,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   toast.error("Error getting all your recipes");
                   else
                   toast.error( "There may be a problem with the server. Please try again after a few moments.");
-                    history.push("/recipes/saved-recipes")
+                  history.push("/recipes/saved-recipes")
               });
         }
 
@@ -79,29 +80,30 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>Saved Recipes</h1>
+            <div class={styles.searchButtonMove}>
+            <Link to={"/recipes/browse"}>
+                <Button class={styles.newSearch} >Back to Search </Button>
+            </Link>
+            </div>
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
+                {errors && <div>Error: {errors}</div>}
               <div class={styles.possibleStatement}> </div>
+
               <div className={styles.savedBox}>
-                <Grid
-                  container
-                  spacing={1}
-                  wrap="wrap"
-                  alignItems="center"
-                  justify="center"
-                >
+                 <Grid container spacing={1}  alignItems="center" justify="center" >
                 {checker ? (
-                  <div>
+                    <>
                         {savedUserRecipes && savedUserRecipes.map((recipe) => (
                         <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
                       ))} 
-                    </div>
+                    </>
                     ) : (
                       <NoIngredients type="recipes" image={list} />
                   )}
-                   
-                </Grid>
+                 </Grid>
+               
               </div>
             </div>
           </Grid>
