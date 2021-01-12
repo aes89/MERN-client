@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import Login from "../login";
 import Register from "../register";
+import ForgotPassword from "../forgotPassword";
+
 
 const AuthenticationModal = ({ actions, modalId }) => {
   const { closeModal } = actions;
@@ -10,6 +12,7 @@ const AuthenticationModal = ({ actions, modalId }) => {
   const logInRegisterModals = {
     register: <Register />,
     login: <Login />,
+    forgotPassword: <ForgotPassword />,
   };
 
   const customStyles = {

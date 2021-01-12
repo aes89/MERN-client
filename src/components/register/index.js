@@ -90,6 +90,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           toast.error("Oh no, error!")
           console.log(error.response);
           console.log(`An error occurred authenticating: ${error}`);
+          // need to iterate and display all errors
           formik.setStatus(error.response.data.errors[0].email)
         });
     },

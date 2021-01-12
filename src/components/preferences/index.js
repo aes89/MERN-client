@@ -77,7 +77,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         setTimeout(() => {
         setloading({ done: true })
         console.log("check loading done")  
-        }, 2500);
+        }, 3000);
   }, []);
 
 
@@ -88,15 +88,19 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
   function submitHandler (values) {
       console.log("check",  values )
+       setloading({ done: false })
           updatePreference({ ...values }, getUsername())
             .then((pref) => {
               console.log(pref);
               setPref(pref)
               actions.updatePreferences(pref);
-              console.log("test returned", JSON.parse(getPref()))
-              history.push("/preferences/"+getUsername())
-              toast.success("Preferences Updated!")
-               
+              setTimeout(() => {
+                setloading({ done: true })
+                 console.log("check loading done")  
+                 console.log("test returned", JSON.parse(getPref()))
+                 history.push("/preferences/"+getUsername())
+                 toast.success("Preferences Updated!")
+                }, 3000);
             })
             .catch((error) => {
               toast.error("Oh no, error!")
