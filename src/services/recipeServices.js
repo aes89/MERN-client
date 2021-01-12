@@ -5,9 +5,7 @@ import api from '../config/api'
 export async function browseSearchRecipes() {
     const response = await api.get("/recipes/browse")
      await setBrowsedRecipes(response.data)
-    console.log("server check", response.data)
-    //console.log("length check", response.data.length)
-  
+     console.log("Server", response);
     return response.data
 }
 

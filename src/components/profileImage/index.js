@@ -24,10 +24,10 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
 
     onSubmit: (values) => {
       setloading({ done: false })
-      console.log("values", values.file);
+     // console.log("values", values.file);
       uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
-          console.log("IMAGE??", image.user.profile);
+          //console.log("IMAGE??", image.user.profile);
           const {
             user: { profile },
           } = image;
@@ -38,7 +38,7 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
         .catch((error) => {
           toast.error("Oh no!");
           if (error.response && error.response.status === 404)
-            formik.setStatus("Error getting user information ");
+            formik.setStatus("Sorry we could not submit your request at this time.");
           else
             formik.setStatus(
               "There may be a problem with the server. Please try again after a few moments."
@@ -46,7 +46,7 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
         });
          setTimeout(() => {
           setloading({ done: true })
-          console.log("check loading done")  
+          //console.log("check loading done")  
                 }, 4000);
     },
   });

@@ -41,14 +41,14 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   //Call DB to display recipe data
   async function getSavedHandler() {
               await getAllUserSavedRecipes()
-                .then((r) => {
+                .then((res) => {
                   setSavedRecipes()
                   console.log("hit saved here")
-                  console.log(r)
+                  console.log(res)
                   //saved to redux
-                  actions.AddToSavedRecipes(r)
+                  actions.AddToSavedRecipes(res)
                   //save to local storage
-                  setSavedRecipes(r)
+                  setSavedRecipes(res)
                   setErrors("")
                   setTimeout(() => {
                   setloading({ done: true });
@@ -57,10 +57,10 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   history.push("/recipes/saved-recipes")
                 })
                 .catch((error) => {
-                  console.log("errors");
-                  console.log(error);
+                  //console.log("errors");
+                  //console.log(error);
                   if (error.response && error.response.status === 401)
-                  toast.error("Error getting all your recipes");
+                  toast.error("Sorry we could not get your recipes at this time.");
                   else
                   toast.error( "There may be a problem with the server. Please try again after a few moments.");
                   history.push("/recipes/saved-recipes")
@@ -76,13 +76,13 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
     //function for removing from saved recipes- this is sent via props to listed recipe
     function removeSavedRecipeHandler (id) {
       setloading({ done: false });
-      removedSavedRecipe(id).then((r) => { 
-        console.log(r)
+      removedSavedRecipe(id).then((res) => { 
+         console.log(res)
         //setSavedRecipes()
         setTimeout(() => {
           setloading({ done: true });
-          console.log("check loading done");
-        }, 2500);
+          //console.log("check loading done");
+        }, 3000);
         toast.success("Removed from Saved Recipes");
         history.push("/recipes/saved-recipes")
       }).then(async (item) => {
@@ -91,10 +91,12 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
         }).catch((error) => {
         //console.log("errors")
         //console.log(error.response)
-        if (error.response && error.response.status === 401)
-          toast.error("Error deleting pantry ingredient");
-        else
-          toast.error("There may be a problem with the server. Please try again after a few moments.");
+        if (error.response && error.response.status === 401){
+           //setErrors("Sorry we could not submit your request at this time.")
+           toast.error("Sorry we could not submit your request at this time.")
+          } else{
+           //setErrors("There may be a problem with the server. Please try again after a few moments.")
+          toast.error("There may be a problem with the server. Please try again after a few moments.");}
       });
 
 

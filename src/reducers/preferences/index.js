@@ -17,7 +17,7 @@ const userPreferences = createReducer(initialState, (builder) => {
   builder.addCase(updatePreferences, (state, action) => {
     state.preferences = action.payload;
     console.log("updated redux pref")
-    console.log(action.payload)
+    //console.log(action.payload)
   });
 });
 

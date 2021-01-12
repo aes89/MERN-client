@@ -57,11 +57,9 @@ const ForgotPassword = ({ actions, loggedIn, modalId }) => {
             }, 6000); 
         })
         .catch((error) => {
-          console.log(error);
-          toast.error("No Users Found");
           if (error.response && error.response.status === 403)
             formik.setStatus(
-              "No Users Found"
+              "Sorry, we can't send you a link to reset your password."
             );
           else
             formik.setStatus(

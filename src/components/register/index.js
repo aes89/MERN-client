@@ -43,14 +43,6 @@ const validate = (values) => {
 
   if (!values.confirmPassword) {
     errors.confirmPassword = "Required";
-    // I feel like we don't need this twice??
-    // } else if (
-    //   !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(
-    //     values.confirmPassword
-    //   )
-    // ) {
-    //   errors.confirmPassword =
-    //     "Password must contain 8 characters, with 1 upper and lower case character, 1 number and 1 special character.";
   } else if (values.password !== values.confirmPassword) {
     errors.confirmPassword = "Passwords do not match.";
   }
@@ -77,21 +69,29 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     onSubmit: async (values) => {
       //Attempt login on server- this is from auth services
       registerUser({ ...values })
-        .then((r) => {
-          console.log(r);
-          actions.logIn(r.username);
-          setUsername(r.username)
-          actions.closeModal(); //add value in params{ ...values }
-          history.push("/");
+        .then((res) => {
+          console.log(res);
+          actions.logIn(res.username);
+          setUsername(res.username)
+          actions.closeModal(); 
           toast.success("Welcome to FridgeMate!")
+          history.push("/");
         })
         .catch((error) => {
-          console.log("errors");
-          toast.error("Oh no, error!")
-          console.log(error.response);
-          console.log(`An error occurred authenticating: ${error}`);
-          // need to iterate and display all errors
-          formik.setStatus(error.response.data.errors[0].email)
+        //console.log(error.response);
+          if (error.response && error.response.status === 422){
+                if (error.response.data.errors.length === 1 && error.response.data.errors[0].email){
+                formik.setStatus(error.response.data.errors[0].email) 
+                } else if (error.response.data.errors.length === 1 && error.response.data.errors[1].username){
+                formik.setStatus(error.response.data.errors[1].username)
+                } else if (error.response.data.errors.length === 2){
+                  formik.setStatus(error.response.data.errors[0].email + " and " + error.response.data.errors[1].username)
+                }
+               toast.error("Sorry we could not submit your request at this time.")
+          } else {
+            toast.error("There may be a problem with the server. Please try again after a few moments.")
+           }
+          
         });
     },
   });
@@ -104,9 +104,12 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
 
         {formik.status && (
              <Fade bottom >
-          <div style={text}>Error: {formik.status}. Please try registering in again.</div>
+          <div style={text}>{formik.status}. </div>
+          
+           <div style={text}>Please try registering in again.</div>
             </Fade>
         )}
+        
 
         <input
           id="registerEmail"
