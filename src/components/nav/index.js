@@ -15,6 +15,7 @@ import {logoutUser } from "../../services/authServices";
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Fadein from '@material-ui/core/Fade';
+import HelpIcon from '@material-ui/icons/Help';
 
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
@@ -167,6 +168,12 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
               )}
               
             </Fragment>
+          </li>
+          <li style={{ textAlign: 'left', padding: '10px', }}>
+            <Button 
+             onClick={() => setModalOpen("help")}>
+            <HelpIcon/>
+            </Button>
           </li>
         </ul>
            

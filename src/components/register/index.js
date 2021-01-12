@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import Fade from 'react-reveal/Fade';
-import styles from "../styles/loginSignup.module.css";
+import styles from "../styles/modals.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";

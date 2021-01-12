@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 
-import styles from "../styles/loginSignup.module.css";
+import styles from "../styles/modals.module.css";
 import {
   resetPassword,
   updatePasswordViaReset

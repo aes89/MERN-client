@@ -1,4 +1,4 @@
-## MERN-client
+## MERN-Client
 
 |Shelby El-rassi|Adrienne Smith|
 |:-------------:|:-------------:|
@@ -15,54 +15,13 @@
 
 ##### Server Repository: https://github.com/CA-MERN/MERN-server
 
----
-### Manual Testing Log - Development
-<details>
-<summary>Click to expand</summary>
-
-| Date | Feature | Test |
-|:---:|:---:|:---:|
-| 07/12/2020 | Preferences creates false/true object | Form completed manually, able to console log returned object showing { "vegetarian": true, "vegan": false ...} |
-| 08/12/2020 | Log in and Register Modals | Able to click on Log in or Register, modal appears. Able to click on Log in or Register within modal to switch forms. |
-| 24/12/2020 | User register | Manual Testing via the console checking if the redux state, and local storage was updated on register then login. |
-| 24/12/2020 | User login | Manual Testing via the console checking if the redux state, and local storage was updated on login. Additionally checking the JWT storage as cookie.|
-| 25/12/2020 | User Settings | Manual Testing via the console checking if the redux state, and local storage was updated on useEffect calling the DB get request and returning the user data.|
-| 25/12/2020 | User Settings Update | |
-
-</details>
 
 ---
-### Automated Testing Log - Development
-<details>
-<summary>Click to expand</summary>
 
-| Feature | Test |
-|:---:|:---:|
-| test | test |
-
-</details>
+### INSERT README FROM SERVER HERE WHEN COMPLETED
 
 ---
-### Manual Testing Log - Production
-<details>
-<summary>Click to expand</summary>
 
-| Date | Feature | Test |
-|:---:|:---:|:---:|
-| test | test | test |
-
-</details>
-
----
-### Automated Testing Log - Production
-<details>
-<summary>Click to expand</summary>
-
-| Date | Feature | Test |
-|:---:|:---:|:---:|
-| test | test | test |
-
-</details>
 
 ---
 ### Daily Tasks
