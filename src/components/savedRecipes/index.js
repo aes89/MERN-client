@@ -6,10 +6,11 @@ import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
 import styles from "./saved.module.css";
 
-import { getAllUserSavedRecipes, getSavedRecipes, setSavedRecipes } from "../../services/recipeServices";
+import { getAllUserSavedRecipes, getSavedRecipes, setSavedRecipes, removedSavedRecipe } from "../../services/recipeServices";
 
 import ListedRecipe from "../listedRecipe";
 import NoIngredients from "../noItemsPage";
+import Loading from "../loading";
 
 import list from "../styles/imgs/list.png";
 //MATERIAL
@@ -27,8 +28,11 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   let history = useHistory(); 
   const [errors, setErrors] = useState(null);
   const [savedUserRecipes, setSavedUserRecipes] = useState([]);
+  const [loading, setloading] = useState({ done: false });
+
+
   const checker = getSavedRecipes();
-  console.log(checker);
+  //console.log(checker);
 
 
   let TestData = TestSaveData()
@@ -45,6 +49,10 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   //save to local storage
                   setSavedRecipes(r)
                   setErrors("")
+                  setTimeout(() => {
+                  setloading({ done: true });
+                  console.log("check loading done");
+                }, 2500);
                   history.push("/recipes/saved-recipes")
                 })
                 .catch((error) => {
@@ -65,9 +73,24 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
 
   
     //function for removing from saved recipes- this is sent via props to listed recipe
-    function removeSavedRecipeHandler () {
-
-
+    function removeSavedRecipeHandler (id) {
+      setloading({ done: false });
+      removedSavedRecipe(id).then((r) => { 
+        console.log(r)
+        setTimeout(() => {
+          setloading({ done: true });
+          console.log("check loading done");
+        }, 2500);
+        toast.success("Removed from Saved Recipes");
+        history.push("/recipes/saved-recipes")
+      }).catch((error) => {
+        //console.log("errors")
+        //console.log(error.response)
+        if (error.response && error.response.status === 401)
+          toast.error("Error deleting pantry ingredient");
+        else
+          toast.error("There may be a problem with the server. Please try again after a few moments.");
+      });
 
 
     }
@@ -89,22 +112,27 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
                 {errors && <div>Error: {errors}</div>}
-              <div class={styles.possibleStatement}> </div>
+                 {!loading.done ? (
+                <Loading />
+              ) : (
+                <>
+                        <div class={styles.possibleStatement}> </div>
 
-              <div className={styles.savedBox}>
-                 <Grid container spacing={1}  alignItems="center" justify="center" >
-                {checker ? (
-                    <>
-                        {savedUserRecipes && savedUserRecipes.map((recipe) => (
-                        <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
-                      ))} 
-                    </>
-                    ) : (
-                      <NoIngredients type="recipes" image={list} />
-                  )}
-                 </Grid>
-               
-              </div>
+                        <div className={styles.savedBox}>
+                          <Grid container spacing={1}  alignItems="center" justify="center" >
+                          {checker ? (
+                              <>
+                                  {savedUserRecipes && savedUserRecipes.map((recipe) => (
+                                  <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
+                                ))} 
+                              </>
+                              ) : (
+                                <NoIngredients type="recipes" image={list} />
+                            )}
+                          </Grid>
+                        </div>
+                  </>
+              )}
             </div>
           </Grid>
         </Grid>

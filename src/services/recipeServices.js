@@ -31,7 +31,7 @@ export async function addNewSavedRecipe(recipe) {
 
 // Delete to User Saved Recipes
 export async function removedSavedRecipe(recipeId) {
-    const response = await api.delete(`/recipes/${recipeId}`)
+    const response = await api.delete(`/recipes/${recipeId}`);
     return response.data
 }
 

@@ -46,6 +46,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         } else {   
       }   
   }
+  
 //Main function for returning recipes to browse
   function recipeSearchHandler (){
     //Checking if fridge is empty or not

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { connect } from "react-redux";
 import styles from "./listRecipe.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -14,37 +14,45 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
   const classes = useStyles();
   const [addRecipe, setAddRecipe] = useState("");
   const [loading, setloading] = useState({ done: false });
-  const {id, usedIngred, missedIngred, title, readyInMinutes, servings, image} = recipe 
+  const {recipeID, id, _id,
+  usedIngred, 
+  missedIngred, 
+  title, readyInMinutes, servings, image} = recipe 
 
   let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
-
+      useEffect(() => {
+        console.log("state updated for setAddrecipe")
+      setAddRecipe(recipe)
+    
+    },[])
   async function collectRecipeHandler () {
+      //setAddRecipe(recipe)
+      // const testRecipe = {
+      //             username: userLoggedIn,
+      //             recipeID: 1234 ,
+      //             title: "Test",
+      //             readyInMinutes: 1234,
+      //             servings: 2,
+      //             sourceUrl: "Test",
+      //             image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80",
+      //             cuisines: ["Test"],
+      //             dishTypes: ["Test"],
+      //             diets: ["Test"],
+      //             instructions:  ["Test"]
+      //         }
       const newRecipe = {
                   username: userLoggedIn,
-                  recipeID: 1234 ,
-                  title: "Test",
-                  readyInMinutes: 1234,
-                  servings: 2,
-                  sourceUrl: "Test",
-                  image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80",
-                  cuisines: ["Test"],
-                  dishTypes: ["Test"],
-                  diets: ["Test"],
-                  instructions:  ["Test"]
+                  recipeID: addRecipe.id ,
+                  title: addRecipe.title,
+                  readyInMinutes: addRecipe.readyInMinutes,
+                  servings: addRecipe.servings,
+                  sourceUrl: addRecipe.sourceUrl,
+                  image: addRecipe.image,
+                  cuisines: addRecipe.cuisines,
+                  dishTypes: addRecipe.dishTypes,
+                  diets: addRecipe.diets,
+                  instructions:  addRecipe.instructions,
               }
-      // const newRecipe = {
-      //             username: userLoggedIn,
-      //             _id: addRecipe.id ,
-      //             title: addRecipe.title,
-      //             readyInMinutes: addRecipe.readyInMinutes,
-      //             servings: addRecipe.servings,
-      //             sourceUrl: recipe,
-      //             image: addRecipe,
-      //             cuisines: addRecipe,
-      //             dishTypes: addRecipe,
-      //             diets: addRecipe,
-      //             instructions:  addRecipe,
-      //         }
         setloading({ done: false });
         await saveRecipe(newRecipe)
         setTimeout(() => {
@@ -54,8 +62,16 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
         console.log("hit here")
   }
 
-  
-
+  async function deleteRecipeHandler (id) {
+    console.log("check addRecipe done",id) 
+      setloading({ done: false }); 
+      await removeSavedRecipe(id)
+        setTimeout(() => {
+          setloading({ done: true });
+          console.log("check loading done") 
+          }, 5000)
+        console.log("hit here")
+   }
    if (savedType ==="saved recipes") {
    //This is for save Recipe page
     return (
@@ -69,9 +85,10 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                                   <img alt="recipe" src={image} />        
                                   <h3>{title}</h3>
                                   <p>Serves: {servings}</p>
+                                  <p>RecipeID: {recipeID}</p>
                                   <p>Prep time: {convert}</p>
                                 </div>
-                            <Button variant="outlined" class={styles.removeButton} onClick={removeSavedRecipe}>Remove</Button>
+                            <Button variant="outlined" class={styles.removeButton} onClick={()=>{deleteRecipeHandler(_id)}}>Remove</Button>
                     </Paper>  
              
                 </Grid>
