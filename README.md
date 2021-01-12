@@ -7,7 +7,7 @@
 
 ---
 
-##### Deployed App: https://fridgemate.netlify.app/
+Deployed App:
 
 ##### Documentation Repository: https://github.com/CA-MERN/MERN-Part-A-Docs
 

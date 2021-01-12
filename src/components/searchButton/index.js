@@ -13,7 +13,7 @@ const SearchRecipeButton = ({actions,userLoggedIn}) => {
       return(
           <Link to={"/recipes/browse"}>
             <Button variant="outlined" class={styles.searchButtonOutline}>
-               Search Recipes! 
+               Browse Recipes! 
             </Button>
           </Link>
       )

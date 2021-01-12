@@ -86,7 +86,7 @@ function AutocompleteIngredients({
         console.log(r);
         actions.addToPantry(r.pantryIngredients);
         setPantry(r.pantryIngredients);
-        history.push("/ingredients/" + getUsername() + "/pantry");
+        history.push("/ingredients/"+getUsername()+"/pantry");
         toast.success(" New pantry Ingredient Added!");
       })
       .catch((error) => {
@@ -109,18 +109,18 @@ function AutocompleteIngredients({
       <Autocomplete
         multiple
         id="tags-standard"
-        // options={ingredientsList}
         options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
-        // defaultValue={[filteredList[13]]}
-        onChange={(event, value) => setValues(value)}
+        defaultValue={[filteredList[13]]}
+        onChange={(event, value) => value ? setValues(value) : setValues("")}
         renderInput={(params) => {
           return (
             <TextField
+              inputValue=""
               {...params}
               variant="standard"
-              label="Add Ingredients"
+              label={`Add Ingredients to your ${type} here`}
               placeholder="Ingredients"
             />
           );

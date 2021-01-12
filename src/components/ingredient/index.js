@@ -109,7 +109,7 @@ const Ingredient = ({
             ingredients.map((ingredient) => (
               <Paper className={classes.paperIngredient} variant="outlined">
                 <div class={styles.ingredientText}>
-                  <p>{ingredient} </p>
+                  <p key={ingredient.indexOf()}>{ingredient} </p>
                   <Button
                     value={ingredient}
                     onClick={

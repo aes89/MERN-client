@@ -61,6 +61,8 @@
    border-radius: 5px;
    cursor: pointer;
    width: 100px;
+   box-shadow:0 0 4px #a0a19f;
+   text-align: center;
  }
  /* Phone Styles */ 
  @media only screen and (max-width: 767px) {

@@ -31,7 +31,7 @@ export async function addNewSavedRecipe(recipe) {
 
 // Delete to User Saved Recipes
 export async function removedSavedRecipe(recipeId) {
-    const response = await api.delete(`/recipes/${recipeId}`)
+    const response = await api.delete(`/recipes/${recipeId}`);
     return response.data
 }
 
@@ -52,8 +52,8 @@ export function getSavedRecipes() {
     return localStorage.getItem("savedRecipes")
 }
 
-export function setSavedRecipes(items) {
-    items ? localStorage.setItem("savedRecipes", JSON.stringify(items)) : localStorage.removeItem("savedRecipes")
+export function setSavedRecipes(recipe) {
+    recipe ? localStorage.setItem("savedRecipes", JSON.stringify(recipe)) : localStorage.removeItem("savedRecipes")
     console.log("local savedRecipes Updated")
-    console.log(items)
+    console.log(recipe)
 }

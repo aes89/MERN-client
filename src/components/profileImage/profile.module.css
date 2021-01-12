@@ -9,6 +9,7 @@
     cursor: pointer;
     margin-bottom: 20px;
     transition: all 0.5s;
+    box-shadow:0 0 4px #a0a19f;
 }
  .imageUploadButton:hover {
     border-radius: 25px;
