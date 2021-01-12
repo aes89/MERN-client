@@ -77,6 +77,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
       setloading({ done: false });
       removedSavedRecipe(id).then((r) => { 
         console.log(r)
+        setSavedRecipes()
         setTimeout(() => {
           setloading({ done: true });
           console.log("check loading done");
