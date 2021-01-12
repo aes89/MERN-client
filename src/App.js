@@ -11,7 +11,6 @@ import {
 
 import { ToastContainer } from "react-toastify";
 
-
 import store from "./index";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
@@ -27,12 +26,9 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-
-
 //NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
 //MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
-
   const isLoggedIn = getUsername();
 
   return (
@@ -58,9 +54,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 // )
 
 const App = ({ actions }) => {
-  
-  useEffect(( ) => {
-
+  useEffect(() => {
     try {
       actions.logIn(getUsername());
       actions.getToken(getLoggedInUser());
@@ -85,11 +79,7 @@ const App = ({ actions }) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/preferences/:username"
-            component={Preferences}
-          />
+          <Route exact path="/preferences/:username" component={Preferences} />
           <Route
             exact
             path="/user/:username/account-settings"
@@ -100,17 +90,9 @@ const App = ({ actions }) => {
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <Route
-            exact
-            path="/recipes/browse"
-            component={BrowseRecipes}
-          />
+          <Route exact path="/recipes/browse" component={BrowseRecipes} />
           <Route exact path="/recipes/:id/recipe" component={SingleRecipe} />
-          <Route
-            exact
-            path="/recipes/saved-recipes"
-            component={SavedRecipes}
-          />
+          <Route exact path="/recipes/saved-recipes" component={SavedRecipes} />
           <Route
             exact
             path="/ingredients/:username/pantry"
@@ -131,10 +113,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    setModalOpen: (modalId) => {
-      store.dispatch({ type: "openModal", payload: modalId });
-      console.log("APP JS STORE", store.getState());
-    },
     logIn: (username) => dispatch({ type: "login", payload: username }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),

@@ -11,10 +11,12 @@ describe("Home page with user logged in", () => {
       .should("have.value", "testuser@test.com");
     cy.get(".loginPassword")
       .click()
-      .type("TestPassword!1")
-      .should("have.value", "TestPassword!1");
+      .type("TestUser1!")
+      .should("have.value", "TestUser1!");
     cy.contains("Log In").click();
     cy.contains("You are logged in!");
+    cy.clearLocalStorageSnapshot();
+    cy.setLocalStorage("username", "Testuser");
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
     cy.get(".nav_nav__3AJrQ").scrollIntoView();
     cy.contains("Testuser");
@@ -70,10 +72,12 @@ describe("Home page with user logged in", () => {
     cy.get(".nav_nav__3AJrQ").scrollIntoView();
     cy.contains("Saved Recipes").click({ force: true });
     cy.contains("Recipes");
-    cy.contains("Serves");
+    cy.contains("Looks like you have no recipes saved! ");
   });
 
   it("Pass: Navigates to My Prefernces", () => {
+    cy.setLocalStorage("username", "Testuser");
+
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
     cy.get(".nav_nav__3AJrQ").scrollIntoView();
     cy.contains("My Preferences").click({ force: true });

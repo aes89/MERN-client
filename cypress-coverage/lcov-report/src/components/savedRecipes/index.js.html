@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/15</span>
+                <span class='fraction'>3/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.92% </span>
+                <span class="strong">23.08% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/13</span>
+                <span class='fraction'>3/13</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -179,22 +179,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">54x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,7 +204,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -247,11 +247,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -281,20 +281,20 @@ import Fadein from '@material-ui/core/Fade';
 import TestSaveData from "../../data/testSaveRecipeData";
 &nbsp;
 &nbsp;
-const SavedRecipes = ({ savedRecipes }) =&gt; {
-  const classes = useStyles();
+const SavedRecipes = <span class="fstat-no" title="function not covered" >({</span> savedRecipes }) =&gt; {
+  const classes = <span class="cstat-no" title="statement not covered" >useStyles();</span>
 &nbsp;
-  const checker = getSavedRecipes();
-  console.log(checker);
+  const checker = <span class="cstat-no" title="statement not covered" >getSavedRecipes();</span>
+<span class="cstat-no" title="statement not covered" >  console.log(checker);</span>
 &nbsp;
 &nbsp;
-  let TestData = TestSaveData()
-  console.log(TestData)
+  let TestData = <span class="cstat-no" title="statement not covered" >TestSaveData()</span>
+<span class="cstat-no" title="statement not covered" >  console.log(TestData)</span>
     //Call DB to display recipe data
     //save to local
     //save to  redux
     //then display
-    useEffect(() =&gt; { 
+<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; { </span>
 &nbsp;
     
     }, []);
@@ -308,7 +308,7 @@ const SavedRecipes = ({ savedRecipes }) =&gt; {
 &nbsp;
     }
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className={classes.root}&gt;
      &lt;Fadein in={true}  timeout={2000}&gt;
       &lt;Grid container spacing={0}&gt;
@@ -329,7 +329,7 @@ const SavedRecipes = ({ savedRecipes }) =&gt; {
                   justify="center"
                 &gt;
                 {checker ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >                  &lt;div&gt;</span>
+                  &lt;div&gt;
                         {TestData.map(<span class="fstat-no" title="function not covered" >(r</span>ecipe) =&gt; (
 <span class="cstat-no" title="statement not covered" >                        &lt;ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/&gt;</span>
                       ))} 
@@ -349,11 +349,11 @@ const SavedRecipes = ({ savedRecipes }) =&gt; {
   );
 };
 &nbsp;
-const mapStateToProps = (state) =&gt; ({
+const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   savedRecipes: state.recipes.savedRecipes,
 });
 &nbsp;
-const mapDispatchToProps = (dispatch) =&gt; ({
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   actions: {
     settings: <span class="fstat-no" title="function not covered" >({</span> email, username, profile }) =&gt;
 <span class="cstat-no" title="statement not covered" >      dispatch({ type: "settings", payload: { email, username, profile } }),</span>
@@ -370,7 +370,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(SavedRecipes);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 12 2021 13:44:24 GMT+1100 (Australian Eastern Daylight Time)
+                at Tue Jan 12 2021 23:43:55 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
