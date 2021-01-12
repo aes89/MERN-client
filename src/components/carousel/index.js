@@ -5,10 +5,10 @@ import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
 import SearchRecipeButton from "../searchButton";
 import fridge from "../styles/imgs/fridgebackgroundother.jpg";
-import list from "../styles/imgs/list.png";
 import pantry from "../styles/imgs/pantrybackground.jpg";
-import kitchen from "../styles/imgs/kitchen.png";
-import pref from "../styles/imgs/preference.png";
+import recipe from "../styles/imgs/recipeimage.jpg";
+import pref from "../styles/imgs/supermarket.jpg";
+import recipelist from "../styles/imgs/recipelist2.jpg";
 import styles from "./carousel.module.css";
 import { Slide } from 'material-auto-rotating-carousel'
 
@@ -61,14 +61,14 @@ return (
             subtitle='Gluten free, dairy free? You can decide! '
             />
             <Slide
-            media={<img src={kitchen} class={styles.slideImage} />}
+            media={<img src={recipe} class={styles.slideImage} />}
              mediaBackgroundStyle={{ backgroundColor: "white" }}
             style={{ backgroundColor: lightGreen[600] }}
-            title='Then click search and browse recipes!'
+            title='Browse recipes!'
             subtitle='We will show you recipes that include the ingredients from your fridge!'
             />
             <Slide
-            media={<img src={list} class={styles.slideImage} />}
+            media={<img src={recipelist} class={styles.slideImage} />}
             mediaBackgroundStyle={{backgroundColor: "white"}}
             style={{ backgroundColor: lightGreen[600] }}
             title='Save them for later!'

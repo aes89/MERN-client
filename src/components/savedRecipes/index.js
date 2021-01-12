@@ -32,7 +32,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
 
 
   let TestData = TestSaveData()
-  console.log(TestData)
+  //console.log(TestData)
 
     //Call DB to display recipe data
     async function getSavedHandler() {
