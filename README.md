@@ -101,3 +101,8 @@ $ npx nyc report --reporter=text-summary
 $ npx nyc report --reporter=text
 # save the HTML report again
 $ npx nyc report --reporter=lcov
+
+
+cypress-and-jest
+Combines Cypress and Jest coverage reports
+run $open coverage/lcov-report/index.html
