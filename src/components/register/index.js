@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import Fade from 'react-reveal/Fade';
-import styles from "../styles/loginSignup.module.css";
+import styles from "../styles/modals.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -27,7 +27,7 @@ const validate = (values) => {
   if (!values.username) {
     errors.username = "Required";
   } else if (!/^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/i.test(values.username)) {
-    errors.username = "Invalid username characters";
+    errors.username = "Invalid username characters - Must have 1 capitol. ";
   }
 
   if (!values.password) {
@@ -90,6 +90,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           toast.error("Oh no, error!")
           console.log(error.response);
           console.log(`An error occurred authenticating: ${error}`);
+          // need to iterate and display all errors
           formik.setStatus(error.response.data.errors[0].email)
         });
     },

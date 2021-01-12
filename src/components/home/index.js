@@ -5,10 +5,13 @@ import pantrycartoon from "../styles/imgs/pantrycartoon.png";
 import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";
+import Carousel from "../carousel";
 import jokes from "../../data/recipeJokes.json";
 import Fade from 'react-reveal/Fade';
 import Swing from 'react-reveal/Swing';
 import Fadein from '@material-ui/core/Fade';
+
+
 
 const Home = ({ actions, userLoggedIn }) => {
   const [joke, setJoke] = useState("");
@@ -44,14 +47,14 @@ const Home = ({ actions, userLoggedIn }) => {
           <Swing>
           <h1 >What is in your fridge?</h1>
             </Swing>
-        
+          
           <Fade bottom>
           <h3 >
-            Just add your ingredients and FridgeMate will help find recipes
+            Just add ingredients to your fridge and FridgeMate will help find recipes
             personlised to you!
           </h3>
          </Fade>
-          <SearchRecipeButton />
+           <Carousel/>
         </div>
       </main>
       </Fadein>

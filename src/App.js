@@ -17,6 +17,7 @@ import Preferences from "./components/preferences";
 import BrowseRecipes from "./components/browseRecipes";
 import SavedRecipes from "./components/savedRecipes";
 import SingleRecipe from "./components/singleRecipe";
+import ResetPassword from "./components/resetPassword";
 import NotFound from "./components/notFound";
 import Nav from "./components/nav";
 import Home from "./components/home";
@@ -97,6 +98,11 @@ const App = ({ actions }) => {
             exact
             path="/ingredients/:username/pantry"
             component={Pantry}
+          />
+          <Route
+            exact
+            path="/user/reset-password/:token"
+            component={ResetPassword}
           />
           <Route component={NotFound} />
         </Switch>

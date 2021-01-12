@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.8% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/41</span>
+                <span class='fraction'>36/42</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">73.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>11/14</span>
+                <span class='fraction'>11/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.18% </span>
+                <span class="strong">85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/39</span>
+                <span class='fraction'>34/40</span>
             </div>
         
             
@@ -257,8 +257,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">272x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">272x</span>
@@ -273,14 +272,14 @@
 <span class="cline-any cline-yes">272x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">1196x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1192x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1196x</span>
+<span class="cline-any cline-yes">1192x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1196x</span>
+<span class="cline-any cline-yes">1192x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -316,13 +315,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1196x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1192x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -388,6 +381,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -399,12 +393,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -421,7 +421,7 @@
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 &nbsp;
-import styles from "../styles/loginSignup.module.css";
+import styles from "../styles/modals.module.css";
 // import store from "../../index";
 import {
   loginUser,
@@ -432,7 +432,6 @@ import {
 import { useHistory } from "react-router-dom";
 &nbsp;
 import Button from "@material-ui/core/Button";
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Fade from 'react-reveal/Fade';
 &nbsp;
 import { toast } from "react-toastify";
@@ -554,7 +553,8 @@ const Login = ({ actions, loggedIn, modalId }) =&gt; {
         &lt;div&gt;
         &lt;div&gt;
         &lt;Button
-         class={styles.modalCancelButton}&gt;
+         class={styles.modalCancelButton}
+          onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >actions.openModal("forgotPassword")}</span>&gt;
             Forgot Password?
           &lt;/Button&gt;
         &lt;/div&gt;
@@ -604,7 +604,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Login);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 12 2021 23:43:55 GMT+1100 (Australian Eastern Daylight Time)
+                at Wed Jan 13 2021 10:17:57 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

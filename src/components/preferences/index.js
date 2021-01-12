@@ -71,10 +71,10 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-    setTimeout(() => {
-      setloading({ done: true });
-      console.log("check loading done");
-    }, 2500);
+        setTimeout(() => {
+        setloading({ done: true })
+        console.log("check loading done")  
+        }, 3000);
   }, []);
 
   const formik = useFormik({
@@ -82,31 +82,34 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
     validate,
   });
 
-  function submitHandler(values) {
-    console.log("check", values);
-    updatePreference({ ...values }, getUsername())
-      .then((values) => {
-        // console.log("**PREF VALUES??**", pref);
-        console.log("**VALUES", values);
-        setPref(values);
-        actions.updatePreferences(values);
-        console.log("test returned", JSON.parse(getPref()));
-        history.push("/preferences/" + getUsername());
-        toast.success("Preferences Updated!");
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 404)
-          //formik.setStatus("Error getting pref information ");
-          toast.error("On no, there was an error!");
-        // formik.setStatus(
-        //   "There may be a problem with the server. Please try again after a few moments."
-        // );
-        else
-          toast.error(
-            "There may be a problem with the server. Please try again after a few moments."
-          );
-      });
-  }
+  function submitHandler (values) {
+      console.log("check",  values )
+       setloading({ done: false })
+          updatePreference({ ...values }, getUsername())
+            .then((pref) => {
+              console.log(pref);
+              setPref(pref)
+              actions.updatePreferences(pref);
+              setTimeout(() => {
+                setloading({ done: true })
+                 console.log("check loading done")  
+                 console.log("test returned", JSON.parse(getPref()))
+                 history.push("/preferences/"+getUsername())
+                 toast.success("Preferences Updated!")
+                }, 3000);
+            })
+            .catch((error) => {
+              toast.error("Oh no, error!")
+              if (error.response && error.response.status === 404)
+                //formik.setStatus("Error getting pref information ");
+                toast.error("On no, error updated preferences!")
+              else
+                // formik.setStatus(
+                //   "There may be a problem with the server. Please try again after a few moments."
+                // );
+                 toast.error("There may be a problem with the server. Please try again after a few moments.")
+            });
+    }
 
   return (
     <div className={classes.root}>

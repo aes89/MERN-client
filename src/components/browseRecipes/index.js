@@ -17,7 +17,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 
-import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe} from '../../services/recipeServices'
+import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes, getSavedRecipes} from '../../services/recipeServices'
 import {getFridge } from '../../services/ingredientServices'
 
 import {toast } from 'react-toastify';
@@ -29,7 +29,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
   let history = useHistory();
 
-
+   const [fridgeChecker, setFridgeChecker] = useState("");
    const [loading, setloading] = useState(false);
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);
@@ -46,27 +46,29 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         } else {   
       }   
   }
-
+  
+//Main function for returning recipes to browse
   function recipeSearchHandler (){
+    //Checking if fridge is empty or not
    handleNewIngredientsAdded()
-   if (!getBrowsedRecipes()) {
+   if (!getBrowsedRecipes()) {  //if none in local storage
        browseSearchRecipes()
             .then((recipes) => {   
                       setRecipesState(recipes) //state 
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
-                      console.log("gfdfdf", recipes)
+                      console.log("check recipes", recipes)
                       toast.success("Here are your recipes!")
+                      setErrors(null)
                }).then (
                   setTimeout(() => {
                   setloading(true)
                   console.log("check loading done") 
                   }, 5000)
-                
+                  
                )
               .catch((error) => {
                   console.log("errors")
-                  console.log(error)
                   if (error.response && error.response.status === 401)
                   setErrors(" Recipe search failed. Try again. ")
                   else   
@@ -81,7 +83,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               setloading(true)
               console.log("check loading done") 
               //setRecipes(getBrowsedRecipes()
-                  }, 5000)
+                  }, 8000)
          }
 
   }
@@ -89,55 +91,64 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   useEffect(() => {
     //handleNewIngredientsAdded()
     recipeSearchHandler()
+    setFridgeChecker(getFridge())
    
-       
    },[])
 
-//if search again button is clicked, clear local storage and call the route again so the search initalizes again
-  function handleSearchAgain () {
-      history.push("/recipes/browse")
+  //if search again button is clicked, clear local storage and call the route again so the search initalizes again
+    function handleSearchAgain () {
+        history.push("/recipes/browse")
+        setloading(false)
+        setBrowsedRecipes() //local storage
+        //  setRecipesState(recipes) //state 
+        recipeSearchHandler()
+        history.push("/recipes/browse")
+        //  actions.updatedBrowseRecipes(recipes) 
+    }
+
+
+  //Write savedRecipe Handler
+  async function saveRecipeHandler(newRecipe) {
+    console.log("check", newRecipe)
        setloading(false)
-       setBrowsedRecipes() //local storage
-      //  setRecipesState(recipes) //state 
-      recipeSearchHandler()
-      history.push("/recipes/browse")
-      //  actions.updatedBrowseRecipes(recipes) 
-  }
-
-
-//Write savedRecipe Handler
- function saveRecipeHandler(newRecipe) {
-        addNewSavedRecipe(newRecipe)
-          .then((r) => {
-            //saved to redux
-            //save to local storage
-            toast.success(" You have saved this recipe!");
-          })
-          .catch((error) => {
-            console.log("errors");
-            console.log(error.response);
-            toast.error("Oh no error!");
-            if (error.response && error.response.status === 401)
-              setErrors("Error Saving Recipe");
-            else
-              setErrors(
-                "There may be a problem with the server. Please try again after a few moments."
-              );
-        });
-  }
-
+          await addNewSavedRecipe(newRecipe)
+            .then((r) => {
+              console.log("hit here")
+              console.log(r)
+              //saved to redux
+              actions.AddToSavedRecipes(r)
+              //save to local storage
+              setSavedRecipes(r)
+              setErrors("")
+              toast.success(" You have saved this recipe!");
+              setTimeout(() => {
+                  setloading(true)
+                  console.log("check loading done") 
+                  }, 5000)
+             // history.push("/recipes/saved-recipes")
+            })
+            .catch((error) => {
+              console.log("errors");
+              console.log(error);
+              if (error.response && error.response.status === 401)
+                toast.error("Oh no, we couldnt' save your recipe!");
+              else
+              toast.error( "There may be a problem with the server. Please try again after a few moments.");
+              history.push("/recipes/browse")
+          });
+    }
 
 
 
-  console.log("check") 
-  console.log("local store", getBrowsedRecipes())
-  console.log("useState updated", recipesState)
-  console.log("redux  updated", browseRecipes)
+  //Checking storage
+  //console.log("check") 
+  //console.log("local store", getBrowsedRecipes())
+  //console.log("useState updated", recipesState)
+  //console.log("redux  updated", browseRecipes)
 
 
-  const fridgeChecker = getFridge()
+  //const fridgeChecker = getFridge()
   const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
-
 
   return (
       <div className={classes.root}>
@@ -158,17 +169,16 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                 <Loading/>
                     ) : (  
                       <div>
-                      {fridgeChecker ? (
+                       {fridgeChecker  ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  
                           </div> ) : ( 
                            <div class={styles.possibleStatement}>
                            {randomRecipe} 
                             </div>
-                          )}
-                      
+                          )} 
                           <div className={styles.browseBox}>
-                          <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" >
+                          <Grid container spacing={1}  alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
                                 
                                   <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler} />
@@ -203,6 +213,8 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch({ type: "updateUsername", payload: username }),
     updatedBrowseRecipes: (recipes) =>
       dispatch({ type: "browseRecipes", payload: recipes }),
+    AddToSavedRecipes: (recipes) =>
+      dispatch({ type: "savedRecipes", payload: recipes }),
   },
 });
 

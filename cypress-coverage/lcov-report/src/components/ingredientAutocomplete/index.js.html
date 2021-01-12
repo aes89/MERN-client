@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
@@ -329,7 +329,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -356,14 +355,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -433,7 +433,7 @@ function <span class="fstat-no" title="function not covered" >AutocompleteIngred
   function <span class="fstat-no" title="function not covered" >handleAddFridge(</span>event) {
 <span class="cstat-no" title="statement not covered" >    console.log(values);</span>
     const newValues = <span class="cstat-no" title="statement not covered" >values.map(<span class="fstat-no" title="function not covered" >(i</span>) =&gt; <span class="cstat-no" title="statement not covered" >i.name)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    console.log(newValues.join(", "));</span>
+<span class="cstat-no" title="statement not covered" >       console.log("check fridge", newValues);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    addFridgeItem(getUsername(), { item: newValues })</span>
       .then(<span class="fstat-no" title="function not covered" >(r</span>) =&gt; {
@@ -459,13 +459,13 @@ function <span class="fstat-no" title="function not covered" >AutocompleteIngred
   function <span class="fstat-no" title="function not covered" >handleAddPantry(</span>event) {
 <span class="cstat-no" title="statement not covered" >    console.log(values);</span>
     const newValues = <span class="cstat-no" title="statement not covered" >values.map(<span class="fstat-no" title="function not covered" >(i</span>) =&gt; <span class="cstat-no" title="statement not covered" >i.name)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    console.log(newValues.join(", "));</span>
+<span class="cstat-no" title="statement not covered" >       console.log("check pantry", newValues);</span>
 <span class="cstat-no" title="statement not covered" >    addPantryItem(getUsername(), { item: newValues })</span>
       .then(<span class="fstat-no" title="function not covered" >(r</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log(r);</span>
 <span class="cstat-no" title="statement not covered" >        actions.addToPantry(r.pantryIngredients);</span>
 <span class="cstat-no" title="statement not covered" >        setPantry(r.pantryIngredients);</span>
-<span class="cstat-no" title="statement not covered" >        history.push("/ingredients/" + getUsername() + "/pantry");</span>
+<span class="cstat-no" title="statement not covered" >        history.push("/ingredients/"+getUsername()+"/pantry");</span>
 <span class="cstat-no" title="statement not covered" >        toast.success(" New pantry Ingredient Added!");</span>
       })
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
@@ -488,18 +488,18 @@ function <span class="fstat-no" title="function not covered" >AutocompleteIngred
       &lt;Autocomplete
         multiple
         id="tags-standard"
-        // options={ingredientsList}
         options={filteredList}
         getOptionLabel={<span class="fstat-no" title="function not covered" >(o</span>ption) =&gt; <span class="cstat-no" title="statement not covered" >option.name}</span>
         filterSelectedOptions="true"
-        // defaultValue={[filteredList[13]]}
-        onChange={<span class="fstat-no" title="function not covered" >(e</span>vent, value) =&gt; <span class="cstat-no" title="statement not covered" >setValues(value)}</span>
+        defaultValue={[filteredList[13]]}
+        onChange={<span class="fstat-no" title="function not covered" >(e</span>vent, value) =&gt; <span class="cstat-no" title="statement not covered" >value ? setValues(value) : setValues("")}</span>
         renderInput={<span class="fstat-no" title="function not covered" >(p</span>arams) =&gt; {
 <span class="cstat-no" title="statement not covered" >          return (</span>
             &lt;TextField
+              inputValue=""
               {...params}
               variant="standard"
-              label="Add Ingredients"
+              label={`Add Ingredients to your ${type} here`}
               placeholder="Ingredients"
             /&gt;
           );
@@ -544,7 +544,7 @@ export default connect(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 12 2021 23:43:55 GMT+1100 (Australian Eastern Daylight Time)
+                at Wed Jan 13 2021 10:17:57 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

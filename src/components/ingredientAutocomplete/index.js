@@ -54,7 +54,7 @@ function AutocompleteIngredients({
   function handleAddFridge(event) {
     console.log(values);
     const newValues = values.map((i) => i.name);
-    console.log(newValues.join(", "));
+       console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((r) => {
@@ -80,13 +80,13 @@ function AutocompleteIngredients({
   function handleAddPantry(event) {
     console.log(values);
     const newValues = values.map((i) => i.name);
-    console.log(newValues.join(", "));
+       console.log("check pantry", newValues);
     addPantryItem(getUsername(), { item: newValues })
       .then((r) => {
         console.log(r);
         actions.addToPantry(r.pantryIngredients);
         setPantry(r.pantryIngredients);
-        history.push("/ingredients/" + getUsername() + "/pantry");
+        history.push("/ingredients/"+getUsername()+"/pantry");
         toast.success(" New pantry Ingredient Added!");
       })
       .catch((error) => {
@@ -109,18 +109,18 @@ function AutocompleteIngredients({
       <Autocomplete
         multiple
         id="tags-standard"
-        // options={ingredientsList}
         options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
-        // defaultValue={[filteredList[13]]}
-        onChange={(event, value) => setValues(value)}
+        defaultValue={[filteredList[13]]}
+        onChange={(event, value) => value ? setValues(value) : setValues("")}
         renderInput={(params) => {
           return (
             <TextField
+              inputValue=""
               {...params}
               variant="standard"
-              label="Add Ingredients"
+              label={`Add Ingredients to your ${type} here`}
               placeholder="Ingredients"
             />
           );

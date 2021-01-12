@@ -23,6 +23,7 @@
     align-self: center;
     margin-top: 20px;
     width: 250px;
+     box-shadow:0 0 4px #a0a19f;
 }
 .searchButtonMove {
     float: right;

@@ -11,7 +11,7 @@
     transition: all 0.5s;
     max-width: 130px;
     align-self: center;
-    
+     box-shadow:0 0 4px #a0a19f;
 }
    
 .searchButtonOutline:hover {

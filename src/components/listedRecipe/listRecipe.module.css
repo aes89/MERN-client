@@ -31,6 +31,7 @@
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;   
+    box-shadow:0 0 4px #a0a19f;
 }
 
 .removeButton{
@@ -41,4 +42,6 @@
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer; 
+    font-size: 0.8em;
+    box-shadow:0 0 4px #a0a19f;
 }
