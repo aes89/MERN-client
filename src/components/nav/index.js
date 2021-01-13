@@ -61,8 +61,8 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
   function handleLogout() {
     logoutUser()
       .then((r) => {
-        console.log("Got back response on logout", r);
-        console.log("logout")
+        //console.log("Got back response on logout", r);
+        console.log("loged out")
         history.push("/");
         toast.success("Come back soon!")
       })
