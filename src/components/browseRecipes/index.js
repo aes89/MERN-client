@@ -86,7 +86,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               //setRecipes(getBrowsedRecipes()
                   }, 8000)
          }
-
   }
 
   useEffect(() => {
@@ -106,7 +105,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         history.push("/recipes/browse")
         //  actions.updatedBrowseRecipes(recipes) 
     }
-
 
   //Write savedRecipe Handler
   async function saveRecipeHandler(newRecipe) {
@@ -139,16 +137,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
           });
     }
 
-
-
-  //Checking storage
-  //console.log("check") 
-  //console.log("local store", getBrowsedRecipes())
-  //console.log("useState updated", recipesState)
-  //console.log("redux  updated", browseRecipes)
-
-
-  //const fridgeChecker = getFridge()
   const randomRecipe = "You have no ingredients in your fridge, so here are some recipe ideas!"
 
   return (
@@ -177,21 +165,13 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                           </div> ) : ( 
                            <div class={styles.possibleStatement}>
                            {randomRecipe} 
-                          
                             </div>
                           )} 
                           <div className={styles.browseBox}>
-                         
                           <Grid container spacing={1}  alignItems="center" justify="center" >
-                          
                           {browseRecipes && browseRecipes.map((recipe) => (
-                                
                                   <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler} />
-                                
                                    ))}     
-
-                              
-                                
                               </Grid>
                             </div>
                     </div>

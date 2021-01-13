@@ -1,13 +1,18 @@
-## MERN-client
+# fridgeMate
 
-|Shelby El-rassi|Adrienne Smith|
-|:-------------:|:-------------:|
-|[www.shelby-el-rassi.com](www.shelby-el-rassi.com)  |[adriennesmith-portfolio.netlify.app/](https://adriennesmith-portfolio.netlify.app/) |
-|[github.com/Shelby219](https://github.com/Shelby219)  |[github.com/aes89](https://github.com/aes89) |
+##### Created by:
+#### Adrienne Smith | [GitHub](https://github.com/aes89) | and Shelby El-rassi | [GitHub](https://github.com/Shelby219) |
+
+---
+### Front-end Repository
+---
+
+<div style="width:70%; margin: 0 auto;"><img src="./docs/home.png"/></div>
 
 ---
 
-Deployed App:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f03a4191-5b3c-4ca3-98dc-37bc6c6758a2/deploy-status)](https://app.netlify.com/sites/fridgemate/deploys) 
+##### Deployed App: https://fridgemate.netlify.app/
 
 ##### Documentation Repository: https://github.com/CA-MERN/MERN-Part-A-Docs
 
@@ -16,6 +21,7 @@ Deployed App:
 ##### Server Repository: https://github.com/CA-MERN/MERN-server
 
 ---
+
 ### Manual Testing Log - Development
 <details>
 <summary>Click to expand</summary>
