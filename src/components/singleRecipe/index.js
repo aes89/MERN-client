@@ -36,29 +36,25 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   // nutrition, summary, extendedIngredients} = RecipeDataForSingleRecipe[0] 
 
   //get saved receipes from local storage and assign to state first then use that state to display recipes
- console.log('check username', username)
+  //console.log('check username', username)
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
-      console.log('check ', typeof checker.id)
+     // console.log('check type', typeof id)
      // checker.id = checker.id.toString()
-      
-      // function contains(a, obj) {
-      //     var i = a.length;
-      //     while (i--) {
-      //       if (a[i] === obj) {
-      //           return true;
-      //       }
-      //     }
-      //     return false;
-      // }
-      // let exists = contains(Object.values(checker), id)
-
-      //let exists = Object.values(checker).includes(id);
-      const exists = Object.values(checker).some(function(k) { 
-      return k === id })
-      console.log("check exists", exists)
-      return exists
-
+   
+      if (checker.id){
+        checker.id = checker.id.toString()
+        const exists = Object.values(checker).some(function(k) { 
+        return k === id })
+        //console.log("check exists", exists)
+        return exists
+      } else if (checker.recipeID) {
+        checker.recipeID = checker.recipeID.toString()
+        const exists = Object.values(checker).some(function(k) { 
+        return k === id })
+        //console.log("check exists", exists)
+        return exists
+      }
   }
 
   useEffect(() => {
