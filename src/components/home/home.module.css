@@ -7,7 +7,8 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-image: url(../styles/imgs/background.jpg);
+     background-image: url(../styles/imgs/background.jpg);  
+    background-image: url(../styles/imgs/fridgebackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -15,8 +16,7 @@
   .homeContent {
      display: flex;
      justify-content: space-evenly;
-     align-items: center;
-     
+     align-items: center;   
  }
  
  .homeBox{
@@ -24,30 +24,30 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    margin: 70px;
-    padding: 20px;
+    margin: 20px;
+    padding: 30px;
     overflow: hidden;
     background-color: #ffffff;
-    border-radius: 25px;
-  
+    border-radius: 10px;
+    box-shadow:0 0 8px #a0a19f;
  }
  
- .homeBox h1{
-    
+ .homeBox h1{   
    overflow: hidden;
    font-family: "Paytone One", serif;
    color: #FB8D02;
    font-size: 4em;
    letter-spacing: 0px;
-   line-height: 1.2;
    font-weight: 400;
- 
+   text-shadow: 2px 2px grey;
  }
+
  .homeBox h3{
     color: #000000;
     font-size: 1.5em;
     line-height: 1.2;
     font-weight: 400;
+    margin-bottom: 40px;
  }
  
  /* Phone Styles */ 
@@ -58,8 +58,11 @@
     .homeBox h1{
        font-size: 2em;
     }
+    .homeBox p{
+       font-size: 0.7em;
+    }
     .homeBox h3{
-       font-size: 1em;
+       font-size: 0.9em;
     }
     
  }

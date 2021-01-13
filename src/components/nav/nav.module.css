@@ -3,9 +3,6 @@
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 */
-.navBox {
-
-}
 .trigger {
     z-index: 2;
     position: fixed;
@@ -13,28 +10,30 @@
     left: 0;
     width: 100%;
     height: 4em;
-    
  }
  .trigger > i {
     display: inline-block;
-    margin: 1.5em 0 0 1.5em;
+    padding: 15px;
     color: black;
  }
 
 
  .nav {
+   z-index: 1;
     margin: 1em;
-    border-radius: 50px;
+    margin-bottom: 2em;
+    border-radius: 10px;
     position: fixed;
     top: 0;
     left: -25em;
     overflow: hidden;
     transition: all .3s ease-in;
     width: 15em;
-    height: 100%;
+    height: 98%;
     background: #EAEBF1;
     color: #3F7209;
     overflow-y: scroll;
+    box-shadow:0 0 8px #a0a19f;
  }
  .trigger:hover {
    cursor: pointer;
@@ -58,7 +57,12 @@
  .nav ul li {
    width: 100%;
    text-align: center;
-   margin-top: 1.5em;
+   margin-top: 1.9em;
+   color: black;
+ }
+ .nav ul li:nth-child(1){
+   margin-top: 40px;
+  
  }
  .nav ul li:nth-child(2){
    margin-top: 70px;
@@ -73,7 +77,7 @@
    margin-top: 50px;
  }
  .nav ul li:nth-child(6) {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
  }
 
  .navLink {
@@ -94,8 +98,9 @@
     width: 2em;
     height: 2em;
  }
- .navLink:hover {
+ .navLink:hover{
     color: #FB8D02;
+    font-size: 1.05em;
  }
  
  .navLink img::before {
@@ -106,8 +111,13 @@
  }
 
  .userProfile, .foodPic {
- 
-   margin-bottom: 20px;
+
+   margin-bottom: 10px;
+ }
+
+.userProfile img{
+    min-width: 100px;
+    border-radius: 15px;
  }
 
  .userProfile > div {
@@ -123,22 +133,35 @@
 
  .navButtons{
     list-style: none;
-    margin-top: 40px !important;
+    margin-top: 35px !important;
+    margin-bottom: 10px !important;
   }
  
-.navButtons > button{
 
-   margin: 5px;
-   cursor: pointer;
-  
+ .navButtonstyle {
+    all: unset;
+    background-color: #f2f4fc;
+    color: black; 
+    padding: 5px;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    text-decoration: underline;
  }
 
-
+.navButtonstyle:hover {
+    color: black;
+    border-radius: 25px;
+    background-color: #f2f4fc; 
+    
+  }
  /* Mobile First */
  @media only screen and (min-width: 672px) and (max-width: 1087px){
     /* Sidebar */
     .trigger {
       width: 4em;
+      width: 100%;
     }
     .nav {
        width: 4em;

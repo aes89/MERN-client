@@ -1,0 +1,113 @@
+
+ .prefBox{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1em;
+      margin: 0.5em;
+      
+      padding-bottom: 40px; 
+      background-color: white;
+      border-radius: 10px;
+ }
+
+ .prefBox form{
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+      padding: 10px;
+      margin: 0.5em;
+      margin-top: 50px;
+      padding-bottom: 40px;
+      font-size: 1.2em;
+ }
+    
+
+.imgBox  {
+      margin: 90px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: #FB8D02;
+      max-width: 350px;
+      max-height: 350px;
+      
+}
+
+.formBox {
+   display: flex;
+   max-width: 300px;
+  
+}
+ .prefBox img{
+    width: 100%;
+    padding: 30px;
+ 
+ }
+
+ .prefBox label{
+      margin: 1em;
+ }
+ 
+ .prefItem{
+    text-align: center;
+    padding: 9px 15px 9px 15px;
+    margin-left: 5px;
+    background-color: #EAEBF1;
+    border-radius: 25px;
+ }
+
+ .updateButton {
+   all: unset;
+   background-color: #3F7209;
+   color: white;
+   padding: 10px;
+   margin: 10px;
+   margin-top: 50px;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 140px;
+   text-align: center;
+   font-size: 0.8em;     
+ }
+
+.updateButton:hover {
+    border-radius: 25px;
+    background-color: #f2f4fc;   
+    color: black;
+ }
+
+
+ /* Phone Styles */ 
+ @media only screen and (max-width: 767px) {
+    .prefBox form{
+      font-size: 1em;
+   }
+   .imgBox {
+      max-width: 200px;
+      max-height: 200px;
+      margin: 20px;
+    }
+   .prefBox{
+      flex-wrap: wrap-reverse;  
+    }
+ }
+  
+  /* Tablet Styles */ 
+  @media only screen and (min-width: 601px) { 
+        .imgBox {
+               padding: 30px;
+               display: inline-block;
+               float: right;
+         }
+  }
+  /* Desktop Styles */ 
+  @media only screen and (min-width:1024px) {
+        
+         .prefBox form{
+            font-size: 1.2em;
+         }
+         .imgBox {
+              margin: 100px;
+         }
+   }

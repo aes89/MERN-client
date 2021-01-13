@@ -1,22 +1,22 @@
-import React, { Fragment } from "react";
-import { Link } from 'react-router-dom'
+import React, { Fragment} from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Modal from "react-modal";
+
 import { useHistory } from "react-router-dom";
 
 import styles from "./nav.module.css";
 
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
-import {logoutUser} from '../../services/authServices'
+import {logoutUser } from "../../services/authServices";
 
 
 //MATERIAL
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import Fadein from '@material-ui/core/Fade';
+import HelpIcon from '@material-ui/icons/Help';
+
 
 
 //IMAGES-icons
@@ -24,6 +24,7 @@ import fridge from "../styles/imgs/fridge.png";
 import pantry from "../styles/imgs/pantry.png";
 import pref from "../styles/imgs/preference.png";
 import list from "../styles/imgs/list.png";
+import ProfileDefault from "../styles/imgs/profileDefault.png";
 
 //FOOD IMAGES
 import carrot from "../styles/imgs/carrot.png";
@@ -35,8 +36,14 @@ import radish from "../styles/imgs/radish.png";
 import ramen from "../styles/imgs/ramen.png";
 import tomato from "../styles/imgs/tomato.png";
 
-const NavBar = ({ actions, userLoggedIn }) => {
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) => {
   let history = useHistory();
+  //const [profile, setProfile] = useState("");
   const { setModalOpen } = actions;
   const listFoodImg = [
     carrot,
@@ -51,24 +58,33 @@ const NavBar = ({ actions, userLoggedIn }) => {
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
 
-  const items = [
-      { name: 'home', label: 'Home' },
-      { name: 'billing', label: 'Billing' },
-      { name: 'settings', label: 'Settings' },
-    ]
   function handleLogout() {
-      logoutUser().then((response) => {
-          console.log("Got back response on logout", response.status)
-          history.push("/")
-      }).catch ((error) => {
-          console.log("The server may be down - caught an exception on logout:", error)
+    logoutUser()
+      .then((r) => {
+        //console.log("Got back response on logout", r);
+        console.log("loged out")
+        history.push("/");
+        toast.success("Come back soon!")
       })
-      // Even if we catch an error, logout the user locally
-      // Remove the token from localStorage
-      localStorage.removeItem("token")
-      localStorage.removeItem("username")
-      actions.logout()
-  }
+      .catch((error) => {
+        toast.error("Oh no, error loggin out!", error)
+        console.log(
+          "The server may be down - caught an exception on logout:",
+          error
+        );
+      });
+      
+    //clear storage if error
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    localStorage.removeItem("fridge")
+    localStorage.removeItem("pantry")
+    localStorage.removeItem("browsedRecipes")
+    localStorage.removeItem("profile")
+    actions.removeProfile()
+    actions.logout()
+    
+}
 
   return (
     <div class={styles.navBox}>
@@ -78,31 +94,26 @@ const NavBar = ({ actions, userLoggedIn }) => {
           <MoreVertIcon />
         </i>
       </a>
+      <Fadein in={true}  timeout={2000}>
       <nav class={styles.nav}>
         <ul>
-        {/*
-        <List disablePadding dense>
-          <ListItem button>
-                <ListItemText>User's Name</ListItemText>
-                </ListItem>
-        </List> */}
-                <li>
-                  <Link to={"/user/"+userLoggedIn+"/account-settings"}>
-                    <div class={styles.userProfile}>
-                    
-                      <img alt="Users profile image" src={fridge} />
-                      <div>{userLoggedIn}</div>
-                    
-                    </div>
-                  </Link>
-                </li>
+          <li>
+            <Link to={"/user/" + userLoggedIn + "/account-settings"}>
+              <div class={styles.userProfile}>
+                {currentProfile ? (
+                  <img alt="profile of user" src={currentProfile} /> ) : (
+                  <img src={ProfileDefault} /> )}
+                {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
+              </div>
+            </Link>
+          </li>
           <li>
             <SearchRecipeButton />
             <a class={styles.navLink}></a>
           </li>
           <li>
             <Link
-              to={"/ingredients/"+userLoggedIn+"/fridge"}
+              to={"/ingredients/" + userLoggedIn + "/fridge"}
               class={styles.navLink}
             >
               <img alt="Fridge" src={fridge} />
@@ -110,10 +121,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
             </Link>
           </li>
           <li>
-            <Link
-              to={"/ingredients/"+userLoggedIn+"/pantry"}
-              class={styles.navLink}
-            >
+            <Link to={`/ingredients/${userLoggedIn}/pantry`} class={styles.navLink}>
               <img alt="Pantry" src={pantry} />
               <div>Pantry Staples</div>
             </Link>
@@ -125,10 +133,7 @@ const NavBar = ({ actions, userLoggedIn }) => {
             </Link>
           </li>
           <li>
-            <Link
-              to={"/preferences/"+userLoggedIn}
-              class={styles.navLink}
-            >
+            <Link to={"/preferences/" + userLoggedIn} class={styles.navLink}>
               <img alt="preference" src={pref} />
               <div> My Preferences</div>
             </Link>
@@ -141,31 +146,49 @@ const NavBar = ({ actions, userLoggedIn }) => {
               {userLoggedIn ? (
                 <Fragment>
                   {" "}
-                  <button
-                    class={styles.loginSignupButtons}
-                    onClick={ handleLogout}
-                  >
+                  <Button variant="outlined" class={styles.navButtonstyle} onClick={handleLogout}>
                     Log out
-                  </button>
+                  </Button>
                 </Fragment>
               ) : (
                 <Fragment>
-              
-                  <Button variant="outlined" onClick={() => setModalOpen("login")} >Login</Button>
-                  <Button variant="outlined" onClick={() => setModalOpen("register")} >Register</Button>
-                
+                  <Button
+                    variant="outlined"
+                    class={styles.navButtonstyle}
+                    onClick={() => setModalOpen("login")}
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    class={styles.navButtonstyle}
+                    onClick={() => setModalOpen("register")}
+                  >
+                    Register
+                  </Button>
                 </Fragment>
               )}
+              
             </Fragment>
           </li>
+          <li style={{ textAlign: 'left', padding: '10px', }}>
+            <Button 
+             onClick={() => setModalOpen("help")}>
+            <HelpIcon/>
+            </Button>
+          </li>
         </ul>
+           
       </nav>
+    </Fadein>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   userLoggedIn: state.userLoggedIn.username,
+  currentUserSettings: state.currentUserSettings,
+  currentProfile: state.currentUserSettings.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -175,6 +198,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     logIn: () => dispatch({ type: "login" }),
     logout: () => dispatch({ type: "logout" }),
+    removeProfile: () => dispatch({ type: "removeProfile" }),
+    updateProfile: ({ profile }) =>
+      dispatch({ type: "updateProfile", payload: {profile } }),
   },
 });
 

@@ -8,6 +8,7 @@
 html, body {
    height: 100%;
    min-height: 100vh;
+   
 }
 
 
@@ -15,7 +16,7 @@ em {
    font-style: normal;
 }
 
-a {
+a {    
    text-decoration: none;
    color: inherit;
 } 
@@ -23,15 +24,56 @@ a {
 /* Layout All Pages Except Hoome*/
 .layout {
    display: flex;
-   width: 100%;  
+   width: 100%; 
+   
+}
+.fadeBox{
+   opacity: 1;
+   animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.headings {
+   display: flex;
+   /* position: fixed; */
+   margin: 0.8em;
+   margin-top: 80px;
+   overflow: hidden;
+   font-family: "Paytone One", serif;
+   color: #FB8D02;
+   font-size: 2em;
+  
 }
 
 .layoutContent {
    display: flex;
    justify-content: center;
-   align-items: center;
-   flex: 1;
+   align-content: center;
+   flex-direction: column;
+   background: #EAEBF1;
+   border-radius: 10px;
+   margin: 1.5em;
+   margin-top: 1em;
+   padding: 1em;
+   box-shadow:0 0 8px #a0a19f;
+   height: 100%;
 }
+ .subheading{
+    padding: 15px;
+    font-size: 1em;
+    font-weight: 600;
+ }
 
 /* Phone Styles */ 
 @media only screen and (max-width: 600px) {
@@ -46,8 +88,14 @@ a {
   
   
  }
- /* Desktop Styles */ 
- @media only screen and (min-width:1201px) {
-   
+ @media only screen and (min-width:1088px)  {
+   .layoutContent {
+      margin-left: 17em;
+   }
+   .headings {
+      margin-left: 250px;
+      font-size: 3em;
+   }
+  
+}
 
-  }

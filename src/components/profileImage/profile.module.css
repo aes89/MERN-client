@@ -1,0 +1,42 @@
+
+.imageUploadButton{
+  all: unset;
+    background-color: #F8BC23;  
+    color: white;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    box-shadow:0 0 4px #a0a19f;
+}
+ .imageUploadButton:hover {
+    border-radius: 25px;
+    background-color: #f2f4fc;   
+    color: black;
+ }
+/* Phone Styles */ 
+ @media only screen and (max-width: 767px) {
+
+ .imageUpload {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+   }
+
+ .imageUpload form{
+    margin: 0 auto;
+   }
+
+ .imageUpload  input{
+    align-items: center;
+    text-align: center;
+     
+   }
+   .imageUpload button{
+    margin: 10px;
+   }
+      
+ }

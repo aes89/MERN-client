@@ -5,11 +5,17 @@ import { Link } from 'react-router-dom'
 
 const Logo = () => {
   return (
-    <Link to={`/`} >
+
+  
     <div class={styles.logo}>
+         <Link to={"/"}>
+      <div class={styles.text}>
       FridgeMate
+      </div>
+      </Link>
     </div>
-    </Link>
+    
+    
   );
 };
 

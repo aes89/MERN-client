@@ -1,0 +1,58 @@
+
+.button{
+    all: unset;
+    background-color: #FB8D02;
+    color: white;  
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 30px ;
+    box-shadow:0 0 4px #a0a19f;
+}
+
+.button:hover {
+    color: black;
+    border-radius: 25px;
+    background-color: #f2f4fc; 
+    
+  }
+
+.autoComplete{
+   margin: 20px;
+   width: 270px;
+   padding: 20px;
+   background-color: white;
+   border-radius: 10px;
+   
+}
+
+/* Mobile Styles */ 
+@media only screen 
+   and (max-width: 601px) 
+   and (-webkit-min-device-pixel-ratio: 1) {
+      .autoComplete{
+         align-self: center;
+         }
+   }
+
+/* Tablet Styles */ 
+@media only screen and (min-width:767px) and (max-width: 1023px)  {
+    
+         .autoComplete{
+            width: 350px;
+            padding: 20px;   
+         }
+   }
+
+/* Desktop Styles */ 
+@media only screen and (min-width:1023px) {
+         .imgBox { 
+         padding: 30px;       
+         }
+         .autoComplete{
+            width: 550px;
+            padding: 20px;
+           
+         }
+   }

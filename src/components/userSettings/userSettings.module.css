@@ -1,0 +1,98 @@
+
+ .settingsBox{
+   display: flex;
+   justify-content: space-between;
+   align-content: center;
+   flex-direction: column;
+   padding: 1em;
+   margin: 0.5em;
+   padding-bottom: 40px;
+  
+  
+ }
+
+ .profileBox{
+    display: flex;
+    justify-content: flex-end;
+  
+    
+ }
+.fileBox{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;  
+ }
+
+.profileBox img{
+    width: 200px;
+    border-radius: 15px;
+ }
+
+
+
+.settingsBox > form{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+   align-self: center;
+   
+  
+}
+
+.settingsBox label{
+  margin: 10px;
+  font-size: 1.1em;
+}
+
+.settingsBox input{
+   height: 50px;
+   margin: 10px;
+
+}
+
+.updateButton {
+   all: unset;
+   background-color: #3F7209;
+   color: white;
+   padding: 10px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   width: 100px;
+   box-shadow:0 0 4px #a0a19f;
+   text-align: center;
+ }
+ /* Phone Styles */ 
+ @media only screen and (max-width: 767px) {
+
+   .profileBox{
+      display: flex;
+      justify-content: center;      
+   }
+
+   .fileBox{
+    display: flex;
+    justify-content: center;
+   }
+
+   
+   
+
+      
+ }
+  
+  /* Tablet Styles */ 
+  @media only screen 
+  and (min-device-width: 601px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+   
+   
+  }
+  /* Desktop Styles */ 
+  @media only screen and (min-width:1024px) {
+      .settingsBox > form{
+         width: 70%;
+      }
+   }

@@ -1,0 +1,16 @@
+
+
+.footerBox{
+    margin-top: 20px;
+    padding: 0.3rem;
+    position:relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 0.9em;
+    padding-bottom: -150px;
+ }
+ .footerBox div {
+  text-align: right;
+  padding-right: 15px;
+ }

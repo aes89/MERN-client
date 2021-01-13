@@ -1,0 +1,30 @@
+
+
+.slideImage {
+    /* -webkit-clip-path: circle(50% at 50% 50%);
+     clip-path: circle(50% at 50% 50%);
+    */
+    width: 100%;
+    
+}
+
+
+.ButtonOutline {
+    all: unset;
+    background-color: #FB8D02;
+    color: white;  
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    max-width: 130px;
+    align-self: center;
+      box-shadow:0 0 4px #a0a19f;
+}
+   
+.ButtonOutline:hover {
+    color: black;
+    border-radius: 25px;
+    background-color: #f2f4fc;
+    
+  }
