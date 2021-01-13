@@ -22,7 +22,7 @@ const recipes = createReducer(initialState, (builder) => {
     .addCase(singleRecipe, (state, action) => {
       state.singleRecipe = action.payload;
       console.log("state updated for single Recipe!");
-     // console.log(action.payload)
+     //console.log(action.payload)
     })
     
 });
