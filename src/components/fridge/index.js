@@ -9,7 +9,6 @@ import {
   setFridge,
 } from "../../services/ingredientServices";
 import { getUsername } from "../../services/authServices";
-
 import styles from "./fridge.module.css";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";

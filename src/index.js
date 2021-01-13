@@ -13,6 +13,8 @@ import store from "../src/app/store"
 
 console.log("STORE", store);
 
+//note for next time: can wrap in browserrouter, like store below
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

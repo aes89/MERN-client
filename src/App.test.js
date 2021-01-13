@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 
 // import { ExpansionPanelActions } from "@material-ui/core";
 // import { shallow } from "enzyme";
@@ -30,3 +31,12 @@ import App from "./App.js";
 //   const div = document.createElement("div"); // create the div here
 //   ReactDOM.render(<App />, div);
 // });
+
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById("root")
+);
