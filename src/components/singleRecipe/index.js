@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 
 import Logo from "../logo";
@@ -22,6 +22,14 @@ const SingleRecipe = ({ savedRecipes }) => {
   servings, image, sourceUrl, cuisines, dishTypes, diets, instructions, 
   nutrition, summary, extendedIngredients} = RecipeDataForSingleRecipe[0] 
   //get saved receipes from local storage and assign to state first then use that state to display recipes
+
+  useEffect(() => {
+        console.log("state updated for setAddrecipe")
+     
+    
+    },[])
+
+
 
   return (
     <div className={classes.root}>

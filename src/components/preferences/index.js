@@ -129,12 +129,11 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
            <Loading/>
               ) : (  
             <> 
+                  <div class={appstyles.subheading}>Select from the preferences below and we will only show you recipes that match.</div>
                     <div className={styles.prefBox}>
-                   
+                      
                           <div class={styles.formBox}>
-
                                   <Formik
-
                                     initialValues={{ "vegetarian": userPreferences.vegetarian,
                                       "vegan": userPreferences.vegan,
                                       "glutenFree": userPreferences.glutenFree,

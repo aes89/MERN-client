@@ -172,9 +172,11 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                        {fridgeChecker  ? (
                           <div class={styles.possibleStatement}>
                             You can make {recipesState.length} possible recipes!  
+                            <div class={appstyles.subheading} style={{fontSize: "0.7em"}}>Click save recipe to save them to your collection!</div>
                           </div> ) : ( 
                            <div class={styles.possibleStatement}>
                            {randomRecipe} 
+                          
                             </div>
                           )} 
                           <div className={styles.browseBox}>

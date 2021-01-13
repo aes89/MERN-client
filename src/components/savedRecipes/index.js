@@ -123,8 +123,9 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                 <Loading />
               ) : (
                 <>
-                        <div class={styles.possibleStatement}> </div>
-
+                  <div class={styles.possibleStatement}> </div>
+                      <div class={appstyles.subheading} style={{textAlign: "center",fontSize: "1.2em"}}>Your recipes saved from FridgeMate!</div>
+                         
                         <div className={styles.savedBox}>
                           <Grid container spacing={1}  alignItems="center" justify="center" >
                           {checker ? (

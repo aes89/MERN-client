@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./listRecipe.module.css";
 import useStyles from "../styles/makeStyles.js";
 
@@ -81,9 +82,8 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
             <div>
                 {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
                 <Grid item sm spacing={1}   wrap="wrap">
-      
+                 <Link to={"/recipes/" + _id +"/recipe"  }>
                   <Paper className={classes.paper} variant="outlined" > 
-                
                           <div class={styles.listItem}>
                                   <img alt="recipe" src={image} />        
                                   <h3>{title}</h3>
@@ -93,7 +93,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                                 </div>
                             <Button variant="outlined" class={styles.removeButton} onClick={()=>{deleteRecipeHandler(_id)}}>Remove</Button>
                     </Paper>  
-             
+                 </Link>
                 </Grid>
             </div>)
 
@@ -103,6 +103,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
         <div>
             {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
            <Grid item sm spacing={1}   wrap="wrap">
+             <Link to={"/recipes/" + id +"/recipe" }>
                 <Paper className={classes.paper} variant="outlined" > 
                 <div class={styles.listItem}>
                     <div>You have {usedIngred}/{usedIngred+ missedIngred} ingredients! </div>
@@ -113,6 +114,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                 </div>
                 <Button variant="outlined" class={styles.savedButton} onClick={collectRecipeHandler}>Save Recipe!</Button>
                </Paper>
+            </Link>
         </Grid>
         </div>
     )

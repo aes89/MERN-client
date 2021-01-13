@@ -71,7 +71,7 @@
    font-size: 0.8em;     
  }
 
-  .updateButton:hover {
+.updateButton:hover {
     border-radius: 25px;
     background-color: #f2f4fc;   
     color: black;

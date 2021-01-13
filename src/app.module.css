@@ -68,10 +68,12 @@ a {
    padding: 1em;
    box-shadow:0 0 8px #a0a19f;
    height: 100%;
-
- 
-
 }
+ .subheading{
+    padding: 15px;
+    font-size: 1em;
+    font-weight: 600;
+ }
 
 /* Phone Styles */ 
 @media only screen and (max-width: 600px) {

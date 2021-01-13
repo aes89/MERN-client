@@ -101,6 +101,8 @@ const Fridge = ({actions, fridgeIngredients}) => {
            <Loading/>
               ) : (  
             <>
+             <div class={appstyles.subheading}>Add ingredients to your Fridge Below and we will use them to find you recipes!</div>
+                  
                <div class={styles.fridgeAutoBox}> 
               <AutocompleteIngredients type="fridge"/> 
               <div class={styles.fridge}> <img alt="Fridge cartoon" src={fridge} /></div>
