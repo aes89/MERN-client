@@ -24,16 +24,10 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   const classes = useStyles();
   const { id } = useParams();
 
- const [displayRecipe, setDisplayRecipe] = useState("");
- const [loading, setloading] = useState({ done: false });
- const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
- sourceUrl, title, _id, extendedIngredients, username} = displayRecipe 
-
-  //let RecipeDataForSingleRecipe = TestBrowseData()
-  //console.log(RecipeDataForSingleRecipe)
-  // const {username, usedIngred, missedIngred, title, readyInMinutes, 
-  // servings, image, sourceUrl, cuisines, dishTypes, diets, instructions, 
-  // nutrition, summary, extendedIngredients} = RecipeDataForSingleRecipe[0] 
+  const [displayRecipe, setDisplayRecipe] = useState("");
+  const [loading, setloading] = useState({ done: false });
+  const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
+  sourceUrl, title, _id, extendedIngredients, username} = displayRecipe 
 
   //get saved receipes from local storage and assign to state first then use that state to display recipes
   //console.log('check username', username)

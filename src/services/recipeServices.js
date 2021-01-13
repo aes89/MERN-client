@@ -42,7 +42,7 @@ export function getBrowsedRecipes() {
 export function setBrowsedRecipes(items) {
     items ? localStorage.setItem("browsedRecipes", JSON.stringify(items)) : localStorage.removeItem("browsedRecipes")
     console.log("local browsedRecipes Updated")
-    console.log(items)
+    //console.log(items)
 }
 
 export function getSavedRecipes() {
@@ -52,7 +52,7 @@ export function getSavedRecipes() {
 export function setSavedRecipes(recipe) {
     recipe ? localStorage.setItem("savedRecipes", JSON.stringify(recipe)) : localStorage.removeItem("savedRecipes")
     console.log("local savedRecipes Updated")
-    console.log(recipe)
+    //console.log(recipe)
 }
 
 
@@ -63,5 +63,5 @@ export function getSingleRecipe() {
 export function setSingleRecipe(recipe) {
     recipe ? localStorage.setItem("singleRecipe", JSON.stringify(recipe)) : localStorage.removeItem("singleRecipe")
     console.log("local singleRecipe Updated")
-    console.log(recipe)
+    //console.log(recipe)
 }

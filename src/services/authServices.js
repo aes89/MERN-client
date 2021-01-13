@@ -116,7 +116,7 @@ export function setLoggedInUser(token) {
     ? localStorage.setItem("token", token)
     : localStorage.removeItem("token");
   console.log("local token Updated");
-  console.log(token);
+  //console.log(token);
 }
 
 // Get loggedInUser from localStorage
@@ -130,7 +130,7 @@ export function setUsername(user) {
     ? localStorage.setItem("username", user)
     : localStorage.removeItem("username");
   console.log("local username Updated");
-  console.log(user);
+  //console.log(user);
 }
 
 // Get profile from localStorage
@@ -144,7 +144,7 @@ export function setProfile(image) {
     ? localStorage.setItem("profile", image)
     : localStorage.removeItem("profile");
   console.log("local profile Updated");
-  console.log(image);
+  //console.log(image);
 }
 
 
@@ -159,5 +159,5 @@ export function setPref(pref) {
     ? localStorage.setItem("preferences", JSON.stringify(pref))
     : localStorage.removeItem("preferences");
   console.log("local preferences Updated");
-  console.log(pref);
+  //console.log(pref);
 }

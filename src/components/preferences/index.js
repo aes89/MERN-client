@@ -63,8 +63,8 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         //console.log("check redux", userPreferences)
       })
       .catch((error) => {
-        console.log("errors");
-        console.log(error.response);
+        //console.log("errors");
+        //console.log(error.response);
         if (error.response && error.response.status === 404)
           //formik.setStatus("Error getting pref information ");
           toast.error("Sorry we could not get your information at this time.")
