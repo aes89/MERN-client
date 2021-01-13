@@ -13,7 +13,7 @@ import Loading from "../loading";
 
 const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedRecipe}) => {
   const classes = useStyles();
-  const [addRecipe, setAddRecipe] = useState("");
+  //const [addRecipe, setAddRecipe] = useState("");
   const [loading, setloading] = useState({ done: false });
   const {recipeID, id, _id,
   usedIngred, 
@@ -21,27 +21,16 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
   title, readyInMinutes, servings, image} = recipe 
 
   let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
-      useEffect(() => {
-        console.log("state updated for setAddrecipe")
-      setAddRecipe(recipe)
+      
+    //   useEffect(() => {
+    //     console.log("state updated for setAddrecipe")
+    //   setAddRecipe(recipe)
     
-    },[])
+    // },[])
   async function collectRecipeHandler () {
     //console.log("state updated for setAddrecipe")
       //setAddRecipe(recipe)
-      // const testRecipe = {
-      //             username: userLoggedIn,
-      //             recipeID: 1234 ,
-      //             title: "Test",
-      //             readyInMinutes: 1234,
-      //             servings: 2,
-      //             sourceUrl: "Test",
-      //             image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1035&q=80",
-      //             cuisines: ["Test"],
-      //             dishTypes: ["Test"],
-      //             diets: ["Test"],
-      //             instructions:  ["Test"]
-      //         }
+      let addRecipe = recipe
       const newRecipe = {
                   username: userLoggedIn,
                   recipeID: addRecipe.id ,
@@ -103,8 +92,9 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
         <div>
             {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
            <Grid item sm spacing={1}   wrap="wrap">
-             <Link to={"/recipes/" + id +"/recipe" }>
+          
                 <Paper className={classes.paper} variant="outlined" > 
+                <Link to={"/recipes/" + id +"/recipe" }>
                 <div class={styles.listItem}>
                     <div>You have {usedIngred}/{usedIngred+ missedIngred} ingredients! </div>
                     <img alt="recipe" src={image} />        
@@ -112,9 +102,11 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                     <p>Serves: {servings}</p>
                     <p>Prep time: {convert}</p>
                 </div>
-                <Button variant="outlined" class={styles.savedButton} onClick={collectRecipeHandler}>Save Recipe!</Button>
+                 </Link>
+                 <Button variant="outlined" class={styles.savedButton} onClick={collectRecipeHandler}>Save Recipe!</Button>
+               
                </Paper>
-            </Link>
+           
         </Grid>
         </div>
     )

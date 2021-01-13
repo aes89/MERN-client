@@ -40,6 +40,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
 
   //Call DB to display recipe data
   async function getSavedHandler() {
+     setloading({ done: false });
               await getAllUserSavedRecipes()
                 .then((res) => {
                   setSavedRecipes()
@@ -49,6 +50,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   actions.AddToSavedRecipes(res)
                   //save to local storage
                   setSavedRecipes(res)
+                  setSavedUserRecipes(res)
                   setErrors("")
                   setTimeout(() => {
                   setloading({ done: true });

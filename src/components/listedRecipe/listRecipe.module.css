@@ -34,6 +34,11 @@
     box-shadow:0 0 4px #a0a19f;
 }
 
+.savedButton:hover {
+    border-radius: 25px;
+    background-color: #f2f4fc;   
+    color: black;
+ }
 .removeButton{
     all: unset;
     background-color: #74716D;

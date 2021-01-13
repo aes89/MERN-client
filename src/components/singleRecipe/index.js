@@ -12,6 +12,7 @@ import {getSingleRecipePage, getSingleRecipe, setSingleRecipe} from '../../servi
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
+import Button from '@material-ui/core/Button';
 
 //import TestBrowseData from "../../data/testBrowseRecipeData";
 
@@ -26,7 +27,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
  const [displayRecipe, setDisplayRecipe] = useState("");
  const [loading, setloading] = useState({ done: false });
  const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
- sourceUrl, title, _id, extendedIngredients} = displayRecipe 
+ sourceUrl, title, _id, extendedIngredients, username} = displayRecipe 
 
   //let RecipeDataForSingleRecipe = TestBrowseData()
   //console.log(RecipeDataForSingleRecipe)
@@ -35,11 +36,11 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   // nutrition, summary, extendedIngredients} = RecipeDataForSingleRecipe[0] 
 
   //get saved receipes from local storage and assign to state first then use that state to display recipes
-
+ console.log('check username', username)
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
       console.log('check ', typeof checker.id)
-      checker.id = checker.id.toString()
+     // checker.id = checker.id.toString()
       
       // function contains(a, obj) {
       //     var i = a.length;
@@ -107,7 +108,15 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
-             <div class={appstyles.subheading}>This recipe is in your Saved Recipes!</div>   
+            {displayRecipe.username ? (
+            <div class={appstyles.subheading}>This recipe is in your Saved Recipes!</div>  
+             ) : (
+              <>
+              <div class={appstyles.subheading} style={{alignSelf: "center"}}>Maybe saved this recipe for later? 
+              <Button variant="outlined" class={styles.savedButton} >Save Recipe!</Button>
+              </div> 
+              </>
+             )}
              {!loading.done ? (
                 <Loading />
               ) : (
