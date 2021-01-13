@@ -11,7 +11,7 @@ const recipes = createReducer(initialState, (builder) => {
     .addCase(browseRecipes, (state, action) => {
       state.browseRecipes = action.payload;
       console.log("state updated for browse Recipes!");
-      //console.log(action.payload)
+      console.log(action.payload)
     })
     .addCase(savedRecipes, (state, action) => {
       state.savedRecipes = action.payload 

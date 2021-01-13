@@ -131,7 +131,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                           {checker ? (
                               <>
                                   {savedUserRecipes && savedUserRecipes.map((recipe) => (
-                                  <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
+                                  <ListedRecipe key={recipe.title} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
                                 ))} 
                               </>
                               ) : (

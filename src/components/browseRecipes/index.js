@@ -129,7 +129,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             })
             .catch((error) => {
               console.log("errors");
-              console.log(error);
+              console.log(error.response.data);
               if (error.response && error.response.status === 401)
                 toast.error("Oh no, we couldnt' save your recipe!");
               else

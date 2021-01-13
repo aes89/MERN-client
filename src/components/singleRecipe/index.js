@@ -25,7 +25,8 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
 
  const [displayRecipe, setDisplayRecipe] = useState("");
  const [loading, setloading] = useState({ done: false });
- const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, sourceUrl, title,_id} = displayRecipe 
+ const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
+ sourceUrl, title, _id, extendedIngredients} = displayRecipe 
 
   //let RecipeDataForSingleRecipe = TestBrowseData()
   //console.log(RecipeDataForSingleRecipe)
@@ -106,7 +107,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
-            {/* <h2>You have {usedIngred}/{usedIngred + missedIngred} ingredients!</h2> */}
+             <div class={appstyles.subheading}>This recipe is in your Saved Recipes!</div>   
              {!loading.done ? (
                 <Loading />
               ) : (
@@ -116,9 +117,9 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               <div class={styles.summaryBox}> 
                                   <div class={styles.summaryText}>         
                                       <p><strong>Serves:</strong> {servings} </p>
-                                      {/* <p><strong>Cuisines:</strong> {cuisines.join(" , ")} </p>
+                                      <p><strong>Cuisines:</strong> {cuisines.join(" , ")} </p>
                                       <p><strong>Dish Types:</strong> {dishTypes.join(" , ")} </p>
-                                      <p><strong>Diets:</strong>  {diets.join(" , ")} </p> */}
+                                      <p><strong>Diets:</strong>  {diets.join(" , ")} </p> 
                                       <a href={sourceUrl} > <p class={styles.url}><strong>View Source URL</strong> </p></a> 
                                   </div>  
                                     <div class={styles.imageBox}> 
@@ -127,8 +128,11 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               </div>
                           <div class={styles.instructBox}> 
                               <h4>Ingredients</h4>
-                              {/* <p>{extendedIngredients} </p>  */}
-                        
+                               <ul>
+                                {extendedIngredients && extendedIngredients.map((ingredient) => (
+                                  <li key={ingredient.name}> {ingredient.name} </li>
+                                   ))}    
+                               </ul>  
                               <h4>Instructions</h4>
                               <div> {instructions} </div>  
                           </div>  

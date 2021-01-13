@@ -47,6 +47,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                   recipeID: addRecipe.id ,
                   title: addRecipe.title,
                   readyInMinutes: addRecipe.readyInMinutes,
+                  extendedIngredients: addRecipe.extendedIngredients,
                   servings: addRecipe.servings,
                   sourceUrl: addRecipe.sourceUrl,
                   image: addRecipe.image,
@@ -88,7 +89,6 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                                   <img alt="recipe" src={image} />        
                                   <h3>{title}</h3>
                                   <p>Serves: {servings}</p>
-                                  <p>RecipeID: {recipeID}</p>
                                   <p>Prep time: {convert}</p>
                                 </div>
                             <Button variant="outlined" class={styles.removeButton} onClick={()=>{deleteRecipeHandler(_id)}}>Remove</Button>
