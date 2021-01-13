@@ -16,6 +16,7 @@ Cypress.Commands.add("logIn", () => {
     .should("have.value", "TestUser1!");
   cy.contains("Log In").click();
   cy.contains("You are logged in!");
+  cy.setLocalStorage("username", "Testuser");
   cy.get(".nav_trigger__3BDFX").trigger("mouseover");
   cy.get(".nav_nav__3AJrQ").scrollIntoView();
   cy.contains("My Fridge");

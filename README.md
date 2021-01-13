@@ -106,6 +106,7 @@ $ npx nyc report --reporter=lcov
 cypress-and-jest
 Combines Cypress and Jest coverage reports
 run $open coverage/lcov-report/index.html
+ npm run report:combined
 
 cypress-testing-library
 allows reusable components in cypress testing

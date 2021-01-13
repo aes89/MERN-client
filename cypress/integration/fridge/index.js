@@ -1,4 +1,4 @@
-import logIn from "../../fixtures/logInSequence.spec";
+import logIn from "../../fixtures/logInSequence";
 
 describe("Fridge page", () => {
   //logs in
@@ -11,7 +11,6 @@ describe("Fridge page", () => {
     cy.window()
       .its("store")
       .invoke("getState")
-      // .should("deep.equal", { userLoggedIn: { username: "Testuser" } });
       .should("deep.equal", {
         modalOpen: {
           modal: null,
@@ -49,23 +48,23 @@ describe("Fridge page", () => {
         },
       });
   });
-  // });
+  });
 
-  //   it("Fail: Loads the preferences page ", () => {
-  //     cy.contains("Vegetarian");
-  //     cy.contains("Sustainable");
-  //   });
+    it("Fail: Loads the preferences page ", () => {
+      cy.contains("Vegetarian");
+      cy.contains("Sustainable");
+    });
 
-  //   it("Pass: Loads the fridge page ", () => {
-  //     cy.contains("Add Ingredients");
-  //   });
+    it("Pass: Loads the fridge page ", () => {
+      cy.contains("Add Ingredients");
+    });
 
-  //   it("Pass: Filters ingredients based on input ", () => {
-  //     cy.get(".MuiFormControl-root").click().type("cheese");
-  //     cy.contains("american cheese");
-  //     cy.should("not.contain", "egg");
-  //     cy.contains("american cheese");
-  //   });
+    it("Pass: Filters ingredients based on input ", () => {
+      cy.get(".MuiFormControl-root").click().type("cheese");
+      cy.contains("american cheese");
+      cy.should("not.contain", "egg");
+      cy.contains("american cheese");
+    });
 
   it("Pass: Selects and submits ingredients ", () => {
     cy.get(".MuiFormControl-root").click().type("egg");

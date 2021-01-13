@@ -1,4 +1,4 @@
-import logIn from "../../fixtures/logInSequence.spec";
+import logIn from "../../fixtures/logInSequence";
 
 describe("Log In", () => {
   it("Pass: should have the right initial state", function () {

@@ -32,7 +32,7 @@ describe("Preferences page", () => {
     cy.contains("Dairy-Free");
   });
 
-  it("Pass: I dunno ", () => {
+  it("Pass: Shows preferences from state ", () => {
     cy.clearLocalStorageSnapshot();
     cy.setLocalStorage("username", "Testuser");
 
@@ -66,3 +66,8 @@ describe("Preferences page", () => {
 
   // });
 });
+
+// test checkbox ticked or not with this value? true vs false
+{
+  /* <input name="vegetarian" type="checkbox" value="true" checked=""></input> */
+}

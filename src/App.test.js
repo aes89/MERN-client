@@ -1,18 +1,32 @@
-import { shallow } from "enzyme";
 import React from "react";
+import { render } from "@testing-library/react";
 
-import App from "./App";
-import { getLoggedInUser } from "./services/authServices";
+// import { ExpansionPanelActions } from "@material-ui/core";
+// import { shallow } from "enzyme";
 
-jest.mock("./services/authServices");
+// import Fridge from "./components/fridge/index";
+import App from "./App.js";
+// import { getLoggedInUser } from "./services/authServices";
 
-test("renders learn react link", () => {
-  expect(shallow(<App />)).toMatchSnapshot();
-});
+// jest.mock("./services/authServices");
 
-it("Throws error when attempting to log in", () => {
-  getLoggedInUser.mockImplementation(() => {
-    throw new Error();
-  });
-  expect(shallow(<App />)).toMatchSnapshot();
-});
+// test("renders learn react link", () => {
+//   expect(shallow(<App />)).toMatchSnapshot();
+// });
+
+// it("Throws error when attempting to log in", () => {
+//   getLoggedInUser.mockImplementation(() => {
+//     throw new Error();
+//   });
+//   expect(shallow(<App />)).toMatchSnapshot();
+// });
+// it("renders Account header", () => {
+//   const wrapper = shallow(<App />);
+//   const welcome = FridgeMate;
+//   expect(wrapper.contains(welcome)).toEqual(true);
+// });
+
+// it("renders without crashing", () => {
+//   const div = document.createElement("div"); // create the div here
+//   ReactDOM.render(<App />, div);
+// });

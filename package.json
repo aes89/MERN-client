@@ -35,7 +35,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
   "eslintConfig": {
     "extends": [
