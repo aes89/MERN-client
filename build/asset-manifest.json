@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.631a4166.chunk.css",
+    "main.js": "/static/js/main.84f6d6f4.chunk.js",
+    "main.js.map": "/static/js/main.84f6d6f4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1fc5ad91.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1fc5ad91.js.map",
+    "static/css/2.83342f34.chunk.css": "/static/css/2.83342f34.chunk.css",
+    "static/js/2.d9367629.chunk.js": "/static/js/2.d9367629.chunk.js",
+    "static/js/2.d9367629.chunk.js.map": "/static/js/2.d9367629.chunk.js.map",
+    "static/js/3.f7090952.chunk.js": "/static/js/3.f7090952.chunk.js",
+    "static/js/3.f7090952.chunk.js.map": "/static/js/3.f7090952.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.83342f34.chunk.css.map": "/static/css/2.83342f34.chunk.css.map",
+    "static/css/main.631a4166.chunk.css.map": "/static/css/main.631a4166.chunk.css.map",
+    "static/js/2.d9367629.chunk.js.LICENSE.txt": "/static/js/2.d9367629.chunk.js.LICENSE.txt",
+    "static/media/home.module.css": "/static/media/fridgebackground.d8a1e1d1.jpg",
+    "static/media/carrot.15506a81.png": "/static/media/carrot.15506a81.png",
+    "static/media/chilli.0723dc83.png": "/static/media/chilli.0723dc83.png",
+    "static/media/corn.a942ed2b.png": "/static/media/corn.a942ed2b.png",
+    "static/media/egg.f565693e.png": "/static/media/egg.f565693e.png",
+    "static/media/garlic.680f5450.png": "/static/media/garlic.680f5450.png",
+    "static/media/notFound.module.css": "/static/media/notFound.ef516b2d.jpg",
+    "static/media/pantry.79483c62.png": "/static/media/pantry.79483c62.png",
+    "static/media/pantry.module.css": "/static/media/pantrybackground.984405e3.jpg",
+    "static/media/preference.81b6e073.png": "/static/media/preference.81b6e073.png",
+    "static/media/profileDefault.dc3f3be4.png": "/static/media/profileDefault.dc3f3be4.png",
+    "static/media/radish.bded777e.png": "/static/media/radish.bded777e.png",
+    "static/media/ramen.09061e22.png": "/static/media/ramen.09061e22.png",
+    "static/media/tomato.fb0cdc7d.png": "/static/media/tomato.fb0cdc7d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1fc5ad91.js",
+    "static/css/2.83342f34.chunk.css",
+    "static/js/2.d9367629.chunk.js",
+    "static/css/main.631a4166.chunk.css",
+    "static/js/main.84f6d6f4.chunk.js"
+  ]
+}
