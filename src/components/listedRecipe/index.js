@@ -62,14 +62,12 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
         console.log("hit here")
    }
 
-   
    if (savedType ==="saved recipes") {
    //This is for save Recipe page
     return (
             <div>
                 {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
                 <Grid item sm spacing={1}   wrap="wrap">
-               
                   <Paper className={classes.paper} variant="outlined" > 
                     <Link to={"/recipes/" + _id +"/recipe"  }>
                           <div class={styles.listItem}>

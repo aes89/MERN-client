@@ -21,6 +21,7 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes, getSavedRecipes} from '../../services/recipeServices'
 import {getFridge } from '../../services/ingredientServices'
 
+import {getPref} from "../../services/authServices";
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -46,6 +47,22 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         } else {   
       }   
   }
+  //for filtering based off user preferences- not in use as we dont have the API call quota
+  function userPrefFilter (recipes) {
+     let userPrefs = JSON.parse(getPref())
+     const myArrayFiltered = recipes.filter((r) => {
+     return r.vegetarian === userPrefs.vegetarian 
+        && r.vegan === userPrefs.vegan
+        && r.glutenFree === userPrefs.glutenFree
+        && r.dairyFree === userPrefs.dairyFree
+        && r.veryHealthy === userPrefs.veryHealthy
+        && r.cheap === userPrefs.cheap
+        && r.veryPopular === userPrefs.veryPopular
+        && r.sustainable === userPrefs.sustainable
+        ;
+    });
+    console.log("check userPref filter", myArrayFiltered)
+   }
   
 //Main function for returning recipes to browse
   function recipeSearchHandler (){
@@ -54,6 +71,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
    if (!getBrowsedRecipes()) {  //if none in local storage
        browseSearchRecipes()
             .then((recipes) => {   
+                      //recipes = userPrefFilter(recipes)
                       setRecipesState(recipes) //state 
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
@@ -75,7 +93,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                   toast.error("There may be a problem with the server. Please try again after a few moments.")        
                   });
         } else {
-
+         userPrefFilter (JSON.parse(getBrowsedRecipes()))
          setRecipesState(JSON.parse(getBrowsedRecipes()))
          actions.updatedBrowseRecipes(JSON.parse(getBrowsedRecipes())) 
 
@@ -96,7 +114,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   //if search again button is clicked, clear local storage and call the route again so the search initalizes again
     function handleSearchAgain () {
-        history.push("/recipes/browse")
+        //history.push("/recipes/browse")
         setloading(false)
         setBrowsedRecipes() //local storage
         //  setRecipesState(recipes) //state 
