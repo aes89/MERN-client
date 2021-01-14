@@ -40,28 +40,21 @@ Deployed App:
 | 2 | Log In Modal | Can click on "log in", modal opens, modal closes when click "cancel" or click away from modal |
 | 2 | Register Modal | Can click on "register", modal opens, modal closes when click "cancel" or click away from modal |
 | 2 | Log In - Redux | When user logged in, username can be seen logged in console  |
-| 2 | Log Out - Redux | test |
+| 2 | Log Out - Redux | When user logged out, username can be seen logged in console as null |
 | 2 | Preferences | Radio buttons are able to be selected/deselected and submitted, returning input as an array |
-| 3 | Fridge | test |
-| 3 | test | test |
-| 3 | test | test |
-| 3 | test | test |
-| 4 | Fridge | Fridge component can  |
-| 3 | test | test |
+| 3 | Fridge | Form loads correctly, can type into field |
+| 3 | Pantry | Form loads correctly, can type into field |
+| 3 | Preferences | Form loads correctly, radio buttons can be selected/deselected, form can be submitted which returns an array |
+| 4 | Profile image | Image can be uploaded on user settings page, photo is displayed without manual refresh |
+| 4 | User Settings | User settings can be updated independently from the profile image  |
+| 4 | Pantry | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
+| 4 | Fridge | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
+| 4 | Pantry | test |
+| 4 | Pantry | test |
+| 4 | Pantry | test |
 
 
-FRIDGE PANTRY
 
-Started the fridge and pantry components using the AutoComplete component and JSON ingredient/pantry lists from Shelby. The forms were built using the Formik library. Some difficulties were found around structuring shared functions and what needed to be separated. 
-
-PREFERENCES
-
-The preferences form was completed and ready to be connected to the database. The form was built using Formik again but using radio buttons and iterating over a separated list of preferences (vegetarian, sustainable etc). There is still some repetition as the values need to be initialized in Formik so if the list was edited, the form would also need to be edited rather than just updating the list.
-
-LOG IN/OUT AND REGISTRATION
-
-The registration and log in forms were completed to a point where it could be connected with the database.
-Input validation/input errors were added to the user registration form. 
 </details>
 
 ---
@@ -370,12 +363,16 @@ PROFILE PHOTO
 Image upload added. Initially file upload was working but with bugs, and was initially included in the User Settings form. It was moved into it's own component to allow for separate updates to image and username, email and password respectively. 
 The photo upload was not displaying without manual refresh. This was resolved by adding the image to state via updateProfile to currentUserSettings.
 
+FRIDGE PANTRY
+Updates to ingredients list where when ingredient selected it is removed from the list, so it cannot be selected again. Input field still doesn't clear after adding ingredients though so they can be added again/duplicated.
+
 
 Blockers:
 
 - Password being hashed on hash.
 - Local storage holding JSON file, needed to pass string and then parse back our to JSON for render.
 - Cypress testing would interact with web pages but would not submit some forms or interact with the state of the application. Able to interact with database as would register user and log in, but not save that user to local state.
+- Clearing tags from Automcomplete Fridge and Pantry fields, still. 
 
 
 
@@ -396,7 +393,7 @@ Modules and Jest conflicting - Jest throwing errors on JS files with modules.css
 Difficulty getting MaterialUI Autocomplete to clear after adding ingredients resulting in duplicated on ingredients being added.  
 
 <details>
-<summary> Notes to delete later probably</summary>
+<summary> Notes to delete later </summary>
 Rubric notes:
 
 - complete and detailed description of libraries used in the app
