@@ -44,9 +44,11 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    margin: 10px 60px 60px 60px;
+    margin: 10px 40px 40px 40px;
     width: 100%;
-    
+    background-color: lightGreyColor;
+    padding: 30px;
+    border-radius: 10px;
 }
 .instructBox h4 {
     font-size: 1.5em;
@@ -57,11 +59,14 @@
 .instructBox div {
     align-self: center;
 }
-
+.instructBox ul {
+    padding: 0px 10px 0px 10px;
+}
 .instructBox ul li{ 
     padding: 5px;
     font-size: 1.1em;
  }
+
 .url{
     background-color: orangeColor;
     border-radius: 10px;

@@ -24,14 +24,13 @@ import {getFridge } from '../../services/ingredientServices'
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 const BrowseRecipes = ({ browseRecipes, actions }) => {
   const classes = useStyles();
   let history = useHistory();
 
    const [fridgeChecker, setFridgeChecker] = useState("");
    const [loading, setloading] = useState(false);
+   const [fridgeLoading, setFridgeLoading] = useState({ done: true });
    const [recipesState, setRecipesState] = useState(null);
    const [errors, setErrors] = useState(null);
 
@@ -71,9 +70,9 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               .catch((error) => {
                   //console.log("errors")
                   if (error.response && error.response.status === 401)
-                  setErrors(" Recipe search failed. Try again. ")
+                  toast.error(" Recipe search failed. Try again. ")
                   else   
-                  setErrors("There may be a problem with the server. Please try again after a few moments.")        
+                  toast.error("There may be a problem with the server. Please try again after a few moments.")        
                   });
         } else {
 
@@ -97,7 +96,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   //if search again button is clicked, clear local storage and call the route again so the search initalizes again
     function handleSearchAgain () {
-        //history.push("/recipes/browse")
+        history.push("/recipes/browse")
         setloading(false)
         setBrowsedRecipes() //local storage
         //  setRecipesState(recipes) //state 
@@ -109,7 +108,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   //Write savedRecipe Handler
   async function saveRecipeHandler(newRecipe) {
     console.log("check", newRecipe)
-       setloading(false)
+       //setloading(false)
+       setFridgeLoading({ done: false }); 
           await addNewSavedRecipe(newRecipe)
             .then((r) => {
               console.log("hit here")
@@ -121,19 +121,24 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
               setErrors("")
               toast.success(" You have saved this recipe!");
               setTimeout(() => {
-                  setloading(true)
-                  console.log("check loading done") 
+                  //setloading(true)
+                  setFridgeLoading({ done: true }); 
+                  //console.log("check loading done") 
                   }, 5000)
              // history.push("/recipes/saved-recipes")
             })
             .catch((error) => {
+              setFridgeLoading({ done: true }); 
               console.log("errors");
               console.log(error.response.data);
-              if (error.response && error.response.status === 401)
-                toast.error("Oh no, we couldnt' save your recipe!");
-              else
-              toast.error( "There may be a problem with the server. Please try again after a few moments.");
-              history.push("/recipes/browse")
+              if (error.response && error.response.status === 401){
+                toast.error("Oh no, we couldnt' save your recipe!")
+              } else if (error.response.status === 422) {
+                toast.error("Oops, you have already saved this recipe")
+               } else { 
+                toast.error( "There may be a problem with the server. Please try again after a few moments.");
+              }
+                history.push("/recipes/browse")
           });
     }
 
@@ -170,10 +175,10 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                           <div className={styles.browseBox}>
                           <Grid container spacing={1}  alignItems="center" justify="center" >
                           {browseRecipes && browseRecipes.map((recipe) => (
-                                  <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler} />
+                                  <ListedRecipe key={recipe.id} recipe={recipe} saveRecipe={saveRecipeHandler}  loadingFridge={fridgeLoading} idCheck={recipe.id}/>
                                    ))}     
-                              </Grid>
-                            </div>
+                            </Grid>
+                        </div>
                     </div>
                  )} 
               </div>

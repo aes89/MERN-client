@@ -80,6 +80,7 @@ const App = ({ actions }) => {
       <Helmet>
         <title>FridgeMate</title>
         <meta name="description" content="Helmet application" />
+        
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
