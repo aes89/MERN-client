@@ -29,6 +29,39 @@ Deployed App:
 | 25/12/2020 | User Settings | Manual Testing via the console checking if the redux state, and local storage was updated on useEffect calling the DB get request and returning the user data.|
 | 25/12/2020 | User Settings Update | |
 
+
+| Sprint | Feature | Test |
+|:---:|:---:|:---:|
+| 1 | Register Form | Form is able to be typed into and returns input as an array |
+| 1 | Log In Form | Form is able to be typed into and returns input as an array |
+| 1 | Register Form | Register form returns errors when email format incorrect, when fields are blank after interacting with them, when password does not meet requirements and when the confirmed password does not match the password |
+| 1 | Log In Form | Log in form returns errors when email format incorrect, when fields are blank after interacting with them and when password does not meet requirements, however this error is generic |
+| 1 | User Settings Form | Form is able to be typed into and returns input as an array. Photo file is stored in browser but not state or database yet. |
+| 2 | Log In Modal | Can click on "log in", modal opens, modal closes when click "cancel" or click away from modal |
+| 2 | Register Modal | Can click on "register", modal opens, modal closes when click "cancel" or click away from modal |
+| 2 | Log In - Redux | When user logged in, username can be seen logged in console  |
+| 2 | Log Out - Redux | test |
+| 2 | Preferences | Radio buttons are able to be selected/deselected and submitted, returning input as an array |
+| 3 | Fridge | test |
+| 3 | test | test |
+| 3 | test | test |
+| 3 | test | test |
+| 4 | Fridge | Fridge component can  |
+| 3 | test | test |
+
+
+FRIDGE PANTRY
+
+Started the fridge and pantry components using the AutoComplete component and JSON ingredient/pantry lists from Shelby. The forms were built using the Formik library. Some difficulties were found around structuring shared functions and what needed to be separated. 
+
+PREFERENCES
+
+The preferences form was completed and ready to be connected to the database. The form was built using Formik again but using radio buttons and iterating over a separated list of preferences (vegetarian, sustainable etc). There is still some repetition as the values need to be initialized in Formik so if the list was edited, the form would also need to be edited rather than just updating the list.
+
+LOG IN/OUT AND REGISTRATION
+
+The registration and log in forms were completed to a point where it could be connected with the database.
+Input validation/input errors were added to the user registration form. 
 </details>
 
 ---
@@ -47,9 +80,12 @@ Deployed App:
 <details>
 <summary>Click to expand</summary>
 
-| Date | Feature | Test |
+| Sprint | Feature | Test |
 |:---:|:---:|:---:|
-| test | test | test |
+| 1 | test | test |
+| 1 | test | test |
+| 1 | test | test |
+
 
 </details>
 
@@ -117,6 +153,23 @@ At this start of this Sprint, Shelby set up the initial back-end server code and
 Some issues were the concern of updating the user via account settings page and then the whole data being overridden, however this issue was solved for the moment since the whole user model is being sent to the account settings page, so there for can be returned with the new data. However this solution is ok for the level the project is at now, for future scalabilty this would need to be altered.
 
 
+LOG IN AND REGISTER
+Initial forms for registering a user and logging in were written using Formik. Input could be "submitted" as an array, but this is not connected to anything yet.  
+Input validation was added to the forms regarding email format, password requirements and passwords matching for registration.
+
+USER SETTINGS
+The user settings form was written using the same Formik structure for the registration form to allow users to change their details e.g. password. 
+A section to upload a profile image was also added. This caused some difficulties as Formik does not support this function by default. 
+
+TESTING
+Basic snapshot tests of existing components were written using Jest and Enzyme.
+
+STRUCTURING
+Component file structure was refactored to have /src/components/componentName/index.js for renaming ease i refactoring needed.
+
+DIFFICULTIES
+Forgot to add node_modules to .gitignore.
+
 </details>
 
 #### Sprint 2- 7/12- 13/12
@@ -131,7 +184,7 @@ During this sprint the CRUD for ingredients was implemented. Shelby managed to k
 
 USER BRANCH
 
-When implementing s3 and Multer for profile image upload, some blockers were incorrect set up of IAM policy, the use of .single with multer (use .any to ensure the image would upload.)
+When implementing s3 and Multer for profile image upload, some blockers were incorrect set up of IAM policy, the use of .single with multer (use .any to ensure the image would upload).
 
 Shelby also began implementing validation using express-validator starting with validation for the email, password and user information on registering, account settings page and login. 
 
@@ -141,7 +194,25 @@ Current blockers are implementation of persisting cookies with mocha/supertest t
 
 CLIENT
 
-Completed the intial styling for the home/nav/login/register to start the basis of styling, to enable easier implementation of the react client-side.
+Completed the initial styling for the home/nav/login/register to start the basis of styling, to enable easier implementation of the react client-side.
+
+REDUX
+
+Redux was added to the project to manage global state. Redux may not be required for a project of this size but gives room for the project to grow. Users logging in and out managed through Redux.
+
+LOG IN AND REGISTER
+
+Log in and Register forms were developed to be modals accessed from the nav bar. Modals were opened and closed through Redux state (i.e setModalOpen("register OR login OR null");).
+
+PREFERENCES
+
+The preferences form was started. There was some difficulty getting Formik to iterate over the preferences list (vegetarian, vegan, cheap etc) with a radio button and it was decided to build this as a usual <form>. 
+
+CYPRESS
+Initial tests written for logging in and registering a user.
+
+BLOCKERS
+- Difficulty getting Formik to iterate over options with radio buttons.
 
 
 </details>
@@ -197,15 +268,22 @@ CLIENT-SIDE
 
 The initial connecting of the front-end and back-end was started. This started a learning curve with how having the JWT in a cookie works. To begin with registering a user was connected, and logging in a user, this followed some blockers including the register user function on the back-end not signing a JWT, and on the front-end determining how to keep a user logged in. Local storage was implemented for this issue with the storage housing the username and at the moment the JWT (which is not necessary, but just in place for manual testing). Along with local storage is the state manager being redux. 
 
-
 FRIDGE PANTRY
+
 Started the fridge and pantry components using the AutoComplete component and JSON ingredient/pantry lists from Shelby. The forms were built using the Formik library. Some difficulties were found around structuring shared functions and what needed to be separated. 
 
 PREFERENCES
-The preferences form was completed and ready to be connected to the database. The form was built using Formik again but using radio buttons. 
 
+The preferences form was completed and ready to be connected to the database. The form was built using Formik again but using radio buttons and iterating over a separated list of preferences (vegetarian, sustainable etc). There is still some repetition as the values need to be initialized in Formik so if the list was edited, the form would also need to be edited rather than just updating the list.
 
-Adrienne had some difficulties properly adding .eslintcache to .gitignore and it had to be removed many, many times. 
+LOG IN/OUT AND REGISTRATION
+
+The registration and log in forms were completed to a point where it could be connected with the database.
+Input validation/input errors were added to the user registration form. 
+
+Blockers
+- Adrienne had some difficulties properly adding .eslintcache to .gitignore and it had to be removed many, many times. 
+- Dev tools was not showing state so the Redux dev tools were added and configured within the project to work with the firefox browser. 
 
 </details>
 
