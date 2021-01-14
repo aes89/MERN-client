@@ -1,3 +1,5 @@
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
 
 
 .browseBox{
@@ -19,7 +21,7 @@
 
 .newSearch{
     all: unset;
-    background-color: #F8BC23;  
+    background-color: yellowColor;  
     color: white;
     padding: 10px;
     margin: 10px;
@@ -28,12 +30,12 @@
     margin-bottom: 20px;
     transition: all 0.5s;
     font-size: 1.2em;
-    box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }
 
  .newSearch:hover {
     border-radius: 25px;
-    background-color: #f2f4fc;   
+    background-color: hoverColor;   
     color: black;
  }
 
@@ -47,26 +49,14 @@
 .newSearchButton {
     display: flex;
     justify-content: center;
-  
 }
 
 .buttonStyles{
-   background-color: #3F7209;
+   background-color: greenColor;
 }
 
-/* Phone Styles */ 
-@media only screen and (max-width: 600px) {
-  
-   
-}
- 
- /* Tablet Styles */ 
- @media only screen 
- and (min-device-width: 601px) 
- and (-webkit-min-device-pixel-ratio: 1) {
-   
- 
- }
+
+
  @media only screen and (min-width:1025px)  {
     .searchButtonMove {
         margin-top: -50px;    

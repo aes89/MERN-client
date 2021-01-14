@@ -1,10 +1,14 @@
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
+
+
+
 .listItem {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .listItem  h3{
-   
     height: 40px;
     width: 200px;
     font-size: 1em;
@@ -25,13 +29,13 @@
 
 .savedButton{
     all: unset;
-    background-color: #FB8D02;
+    background-color: orangeColor;
     color: white;
     padding: 5px;
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;   
-    box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }
 
 .savedButton:hover {
@@ -41,12 +45,12 @@
  }
 .removeButton{
     all: unset;
-    background-color: #74716D;
+    background-color: greyColor;
     color: white;
     padding: 5px;
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer; 
     font-size: 0.8em;
-    box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }

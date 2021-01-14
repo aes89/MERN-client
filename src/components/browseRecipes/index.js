@@ -41,7 +41,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
     let fridgeChecker = getFridge()
         if (fridgeChecker === []) {
           setBrowsedRecipes() //local storage
-          console.log(getBrowsedRecipes() )
+          //console.log(getBrowsedRecipes() )
           //recipeSearchHandler()
           history.push("/recipes/browse")
         } else {   
@@ -58,18 +58,18 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                       setRecipesState(recipes) //state 
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
-                      console.log("check recipes", recipes)
+                      //console.log("check recipes", recipes)
                       toast.success("Here are your recipes!")
                       setErrors(null)
                }).then (
                   setTimeout(() => {
                   setloading(true)
-                  console.log("check loading done") 
+                  //console.log("check loading done") 
                   }, 5000)
                   
                )
               .catch((error) => {
-                  console.log("errors")
+                  //console.log("errors")
                   if (error.response && error.response.status === 401)
                   setErrors(" Recipe search failed. Try again. ")
                   else   

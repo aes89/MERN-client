@@ -38,7 +38,7 @@ return (
             onClose={{onCloseHandler}}
             onStart={() => setState({ open: false })}
             style={{ position: 'absolute' }}
-            ButtonProps={{color: "secondary", endIcon: <KeyboardArrowRightIcon/>}} 
+            ButtonProps={{color: "primary", endIcon: <KeyboardArrowRightIcon/>}} 
         >
             <Slide
             media={<img src={fridge} class={styles.slideImage} />}

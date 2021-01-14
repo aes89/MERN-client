@@ -1,13 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Paytone+One&display=swap');
+@value orangeColor: #FB8D02;
+@value greenColor: #3F7209;
+@value yellowColor: #F8BC23;
+@value lightGreyColor: #EAEBF1;
+@value greyColor: #74716D;
+@value boxShadow: #a0a19f;
+@value hoverColor: #f2f4fc;
+@value headingFont: "Paytone One", serif;
+@value bodyFont: 'Lato', sans-serif;
+
 
 *, *::before, *::after {
    box-sizing: border-box;
-   font-family: 'Lato', sans-serif;
+   font-family: bodyFont;
 }
 
 html, body {
    height: 100%;
    min-height: 100vh;
+   margin: 0;
+   padding: 0;
    
 }
 
@@ -50,8 +62,8 @@ a {
    margin: 0.8em;
    margin-top: 80px;
    overflow: hidden;
-   font-family: "Paytone One", serif;
-   color: #FB8D02;
+   font-family: headingFont;
+   color: orangeColor;
    font-size: 2em;
   
 }
@@ -61,33 +73,23 @@ a {
    justify-content: center;
    align-content: center;
    flex-direction: column;
-   background: #EAEBF1;
+   background: lightGreyColor;
    border-radius: 10px;
    margin: 1.5em;
    margin-top: 1em;
    padding: 1em;
-   box-shadow:0 0 8px #a0a19f;
+   box-shadow:0 0 8px boxShadow;
    height: 100%;
 }
  .subheading{
     padding: 15px;
     font-size: 1em;
     font-weight: 600;
+    color: greyColor;
  }
 
-/* Phone Styles */ 
-@media only screen and (max-width: 600px) {
-  
-   
-}
+
  
- /* Tablet Styles */ 
- @media only screen 
- and (min-device-width: 601px) 
- and (-webkit-min-device-pixel-ratio: 1) {
-  
-  
- }
  @media only screen and (min-width:1088px)  {
    .layoutContent {
       margin-left: 17em;

@@ -120,7 +120,7 @@ function AutocompleteIngredients({
               inputValue=""
               {...params}
               variant="standard"
-              label={`Add Ingredients to your ${type} here`}
+              label={`Add Ingredients`}
               placeholder="Ingredients"
             />
           );

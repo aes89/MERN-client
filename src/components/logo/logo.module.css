@@ -1,3 +1,9 @@
+@value colors: "../../app.module.css";
+@value greenColor,boxShadow from colors;
+
+
+
+
 .logo {
     position: fixed;
     top: 0;
@@ -12,7 +18,7 @@
  .text {
     font-family: "Paytone One", serif;
     font-size: 1.3em;
-    color: #3F7209;
+    color: greenColor;
     background-color: #ffffff;
     align-self: right;
     float: right;
@@ -20,7 +26,7 @@
     text-align: center;
     border-radius: 10px;
     padding: 5px;
-    box-shadow:0 0 8px #a0a19f;
+    box-shadow:0 0 6px boxShadow;
    
  }
  /* Mobile First */

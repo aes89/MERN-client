@@ -91,7 +91,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
       <AuthenticationModal />
       <a class={styles.trigger}>
         <i>
-          <MoreVertIcon />
+          <MoreVertIcon fontSize="large" />
         </i>
       </a>
       <Fadein in={true}  timeout={2000}>
