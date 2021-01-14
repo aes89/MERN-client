@@ -45,16 +45,23 @@
     justify-content: space-around;
     flex-direction: column;
     margin: 10px 60px 60px 60px;
-
+    width: 100%;
+    
 }
 .instructBox h4 {
     font-size: 1.5em;
 }
 .instructBox p {
     font-size: 1.3em;
-
+}
+.instructBox div {
+    align-self: center;
 }
 
+.instructBox ul li{ 
+    padding: 5px;
+    font-size: 1.1em;
+ }
 .url{
     background-color: orangeColor;
     border-radius: 10px;
@@ -97,6 +104,7 @@
   .instructBox {
     margin: 15px;
    }
+  
     .summaryText {
     margin: 0px;
     font-size: 1em;
@@ -116,9 +124,20 @@
               margin: 0 auto;
               padding-top: 30px;
             }
- 
+             .ingredientBox{
+                max-height: 400px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
  }
  @media only screen and (min-width:1025px)  {
+          .ingredientBox{
+                max-height: 400px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
             .summaryText p {
                  max-width: 450px;  
             }

@@ -143,13 +143,18 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               </div>
                           <div class={styles.instructBox}> 
                               <h4>Ingredients</h4>
-                               <ul>
+                              
+                               <ul class={styles.ingredientBox}>
                                 {extendedIngredients && extendedIngredients.map((ingredient) => (
                                   <li key={ingredient}> {ingredient} </li>
                                    ))}    
                                </ul>  
+                                
                               <h4>Instructions</h4>
-                              <div> {instructions} </div>  
+                              <div>
+                              <a href={sourceUrl} > <div class={styles.url}><strong>View Source- With Full Instructions</strong> </div></a> 
+                              </div>
+
                           </div>  
                         </Grid>
                       </div>
