@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
-import { useHistory,useParams } from "react-router-dom";
+import { useHistory,useParams, Link } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -111,6 +111,19 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>{title}</h1>
+            <div class={styles.searchButtonMove}>
+             {displayRecipe.username ? (
+            <Link to={"/recipes/saved-recipes"}>
+                <Button class={styles.newSearch} >Back to Saved Recipes </Button>
+            </Link>
+            ) : (
+              <>
+            <Link to={"/recipes/browse"}>
+                  <Button class={styles.newSearch} >Back to Search </Button>
+            </Link>
+              </>
+             )}
+            </div>
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
@@ -118,7 +131,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
             <div class={appstyles.subheading}>This recipe is in your Saved Recipes!</div>  
              ) : (
               <>
-              <div class={appstyles.subheading} style={{alignSelf: "center"}}>Maybe saved this recipe for later? 
+              <div class={appstyles.subheading} style={{alignSelf: "center"}}>Maybe save this recipe for later? 
               <Button variant="outlined" class={styles.savedButton} >Save Recipe!</Button>
               </div> 
               </>

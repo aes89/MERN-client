@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 
@@ -11,7 +11,7 @@ import {
   setProfile,
 } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
-
+import Loading from "../loading";
 import Button from "@material-ui/core/Button";
 import Fade from 'react-reveal/Fade';
 
@@ -35,8 +35,9 @@ const validate = (values) => {
 
 const Login = ({ actions, loggedIn, modalId }) => {
   let history = useHistory();
-
-  const text = {
+ const [loading, setloading] = useState({ done: true });
+  
+  const text = {  
     color: "red",
   };
 
@@ -48,6 +49,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
     validate,
 
     onSubmit: async (values) => {
+      setloading({ done: false })
       loginUser({ ...values })
         .then((r) => {
           console.log(r);
@@ -73,12 +75,21 @@ const Login = ({ actions, loggedIn, modalId }) => {
               "There may be a problem with the server. Please try again after a few moments."
             );
         });
+      setTimeout(() => {  
+      setloading({ done: true })
+      console.log("check loading done")  
+            }, 2500);
     },
   });
 
   return (
-
+   
+            
     <div class={styles.loginSignupBox}>
+    {!loading.done ? (
+           <Loading/>
+              ) : ( 
+                <>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
         {formik.status && (
@@ -154,9 +165,11 @@ const Login = ({ actions, loggedIn, modalId }) => {
             Cancel
           </Button>
         </div>
-      </form>
+      </form>  
+      </>
+      )}
     </div>
-
+    
   );
 };
 

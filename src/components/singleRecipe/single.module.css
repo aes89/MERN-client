@@ -104,6 +104,32 @@
     background-color: hoverColor;   
     color: black;
  }
+
+.searchButtonMove {
+    float: right;
+    display: inline-block;
+    margin-right: 22px;
+}
+
+.newSearch{
+    all: unset;
+    background-color: yellowColor;  
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    font-size: 1.2em;
+    box-shadow:0 0 4px boxShadow;
+}
+
+ .newSearch:hover {
+    border-radius: 25px;
+    background-color: hoverColor;   
+    color: black;
+ }
 /* Phone Styles */ 
 @media only screen and (max-width: 600px) {
   .instructBox {

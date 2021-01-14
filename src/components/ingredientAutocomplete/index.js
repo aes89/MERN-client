@@ -65,7 +65,7 @@ function AutocompleteIngredients({
         actions.addToFridge(r.fridgeIngredients);
         setFridge(r.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
-        toast.success(" New Fridge Ingredient added, lets search for some more recipes!");
+        toast.success(" New Fridge Ingredient added, lets search for some recipes!");
       })
       .catch((error) => {
         console.log("errors");

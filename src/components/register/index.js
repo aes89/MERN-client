@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { connect } from "react-redux";
 import { useFormik } from "formik";
 import Fade from 'react-reveal/Fade';
 import styles from "../styles/modals.module.css";
 import { registerUser, setUsername } from "../../services/authServices";
 import { useHistory } from "react-router-dom";
+import Loading from "../loading";
 import Button from "@material-ui/core/Button";
 
 import { toast } from 'react-toastify';
@@ -52,7 +53,7 @@ const validate = (values) => {
 
 const Register = ({ actions, userLoggedIn, modalId }) => {
   let history = useHistory();
-
+  const [loading, setloading] = useState({ done: true });
    const text = {
       color: 'red',
     }; 
@@ -67,6 +68,7 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
 
     validate,
     onSubmit: async (values) => {
+      setloading({ done: false })
       //Attempt login on server- this is from auth services
       registerUser({ ...values })
         .then((res) => {
@@ -93,12 +95,20 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
            }
           
         });
+      setTimeout(() => {  
+      setloading({ done: true })
+      console.log("check loading done")  
+            }, 2500);
     },
   });
 
   return (
     <div class={styles.loginSignupBox}>
       <h1>Sign Up</h1>
+{!loading.done ? (
+           <Loading/>
+              ) : ( 
+                <>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email Address:</label>
 
@@ -201,8 +211,10 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
             <Button  class={styles.modalCancelButton}  onClick={actions.closeModal}>
               Cancel
             </Button>
-                </div>
-      </form>
+              </div>      
+      </form> 
+      </>
+      )}
     </div>
   );
 };

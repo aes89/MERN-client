@@ -13,6 +13,7 @@
     border: 0.5px solid greyColor;
     padding: 10px;
     padding-bottom: 40px;
+    
  }
  .loginSignupBox h1{
     text-align: center;
@@ -32,6 +33,7 @@
     text-align: center;
     align-self: center;
  }
+
 
  .loginSignupBox label{
     margin: 10px 0px 10px 0px;

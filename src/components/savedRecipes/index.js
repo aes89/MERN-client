@@ -111,7 +111,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
         <Grid container item xs={12} spacing={0}>
           <Logo />
           <Grid item xs={12} spacing={2}>
-            <h1 class={appstyles.headings}>Saved Recipes</h1>
+            <h1 class={appstyles.headings}>Your Saved Recipes</h1>
             <div class={styles.searchButtonMove}>
             <Link to={"/recipes/browse"}>
                 <Button class={styles.newSearch} >Back to Search </Button>

@@ -126,6 +126,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
     validate,   
 
     onSubmit: (values) => {
+      setloading({ done: false })
       updateUserSettings({ ...values }, userLoggedIn)
         .then((user) => {
           //console.log(user);
@@ -147,6 +148,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                "There may be a problem with the server. Please try again after a few moments."
             );
         });
+        setTimeout(() => {
+                setloading({ done: true });
+                }, 3000)
     },
   });
 
