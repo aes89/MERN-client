@@ -62,7 +62,7 @@ function AutocompleteIngredients({
         actions.addToFridge(r.fridgeIngredients);
         setFridge(r.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
-        toast.success(" New Fridge Ingredient Added!");
+        toast.success(" New Fridge Ingredient added, lets search for some more recipes!");
       })
       .catch((error) => {
         console.log("errors");
@@ -87,7 +87,7 @@ function AutocompleteIngredients({
         actions.addToPantry(r.pantryIngredients);
         setPantry(r.pantryIngredients);
         history.push("/ingredients/"+getUsername()+"/pantry");
-        toast.success(" New pantry Ingredient Added!");
+        toast.success(" New pantry staple added!");
       })
       .catch((error) => {
         console.log("errors");

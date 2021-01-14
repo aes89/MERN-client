@@ -97,7 +97,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   //if search again button is clicked, clear local storage and call the route again so the search initalizes again
     function handleSearchAgain () {
-        history.push("/recipes/browse")
+        //history.push("/recipes/browse")
         setloading(false)
         setBrowsedRecipes() //local storage
         //  setRecipesState(recipes) //state 

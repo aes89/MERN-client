@@ -60,9 +60,10 @@
     border-radius: 10px;
     width: 200px;
     padding: 5px;
+    font-size: 0.9em !important;
     text-align: center;
     box-shadow:0 0 4px boxShadow;
-     transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 .url:hover{ 
