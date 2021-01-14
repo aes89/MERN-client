@@ -51,7 +51,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
                 else   
                 actions.changeError("There may be a problem with the server. Please try again after a few moments.")
             })    
-      setTimeout(() => {
+      setTimeout(() => {  
       setloading({ done: true })
       console.log("check loading done")  
             }, 2500);

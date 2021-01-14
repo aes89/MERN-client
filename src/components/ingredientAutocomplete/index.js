@@ -41,10 +41,13 @@ function AutocompleteIngredients({
 
   const filteredPantry = pantryIngredients
     ? pantry.filter(
-        (ingredient) => !pantryIngredients.includes(ingredient.name)
+        (i) => !pantryIngredients.includes(i.name)
       )
     : pantry;
-  const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
+
+  const filteredList = type === "fridge" ? filteredFridge : pantry;
+
+  console.log("check filteredList", filteredPantry)
 
   let history = useHistory();
 
@@ -101,7 +104,7 @@ function AutocompleteIngredients({
           );
       });
   }
-
+ 
   return (
     // autocomplete list
     <div class={styles.autoComplete}>
@@ -120,7 +123,7 @@ function AutocompleteIngredients({
               inputValue=""
               {...params}
               variant="standard"
-              label={`Add Ingredients`}
+              label={`Add Ingredients to your ${type} here`}
               placeholder="Ingredients"
             />
           );

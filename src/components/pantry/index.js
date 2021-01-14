@@ -58,11 +58,10 @@ const Pantry = ({ actions, pantryIngredients }) => {
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-    //for profile image?
-    setTimeout(() => {
-      setloading({ done: true });
-      //console.log("check loading done");
-    }, 2500);
+        setTimeout(() => {
+        setloading({ done: true })
+        console.log("check loading done")  
+        }, 2500);
   }, []);
 
   const handleClearPantry = async () => {
@@ -111,7 +110,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
                   <div class={styles.pantryAutoBox}>
                     <AutocompleteIngredients type="pantry" />
                     <div class={styles.pantry}>
-                      {" "}
+               
                       <img alt="cartoon pantry " src={pantry} />
                     </div>
                   </div>
