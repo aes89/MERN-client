@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React, { Fragment, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -8,8 +8,7 @@ import styles from "./nav.module.css";
 
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
-import {logoutUser } from "../../services/authServices";
-
+import {logoutUser, getProfile } from "../../services/authServices";
 
 //MATERIAL
 import Button from "@material-ui/core/Button";
@@ -57,7 +56,9 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
   ];
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
-
+    useEffect(() => {
+         actions.updateProfile({profile: getProfile()})
+        });
   function handleLogout() {
     logoutUser()
       .then((r) => {

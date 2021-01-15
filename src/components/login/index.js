@@ -52,10 +52,11 @@ const Login = ({ actions, loggedIn, modalId }) => {
       setloading({ done: false })
       loginUser({ ...values })
         .then((r) => {
-          console.log(r);
+          //console.log(r);
           setLoggedInUser(r.cookie.jwt);
           setUsername(r.user);
           setProfile(r.profile);
+          //console.log("check profile", r.profile)
           actions.logIn(r.user);
           actions.updateProfile({...r});
           actions.getToken(r.cookie.jwt);
@@ -175,7 +176,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
 
 const mapStateToProps = (state) => ({
   loggedIn: state.userLoggedIn.username,
-  modalId: state.modalOpen.modal,
+   modalId: state.modalOpen.modal,
 });
 
 const mapDispatchToProps = (dispatch) => ({

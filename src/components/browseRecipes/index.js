@@ -15,8 +15,7 @@ import Fadein from '@material-ui/core/Fade';
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Pagination from '@material-ui/lab/Pagination';
-import PaginationItem from '@material-ui/lab/PaginationItem';
+
 
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes, getSavedRecipes} from '../../services/recipeServices'
 import {getFridge } from '../../services/ingredientServices'
