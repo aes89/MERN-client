@@ -1,9 +1,11 @@
 
 /* Search Button */
+@value colors: "../../app.module.css";
+@value greenColor, hoverColor,boxShadow from colors;
 
 .searchButtonOutline {
     all: unset;
-    background-color: #3F7209;
+    background-color: greenColor;
     color: white;  
     padding: 10px;
     border-radius: 5px;
@@ -11,12 +13,12 @@
     transition: all 0.5s;
     max-width: 130px;
     align-self: center;
-     box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }
    
 .searchButtonOutline:hover {
     color: black;
     border-radius: 25px;
-    background-color: #f2f4fc;
+    background-color: hoverColor;
     
   }

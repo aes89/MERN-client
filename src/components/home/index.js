@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import React, { useState,useEffect } from "react";
 
-import pantrycartoon from "../styles/imgs/pantrycartoon.png";
-import SearchRecipeButton from "../searchButton";
+//import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";
 import Carousel from "../carousel";
@@ -21,11 +20,7 @@ const Home = ({ actions, userLoggedIn }) => {
         marginLeft: "10px"
   }; 
 
-  const img = {
-        width: '10%',
-        alignSelf: "center",
-        borderRadius: "50%"
-  }; 
+ 
 
   useEffect(() => {
        let randomObject = jokes[Math.floor(Math.random() * jokes.length)];

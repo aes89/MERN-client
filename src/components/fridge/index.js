@@ -39,7 +39,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
     getAllFridgeIngredients(getUsername()).then((r) => {
-                console.log(r)
+                //console.log(r)
                 actions.addToFridge(r.fridgeIngredients)
                 setFridge(r.fridgeIngredients)
                 history.push("/ingredients/"+getUsername()+"/fridge")
@@ -51,17 +51,17 @@ const Fridge = ({actions, fridgeIngredients}) => {
                 else   
                 actions.changeError("There may be a problem with the server. Please try again after a few moments.")
             })    
-      setTimeout(() => {
+      setTimeout(() => {  
       setloading({ done: true })
-      console.log("check loading done")  
+      //console.log("check loading done")  
             }, 2500);
   },[])
 
 
   const handleClearFridge = async () => {
-        console.log("emptying all fridge");
+        //console.log("emptying all fridge");
          deleteAllFridge(getUsername()).then((r) => {
-              console.log(r)
+              //console.log(r)
               actions.clearFridge()
               setFridge()
               history.push("/ingredients/"+getUsername()+"/fridge")
@@ -101,6 +101,8 @@ const Fridge = ({actions, fridgeIngredients}) => {
            <Loading/>
               ) : (  
             <>
+             <div class={appstyles.subheading}>Add ingredients to your Fridge Below and we will use them to find you recipes!</div>
+                  
                <div class={styles.fridgeAutoBox}> 
               <AutocompleteIngredients type="fridge"/> 
               <div class={styles.fridge}> <img alt="Fridge cartoon" src={fridge} /></div>

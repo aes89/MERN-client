@@ -51,7 +51,6 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
    const [loading, setloading] = useState({ done: false });
 
 
-
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
     getPreference(getUsername())
@@ -59,15 +58,15 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         setPref({ ...pref })
         actions.updatePreferences(JSON.parse(getPref()));
         setChecked(JSON.parse(getPref()))
-        console.log("check local", JSON.parse(getPref()))
-        console.log("check redux", userPreferences)
+        //console.log("check local", JSON.parse(getPref()))
+        //console.log("check redux", userPreferences)
       })
       .catch((error) => {
-        console.log("errors");
-        console.log(error.response);
+        //console.log("errors");
+        //console.log(error.response);
         if (error.response && error.response.status === 404)
           //formik.setStatus("Error getting pref information ");
-          toast.error("Error getting pref information")
+          toast.error("Sorry we could not get your information at this time.")
         else
           // formik.setStatus(
           //   "There may be a problem with the server. Please try again after a few moments."
@@ -76,7 +75,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
       });
         setTimeout(() => {
         setloading({ done: true })
-        console.log("check loading done")  
+        //console.log("check loading done")  
         }, 3000);
   }, []);
 
@@ -87,26 +86,25 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   });
 
   function submitHandler (values) {
-      console.log("check",  values )
+      //console.log("check",  values )
        setloading({ done: false })
           updatePreference({ ...values }, getUsername())
             .then((pref) => {
-              console.log(pref);
+              //console.log(pref);
               setPref(pref)
               actions.updatePreferences(pref);
               setTimeout(() => {
                 setloading({ done: true })
-                 console.log("check loading done")  
-                 console.log("test returned", JSON.parse(getPref()))
+                 //console.log("check loading done")  
+                 //console.log("test returned", JSON.parse(getPref()))
                  history.push("/preferences/"+getUsername())
                  toast.success("Preferences Updated!")
                 }, 3000);
             })
             .catch((error) => {
-              toast.error("Oh no, error!")
               if (error.response && error.response.status === 404)
                 //formik.setStatus("Error getting pref information ");
-                toast.error("On no, error updated preferences!")
+                toast.error("Sorry we could not submit your request at this time.")
               else
                 // formik.setStatus(
                 //   "There may be a problem with the server. Please try again after a few moments."
@@ -130,12 +128,11 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
            <Loading/>
               ) : (  
             <> 
+                  <div class={appstyles.subheading}>Select from the preferences below and we will only show you recipes that match.</div>
                     <div className={styles.prefBox}>
-                   
+                      
                           <div class={styles.formBox}>
-
                                   <Formik
-
                                     initialValues={{ "vegetarian": userPreferences.vegetarian,
                                       "vegan": userPreferences.vegan,
                                       "glutenFree": userPreferences.glutenFree,

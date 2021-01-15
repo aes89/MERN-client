@@ -1,3 +1,7 @@
+ @value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
+
+ 
  .noBox  {
      margin: 70px 0px 60px 0px;
      height: 100%;
@@ -13,7 +17,7 @@
       margin: 30px;
       padding: 10px;
       border-radius: 50%;
-      background-color: #FB8D02;
+      background-color: orangeColor;
       max-width: 300px;
       align-self: center;
 }

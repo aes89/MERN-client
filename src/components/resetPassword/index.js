@@ -48,13 +48,15 @@ const ResetPassword = ({ actions, user, modalId }) => {
     color: "red",
   };
    useEffect(() => {
-       console.log("check token", token)
-       resetPassword(token).then(r =>{
-         console.log(r)
-         actions.setUsername(r.username)
+       //console.log("check token", token)
+       resetPassword(token).then(res =>{
+         //console.log(r)
+         actions.setUsername(res.username)
          setloading({ done: true });
        }).catch((error) => { 
            console.log(error)
+           toast.error("Password reset link is invalid or has expired");
+           history.push("/");
        })
 
      }, []);
@@ -66,7 +68,7 @@ const ResetPassword = ({ actions, user, modalId }) => {
     validate,
 
     onSubmit: async (values) => {
-        console.log(values.password)
+        //console.log(values.password)
       updatePasswordViaReset({
           username: user,
           password: values.password,
@@ -83,11 +85,11 @@ const ResetPassword = ({ actions, user, modalId }) => {
             }, 6000); 
         })
         .catch((error) => {
-          console.log(error);
-          toast.error("Error Updating Password");
-          if (error.response && error.response.status === 403)
+          //console.log(error);
+          toast.error("Oh no!");
+          if (error.response && error.response.status === 401)
             formik.setStatus(
-              "No Users Found"
+              "Sorry, we couldn't update your password at this time."
             );
           else
             formik.setStatus(

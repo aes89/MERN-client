@@ -1,4 +1,5 @@
-
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
 
 
 .background {
@@ -23,7 +24,7 @@
     align-self: center;
     margin-top: 20px;
     width: 250px;
-     box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }  
 .searchButtonMove{
     float: right;
@@ -31,6 +32,7 @@
     margin-right: 22px;
     margin-bottom: 20px;
 }
+
 .fridgeAutoBox{
     display: flex;
     flex-direction: row;
@@ -41,7 +43,7 @@
     margin: 20px;
     padding: 10px;
     border-radius: 50%;
-    background-color: #3F7209;
+    background-color: orangeColor;
     max-width: 200px;
     max-height: 200px;
     margin-right: 65px;
@@ -55,12 +57,11 @@
   @media only screen 
   and (max-width: 767px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-                .fridge{
-                    display: none;
-                }
+   .fridge{
+        display: none;
+        }
    .fridgeAutoBox{
-            justify-content: center;
-            
+            justify-content: center;     
         }
   }
   /* Desktop Styles */ 

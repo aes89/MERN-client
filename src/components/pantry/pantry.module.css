@@ -1,4 +1,5 @@
-
+@value colors: "../../app.module.css";
+@value greenColor from colors;
 
 .background {
     border-radius: 10px;
@@ -8,7 +9,6 @@
     background-repeat: no-repeat;
     background-position: center; 
 }
-
 
 .buttonBox {
     display: flex;
@@ -23,13 +23,14 @@
     align-self: center;
     margin-top: 20px;
     width: 250px;
-     box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }
+
 .searchButtonMove {
     float: right;
     display: inline-block;
     margin-right: 22px;
-     margin-bottom: 20px;
+    margin-bottom: 20px;
 }  
 .pantryAutoBox{
     display: flex;
@@ -41,7 +42,7 @@
     margin: 20px;
     padding: 10px;
     border-radius: 50%;
-    background-color: #3F7209;
+    background-color: greenColor;
     max-width: 200px;
     max-height: 200px;
     margin-right: 65px; 
@@ -54,11 +55,10 @@
   and (max-width: 767px) 
   and (-webkit-min-device-pixel-ratio: 1) {
         .pantry{
-                    display: none;
-                }
+            display: none;
+            }
         .pantryAutoBox{
-                justify-content: center;
-                
+            justify-content: center;    
             }
   }
   /* Desktop Styles */ 

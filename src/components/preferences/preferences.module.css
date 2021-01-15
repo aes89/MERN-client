@@ -1,3 +1,5 @@
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
 
  .prefBox{
       display: flex;
@@ -6,7 +8,6 @@
       flex-wrap: wrap;
       padding: 1em;
       margin: 0.5em;
-      
       padding-bottom: 40px; 
       background-color: white;
       border-radius: 10px;
@@ -28,21 +29,19 @@
       margin: 90px;
       padding: 10px;
       border-radius: 50%;
-      background-color: #FB8D02;
+      background-color: orangeColor;
       max-width: 350px;
-      max-height: 350px;
-      
+      max-height: 350px;  
 }
 
 .formBox {
    display: flex;
-   max-width: 300px;
-  
+   max-width: 300px; 
 }
+
  .prefBox img{
     width: 100%;
     padding: 30px;
- 
  }
 
  .prefBox label{
@@ -53,27 +52,28 @@
     text-align: center;
     padding: 9px 15px 9px 15px;
     margin-left: 5px;
-    background-color: #EAEBF1;
+    background-color: lightGreyColor;
     border-radius: 25px;
  }
 
  .updateButton {
    all: unset;
-   background-color: #3F7209;
+   background-color: greenColor;
    color: white;
    padding: 10px;
    margin: 10px;
    margin-top: 50px;
-   border-radius: 5px;
+   border-radius: 10px;
    cursor: pointer;
    width: 140px;
    text-align: center;
-   font-size: 0.8em;     
+   font-size: 0.8em;   
+   transition: all 0.5s;  
  }
 
-  .updateButton:hover {
+.updateButton:hover {
     border-radius: 25px;
-    background-color: #f2f4fc;   
+    background-color: hoverColor;   
     color: black;
  }
 
