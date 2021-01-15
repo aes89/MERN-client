@@ -39,7 +39,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
     getAllFridgeIngredients(getUsername()).then((r) => {
-                console.log(r)
+                //console.log(r)
                 actions.addToFridge(r.fridgeIngredients)
                 setFridge(r.fridgeIngredients)
                 history.push("/ingredients/"+getUsername()+"/fridge")
@@ -53,15 +53,15 @@ const Fridge = ({actions, fridgeIngredients}) => {
             })    
       setTimeout(() => {  
       setloading({ done: true })
-      console.log("check loading done")  
+      //console.log("check loading done")  
             }, 2500);
   },[])
 
 
   const handleClearFridge = async () => {
-        console.log("emptying all fridge");
+        //console.log("emptying all fridge");
          deleteAllFridge(getUsername()).then((r) => {
-              console.log(r)
+              //console.log(r)
               actions.clearFridge()
               setFridge()
               history.push("/ingredients/"+getUsername()+"/fridge")

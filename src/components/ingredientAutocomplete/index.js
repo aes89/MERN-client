@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
@@ -30,7 +30,6 @@ function AutocompleteIngredients({
   username,
 }) {
 
-
   //removes selected ingredient from list of ingredients to add
 
   const filteredFridge = fridgeIngredients
@@ -55,21 +54,21 @@ function AutocompleteIngredients({
   const [errors, setErrors] = useState(null);
 
   function handleAddFridge(event) {
-    console.log(values);
+    //console.log(values);
     const newValues = values.map((i) => i.name);
-       console.log("check fridge", newValues);
+       //console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((r) => {
-        console.log(r);
+        //console.log(r);
         actions.addToFridge(r.fridgeIngredients);
         setFridge(r.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
         toast.success(" New Fridge Ingredient added, lets search for some recipes!");
       })
       .catch((error) => {
-        console.log("errors");
-        console.log(error.response);
+        //console.log("errors");
+        //console.log(error.response);
         toast.error("Oh no error!");
         if (error.response && error.response.status === 401)
           setErrors("Error adding to your Fridge");
@@ -81,20 +80,20 @@ function AutocompleteIngredients({
   }
 
   function handleAddPantry(event) {
-    console.log(values);
+    
     const newValues = values.map((i) => i.name);
-       console.log("check pantry", newValues);
+       //console.log("check pantry", newValues);
     addPantryItem(getUsername(), { item: newValues })
       .then((r) => {
-        console.log(r);
+        //console.log(r);
         actions.addToPantry(r.pantryIngredients);
         setPantry(r.pantryIngredients);
         history.push("/ingredients/"+getUsername()+"/pantry");
         toast.success(" New pantry staple added!");
       })
       .catch((error) => {
-        console.log("errors");
-        console.log(error.response);
+        //console.log("errors");
+        //console.log(error.response);
         toast.error("Oh no error!");
         if (error.response && error.response.status === 401)
           setErrors("Error adding to your pantry");
@@ -116,7 +115,7 @@ function AutocompleteIngredients({
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
         defaultValue={[filteredList[13]]}
-        onChange={(event, value) => value ? setValues(value) : setValues("")}
+        onChange={(event, value) =>  setValues(value) }
         renderInput={(params) => {
           return (
             <TextField

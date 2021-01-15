@@ -60,7 +60,7 @@ export function getFridge() {
 export function setFridge(items) {
     items ? localStorage.setItem("fridge", items) : localStorage.removeItem("fridge")
     console.log("local fridge Updated")
-    console.log(items)
+   // console.log(items)
 }
 
 export function getPantry() {
@@ -70,7 +70,7 @@ export function getPantry() {
 export function setPantry(items) {
     items ? localStorage.setItem("pantry", items) : localStorage.removeItem("pantry")
     console.log("local pantry Updated")
-    console.log(items)
+    //console.log(items)
 }
 
 
