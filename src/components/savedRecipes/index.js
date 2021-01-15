@@ -18,7 +18,7 @@ import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 import Button from "@material-ui/core/Button";
 
-import TestSaveData from "../../data/testSaveRecipeData";
+//import TestSaveData from "../../data/testSaveRecipeData";
 
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,7 +35,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   //console.log(checker);
 
 
-  let TestData = TestSaveData()
+  //let TestData = TestSaveData()
   //console.log(TestData)
 
   //Call DB to display recipe data

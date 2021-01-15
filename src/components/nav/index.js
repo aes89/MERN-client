@@ -17,7 +17,6 @@ import Fadein from '@material-ui/core/Fade';
 import HelpIcon from '@material-ui/icons/Help';
 
 
-
 //IMAGES-icons
 import fridge from "../styles/imgs/fridge.png";
 import pantry from "../styles/imgs/pantry.png";
@@ -103,7 +102,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
               <div class={styles.userProfile}>
                 {currentProfile ? (
                   <img alt="profile of user" src={currentProfile} /> ) : (
-                  <img src={ProfileDefault} /> )}
+                  <img alt="profile default of user" src={ProfileDefault} /> )}
                 {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
               </div>
             </Link>

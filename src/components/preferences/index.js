@@ -51,7 +51,6 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
    const [loading, setloading] = useState({ done: false });
 
 
-
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
     getPreference(getUsername())

@@ -17,7 +17,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 
-import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes, getSavedRecipes} from '../../services/recipeServices'
+import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes} from '../../services/recipeServices'
 import {getFridge } from '../../services/ingredientServices'
 
 import {getPref} from "../../services/authServices";

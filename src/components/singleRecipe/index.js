@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
-import { useHistory,useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";

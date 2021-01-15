@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
-import SearchRecipeButton from "../searchButton";
+
 import fridge from "../styles/imgs/fridgebackgroundother.jpg";
 import pantry from "../styles/imgs/pantrybackground.jpg";
 import recipe from "../styles/imgs/recipeimage.jpg";
@@ -19,7 +18,7 @@ const Button = require('@material-ui/core/Button').default;
 
 
 const Carousel = ({actions}) => {
-    let history = useHistory();
+
 const [state, setState] = useState({ open: false });
 
  function onCloseHandler (){
@@ -41,35 +40,35 @@ return (
             ButtonProps={{color: "primary", endIcon: <KeyboardArrowRightIcon/>}} 
         >
             <Slide
-            media={<img src={fridge} class={styles.slideImage} />}
+            media={<img src={fridge} alt="fruits and vegetables" class={styles.slideImage} />}
             mediaBackgroundStyle={{ backgroundColor: "white"}}
             style={{ backgroundColor: lightGreen[600]  }}
             title='Add Ingredients to your Fridge'
             subtitle='Cheese, bread, chicken, soy sauce.. any ingredients in your fridge!'
             />
             <Slide
-            media={<img src={pantry} class={styles.slideImage}   />}
+            media={<img src={pantry} alt="pantry ingredients" class={styles.slideImage}   />}
             mediaBackgroundStyle={{ backgroundColor: "white" }}
             style={{ backgroundColor: lightGreen[600] }}
             title='Add staples to your Pantry'
             subtitle='Save your usual pantry staples!'
             />
             <Slide
-            media={<img src={pref} class={styles.slideImage}  />}
+            media={<img src={pref} alt="grocery store" class={styles.slideImage}  />}
               mediaBackgroundStyle={{ backgroundColor: "white" }}
             style={{ backgroundColor: lightGreen[600] }}
             title='Select any diet preferences.'
             subtitle='Gluten free, dairy free? You can decide! '
             />
             <Slide
-            media={<img src={recipe} class={styles.slideImage} />}
+            media={<img src={recipe} alt="bowl of food" class={styles.slideImage} />}
              mediaBackgroundStyle={{ backgroundColor: "white" }}
             style={{ backgroundColor: lightGreen[600] }}
             title='Browse recipes!'
             subtitle='We will show you recipes that include the ingredients from your fridge!'
             />
             <Slide
-            media={<img src={recipelist} class={styles.slideImage} />}
+            media={<img src={recipelist} alt="ipad with recipe on it" class={styles.slideImage} />}
             mediaBackgroundStyle={{backgroundColor: "white"}}
             style={{ backgroundColor: lightGreen[600] }}
             title='Save them for later!'
