@@ -43,7 +43,7 @@ const Fridge = ({ actions, fridgeIngredients }) => {
     //update this so if local storage is full of ingredients dont call the DB
     getAllFridgeIngredients(getUsername())
       .then((r) => {
-        console.log(r);
+        //console.log(r)
         actions.addToFridge(r.fridgeIngredients);
         setFridge(r.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
@@ -60,15 +60,15 @@ const Fridge = ({ actions, fridgeIngredients }) => {
       });
     setTimeout(() => {
       setloading({ done: true });
-      console.log("check loading done");
+      //console.log("check loading done")
     }, 2500);
   }, []);
 
   const handleClearFridge = async () => {
-    console.log("emptying all fridge");
+    //console.log("emptying all fridge");
     deleteAllFridge(getUsername())
       .then((r) => {
-        console.log(r);
+        //console.log(r)
         actions.clearFridge();
         setFridge();
         history.push("/ingredients/" + getUsername() + "/fridge");
@@ -107,42 +107,26 @@ const Fridge = ({ actions, fridgeIngredients }) => {
                   <Loading />
                 ) : (
                   <>
+                    <div class={appstyles.subheading}>
+                      Add ingredients to your Fridge Below and we will use them
+                      to find you recipes!
+                    </div>
                     <div class={styles.fridgeAutoBox}>
                       <AutocompleteIngredients type="fridge" />
                       <div class={styles.fridge}>
                         {" "}
                         <img alt="Fridge cartoon" src={fridge} />
                       </div>
-                    </div>
-                    <Grid
-                      container
-                      spacing={1}
-                      wrap="wrap"
-                      alignItems="center"
-                      justify="center"
-                      class={styles.background}
-                    >
-                      {checker ? (
-                        <Ingredients ingredients={fridgeIngredients} />
-                      ) : (
-                        <NoIngredients type="fridge" image={fridge} />
-                      )}
-                    </Grid>
-                    {checker ? (
-                      <div className={styles.button}>
-                        <Button
-                          variant="outlined"
-                          width="100px"
-                          onClick={() => {
-                            handleClearFridge();
-                          }}
-                        >
-                          Clear All Fridge Contents
-                        </Button>
+                      <div>
+                        {" "}
+                        {/* below not styled but I maybe lost it in a merge? */}
+                        {checker ? (
+                          <Ingredients ingredients={fridgeIngredients} />
+                        ) : (
+                          <NoIngredients type="fridge" image={fridge} />
+                        )}
                       </div>
-                    ) : (
-                      <div></div>
-                    )}
+                    </div>
                   </>
                 )}
               </div>

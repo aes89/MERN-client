@@ -38,38 +38,37 @@ const Pantry = ({ actions, pantryIngredients }) => {
   const [loading, setloading] = useState({ done: false });
 
   const checker = getPantry();
-  console.log(checker);
+  //console.log(checker);
 
   useEffect(() => {
     getAllPantryIngredients(getUsername())
-      .then((r) => {
-        console.log(r);
-        actions.addToPantry(r.pantryIngredients);
-        setPantry(r.pantryIngredients);
+      .then((res) => {
+        //console.log(r);
+        actions.addToPantry(res.pantryIngredients);
+        setPantry(res.pantryIngredients);
         history.push("/ingredients/" + getUsername() + "/pantry");
       })
       .catch((error) => {
         //console.log("errors")
-        console.log(error);
+        //console.log(error);
         if (error.response && error.response.status === 401)
-          actions.changeError("Error getting pantry ingredients");
+          actions.changeError("Sorry we could not get your pantry at this time.");
         else
           actions.changeError(
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
-    //for profile image?
-    setTimeout(() => {
-      setloading({ done: true });
-      console.log("check loading done");
-    }, 2500);
+        setTimeout(() => {
+        setloading({ done: true })
+        console.log("check loading done")  
+        }, 2500);
   }, []);
 
   const handleClearPantry = async () => {
-    console.log("emptying all pantry");
+    //console.log("emptying all pantry");
     deleteAllPantry(getUsername())
-      .then((r) => {
-        console.log(r);
+      .then((res) => {
+        //console.log(r);
         actions.clearPantry();
         setPantry();
         history.push("/ingredients/" + getUsername() + "/pantry");
@@ -78,9 +77,9 @@ const Pantry = ({ actions, pantryIngredients }) => {
       .catch((error) => {
         //console.log("errors")
         //console.log(error.response)
-        toast.error("Oh no, error!");
+        toast.error("Sorry, we could not clear your pantry at this time.");
         if (error.response && error.response.status === 401)
-          setErrors("Error clearing your Pantry");
+          setErrors("Sorry, we could not clear your pantry at this time.");
         else
           setErrors(
             "There may be a problem with the server. Please try again after a few moments."
@@ -107,10 +106,11 @@ const Pantry = ({ actions, pantryIngredients }) => {
                 <Loading />
               ) : (
                 <>
+                <div class={appstyles.subheading}>Add staples to your Pantry Below and we will use them to find you recipes!</div>
                   <div class={styles.pantryAutoBox}>
                     <AutocompleteIngredients type="pantry" />
                     <div class={styles.pantry}>
-                      {" "}
+               
                       <img alt="cartoon pantry " src={pantry} />
                     </div>
                   </div>

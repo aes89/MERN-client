@@ -80,26 +80,42 @@ const App = ({ actions }) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/preferences/:username" component={Preferences} />
-          <Route
+          <PrivateRoute
+            exact
+            path="/preferences/:username"
+            component={Preferences}
+          />
+          <PrivateRoute
             exact
             path="/user/:username/account-settings"
             component={UserSettings}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/ingredients/:username/fridge"
             component={Fridge}
           />
-          <Route exact path="/recipes/browse" component={BrowseRecipes} />
-          <Route exact path="/recipes/:id/recipe" component={SingleRecipe} />
-          <Route exact path="/recipes/saved-recipes" component={SavedRecipes} />
-          <Route
+          <PrivateRoute
+            exact
+            path="/recipes/browse"
+            component={BrowseRecipes}
+          />
+          <PrivateRoute
+            exact
+            path="/recipes/:id/recipe"
+            component={SingleRecipe}
+          />
+          <PrivateRoute
+            exact
+            path="/recipes/saved-recipes"
+            component={SavedRecipes}
+          />
+          <PrivateRoute
             exact
             path="/ingredients/:username/pantry"
             component={Pantry}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/user/reset-password/:token"
             component={ResetPassword}

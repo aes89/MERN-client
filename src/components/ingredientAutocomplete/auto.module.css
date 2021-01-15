@@ -1,20 +1,24 @@
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
+
+
 
 .button{
     all: unset;
-    background-color: #FB8D02;
+    background-color: orangeColor;
     color: white;  
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.5s;
     margin-top: 30px ;
-    box-shadow:0 0 4px #a0a19f;
+    box-shadow:0 0 4px boxShadow;
 }
 
 .button:hover {
     color: black;
     border-radius: 25px;
-    background-color: #f2f4fc; 
+    background-color: hoverColor; 
     
   }
 
@@ -38,7 +42,6 @@
 
 /* Tablet Styles */ 
 @media only screen and (min-width:767px) and (max-width: 1023px)  {
-    
          .autoComplete{
             width: 350px;
             padding: 20px;   

@@ -43,9 +43,10 @@ const validate = (values) => {
 // actions: which is submit (to db) and get payload/data from db.
 const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   const classes = useStyles();
-  let history = useHistory();
-  const [checked, setChecked] = useState(null);
-  const [loading, setloading] = useState({ done: false });
+   let history = useHistory();
+   const [checked, setChecked] = useState(null);
+   const [loading, setloading] = useState({ done: false });
+
 
   // On page load- This is calling the DB get request to get the initial user preference data
   useEffect(() => {
@@ -53,19 +54,16 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
       .then((pref) => {
         setPref({ ...pref });
         actions.updatePreferences(JSON.parse(getPref()));
-        setChecked(JSON.parse(getPref()));
-        console.log("check local", JSON.parse(getPref()));
-        console.log("check redux", userPreferences);
+        setChecked(JSON.parse(getPref()))
+        //console.log("check local", JSON.parse(getPref()))
+        //console.log("check redux", userPreferences)
       })
       .catch((error) => {
-        console.log("errors");
-        console.log(error.response);
+        //console.log("errors");
+        //console.log(error.response);
         if (error.response && error.response.status === 404)
           //formik.setStatus("Error getting pref information ");
-          toast.error("Error getting pref information");
-        // formik.setStatus(
-        //   "There may be a problem with the server. Please try again after a few moments."
-        // );
+          toast.error("Sorry we could not get your information at this time.")
         else
           toast.error(
             "There may be a problem with the server. Please try again after a few moments."
@@ -73,7 +71,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
       });
         setTimeout(() => {
         setloading({ done: true })
-        console.log("check loading done")  
+        //console.log("check loading done")  
         }, 3000);
   }, []);
 
@@ -83,26 +81,25 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   });
 
   function submitHandler (values) {
-      console.log("check",  values )
+      //console.log("check",  values )
        setloading({ done: false })
           updatePreference({ ...values }, getUsername())
             .then((pref) => {
-              console.log(pref);
+              //console.log(pref);
               setPref(pref)
               actions.updatePreferences(pref);
               setTimeout(() => {
                 setloading({ done: true })
-                 console.log("check loading done")  
-                 console.log("test returned", JSON.parse(getPref()))
+                 //console.log("check loading done")  
+                 //console.log("test returned", JSON.parse(getPref()))
                  history.push("/preferences/"+getUsername())
                  toast.success("Preferences Updated!")
                 }, 3000);
             })
             .catch((error) => {
-              toast.error("Oh no, error!")
               if (error.response && error.response.status === 404)
                 //formik.setStatus("Error getting pref information ");
-                toast.error("On no, error updated preferences!")
+                toast.error("Sorry we could not submit your request at this time.")
               else
                 // formik.setStatus(
                 //   "There may be a problem with the server. Please try again after a few moments."
@@ -113,56 +110,59 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
 
   return (
     <div className={classes.root}>
-      <Fadein in={true} timeout={2000}>
-        <Grid container spacing={0}>
-          <Grid container item xs={12} spacing={0}>
-            <Logo />
-            <Grid item xs={12} spacing={2}>
-              <h1 class={appstyles.headings}>Preferences</h1>
-            </Grid>
-            <Grid item xs={12} spacing={2}>
-              <div class={appstyles.layoutContent}>
-                {!loading.done ? (
-                  <Loading />
-                ) : (
-                  <>
+    <Fadein in={true}  timeout={2000}>
+      <Grid container spacing={0}>
+        <Grid container item xs={12} spacing={0}>
+          <Logo />
+          <Grid item xs={12} spacing={2}>
+            <h1 class={appstyles.headings}>Preferences</h1>
+          </Grid>
+          <Grid item xs={12} spacing={2}>
+            <div class={appstyles.layoutContent}>
+          {!loading.done ? (
+           <Loading/>
+              ) : (  
+            <> 
+                  <div class={appstyles.subheading}>Select from the preferences below and we will only show you recipes that match.</div>
                     <div className={styles.prefBox}>
-                      <div class={styles.formBox}>
-                        <Formik
-                          initialValues={{
-                            vegetarian: userPreferences.vegetarian,
-                            vegan: userPreferences.vegan,
-                            glutenFree: userPreferences.glutenFree,
-                            dairyFree: userPreferences.dairyFree,
-                            veryHealthy: userPreferences.veryHealthy,
-                            cheap: userPreferences.cheap,
-                            veryPopular: userPreferences.veryPopular,
-                            sustainable: userPreferences.sustainable,
-                          }}
-                          onSubmit={async (values) => {
-                            console.log("**VALUES**", values);
-                            await sleep(500);
-                            submitHandler(values);
-                          }}
-                        >
-                          {({ values }) => (
-                            <Form>
-                              {/* form maps over list in ./list.js, can update more easily if needed */}
-                              {preferencesList.map((preference, index) => (
-                                <label key={index}>
-                                  <Field type="checkbox" name={preference} />
-                                  <span class={styles.prefItem}>
-                                    {preferencesName[index]}
-                                  </span>
-                                </label>
-                              ))}
-                              <Button class={styles.updateButton} type="submit">
-                                Update Preferences
-                              </Button>
-                            </Form>
-                          )}
-                        </Formik>
-                      </div>
+                      
+                          <div class={styles.formBox}>
+                                  <Formik
+                                    initialValues={{ "vegetarian": userPreferences.vegetarian,
+                                      "vegan": userPreferences.vegan,
+                                      "glutenFree": userPreferences.glutenFree,
+                                      "dairyFree": userPreferences.dairyFree,
+                                      "veryHealthy": userPreferences.veryHealthy,
+                                      "cheap": userPreferences.cheap,
+                                      "veryPopular": userPreferences.veryPopular,
+                                      "sustainable": userPreferences.sustainable}}
+                          
+                                      onSubmit={async (values) => {
+                                        await sleep(500);
+                                        submitHandler(values)
+                                      }}
+                                >
+                                  {({ values }) => (
+                                    <Form>
+                                      {/* form maps over list in ./list.js, can update more easily if needed */}
+                                      {preferencesList.map((preference, index) => (
+                                  
+                                              <label key={index}>
+                                                <Field  type="checkbox" name={preference}/>  
+                                                 <span class={styles.prefItem}>{preferencesName[index]}</span>  
+                                              </label>
+                                    
+                                       ))}
+                                      <Button
+                                        class={styles.updateButton}
+                                        type="submit"   
+                                      >
+                                        Update Preferences
+                                      </Button>
+                                    </Form>
+                                  )}
+                                </Formik>
+                        </div>
                       <div class={styles.imgBox}>
                         <img alt="cartoon ingredients" src={pantrycartoon} />
                       </div>

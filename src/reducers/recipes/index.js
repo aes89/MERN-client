@@ -11,18 +11,18 @@ const recipes = createReducer(initialState, (builder) => {
     .addCase(browseRecipes, (state, action) => {
       state.browseRecipes = action.payload;
       console.log("state updated for browse Recipes!");
-      console.log(action.payload)
+      //console.log(action.payload)
     })
     .addCase(savedRecipes, (state, action) => {
       state.savedRecipes = action.payload 
      // state.savedRecipes = [action.payload ,...state.savedRecipes]
       console.log("state updated for saved Recipes!");
-      console.log(state.savedRecipes)
+      //console.log(state.savedRecipes)
     })
     .addCase(singleRecipe, (state, action) => {
       state.singleRecipe = action.payload;
       console.log("state updated for single Recipe!");
-      console.log(action.payload)
+     //console.log(action.payload)
     })
     
 });

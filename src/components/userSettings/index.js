@@ -87,20 +87,20 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
   useEffect(() => {
     getUserSettings(getUsername())
       .then((user) => {
-        console.log(user)
+        //console.log(user)
         actions.settings(user);
         actions.updateUsername(user.username);
         setProfile(user.profile)
         setUsername(user.username);
       })
       .then(() => {
-        console.log(currentUserSettings);
+        //console.log(currentUserSettings);
       })   
       .catch((error) => {
         console.log("errors");
-        console.log(error.response);
+        //console.log(error.response);
         if (error.response && error.response.status === 404)
-          formik.setStatus("Error getting user information ");
+          formik.setStatus("Sorry we could not get your information at this time.");
         else
           formik.setStatus(
             "There may be a problem with the server. Please try again after a few moments."
@@ -126,9 +126,10 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
     validate,   
 
     onSubmit: (values) => {
+      setloading({ done: false })
       updateUserSettings({ ...values }, userLoggedIn)
         .then((user) => {
-          console.log(user);
+          //console.log(user);
           actions.settings({ ...user });
           actions.updateUsername(user.username);
           setUsername(user.username);
@@ -137,16 +138,19 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
           toast.success("User information updated!")
         })
         .catch((error) => {
-          console.log("errors")
-          console.log(error.response)
+          //console.log("errors")
+          //console.log(error.response)
            toast.error("Oh no, error!")
           if (error.response && error.response.status === 404)
-            formik.setStatus("Error getting user information ");
+            formik.setStatus("Sorry we could not submit your request at this time.");
           else
             formik.setStatus(
-              "There may be a problem with the server. Please try again after a few moments."
+               "There may be a problem with the server. Please try again after a few moments."
             );
         });
+        setTimeout(() => {
+                setloading({ done: true });
+                }, 3000)
     },
   });
 
@@ -157,14 +161,17 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
         <Grid container item xs={12} spacing={0}>
           <Logo />
           <Grid item xs={12} spacing={2}>
-            <h1 class={appstyles.headings}>User Settings</h1>
+            <h1 class={appstyles.headings}>Account Settings</h1>
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
               {!loading.done ? (
            <Loading/>
               ) : (  
-            <> 
+            <>  
+      
+            <div class={appstyles.subheading} >Update your account settings below.</div>
+
                       <div class={styles.settingsBox}>
                         <Fade bottom >
                         {formik.status && <div style={text}>Error: {formik.status}. </div>}

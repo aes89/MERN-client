@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React, { Fragment, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -8,15 +8,13 @@ import styles from "./nav.module.css";
 
 import SearchRecipeButton from "../searchButton";
 import AuthenticationModal from "../AuthenticationModal";
-import {logoutUser } from "../../services/authServices";
-
+import {logoutUser, getProfile } from "../../services/authServices";
 
 //MATERIAL
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Fadein from '@material-ui/core/Fade';
 import HelpIcon from '@material-ui/icons/Help';
-
 
 
 //IMAGES-icons
@@ -57,12 +55,14 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
   ];
   let randomFoodImg =
     listFoodImg[Math.floor(Math.random() * listFoodImg.length)];
-
+    useEffect(() => {
+         actions.updateProfile({profile: getProfile()})
+        });
   function handleLogout() {
     logoutUser()
       .then((r) => {
-        console.log("Got back response on logout", r);
-        console.log("logout")
+        //console.log("Got back response on logout", r);
+        console.log("loged out")
         history.push("/");
         toast.success("Come back soon!")
       })
@@ -91,7 +91,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
       <AuthenticationModal />
       <a class={styles.trigger}>
         <i>
-          <MoreVertIcon />
+          <MoreVertIcon fontSize="large" />
         </i>
       </a>
       <Fadein in={true}  timeout={2000}>
@@ -102,7 +102,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
               <div class={styles.userProfile}>
                 {currentProfile ? (
                   <img alt="profile of user" src={currentProfile} /> ) : (
-                  <img src={ProfileDefault} /> )}
+                  <img alt="profile default of user" src={ProfileDefault} /> )}
                 {userLoggedIn ? <div>{userLoggedIn}</div> : <div></div>}
               </div>
             </Link>

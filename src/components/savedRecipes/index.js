@@ -18,7 +18,7 @@ import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 import Button from "@material-ui/core/Button";
 
-import TestSaveData from "../../data/testSaveRecipeData";
+//import TestSaveData from "../../data/testSaveRecipeData";
 
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,20 +35,22 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   //console.log(checker);
 
 
-  let TestData = TestSaveData()
+  //let TestData = TestSaveData()
   //console.log(TestData)
 
   //Call DB to display recipe data
   async function getSavedHandler() {
+     setloading({ done: false });
               await getAllUserSavedRecipes()
-                .then((r) => {
+                .then((res) => {
                   setSavedRecipes()
                   console.log("hit saved here")
-                  console.log(r)
+                  console.log(res)
                   //saved to redux
-                  actions.AddToSavedRecipes(r)
+                  actions.AddToSavedRecipes(res)
                   //save to local storage
-                  setSavedRecipes(r)
+                  setSavedRecipes(res)
+                  setSavedUserRecipes(res)
                   setErrors("")
                   setTimeout(() => {
                   setloading({ done: true });
@@ -57,10 +59,10 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   history.push("/recipes/saved-recipes")
                 })
                 .catch((error) => {
-                  console.log("errors");
-                  console.log(error);
+                  //console.log("errors");
+                  //console.log(error);
                   if (error.response && error.response.status === 401)
-                  toast.error("Error getting all your recipes");
+                  toast.error("Sorry we could not get your recipes at this time.");
                   else
                   toast.error( "There may be a problem with the server. Please try again after a few moments.");
                   history.push("/recipes/saved-recipes")
@@ -76,13 +78,13 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
     //function for removing from saved recipes- this is sent via props to listed recipe
     function removeSavedRecipeHandler (id) {
       setloading({ done: false });
-      removedSavedRecipe(id).then((r) => { 
-        console.log(r)
+      removedSavedRecipe(id).then((res) => { 
+         console.log(res)
         //setSavedRecipes()
         setTimeout(() => {
           setloading({ done: true });
-          console.log("check loading done");
-        }, 2500);
+          //console.log("check loading done");
+        }, 3000);
         toast.success("Removed from Saved Recipes");
         history.push("/recipes/saved-recipes")
       }).then(async (item) => {
@@ -91,10 +93,12 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
         }).catch((error) => {
         //console.log("errors")
         //console.log(error.response)
-        if (error.response && error.response.status === 401)
-          toast.error("Error deleting pantry ingredient");
-        else
-          toast.error("There may be a problem with the server. Please try again after a few moments.");
+        if (error.response && error.response.status === 401){
+           //setErrors("Sorry we could not submit your request at this time.")
+           toast.error("Sorry we could not submit your request at this time.")
+          } else{
+           //setErrors("There may be a problem with the server. Please try again after a few moments.")
+          toast.error("There may be a problem with the server. Please try again after a few moments.");}
       });
 
 
@@ -107,7 +111,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
         <Grid container item xs={12} spacing={0}>
           <Logo />
           <Grid item xs={12} spacing={2}>
-            <h1 class={appstyles.headings}>Saved Recipes</h1>
+            <h1 class={appstyles.headings}>Your Saved Recipes</h1>
             <div class={styles.searchButtonMove}>
             <Link to={"/recipes/browse"}>
                 <Button class={styles.newSearch} >Back to Search </Button>
@@ -121,14 +125,15 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                 <Loading />
               ) : (
                 <>
-                        <div class={styles.possibleStatement}> </div>
-
+                  <div class={styles.possibleStatement}> </div>
+                      <div class={appstyles.subheading} style={{textAlign: "center",fontSize: "1.2em"}}>Your recipes saved from FridgeMate!</div>
+                         
                         <div className={styles.savedBox}>
                           <Grid container spacing={1}  alignItems="center" justify="center" >
                           {checker ? (
                               <>
                                   {savedUserRecipes && savedUserRecipes.map((recipe) => (
-                                  <ListedRecipe key={recipe.id} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
+                                  <ListedRecipe key={recipe.title} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>
                                 ))} 
                               </>
                               ) : (

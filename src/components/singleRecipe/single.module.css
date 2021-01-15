@@ -1,12 +1,13 @@
+@value colors: "../../app.module.css";
+@value yellowColor, orangeColor,greenColor,lightGreyColor,greyColor, hoverColor,boxShadow,headingFont from colors;
+
 .singleBox{
     display: flex;
-   
     padding: 1em;
     padding-bottom: 40px;
     height: 100%;
     background-color: white;
-    border-radius: 10px;
-   
+    border-radius: 10px; 
 }
 .summaryBox {
     display: flex;
@@ -14,26 +15,26 @@
     flex-direction: row;
     flex-wrap: wrap-reverse;
     width: 100%;
-    border-bottom: 1px dashed #3F7209;
+    border-bottom: 1px dashed greenColor;
     padding-bottom: 30px;
     margin: 0px 30px 0px 30px;
-    
 }
+
 .summaryText {
    margin: 25px;
- 
 }
 
 .summaryText p {
     max-width: 400px;
-   
     font-size: 1.3em;
 }
+
 .imageBox{
    max-width: 450px;  
    margin: 10px;
    margin: 0 auto;
 }
+
 .imageBox img{
    width: 100%;
    border-radius: 10px;
@@ -43,36 +44,98 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    margin: 10px 60px 60px 60px;
-
+    margin: 10px 40px 40px 40px;
+    width: 100%;
+    background-color: lightGreyColor;
+    padding: 30px;
+    border-radius: 10px;
 }
 .instructBox h4 {
     font-size: 1.5em;
 }
 .instructBox p {
     font-size: 1.3em;
-
 }
+.instructBox div {
+    align-self: center;
+}
+.instructBox ul {
+    padding: 0px 10px 0px 10px;
+}
+.instructBox ul li{ 
+    padding: 5px;
+    font-size: 1.1em;
+ }
 
 .url{
-    background-color: #FB8D02;
+    background-color: orangeColor;
     border-radius: 10px;
     width: 200px;
     padding: 5px;
+    font-size: 0.9em !important;
     text-align: center;
-    
+    box-shadow:0 0 4px boxShadow;
+    transition: all 0.5s;
 }
+
 .url:hover{ 
-    color: white;
+    border-radius: 25px;
+    background-color: hoverColor;   
+    color: black;
 }
 
+.savedButton{
+    all: unset;
+    background-color: yellowColor;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;   
+    box-shadow:0 0 4px boxShadow;
+    width: 90px;
+    text-align: center;
+    transition: all 0.5s;
+}
 
+.savedButton:hover {
+    border-radius: 25px;
+    background-color: hoverColor;   
+    color: black;
+ }
+
+.searchButtonMove {
+    float: right;
+    display: inline-block;
+    margin-right: 22px;
+}
+
+.newSearch{
+    all: unset;
+    background-color: yellowColor;  
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    font-size: 1.2em;
+    box-shadow:0 0 4px boxShadow;
+}
+
+ .newSearch:hover {
+    border-radius: 25px;
+    background-color: hoverColor;   
+    color: black;
+ }
 /* Phone Styles */ 
 @media only screen and (max-width: 600px) {
   .instructBox {
     margin: 15px;
-
    }
+  
     .summaryText {
     margin: 0px;
     font-size: 1em;
@@ -82,7 +145,6 @@
      margin: 15px;
      }
     .imageBox{
-  
     padding-top: 30px;
     }
 }
@@ -90,13 +152,23 @@
  /* Tablet Styles */ 
  @media only screen and (min-width: 600px)  and (max-width:1024px) {
            .imageBox{
-              
               margin: 0 auto;
               padding-top: 30px;
             }
- 
+             .ingredientBox{
+                max-height: 400px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
  }
  @media only screen and (min-width:1025px)  {
+          .ingredientBox{
+                max-height: 400px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
             .summaryText p {
                  max-width: 450px;  
             }
@@ -104,10 +176,7 @@
                 justify-content: center;
             }
             .imageBox{
-                margin: 30px;
-                
-                }
-     
-            
+                margin: 30px; 
+                }        
  }
 
