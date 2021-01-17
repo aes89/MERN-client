@@ -1,5 +1,5 @@
 import { uploadProfileImage, getUsername } from "../../services/authServices";
-import {  useFormik } from "formik";
+import { useFormik } from "formik";
 import React, { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -8,10 +8,8 @@ import { connect } from "react-redux";
 import styles from "./profile.module.css";
 import Loading from "../loading";
 
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-//TODO give upload more time to db etc, sometimes needing manual refresh to show new profile image.
 
 const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
   let history = useHistory();
@@ -23,8 +21,8 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
     },
 
     onSubmit: (values) => {
-      setloading({ done: false })
-     // console.log("values", values.file);
+      setloading({ done: false });
+      // console.log("values", values.file);
       uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
           //console.log("IMAGE??", image.user.profile);
@@ -38,45 +36,51 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
         .catch((error) => {
           toast.error("Oh no!");
           if (error.response && error.response.status === 404)
-            formik.setStatus("Sorry we could not submit your request at this time.");
+            formik.setStatus(
+              "Sorry we could not submit your request at this time."
+            );
           else
             formik.setStatus(
               "There may be a problem with the server. Please try again after a few moments."
             );
         });
-         setTimeout(() => {
-          setloading({ done: true })
-          //console.log("check loading done")  
-                }, 4000);
+      setTimeout(() => {
+        setloading({ done: true });
+        //console.log("check loading done")
+      }, 4000);
     },
   });
 
   return (
-    <Fragment  >
+    <Fragment>
       <div class={styles.imageUpload}>
-      {!loading.done ? (
-        <div> <Loading/></div>
-              ) : ( 
-                <form>
-                  <input
-                    style={{backgroundColor: "white"}}
-                    id="file"
-                    name="file"
-                    type="file"
-                    onChange={(event) => {
-                      console.log("event", event.currentTarget.files[0]);
-                      formik.setFieldValue("file", event.currentTarget.files[0]);
-                    }}
-                  />
-                  <Button
-                    size="small"
-                    type="submit"
-                    class={styles.imageUploadButton}
-                    onClick={formik.handleSubmit}
-                  >
-                    Upload
-                </Button>
-            </form> )}
+        {!loading.done ? (
+          <div>
+            {" "}
+            <Loading />
+          </div>
+        ) : (
+          <form>
+            <input
+              style={{ backgroundColor: "white" }}
+              id="file"
+              name="file"
+              type="file"
+              onChange={(event) => {
+                console.log("event", event.currentTarget.files[0]);
+                formik.setFieldValue("file", event.currentTarget.files[0]);
+              }}
+            />
+            <Button
+              size="small"
+              type="submit"
+              class={styles.imageUploadButton}
+              onClick={formik.handleSubmit}
+            >
+              Upload
+            </Button>
+          </form>
+        )}
       </div>
     </Fragment>
   );
