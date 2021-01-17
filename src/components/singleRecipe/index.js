@@ -9,12 +9,16 @@ import styles from "./single.module.css";
 import Loading from "../loading";
 import {getSingleRecipePage, getSingleRecipe, setSingleRecipe} from '../../services/recipeServices'
 
+
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import fridge from "../styles/imgs/fridge.png";
+import pantry from "../styles/imgs/pantry.png";
 
-//import TestBrowseData from "../../data/testBrowseRecipeData";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,12 +29,13 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   const { id } = useParams();
 
   const [displayRecipe, setDisplayRecipe] = useState("");
-
+  const [ingredientSymbol, setIngredientSymbol] = useState(<CloseIcon/>);
   const [loading, setloading] = useState({ done: false });
 
   const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
   sourceUrl, title, _id, extendedIngredients, username, vegetarian, vegan, glutenFree, dairyFree, veryHealthy, cheap, 
   veryPopular, sustainable} = displayRecipe 
+
 
   function ingredientFilter (extendedIngredients){
     const array = []
@@ -162,7 +167,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               
                                <ul class={styles.ingredientBox}>
                                 {extendedIngredients && extendedIngredients.map((ingredient) => (
-                                  <li key={ingredient}> {ingredient.replace(/^\w/, (c) => c.toUpperCase())} </li>
+                                   <li key={ingredient}> {ingredient.replace(/^\w/, (c) => c.toUpperCase())} <CloseIcon/> </li>
                                    ))}    
                                </ul>  
                                 
