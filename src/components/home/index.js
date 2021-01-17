@@ -38,11 +38,11 @@ const Home = ({ actions, userLoggedIn }) => {
          <Fade top>
            <p style={text}>{joke}</p>
          </Fade>
-           
+          
           <Swing>
           <h1 >What is in your fridge?</h1>
-            </Swing>
-          
+          </Swing>
+    
           <Fade bottom>
           <h3 >
             Just add ingredients to your fridge and FridgeMate will help find recipes
@@ -50,6 +50,7 @@ const Home = ({ actions, userLoggedIn }) => {
           </h3>
          </Fade>
            <Carousel/>
+          
         </div>
       </main>
       </Fadein>

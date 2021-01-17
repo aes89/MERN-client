@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
-
+import SearchRecipeButton from "../searchButton";
 import fridge from "../styles/imgs/fridgebackgroundother.jpg";
 import pantry from "../styles/imgs/pantrybackground.jpg";
 import recipe from "../styles/imgs/recipeimage.jpg";
@@ -30,6 +30,7 @@ const [state, setState] = useState({ open: false });
 
 return (
         <div style={{ position: 'relative', width: '100%', height: 30 }}>
+        
         <Button class={styles.ButtonOutline} onClick={() => setState({ open: true })}>Where to start?</Button>
         <AutoRotatingCarousel
             label='Get started'
@@ -44,7 +45,8 @@ return (
             mediaBackgroundStyle={{ backgroundColor: "white"}}
             style={{ backgroundColor: lightGreen[600]  }}
             title='Add Ingredients to your Fridge'
-            subtitle='Cheese, bread, chicken, soy sauce.. any ingredients in your fridge!'
+            subtitle="Cheese, bread, chicken, soy sauce.. any ingredients in your fridge!"
+             
             />
             <Slide
             media={<img src={pantry} alt="pantry ingredients" class={styles.slideImage}   />}

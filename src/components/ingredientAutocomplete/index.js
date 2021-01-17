@@ -30,23 +30,28 @@ function AutocompleteIngredients({
   username,
 }) {
 
+
   //removes selected ingredient from list of ingredients to add
+    const filteredFridge = fridgeIngredients
+      ? ingredients.filter(
+          (ingredient) => !fridgeIngredients.includes(ingredient.name)
+        )
+      : ingredients;
 
-  const filteredFridge = fridgeIngredients
-    ? ingredients.filter(
-        (ingredient) => !fridgeIngredients.includes(ingredient.name)
-      )
-    : ingredients;
+    const filteredPantry = pantryIngredients
+      ? pantry.filter(
+          (i) => !pantryIngredients.includes(i.name)
+        )
+      : pantry;
+    var filteredList;
+    if(type === "fridge" ){
+      filteredList = filteredFridge
+    } else if (type === "pantry" ){
+      filteredList = pantry
+    }
 
-  const filteredPantry = pantryIngredients
-    ? pantry.filter(
-        (i) => !pantryIngredients.includes(i.name)
-      )
-    : pantry;
-
-  const filteredList = type === "fridge" ? filteredFridge : pantry;
-
-  console.log("check filteredList", filteredPantry)
+  //const filteredList = type === "fridge" ? filteredFridge : pantry;
+  //console.log("check filteredList", filteredList)
 
   let history = useHistory();
 
@@ -59,16 +64,13 @@ function AutocompleteIngredients({
        //console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
-      .then((r) => {
-        //console.log(r);
-        actions.addToFridge(r.fridgeIngredients);
-        setFridge(r.fridgeIngredients);
+      .then((res) => {
+        actions.addToFridge(res.fridgeIngredients);
+        setFridge(res.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
         toast.success(" New Fridge Ingredient added, lets search for some recipes!");
       })
       .catch((error) => {
-        //console.log("errors");
-        //console.log(error.response);
         toast.error("Oh no error!");
         if (error.response && error.response.status === 401)
           setErrors("Error adding to your Fridge");
@@ -82,26 +84,22 @@ function AutocompleteIngredients({
   function handleAddPantry(event) {
     
     const newValues = values.map((i) => i.name);
-       //console.log("check pantry", newValues);
-    addPantryItem(getUsername(), { item: newValues })
-      .then((r) => {
-        //console.log(r);
-        actions.addToPantry(r.pantryIngredients);
-        setPantry(r.pantryIngredients);
-        history.push("/ingredients/"+getUsername()+"/pantry");
-        toast.success(" New pantry staple added!");
-      })
-      .catch((error) => {
-        //console.log("errors");
-        //console.log(error.response);
-        toast.error("Oh no error!");
-        if (error.response && error.response.status === 401)
-          setErrors("Error adding to your pantry");
-        else
-          setErrors(
-            "There may be a problem with the server. Please try again after a few moments."
-          );
-      });
+      addPantryItem(getUsername(), { item: newValues })
+        .then((res) => {
+          actions.addToPantry(res.pantryIngredients);
+          setPantry(res.pantryIngredients);
+          history.push("/ingredients/"+getUsername()+"/pantry");
+          toast.success(" New pantry staple added!");
+        })
+        .catch((error) => {
+          toast.error("Oh no error!");
+          if (error.response && error.response.status === 401)
+            setErrors("Error adding to your pantry");
+          else
+            setErrors(
+              "There may be a problem with the server. Please try again after a few moments."
+            );
+        });
   }
  
   return (

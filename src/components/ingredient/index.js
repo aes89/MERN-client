@@ -39,15 +39,10 @@ const Ingredient = ({
 
   const [errors, setErrors] = useState(null);
 
-  //console.log("hit");
-  //console.log("check ing" + ingredients);
-  //console.log("PANTRY INGREDIENTS", pantryIngredients);
 
   const handleDeleteFromFridge = async (event) => {
-    //console.log("deleted 1 Item fridge");
     deleteFridgeItem(getUsername(), { item: event.currentTarget.value })
       .then((r) => {
-        //console.log("r", r);
         history.push("/ingredients/" + getUsername() + "/fridge");
         toast.warn("Deleted item from fridge!")
       })
@@ -69,14 +64,9 @@ const Ingredient = ({
   };
 
   const handleDeleteFromPantry = async (event) => {
-    console.log("deleted 1 Item pantry");
 
     deletePantryItem(getUsername(), { item: event.currentTarget.value })
       .then((r) => {
-        //console.log("wut?", r);
-        //let newArrayy = filterIng(pantryIngredients, event.currentTarget.value)
-        //setPantry(newArrayy)
-        //actions.deleteItemFromPantry(getPantry)
         history.push("/ingredients/" + getUsername() + "/pantry");
         toast.warn("Deleted item from pantry!")
       })
@@ -88,8 +78,6 @@ const Ingredient = ({
         actions.updatePantryIngredients(pantryIngredients);
       })
       .catch((error) => {
-        //console.log("errors")
-        //console.log(error.response)
         if (error.response && error.response.status === 401)
           setErrors("Error deleting pantry ingredient");
         else

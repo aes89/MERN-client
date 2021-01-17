@@ -8,9 +8,9 @@ const production = process.env.NODE_ENV === 'production'
 // Create an axios instance
 export default axios.create({
   baseURL: (production ? "https://fridge-mate.herokuapp.com/" : "http://localhost:3009"), 
-  timeout: 5000,
+  timeout: 10000,
   withCredentials: true,
-  // headers: {
-  //   "access-control-allow-origin": "*",
-  // },
+  headers: {
+    "access-control-allow-origin": "*",
+  },
 });

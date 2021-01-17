@@ -98,7 +98,7 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
                  //console.log("check loading done")  
                  //console.log("test returned", JSON.parse(getPref()))
                  history.push("/preferences/"+getUsername())
-                 toast.success("Preferences Updated!")
+                 toast.success("Preferences Updated, maybe refresh your recipe search!")
                 }, 3000);
             })
             .catch((error) => {
