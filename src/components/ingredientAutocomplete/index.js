@@ -40,13 +40,13 @@ function AutocompleteIngredients({
 
     const filteredPantry = pantryIngredients
       ? pantry.filter(
-          (i) => !pantryIngredients.includes(i.name)
+          (ingredient) => !pantryIngredients.includes(ingredient.name)
         )
       : pantry;
     var filteredList;
     if(type === "fridge" ){
       filteredList = filteredFridge
-    } else if (type === "pantry" ){
+    } else {
       filteredList = pantry
     }
 

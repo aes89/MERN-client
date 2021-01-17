@@ -80,6 +80,8 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
     localStorage.removeItem("fridge")
     localStorage.removeItem("pantry")
     localStorage.removeItem("browsedRecipes")
+    localStorage.removeItem("savedRecipes")
+    localStorage.removeItem("singleRecipe")
     localStorage.removeItem("profile")
     actions.removeProfile()
     actions.logout()
