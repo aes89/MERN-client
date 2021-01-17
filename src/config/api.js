@@ -11,7 +11,7 @@ export default axios.create({
   timeout: 10000,
   withCredentials: true,
   headers: {
-  //  "Access-Control-Allow-Origin": "*",
+   "Access-Control-Allow-Origin": "https://fridgemate.netlify.app/",
   //   "Access-Control-Allow-Methods": "OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE",
   //   "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   },
