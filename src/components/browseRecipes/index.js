@@ -39,8 +39,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
     let fridgeChecker = getFridge()
         if (fridgeChecker === []) {
           setBrowsedRecipes() //local storage
-          //console.log(getBrowsedRecipes() )
-          //recipeSearchHandler()
           history.push("/recipes/browse")
         } else {   
       }   
@@ -98,7 +96,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   //Write savedRecipe Handler
   async function saveRecipeHandler(newRecipe) {
-    console.log("check", newRecipe)
        //setloading(false)
        setFridgeLoading({ done: false }); 
           await addNewSavedRecipe(newRecipe)

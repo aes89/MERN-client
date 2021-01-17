@@ -13,9 +13,7 @@ import KitchenIcon from '@material-ui/icons/Kitchen';
 
 const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedRecipe, loadingFridge, idCheck}) => {
   const classes = useStyles();
-  //const [addRecipe, setAddRecipe] = useState("");
   const [loading, setloading] = useState({ done: false });
-  //const [fridgeLoading, setFridgeLoading] = useState({ done: true });
   const {recipeID, id, _id, usedIngred, missedIngred, title, 
   readyInMinutes, servings, image,
   vegetarian, vegan, glutenFree, dairyFree, veryHealthy, cheap, 
@@ -53,7 +51,6 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
         await saveRecipe(newRecipe)
         setTimeout(() => {
           setloading({ done: true });
-          //console.log("check loading done") 
           }, 5000)
     
   }

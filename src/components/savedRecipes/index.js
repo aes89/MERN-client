@@ -31,7 +31,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   const [loading, setloading] = useState({ done: false });
 
   const checker = JSON.parse(getSavedRecipes())
-  console.log("checker", checker)
+
   //Call DB to display recipe data
   async function getSavedHandler() {
      setSavedRecipes()
