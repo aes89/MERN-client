@@ -20,7 +20,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
   veryPopular, sustainable
   } = recipe 
 
-  let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
+  let convert = Math.floor(readyInMinutes / 60) + " hr & " +  readyInMinutes % 60 + " mins"
   
   async function collectRecipeHandler () {
    
@@ -103,9 +103,9 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                       <img alt="recipe" src={cartoonPlaceholder} />    
                     )}       
                     <h3>{title}</h3>
-                    <p>Serves: {servings}</p>
-                    <p>Prep time: {convert}</p>
-                    <div class={styles.labels}>
+                    <p><strong>Serves:</strong> {servings}</p>
+                    <p><strong>Prep time:</strong> {convert}</p>
+                  <div class={styles.labels}>
                     { vegetarian ? <span class={styles.icons}>Veg</span> : <></> }
                     { vegan ? <span class={styles.icons}>Vg</span> : <></>}
                     { glutenFree ? <span class={styles.icons}>Gf</span> : <></> }

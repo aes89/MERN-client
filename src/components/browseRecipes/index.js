@@ -134,7 +134,7 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             <Grid item xs={12} spacing={2}>
               <h1 class={appstyles.headings}>Browse Recipes</h1>
               <div class={styles.searchButtonMove}>
-                <Button class={styles.newSearch} onClick={handleSearchAgain}> Search again!</Button>
+                <Button class={styles.newSearch} onClick={handleSearchAgain}>Refresh Search</Button>
               </div>
             </Grid>
             <Grid item xs={12} spacing={2}>
