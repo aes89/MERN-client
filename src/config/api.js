@@ -11,6 +11,6 @@ export default axios.create({
   timeout: 10000,
   withCredentials: true,
   headers: {
-   "Access-Control-Allow-Origin": "https://fridge-mate.herokuapp.com/",
+   "Access-Control-Allow-Origin": "https://fridgemate.netlify.app/",
   },
 });
