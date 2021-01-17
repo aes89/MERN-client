@@ -47,7 +47,7 @@ function AutocompleteIngredients({
     if(type === "fridge" ){
       filteredList = filteredFridge
     } else if (type === "pantry" ){
-      filteredList = filteredPantry
+      filteredList = pantry
     }
 
   //const filteredList = type === "fridge" ? filteredFridge : pantry;
