@@ -137,9 +137,10 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               <div class={styles.summaryBox}> 
                                   <div class={styles.summaryText}>         
                                       <p><strong>Serves:</strong> {servings} </p>
-                                      <p><strong>Cuisines:</strong> { cuisines ? <>{cuisines.join(" , ")}</> : <p>N/A</p> }</p>
-                                      <p><strong>Dish Types:</strong> { dishTypes ? <>{dishTypes.join(" , ")}</> : <p>N/A</p> }</p>
-                                      <p><strong>Diets:</strong>  { diets ? <>{diets.join(" , ")}</> : <p>N/A</p> }</p>
+                                      <p><strong>Cooking Time:</strong> {readyInMinutes} mins </p>
+                                      <p><strong>Cuisines:</strong> { cuisines.length !== 0 ? <>{cuisines.join(" , ")}</> : <>n/a</> }</p>
+                                      <p><strong>Dish Types:</strong> { dishTypes.length !== 0   ? <>{dishTypes.join(" , ")}</> : <>n/a</> }</p>
+                                      <p><strong>Diets:</strong>  { diets.length !== 0   ? <>{diets.join(" , ")}</> : <>n/a</> }</p>
                                        <div class={styles.labels}>
                                         { vegetarian ? <span class={styles.icons}>Veg</span> : <></> }
                                         { vegan ? <span class={styles.icons}>Vg</span> : <></>}
