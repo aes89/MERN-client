@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
-import { useHistory,useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Logo from "../logo";
 import appstyles from "../../app.module.css";
 import useStyles from "../styles/makeStyles.js";
@@ -25,10 +25,21 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   const { id } = useParams();
 
   const [displayRecipe, setDisplayRecipe] = useState("");
+
   const [loading, setloading] = useState({ done: false });
+
   const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
   sourceUrl, title, _id, extendedIngredients, username} = displayRecipe 
 
+  function ingredientFilter (extendedIngredients){
+    const array = []
+    extendedIngredients.map((ingredient) => {
+      array.push(ingredient.name)}) 
+    const filteredExtendedIngredients = [...new Set(array)];
+    return filteredExtendedIngredients
+   }
+
+  
   //get saved receipes from local storage and assign to state first then use that state to display recipes
   //console.log('check username', username)
     function checkSingleRecipeLocal () {
@@ -66,9 +77,14 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
           console.log('check id', id)
             getSingleRecipePage(id).then((recipe) => { 
                 console.log("check server")
+                console.log("check newIng", recipe.extendedIngredients)
+                let newIng =ingredientFilter (recipe.extendedIngredients)
+                console.log("check newIng", newIng)
+                recipe.extendedIngredients = newIng
                 setDisplayRecipe(recipe)
                 actions.updateSingleRecipe(recipe)
                 setSingleRecipe(recipe)
+                //filterIngredients(displayRecipe.extendedIngredients)
                 setTimeout(() => {
                 setloading({ done: true });
                 }, 5000)
@@ -95,6 +111,19 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
           <Logo />
           <Grid item xs={12} spacing={2}>
             <h1 class={appstyles.headings}>{title}</h1>
+            <div class={styles.searchButtonMove}>
+             {displayRecipe.username ? (
+            <Link to={"/recipes/saved-recipes"}>
+                <Button class={styles.newSearch} >Back to Saved Recipes </Button>
+            </Link>
+            ) : (
+              <>
+            <Link to={"/recipes/browse"}>
+                  <Button class={styles.newSearch} >Back to Search </Button>
+            </Link>
+              </>
+             )}
+            </div>
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
@@ -102,7 +131,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
             <div class={appstyles.subheading}>This recipe is in your Saved Recipes!</div>  
              ) : (
               <>
-              <div class={appstyles.subheading} style={{alignSelf: "center"}}>Maybe saved this recipe for later? 
+              <div class={appstyles.subheading} style={{alignSelf: "center"}}>Maybe save this recipe for later? 
               <Button variant="outlined" class={styles.savedButton} >Save Recipe!</Button>
               </div> 
               </>
@@ -119,7 +148,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                                       <p><strong>Cuisines:</strong> {cuisines.join(" , ")} </p>
                                       <p><strong>Dish Types:</strong> {dishTypes.join(" , ")} </p>
                                       <p><strong>Diets:</strong>  {diets.join(" , ")} </p> 
-                                      <a href={sourceUrl} > <p class={styles.url}><strong>View Source URL</strong> </p></a> 
+                                      <a href={sourceUrl} > <p class={styles.url}><strong>View Source- With Full Instructions</strong> </p></a> 
                                   </div>  
                                     <div class={styles.imageBox}> 
                                       <img alt="recipe" src={image} />      
@@ -127,13 +156,18 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               </div>
                           <div class={styles.instructBox}> 
                               <h4>Ingredients</h4>
-                               <ul>
+                              
+                               <ul class={styles.ingredientBox}>
                                 {extendedIngredients && extendedIngredients.map((ingredient) => (
-                                  <li key={ingredient.name}> {ingredient.name} </li>
+                                  <li key={ingredient}> {ingredient} </li>
                                    ))}    
                                </ul>  
+                                
                               <h4>Instructions</h4>
-                              <div> {instructions} </div>  
+                              <div>
+                              <a href={sourceUrl} > <div class={styles.url}><strong>View Source- With Full Instructions</strong> </div></a> 
+                              </div>
+
                           </div>  
                         </Grid>
                       </div>

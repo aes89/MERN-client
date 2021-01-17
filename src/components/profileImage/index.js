@@ -52,13 +52,14 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
   });
 
   return (
-    <Fragment>
+    <Fragment  >
       <div class={styles.imageUpload}>
       {!loading.done ? (
         <div> <Loading/></div>
               ) : ( 
                 <form>
                   <input
+                    style={{backgroundColor: "white"}}
                     id="file"
                     name="file"
                     type="file"

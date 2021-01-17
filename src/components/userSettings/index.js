@@ -126,6 +126,7 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
     validate,   
 
     onSubmit: (values) => {
+      setloading({ done: false })
       updateUserSettings({ ...values }, userLoggedIn)
         .then((user) => {
           //console.log(user);
@@ -147,6 +148,9 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
                "There may be a problem with the server. Please try again after a few moments."
             );
         });
+        setTimeout(() => {
+                setloading({ done: true });
+                }, 3000)
     },
   });
 
@@ -157,14 +161,17 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
         <Grid container item xs={12} spacing={0}>
           <Logo />
           <Grid item xs={12} spacing={2}>
-            <h1 class={appstyles.headings}>User Settings</h1>
+            <h1 class={appstyles.headings}>Account Settings</h1>
           </Grid>
           <Grid item xs={12} spacing={2}>
             <div class={appstyles.layoutContent}>
               {!loading.done ? (
            <Loading/>
               ) : (  
-            <> 
+            <>  
+      
+            <div class={appstyles.subheading} >Update your account settings below.</div>
+
                       <div class={styles.settingsBox}>
                         <Fade bottom >
                         {formik.status && <div style={text}>Error: {formik.status}. </div>}
