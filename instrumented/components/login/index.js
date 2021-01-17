@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { useFormik } from "formik";
 
 import styles from "../styles/loginSignup.module.css";
-// import store from "../../index";
 import {
   loginUser,
   setLoggedInUser,
@@ -13,8 +12,8 @@ import {
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import Fade from 'react-reveal/Fade';
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import Fade from "react-reveal/Fade";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,7 +55,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
           setUsername(r.user);
           setProfile(r.profile);
           actions.logIn(r.user);
-          actions.updateProfile({...r});
+          actions.updateProfile({ ...r });
           actions.getToken(r.cookie.jwt);
           actions.closeModal();
           history.push("/");
@@ -78,7 +77,6 @@ const Login = ({ actions, loggedIn, modalId }) => {
   });
 
   return (
-
     <div class={styles.loginSignupBox}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
@@ -130,33 +128,23 @@ const Login = ({ actions, loggedIn, modalId }) => {
           >
             Log In
           </Button>
-          
         </div>
         <div>
-        <div>
-        <Button
-         class={styles.modalCancelButton}>
-            Forgot Password?
-          </Button>
-        </div>
+          <div>
+            <Button class={styles.modalCancelButton}>Forgot Password?</Button>
+          </div>
           <Button
-            
             class={styles.modalButton}
             onClick={() => actions.openModal("register")}
           >
-            New?..  Register here.
+            New?.. Register here.
           </Button>
-          <Button
-          
-            class={styles.modalCancelButton}
-            onClick={actions.closeModal}
-          >
+          <Button class={styles.modalCancelButton} onClick={actions.closeModal}>
             Cancel
           </Button>
         </div>
       </form>
     </div>
-
   );
 };
 
@@ -169,7 +157,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username) => dispatch({ type: "login", payload: username }),
     updateProfile: ({ profile }) =>
-      dispatch({ type: "updateProfile", payload: {profile } }),
+      dispatch({ type: "updateProfile", payload: { profile } }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),

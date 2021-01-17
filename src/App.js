@@ -11,7 +11,6 @@ import {
 
 import { ToastContainer } from "react-toastify";
 
-import store from "./index";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import BrowseRecipes from "./components/browseRecipes";
@@ -142,3 +141,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export { App as AppForTest };

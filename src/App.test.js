@@ -1,11 +1,15 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { shallow } from "enzyme";
 
 // import { ExpansionPanelActions } from "@material-ui/core";
 // import { shallow } from "enzyme";
 
 // import Fridge from "./components/fridge/index";
-import App from "./App.js";
+import { AppForTest as App } from "./App";
+
+it("renders", () => {
+  expect(shallow(<App />)).toMatchSnapshot();
+});
 // import { getLoggedInUser } from "./services/authServices";
 
 // jest.mock("./services/authServices");
