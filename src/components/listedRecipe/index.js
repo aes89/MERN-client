@@ -24,7 +24,6 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
 
   let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
   
- 
   async function collectRecipeHandler () {
    
       let addRecipe = recipe
@@ -41,32 +40,37 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                   dishTypes: addRecipe.dishTypes,
                   diets: addRecipe.diets,
                   instructions:  addRecipe.instructions,
+                  vegetarian: addRecipe.vegetarian,
+                  vegan: addRecipe.vegan,
+                  glutenFree: addRecipe.glutenFree,
+                  dairyFree: addRecipe.dairyFree,
+                  veryHealthy: addRecipe.veryHealthy,
+                  cheap: addRecipe.cheap,
+                  veryPopular: addRecipe.veryPopular,
+                  sustainable: addRecipe.sustainable,
               }
         setloading({ done: false });
         await saveRecipe(newRecipe)
         setTimeout(() => {
           setloading({ done: true });
-          console.log("check loading done") 
+          //console.log("check loading done") 
           }, 5000)
-        console.log("hit here")
+    
   }
 
   async function deleteRecipeHandler (id) {
-    console.log("check addRecipe done",id) 
       setloading({ done: false }); 
       await removeSavedRecipe(id)
         setTimeout(() => {
           setloading({ done: true });
-          console.log("check loading done") 
           }, 5000)
-        console.log("hit here")
    }
 
    if (savedType ==="saved recipes") {
+
    //This is for save Recipe page
     return (
             <div>
-                {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
                 <Grid item sm spacing={1}   wrap="wrap">
                   <Paper className={classes.paper} variant="outlined" > 
                     <Link to={"/recipes/" + _id +"/recipe"  }>
@@ -91,7 +95,6 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
   //This is for browse Recipe page
     return (
         <div>
-            {/* {errorMessage && <ErrorText>{errorMessage}</ErrorText>} */}
            <Grid item sm spacing={1}   wrap="wrap">
                 <Paper className={classes.paper} variant="outlined" > 
                 <Link to={"/recipes/" + id +"/recipe" }>
@@ -105,14 +108,12 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                     <h3>{title}</h3>
                     <p>Serves: {servings}</p>
                     <p>Prep time: {convert}</p>
+                    <div class={styles.labels}>
                     { vegetarian ? <span class={styles.icons}>Veg</span> : <></> }
                     { vegan ? <span class={styles.icons}>Vg</span> : <></>}
                     { glutenFree ? <span class={styles.icons}>Gf</span> : <></> }
                     { dairyFree ? <span class={styles.icons}>Df</span> : <></> }
-                    {/* { cheap ? <p>$</p> : <></>} 
-                    { veryHealthy ? <p>Healthy</p> : <></> } 
-                    { veryPopular ? <p>Popular</p> : <></> } 
-                    { sustainable ? <p>Sustainable</p> : <></> }  */}
+                      </div>
                   </div>
                   
                  </Link>

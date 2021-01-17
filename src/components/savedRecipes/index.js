@@ -27,25 +27,18 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
   const classes = useStyles();
   let history = useHistory(); 
   const [errors, setErrors] = useState(null);
-  const [savedUserRecipes, setSavedUserRecipes] = useState([]);
+  const [savedUserRecipes, setSavedUserRecipes] = useState(null);
   const [loading, setloading] = useState({ done: false });
 
-
-  const checker = getSavedRecipes();
-  //console.log(checker);
-
-
-  //let TestData = TestSaveData()
-  //console.log(TestData)
-
+  const checker = JSON.parse(getSavedRecipes())
+  console.log("checker", checker)
   //Call DB to display recipe data
   async function getSavedHandler() {
+     setSavedRecipes()
      setloading({ done: false });
               await getAllUserSavedRecipes()
                 .then((res) => {
                   setSavedRecipes()
-                  console.log("hit saved here")
-                  console.log(res)
                   //saved to redux
                   actions.AddToSavedRecipes(res)
                   //save to local storage
@@ -54,13 +47,10 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   setErrors("")
                   setTimeout(() => {
                   setloading({ done: true });
-                  console.log("check loading done");
                 }, 2500);
                   history.push("/recipes/saved-recipes")
                 })
                 .catch((error) => {
-                  //console.log("errors");
-                  //console.log(error);
                   if (error.response && error.response.status === 401)
                   toast.error("Sorry we could not get your recipes at this time.");
                   else
@@ -68,40 +58,30 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                   history.push("/recipes/saved-recipes")
               });
         }
-
     useEffect(() => { 
+
       getSavedHandler()
       setSavedUserRecipes(JSON.parse(getSavedRecipes()))
     }, []);
 
-  
     //function for removing from saved recipes- this is sent via props to listed recipe
     function removeSavedRecipeHandler (id) {
       setloading({ done: false });
-      removedSavedRecipe(id).then((res) => { 
-         console.log(res)
-        //setSavedRecipes()
-        setTimeout(() => {
-          setloading({ done: true });
-          //console.log("check loading done");
-        }, 3000);
-        toast.success("Removed from Saved Recipes");
-        history.push("/recipes/saved-recipes")
+        removedSavedRecipe(id).then((res) => { 
+          setTimeout(() => {
+            setloading({ done: true });
+          }, 3000);
+          toast.success("Removed from Saved Recipes");
+          history.push("/recipes/saved-recipes")
       }).then(async (item) => {
          await getSavedHandler()
          setSavedUserRecipes(JSON.parse(getSavedRecipes()))
         }).catch((error) => {
-        //console.log("errors")
-        //console.log(error.response)
         if (error.response && error.response.status === 401){
-           //setErrors("Sorry we could not submit your request at this time.")
            toast.error("Sorry we could not submit your request at this time.")
           } else{
-           //setErrors("There may be a problem with the server. Please try again after a few moments.")
           toast.error("There may be a problem with the server. Please try again after a few moments.");}
       });
-
-
     }
 
   return (
@@ -130,7 +110,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
                          
                         <div className={styles.savedBox}>
                           <Grid container spacing={1}  alignItems="center" justify="center" >
-                          {checker ? (
+                          {checker.length !== 0 ? (
                               <>
                                   {savedUserRecipes && savedUserRecipes.map((recipe) => (
                                   <ListedRecipe key={recipe.title} recipe={recipe} savedType="saved recipes" removeSavedRecipe={removeSavedRecipeHandler}/>

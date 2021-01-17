@@ -6,7 +6,6 @@ import appstyles from "../../app.module.css";
 import styles from "./browse.module.css";
 import useStyles from "../styles/makeStyles.js";
 
-
 import ListedRecipe from "../listedRecipe";
 import Loading from "../loading";
 
@@ -46,61 +45,39 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         } else {   
       }   
   }
-  // //for filtering based off user preferences- not in use as we dont have the API call quota
-  // function userPrefFilter (recipes) {
-  //    let userPrefs = JSON.parse(getPref())
-  //    const myArrayFiltered = recipes.filter((r) => {
-  //    return r.vegetarian === userPrefs.vegetarian 
-  //       && r.vegan === userPrefs.vegan
-  //       && r.glutenFree === userPrefs.glutenFree
-  //       && r.dairyFree === userPrefs.dairyFree
-  //       && r.veryHealthy === userPrefs.veryHealthy
-  //       && r.cheap === userPrefs.cheap
-  //       && r.veryPopular === userPrefs.veryPopular
-  //       && r.sustainable === userPrefs.sustainable
-  //       ;
-  //   });
-  //   console.log("check userPref filter", myArrayFiltered)
-  //  }
-  
+
 //Main function for returning recipes to browse
   function recipeSearchHandler (){
     //Checking if fridge is empty or not
    handleNewIngredientsAdded()
    if (!getBrowsedRecipes()) {  //if none in local storage
+        setloading(false)
        browseSearchRecipes()
             .then((recipes) => {   
-                      //recipes = userPrefFilter(recipes)
                       setRecipesState(recipes) //state 
                       setBrowsedRecipes(recipes) //local storage
                       actions.updatedBrowseRecipes(recipes)  //redux
-                      //console.log("check recipes", recipes)
                       toast.success("Here are your recipes!")
                       setErrors(null)
                }).then (
                   setTimeout(() => {
                   setloading(true)
-                  //console.log("check loading done") 
-                  }, 5000)
+                  }, 10000)
                   
                )
               .catch((error) => {
-                  //console.log("errors")
                   if (error.response && error.response.status === 401)
                   toast.error(" Recipe search failed. Try again. ")
                   else   
                   toast.error("There may be a problem with the server. Please try again after a few moments.")        
                   });
         } else {
-         //userPrefFilter (JSON.parse(getBrowsedRecipes()))
          setRecipesState(JSON.parse(getBrowsedRecipes()))
          actions.updatedBrowseRecipes(JSON.parse(getBrowsedRecipes())) 
-
          setTimeout(() => {
               setloading(true)
               console.log("check loading done") 
-              //setRecipes(getBrowsedRecipes()
-                  }, 8000)
+                  }, 10000)
          }
   }
 
@@ -113,13 +90,10 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
 
   //if search again button is clicked, clear local storage and call the route again so the search initalizes again
     function handleSearchAgain () {
-        //history.push("/recipes/browse")
         setloading(false)
         setBrowsedRecipes() //local storage
-        //  setRecipesState(recipes) //state 
         recipeSearchHandler()
         history.push("/recipes/browse")
-        //  actions.updatedBrowseRecipes(recipes) 
     }
 
   //Write savedRecipe Handler
@@ -128,26 +102,19 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
        //setloading(false)
        setFridgeLoading({ done: false }); 
           await addNewSavedRecipe(newRecipe)
-            .then((r) => {
-              console.log("hit here")
-              console.log(r)
+            .then((res) => {
               //saved to redux
-              actions.AddToSavedRecipes(r)
+              actions.AddToSavedRecipes(res)
               //save to local storage
-              setSavedRecipes(r)
+              setSavedRecipes(res)
               setErrors("")
               toast.success(" You have saved this recipe!");
               setTimeout(() => {
-                  //setloading(true)
                   setFridgeLoading({ done: true }); 
-                  //console.log("check loading done") 
                   }, 5000)
-             // history.push("/recipes/saved-recipes")
             })
             .catch((error) => {
               setFridgeLoading({ done: true }); 
-              console.log("errors");
-              console.log(error.response.data);
               if (error.response && error.response.status === 401){
                 toast.error("Oh no, we couldnt' save your recipe!")
               } else if (error.response.status === 422) {

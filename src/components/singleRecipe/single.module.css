@@ -148,7 +148,25 @@
     padding-top: 30px;
     }
 }
- 
+
+ .icons{ 
+  margin: 5px;
+  background-color: greenColor;
+  max-width: 65px;
+  max-height: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-size: 0.9em;
+  word-wrap: break-word;
+}
+
+.labels{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
  /* Tablet Styles */ 
  @media only screen and (min-width: 600px)  and (max-width:1024px) {
            .imageBox{

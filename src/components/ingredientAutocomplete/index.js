@@ -43,10 +43,15 @@ function AutocompleteIngredients({
         (i) => !pantryIngredients.includes(i.name)
       )
     : pantry;
+  var filteredList;
+  if(type === "fridge" ){
+    filteredList = filteredFridge
+  } else if (type === "pantry" ){
+     filteredList = filteredPantry
+  }
+  //const filteredList = type === "fridge" ? filteredFridge : pantry;
 
-  const filteredList = type === "fridge" ? filteredFridge : pantry;
-
-  console.log("check filteredList", filteredPantry)
+  //console.log("check filteredList", filteredList)
 
   let history = useHistory();
 

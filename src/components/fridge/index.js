@@ -44,8 +44,6 @@ const Fridge = ({actions, fridgeIngredients}) => {
                 setFridge(r.fridgeIngredients)
                 history.push("/ingredients/"+getUsername()+"/fridge")
             }).catch((error) => {
-              //console.log("errors")
-              //console.log(error.response)
                 if (error.response && error.response.status === 401)
                 actions.changeError("Error getting fridge ingredients")
                 else   

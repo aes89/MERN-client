@@ -10,7 +10,7 @@
     margin-bottom: 5px;
 }
 .listItem  h3{
-    height: 40px;
+    height: 60px;
     width: 200px;
     font-size: 1em;
     word-wrap: break-word;
@@ -91,9 +91,18 @@
 }
 
 .icons{ 
+  margin: 5px;
   background-color: greenColor;
-  width: 35px;
+  max-width: 35px;
   padding: 5px;
   border-radius: 50%;
   color: white;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.labels{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
