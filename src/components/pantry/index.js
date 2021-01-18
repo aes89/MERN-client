@@ -61,7 +61,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
         setTimeout(() => {
         setloading({ done: true })
         console.log("check loading done")  
-        }, 2500);
+        }, 4000);
   }, []);
 
   const handleClearPantry = async () => {

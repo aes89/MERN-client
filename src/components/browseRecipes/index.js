@@ -19,7 +19,6 @@ import Button from "@material-ui/core/Button";
 import {browseSearchRecipes,  getBrowsedRecipes, setBrowsedRecipes, addNewSavedRecipe, setSavedRecipes} from '../../services/recipeServices'
 import {getFridge, getPantry } from '../../services/ingredientServices'
 
-import {getPref} from "../../services/authServices";
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

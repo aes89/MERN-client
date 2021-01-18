@@ -39,25 +39,21 @@ const Fridge = ({ actions, fridgeIngredients }) => {
   const checker = getFridge();
 
   useEffect(() => {
-    //update this so if local storage is full of ingredients dont call the DB
-    getAllFridgeIngredients(getUsername())
-      .then((res) => {
-        actions.addToFridge(res.fridgeIngredients);
-        setFridge(res.fridgeIngredients);
-        history.push("/ingredients/" + getUsername() + "/fridge");
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 401)
-          actions.changeError("Error getting fridge ingredients");
-        else
-          actions.changeError(
-            "There may be a problem with the server. Please try again after a few moments."
-          );
-      });
-    setTimeout(() => {
-      setloading({ done: true });
-    }, 2500);
-  }, []);
+    getAllFridgeIngredients(getUsername()).then((res) => {
+                actions.addToFridge(res.fridgeIngredients)
+                setFridge(res.fridgeIngredients)
+                history.push("/ingredients/"+getUsername()+"/fridge")
+            }).catch((error) => {
+                if (error.response && error.response.status === 401)
+                actions.changeError("Error getting fridge ingredients")
+                else   
+                actions.changeError("There may be a problem with the server. Please try again after a few moments.")
+            })    
+      setTimeout(() => {  
+      setloading({ done: true })
+            }, 4000);
+  },[])
+
 
   const handleClearFridge = async () => {
     deleteAllFridge(getUsername())

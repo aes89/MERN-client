@@ -104,18 +104,18 @@ export async function updatePreference(userInfo, username) {
 
 //Right now we are saving the token - but as token is in a cookie this does not need to be in local storage- remove later
 // Get loggedInUser from localStorage
-export function getLoggedInUser() {
-  return localStorage.getItem("token");
-}
+// export function getLoggedInUser() {
+//   return localStorage.getItem("token");
+// }
 
-// Store loggedInUser token in local storage
-export function setLoggedInUser(token) {
-  token
-    ? localStorage.setItem("token", token)
-    : localStorage.removeItem("token");
-  console.log("local token Updated");
-  //console.log(token);
-}
+// // Store loggedInUser token in local storage
+// export function setLoggedInUser(token) {
+//   token
+//     ? localStorage.setItem("token", token)
+//     : localStorage.removeItem("token");
+//   console.log("local token Updated");
+//   //console.log(token);
+// }
 
 // Get loggedInUser from localStorage
 // Get loggedInUser from localStorage

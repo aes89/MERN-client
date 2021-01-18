@@ -14,10 +14,7 @@ import {getSingleRecipePage, getSingleRecipe, setSingleRecipe} from '../../servi
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-import fridge from "../styles/imgs/fridge.png";
-import pantry from "../styles/imgs/pantry.png";
+
 
 
 import { toast } from "react-toastify";
@@ -29,10 +26,9 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   const { id } = useParams();
 
   const [displayRecipe, setDisplayRecipe] = useState("");
-  const [ingredientSymbol, setIngredientSymbol] = useState(<CloseIcon/>);
   const [loading, setloading] = useState({ done: false });
 
-  const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
+  const {cuisines, diets, dishTypes, image, readyInMinutes, recipeID, servings, 
   sourceUrl, title, _id, extendedIngredients, username, vegetarian, vegan, glutenFree, dairyFree, veryHealthy, cheap, 
   veryPopular, sustainable} = displayRecipe 
 
@@ -40,7 +36,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   function ingredientFilter (extendedIngredients){
     const array = []
     extendedIngredients.map((ingredient) => {
-      array.push(ingredient.name)}) 
+      return array.push(ingredient.name)}) 
     const filteredExtendedIngredients = [...new Set(array)];
     return filteredExtendedIngredients
    }
@@ -48,18 +44,21 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   //get saved receipes from local storage and assign to state first then use that state to display recipes
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
-   //
-      // if (checker.id){
-      //   checker.id = checker.id.toString()
-      //   const exists = Object.values(checker).some(function(k) { 
-      //   return k === id })
-      //   return exists
-      // } else if (checker.recipeID) {
-      //   checker.recipeID = checker.recipeID.toString()
-      //   const exists = Object.values(checker).some(function(k) { 
-      //   return k === id })
-      //   return exists
-      // }
+   //  
+      if (!checker){
+        return null
+      }
+      if (checker.id){
+        checker.id = checker.id.toString()
+        const exists = Object.values(checker).some(function(k) { 
+        return k === id })
+        return exists
+      } else if (checker.recipeID) {
+        checker.recipeID = checker.recipeID.toString()
+        const exists = Object.values(checker).some(function(k) { 
+        return k === id })
+        return exists
+      }
   }
 
   useEffect(() => {
