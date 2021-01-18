@@ -11,8 +11,6 @@ import {
 
 import { ToastContainer } from "react-toastify";
 
-
-import store from "./index";
 import UserSettings from "./components/userSettings";
 import Preferences from "./components/preferences";
 import BrowseRecipes from "./components/browseRecipes";
@@ -27,12 +25,11 @@ import Pantry from "./components/pantry";
 import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
-//import { toast } from 'react-toastify';
-//import 'react-toastify/dist/ReactToastify.css';
 
 
+//NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
+//MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
-
   const isLoggedIn = getUsername();
 
   return (
@@ -49,7 +46,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-
 const App = ({ actions }) => {
   
 
@@ -58,7 +54,7 @@ const App = ({ actions }) => {
           actions.logIn(getUsername());
           //actions.getToken(getLoggedInUser());
         } catch (error) {
-          //console.log("got an error trying to check authenticated user:", error);
+          console.log("got an error trying to check authenticated user:", error);
           //setLoggedInUser();
           setUsername();
           actions.logout();
@@ -67,12 +63,11 @@ const App = ({ actions }) => {
         return () => {};
       }, []);
 
-   return (
+  return (
     <Fragment>
       <Helmet>
         <title>FridgeMate</title>
         <meta name="description" content="Helmet application" />
-        
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
@@ -99,7 +94,11 @@ const App = ({ actions }) => {
             path="/recipes/browse"
             component={BrowseRecipes}
           />
-          <PrivateRoute exact path="/recipes/:id/recipe" component={SingleRecipe} />
+          <PrivateRoute
+            exact
+            path="/recipes/:id/recipe"
+            component={SingleRecipe}
+          />
           <PrivateRoute
             exact
             path="/recipes/saved-recipes"
@@ -130,10 +129,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    setModalOpen: (modalId) => {
-      store.dispatch({ type: "openModal", payload: modalId });
-      console.log("APP JS STORE", store.getState());
-    },
     logIn: (username) => dispatch({ type: "login", payload: username }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
@@ -141,3 +136,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export { App as AppForTest };

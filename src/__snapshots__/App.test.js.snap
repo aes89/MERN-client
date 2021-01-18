@@ -1,17 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders learn react link 1`] = `
-<div
-  className="App"
->
-  <header
-    className="App-header"
-  />
-  <Login />
-  <Register />
-  <UserSettings />
-  <div>
-    hello world
-  </div>
-</div>
+exports[`renders 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      FridgeMate
+    </title>
+    <meta
+      content="Helmet application"
+      name="description"
+    />
+  </HelmetWrapper>
+  <WithStyles(CssBaseline) />
+  <BrowserRouter>
+    <Connect(NavBar) />
+    <Switch>
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/preferences/:username"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/user/:username/account-settings"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/ingredients/:username/fridge"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/recipes/browse"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/recipes/:id/recipe"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/recipes/saved-recipes"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/ingredients/:username/pantry"
+      />
+      <PrivateRoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/user/reset-password/:token"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+    <ToastContainer
+      autoClose={5000}
+      closeButton={[Function]}
+      closeOnClick={true}
+      draggable={true}
+      draggablePercent={80}
+      hideProgressBar={false}
+      newestOnTop={false}
+      pauseOnFocusLoss={true}
+      pauseOnHover={true}
+      position="top-right"
+      role="alert"
+      rtl={false}
+      transition={[Function]}
+    />
+  </BrowserRouter>
+  <Footer />
+</Fragment>
 `;
