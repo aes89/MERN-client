@@ -46,7 +46,6 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
    }
 
   //get saved receipes from local storage and assign to state first then use that state to display recipes
-  //console.log('check username', username)
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
    
@@ -54,13 +53,11 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
         checker.id = checker.id.toString()
         const exists = Object.values(checker).some(function(k) { 
         return k === id })
-        //console.log("check exists", exists)
         return exists
       } else if (checker.recipeID) {
         checker.recipeID = checker.recipeID.toString()
         const exists = Object.values(checker).some(function(k) { 
         return k === id })
-        //console.log("check exists", exists)
         return exists
       }
   }

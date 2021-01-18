@@ -74,7 +74,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
          actions.updatedBrowseRecipes(JSON.parse(getBrowsedRecipes())) 
          setTimeout(() => {
               setloading(true)
-              console.log("check loading done") 
                   }, 10000)
          }
   }

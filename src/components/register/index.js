@@ -69,7 +69,6 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
     validate,
     onSubmit: async (values) => {
       setloading({ done: false })
-      //Attempt login on server- this is from auth services
       registerUser({ ...values })
         .then((res) => {
           console.log(res);
@@ -80,7 +79,6 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
           history.push("/");
         })
         .catch((error) => {
-        //console.log(error.response);
           if (error.response && error.response.status === 422){
                 if (error.response.data.errors.length === 1 && error.response.data.errors[0].email){
                 formik.setStatus(error.response.data.errors[0].email) 
@@ -97,7 +95,6 @@ const Register = ({ actions, userLoggedIn, modalId }) => {
         });
       setTimeout(() => {  
       setloading({ done: true })
-      console.log("check loading done")  
             }, 2500);
     },
   });

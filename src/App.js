@@ -31,8 +31,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-//NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
-//MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
 
   const isLoggedIn = getUsername();
@@ -51,13 +49,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render={(props) => (
-//       getLoggedInUser() === true
-//         ? <Component {...props} />
-//         : <Redirect to='/' />
-//   )} />
-// )
 
 const App = ({ actions }) => {
   let history = useHistory();
@@ -70,16 +61,7 @@ const App = ({ actions }) => {
   //       console.log("logged cause of expired jwt out")
   //       //toast.success("Sorry your account was inactive, log in again!")
   //    }
-  //   // try {
-
-  //   //   actions.logIn(getUsername());
-  //   //   actions.getToken(getLoggedInUser());
-  //   // } catch (error) {
-  //   //   console.log("got an error trying to check authenticated user:", error);
-  //   //   setLoggedInUser();
-  //   //   setUsername();
-  //   //   actions.logout();
-  //   // }
+  //   
 
   // }, [document.cookie]);
   return (
@@ -125,7 +107,7 @@ const App = ({ actions }) => {
             path="/ingredients/:username/pantry"
             component={Pantry}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/user/reset-password/:token"
             component={ResetPassword}

@@ -24,10 +24,8 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
 
     onSubmit: (values) => {
       setloading({ done: false })
-     // console.log("values", values.file);
       uploadProfileImage(values.file, userLoggedIn)
         .then((image) => {
-          //console.log("IMAGE??", image.user.profile);
           const {
             user: { profile },
           } = image;
