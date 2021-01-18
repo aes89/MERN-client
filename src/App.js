@@ -61,27 +61,27 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 const App = ({ actions }) => {
   let history = useHistory();
-  useEffect(( ) => {
+  // useEffect(( ) => {
 
-     if (document.cookie){
+  //    if (document.cookie){
 
-     } else {
-        actions.logout();
-        console.log("logged cause of expired jwt out")
-        //toast.success("Sorry your account was inactive, log in again!")
-     }
-    // try {
+  //    } else {
+  //       actions.logout();
+  //       console.log("logged cause of expired jwt out")
+  //       //toast.success("Sorry your account was inactive, log in again!")
+  //    }
+  //   // try {
 
-    //   actions.logIn(getUsername());
-    //   actions.getToken(getLoggedInUser());
-    // } catch (error) {
-    //   console.log("got an error trying to check authenticated user:", error);
-    //   setLoggedInUser();
-    //   setUsername();
-    //   actions.logout();
-    // }
+  //   //   actions.logIn(getUsername());
+  //   //   actions.getToken(getLoggedInUser());
+  //   // } catch (error) {
+  //   //   console.log("got an error trying to check authenticated user:", error);
+  //   //   setLoggedInUser();
+  //   //   setUsername();
+  //   //   actions.logout();
+  //   // }
 
-  }, [document.cookie]);
+  // }, [document.cookie]);
   return (
     <Fragment>
       <Helmet>
