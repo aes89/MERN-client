@@ -10,7 +10,6 @@ export default axios.create({
   baseURL: (production ? "https://fridge-mate.herokuapp.com/" : "http://localhost:3009"), 
   timeout: 10000,
   withCredentials: true,
-  credentials: 'include',
   // headers: {
   //  "Access-Control-Allow-Origin": "*",
   // },
