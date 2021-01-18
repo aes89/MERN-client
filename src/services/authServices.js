@@ -31,38 +31,36 @@ export async function resetPassword(token) {
   // call to server to login user
   // return user info if successful and error if not
   const response = await api.get("/user/reset-password", {
-        params: {
-          resetPasswordToken: token,
-        },});
-   console.log("Server", response);
+    params: {
+      resetPasswordToken: token,
+    },
+  });
+  console.log("Server", response);
   return response.data;
 }
-
 
 export async function updatePasswordViaReset(password) {
   // call to server to login user
   // return user info if successful and error if not
   const response = await api.put("/user/update-password", password);
-   console.log("Server", response);
+  console.log("Server", response);
   return response.data;
 }
 
-
-
 export async function getUserSettings(username) {
   // call to server to register user
-  const response = await api.get("/user/"+username+"/account-settings");
-   console.log("Server", response);
+  const response = await api.get("/user/" + username + "/account-settings");
+  console.log("Server", response);
   return response.data;
 }
 
 export async function updateUserSettings(settingInfo, username) {
   // call to server to register user
   const response = await api.patch(
-    "/user/"+username+"/account-settings",
+    "/user/" + username + "/account-settings",
     settingInfo
   );
-   console.log("Server", response);
+  console.log("Server", response);
   return response.data;
 }
 
@@ -88,17 +86,17 @@ export async function uploadProfileImage(image, username) {
 export async function getPreference(username) {
   // call to server to register user
   const response = await api.get("/preferences/" + username);
-   console.log("Server", response);
+  console.log("Server", response);
   return response.data;
 }
 
 export async function updatePreference(userInfo, username) {
   // call to server to register user
   const response = await api.patch(
-    "/preferences/"+username+"/edit",
+    "/preferences/" + username + "/edit",
     userInfo
   );
-   console.log("Server", response);
+  console.log("Server", response);
   return response.data;
 }
 
@@ -120,7 +118,12 @@ export function setLoggedInUser(token) {
 }
 
 // Get loggedInUser from localStorage
+// Get loggedInUser from localStorage
 export function getUsername() {
+  console.log(
+    "localStorage cypress test get user name",
+    localStorage.getItem("username")
+  );
   return localStorage.getItem("username");
 }
 
@@ -146,7 +149,6 @@ export function setProfile(image) {
   console.log("local profile Updated");
   //console.log(image);
 }
-
 
 // Get preferences from localStorage
 export function getPref() {
