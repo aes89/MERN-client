@@ -77,7 +77,7 @@ const Login = ({ actions, loggedIn, modalId }) => {
       setTimeout(() => {  
       setloading({ done: true })
       //console.log("check loading done")  
-            }, 3000);
+            }, 5000);
     },
   });
 

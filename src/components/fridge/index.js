@@ -48,7 +48,7 @@ const Fridge = ({actions, fridgeIngredients}) => {
             })    
       setTimeout(() => {  
       setloading({ done: true })
-            }, 2500);
+            }, 4000);
   },[])
 
 
