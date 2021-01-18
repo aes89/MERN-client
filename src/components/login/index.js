@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import styles from "../styles/modals.module.css";
 import {
   loginUser,
-  setLoggedInUser,
+  //setLoggedInUser,
   setUsername,
   setProfile,
 } from "../../services/authServices";
@@ -52,19 +52,17 @@ const Login = ({ actions, loggedIn, modalId }) => {
       loginUser({ ...values })
         .then((r) => {
           //console.log(r);
-          setLoggedInUser(r.cookie.jwt);
+          //setLoggedInUser(r.cookie.jwt);
           setUsername(r.user);
           setProfile(r.profile);
-          //console.log("check profile", r.profile)
           actions.logIn(r.user);
-          actions.updateProfile({ ...r });
-          actions.getToken(r.cookie.jwt);
+          actions.updateProfile({...r});
+          //actions.getToken(r.cookie.jwt);
           actions.closeModal();
           history.push("/");
           toast.success("You are logged in!");
         })
         .catch((error) => {
-          console.log(error);
           toast.error("Oh no!");
           if (error.response && error.response.status === 401)
             formik.setStatus(
@@ -75,10 +73,10 @@ const Login = ({ actions, loggedIn, modalId }) => {
               "There may be a problem with the server. Please try again after a few moments."
             );
         });
-      setTimeout(() => {
-        setloading({ done: true });
-        console.log("check loading done");
-      }, 3000);
+      setTimeout(() => {  
+      setloading({ done: true })
+      //console.log("check loading done")  
+            }, 5000);
     },
   });
 
@@ -177,8 +175,8 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     logIn: (username) => dispatch({ type: "login", payload: username }),
     updateProfile: ({ profile }) =>
-      dispatch({ type: "updateProfile", payload: { profile } }),
-    getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
+      dispatch({ type: "updateProfile", payload: {profile } }),
+    // getToken: (jwt) => dispatch({ type: "token", payload: jwt }),
     logout: () => dispatch({ type: "logout" }),
     openModal: (modalId) => dispatch({ type: "openModal", payload: modalId }),
     closeModal: () => dispatch({ type: "closeModal" }),

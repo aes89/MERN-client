@@ -1,16 +1,10 @@
 import { connect } from "react-redux";
 import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {
-  BrowserRouter,
-  Route,
-  Switch,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
-import {
-  setLoggedInUser,
-  getLoggedInUser,
+  //setLoggedInUser,
+  //getLoggedInUser,
   getUsername,
   setUsername,
 } from "./services/authServices";
@@ -31,8 +25,7 @@ import Pantry from "./components/pantry";
 import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 //NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
 //MAYBE ADD TOAST NOTIFCATION BELOW?
@@ -54,21 +47,21 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 const App = ({ actions }) => {
-  let history = useHistory();
+  
 
-  useEffect(() => {
-    try {
-      actions.logIn(getUsername());
-      actions.getToken(getLoggedInUser());
-    } catch (error) {
-      console.log("got an error trying to check authenticated user:", error);
-      setLoggedInUser();
-      setUsername();
-      actions.logout();
-    }
-    // return a function that specifies any actions on component unmount
-    return () => {};
-  }, []);
+    useEffect(( ) => {
+        try {
+          actions.logIn(getUsername());
+          //actions.getToken(getLoggedInUser());
+        } catch (error) {
+          console.log("got an error trying to check authenticated user:", error);
+          //setLoggedInUser();
+          setUsername();
+          actions.logout();
+        }
+        // return a function that specifies any actions on component unmount
+        return () => {};
+      }, []);
 
   return (
     <Fragment>
