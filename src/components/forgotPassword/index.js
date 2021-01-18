@@ -45,16 +45,14 @@ const ForgotPassword = ({ actions, loggedIn, modalId }) => {
     onSubmit: async (values) => {
       setloading({ done: false });
       forgotPassword({ ...values })
-        .then(async (r) => {
-            //let res = await r
-           await console.log(r);
+        .then((r) => {
+          console.log(r)
            setTimeout(() => {
               setloading({ done: true });
-              console.log("check loading done");
               toast.success("Reset Link Sent to your Email!");
               actions.closeModal();
               history.push("/");
-            }, 6000); 
+            }, 5000); 
         })
         .catch((error) => {
           if (error.response && error.response.status === 403)

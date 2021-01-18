@@ -9,12 +9,16 @@ import styles from "./single.module.css";
 import Loading from "../loading";
 import {getSingleRecipePage, getSingleRecipe, setSingleRecipe} from '../../services/recipeServices'
 
+
 //MATERIAL
 import Grid from "@material-ui/core/Grid";
 import Fadein from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import fridge from "../styles/imgs/fridge.png";
+import pantry from "../styles/imgs/pantry.png";
 
-//import TestBrowseData from "../../data/testBrowseRecipeData";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,11 +29,13 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   const { id } = useParams();
 
   const [displayRecipe, setDisplayRecipe] = useState("");
-
+  const [ingredientSymbol, setIngredientSymbol] = useState(<CloseIcon/>);
   const [loading, setloading] = useState({ done: false });
 
   const {cuisines, diets, dishTypes, image, instructions, readyInMinutes, recipeID, servings, 
-  sourceUrl, title, _id, extendedIngredients, username} = displayRecipe 
+  sourceUrl, title, _id, extendedIngredients, username, vegetarian, vegan, glutenFree, dairyFree, veryHealthy, cheap, 
+  veryPopular, sustainable} = displayRecipe 
+
 
   function ingredientFilter (extendedIngredients){
     const array = []
@@ -39,27 +45,21 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
     return filteredExtendedIngredients
    }
 
-  
   //get saved receipes from local storage and assign to state first then use that state to display recipes
-  //console.log('check username', username)
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
-     // console.log('check type', typeof id)
-     // checker.id = checker.id.toString()
-   
-      if (checker.id){
-        checker.id = checker.id.toString()
-        const exists = Object.values(checker).some(function(k) { 
-        return k === id })
-        //console.log("check exists", exists)
-        return exists
-      } else if (checker.recipeID) {
-        checker.recipeID = checker.recipeID.toString()
-        const exists = Object.values(checker).some(function(k) { 
-        return k === id })
-        //console.log("check exists", exists)
-        return exists
-      }
+   //
+      // if (checker.id){
+      //   checker.id = checker.id.toString()
+      //   const exists = Object.values(checker).some(function(k) { 
+      //   return k === id })
+      //   return exists
+      // } else if (checker.recipeID) {
+      //   checker.recipeID = checker.recipeID.toString()
+      //   const exists = Object.values(checker).some(function(k) { 
+      //   return k === id })
+      //   return exists
+      // }
   }
 
   useEffect(() => {
@@ -74,12 +74,8 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
             setloading({ done: true });
             }, 5000)
       } else {
-          console.log('check id', id)
             getSingleRecipePage(id).then((recipe) => { 
-                console.log("check server")
-                console.log("check newIng", recipe.extendedIngredients)
                 let newIng =ingredientFilter (recipe.extendedIngredients)
-                console.log("check newIng", newIng)
                 recipe.extendedIngredients = newIng
                 setDisplayRecipe(recipe)
                 actions.updateSingleRecipe(recipe)
@@ -89,8 +85,6 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                 setloading({ done: true });
                 }, 5000)
             }).catch((error) => { 
-              //console.log(error)
-              //console.log(error.response)
              if (error.response && error.response.status === 404){
               setloading({ done: false });
               toast.error("Sorry we could not load this recipe at this time.");
@@ -145,9 +139,20 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               <div class={styles.summaryBox}> 
                                   <div class={styles.summaryText}>         
                                       <p><strong>Serves:</strong> {servings} </p>
-                                      <p><strong>Cuisines:</strong> {cuisines.join(" , ")} </p>
-                                      <p><strong>Dish Types:</strong> {dishTypes.join(" , ")} </p>
-                                      <p><strong>Diets:</strong>  {diets.join(" , ")} </p> 
+                                      <p><strong>Cooking Time:</strong> {readyInMinutes} mins </p>
+                                      <p><strong>Cuisines:</strong> { cuisines.length !== 0 ? <>{cuisines.join(" , ")}</> : <>n/a</> }</p>
+                                      <p><strong>Dish Types:</strong> { dishTypes.length !== 0   ? <>{dishTypes.join(" , ")}</> : <>n/a</> }</p>
+                                      <p><strong>Diets:</strong>  { diets.length !== 0   ? <>{diets.join(" , ")}</> : <>n/a</> }</p>
+                                       <div class={styles.labels}>
+                                        { vegetarian ? <span class={styles.icons}>Veg</span> : <></> }
+                                        { vegan ? <span class={styles.icons}>Vg</span> : <></>}
+                                        { glutenFree ? <span class={styles.icons}>Gf</span> : <></> }
+                                        { dairyFree ? <span class={styles.icons}>Df</span> : <></> }
+                                        { veryHealthy ? <span class={styles.icons}>Very Healthy</span> : <></> }
+                                        { cheap ? <span class={styles.icons}>Cheap</span> : <></> }
+                                        { veryPopular ? <span class={styles.icons}>Very Popular </span> : <></> }
+                                        { sustainable ? <span class={styles.icons}>Sustainable</span> : <></> }
+                                          </div>
                                       <a href={sourceUrl} > <p class={styles.url}><strong>View Source- With Full Instructions</strong> </p></a> 
                                   </div>  
                                     <div class={styles.imageBox}> 
@@ -159,7 +164,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               
                                <ul class={styles.ingredientBox}>
                                 {extendedIngredients && extendedIngredients.map((ingredient) => (
-                                  <li key={ingredient}> {ingredient} </li>
+                                   <li key={ingredient}> {ingredient.replace(/^\w/, (c) => c.toUpperCase())}</li>
                                    ))}    
                                </ul>  
                                 

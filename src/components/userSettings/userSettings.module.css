@@ -41,6 +41,7 @@
 .settingsBox label{
   margin: 10px;
   font-size: 1.1em;
+  
 }
 
 .settingsBox input{
@@ -48,6 +49,7 @@
    margin: 10px;
    border-style: none;
    background-color: lightGreyColor;
+   padding-left: 10px;
 }
 
 .updateButton {

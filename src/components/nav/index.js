@@ -62,7 +62,7 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
     logoutUser()
       .then((r) => {
         //console.log("Got back response on logout", r);
-        console.log("loged out")
+        console.log("logged out")
         history.push("/");
         toast.success("Come back soon!")
       })
@@ -80,6 +80,8 @@ const NavBar = ({ actions, userLoggedIn, currentUserSettings,currentProfile }) =
     localStorage.removeItem("fridge")
     localStorage.removeItem("pantry")
     localStorage.removeItem("browsedRecipes")
+    localStorage.removeItem("savedRecipes")
+    localStorage.removeItem("singleRecipe")
     localStorage.removeItem("profile")
     actions.removeProfile()
     actions.logout()
