@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 import { useHistory } from "react-router-dom";
 
@@ -29,6 +30,7 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
+  const isFridge = type === "fridge";
   //removes selected ingredient from list of ingredients to add
 
   const filteredFridge = fridgeIngredients
@@ -41,7 +43,7 @@ function AutocompleteIngredients({
     ? pantry.filter((i) => !pantryIngredients.includes(i.name))
     : pantry;
 
-  const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
+  const filteredList = isFridge ? filteredFridge : filteredPantry;
 
   console.log("check filteredList", filteredPantry);
 
@@ -64,6 +66,7 @@ function AutocompleteIngredients({
         toast.success(
           " New Fridge Ingredient added, lets search for some recipes!"
         );
+        setValues([]);
       })
       .catch((error) => {
         //console.log("errors");
@@ -88,7 +91,9 @@ function AutocompleteIngredients({
         setPantry(r.pantryIngredients);
         history.push("/ingredients/" + getUsername() + "/pantry");
         toast.success(" New pantry staple added!");
-        "#AutocompleteElementID".data().autocomplete.term = null;
+        setValues([]);
+        // window.location.reload();
+        // return false;
       })
       .catch((error) => {
         //console.log("errors");
@@ -103,6 +108,7 @@ function AutocompleteIngredients({
       });
   }
 
+  console.log("values in state", values);
   return (
     // autocomplete list
     <div class={styles.autoComplete}>
@@ -113,9 +119,27 @@ function AutocompleteIngredients({
         options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
-        defaultValue={[filteredList[13]]}
-        onChange={(event, value) => setValues(value)}
+        onChange={(event, value) => {
+          const filteredValues = _.reject(value, ({ name }) =>
+            _.includes(isFridge ? fridgeIngredients : pantryIngredients, name)
+          );
+          setValues(filteredValues);
+        }}
         renderInput={(params) => {
+          const filteredAdornment = _.reject(
+            _.get(params, "InputProps.startAdornment"),
+            (adornment) => {
+              const {
+                props: { label },
+              } = adornment;
+              return _.includes(
+                isFridge ? fridgeIngredients : pantryIngredients,
+                label
+              );
+            }
+          );
+          _.set(params, "InputProps.startAdornment", filteredAdornment);
+
           return (
             <TextField
               inputValue=""
@@ -129,7 +153,7 @@ function AutocompleteIngredients({
       />
       <Button
         class={styles.button}
-        onClick={type === "fridge" ? handleAddFridge : handleAddPantry}
+        onClick={isFridge ? handleAddFridge : handleAddPantry}
       >
         {" "}
         Add Ingredients
