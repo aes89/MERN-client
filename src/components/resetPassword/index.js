@@ -48,13 +48,10 @@ const ResetPassword = ({ actions, user, modalId }) => {
     color: "red",
   };
    useEffect(() => {
-       //console.log("check token", token)
        resetPassword(token).then(res =>{
-         //console.log(r)
          actions.setUsername(res.username)
          setloading({ done: true });
        }).catch((error) => { 
-           console.log(error)
            toast.error("Password reset link is invalid or has expired");
            history.push("/");
        })
@@ -68,7 +65,6 @@ const ResetPassword = ({ actions, user, modalId }) => {
     validate,
 
     onSubmit: async (values) => {
-        //console.log(values.password)
       updatePasswordViaReset({
           username: user,
           password: values.password,

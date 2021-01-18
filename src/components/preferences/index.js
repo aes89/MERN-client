@@ -86,29 +86,21 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
   });
 
   function submitHandler (values) {
-      //console.log("check",  values )
        setloading({ done: false })
           updatePreference({ ...values }, getUsername())
             .then((pref) => {
-              //console.log(pref);
               setPref(pref)
               actions.updatePreferences(pref);
               setTimeout(() => {
                 setloading({ done: true })
-                 //console.log("check loading done")  
-                 //console.log("test returned", JSON.parse(getPref()))
                  history.push("/preferences/"+getUsername())
                  toast.success("Preferences Updated, maybe refresh your recipe search!")
                 }, 3000);
             })
             .catch((error) => {
               if (error.response && error.response.status === 404)
-                //formik.setStatus("Error getting pref information ");
                 toast.error("Sorry we could not submit your request at this time.")
               else
-                // formik.setStatus(
-                //   "There may be a problem with the server. Please try again after a few moments."
-                // );
                  toast.error("There may be a problem with the server. Please try again after a few moments.")
             });
     }
