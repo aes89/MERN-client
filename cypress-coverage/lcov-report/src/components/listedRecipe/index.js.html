@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.93% </span>
+                <span class="strong">10.34% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/29</span>
+                <span class='fraction'>3/29</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/18</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/9</span>
+                <span class='fraction'>0/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">11.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/27</span>
+                <span class='fraction'>3/27</span>
             </div>
         
             
@@ -214,18 +214,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">61x</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,7 +265,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -292,7 +292,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -331,11 +331,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -358,18 +358,18 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import KitchenIcon from '@material-ui/icons/Kitchen';
 &nbsp;
-const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedRecipe, loadingFridge, idCheck}) =&gt; {
-  const classes = useStyles();
+const ListedRecipe = <span class="fstat-no" title="function not covered" >({</span>userLoggedIn, recipe, saveRecipe, savedType, removeSavedRecipe, loadingFridge, idCheck}) =&gt; {
+  const classes = <span class="cstat-no" title="statement not covered" >useStyles();</span>
   //const [addRecipe, setAddRecipe] = useState("");
-  const [loading, setloading] = useState({ done: false });
+  const [loading, setloading] = <span class="cstat-no" title="statement not covered" >useState({ done: false });</span>
   //const [fridgeLoading, setFridgeLoading] = useState({ done: true });
   const {recipeID, id, _id, usedIngred, missedIngred, title, 
   readyInMinutes, servings, image,
   vegetarian, vegan, glutenFree, dairyFree, veryHealthy, cheap, 
   veryPopular, sustainable
-  } = recipe 
+  } = <span class="cstat-no" title="statement not covered" >recipe </span>
 &nbsp;
-  let convert = Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"
+  let convert = <span class="cstat-no" title="statement not covered" >Math.floor(readyInMinutes / 60) + " hour and " +  readyInMinutes % 60 + " minutes"</span>
   
  
   async function <span class="fstat-no" title="function not covered" >collectRecipeHandler </span>() {
@@ -409,7 +409,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
 <span class="cstat-no" title="statement not covered" >        console.log("hit here")</span>
    }
 &nbsp;
-   <span class="missing-if-branch" title="if path not taken" >I</span>if (savedType ==="saved recipes") {
+<span class="cstat-no" title="statement not covered" >   if (savedType ==="saved recipes") {</span>
    //This is for save Recipe page
 <span class="cstat-no" title="statement not covered" >    return (</span>
             &lt;div&gt;
@@ -436,7 +436,7 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
 &nbsp;
    } else {
   //This is for browse Recipe page
-    return (
+<span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;div&gt;
             {/* {errorMessage &amp;&amp; &lt;ErrorText&gt;{errorMessage}&lt;/ErrorText&gt;} */}
            &lt;Grid item sm spacing={1}   wrap="wrap"&gt;
@@ -447,15 +447,15 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                     {image ? (
                      &lt;img alt="recipe" src={image} /&gt;        
                     ):(
-<span class="branch-1 cbranch-no" title="branch not covered" >                      &lt;img alt="recipe" src={cartoonPlaceholder} /&gt;    </span>
+                      &lt;img alt="recipe" src={cartoonPlaceholder} /&gt;    
                     )}       
                     &lt;h3&gt;{title}&lt;/h3&gt;
                     &lt;p&gt;Serves: {servings}&lt;/p&gt;
                     &lt;p&gt;Prep time: {convert}&lt;/p&gt;
-                    { vegetarian ? &lt;span class={styles.icons}&gt;Veg&lt;/span&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >&lt;&gt;&lt;/&gt; </span>}
-                    { vegan ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span class={styles.icons}&gt;Vg&lt;/span&gt; </span>: &lt;&gt;&lt;/&gt;}
+                    { vegetarian ? &lt;span class={styles.icons}&gt;Veg&lt;/span&gt; : &lt;&gt;&lt;/&gt; }
+                    { vegan ? &lt;span class={styles.icons}&gt;Vg&lt;/span&gt; : &lt;&gt;&lt;/&gt;}
                     { glutenFree ? &lt;span class={styles.icons}&gt;Gf&lt;/span&gt; : &lt;&gt;&lt;/&gt; }
-                    { dairyFree ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span class={styles.icons}&gt;Df&lt;/span&gt; </span>: &lt;&gt;&lt;/&gt; }
+                    { dairyFree ? &lt;span class={styles.icons}&gt;Df&lt;/span&gt; : &lt;&gt;&lt;/&gt; }
                     {/* { cheap ? &lt;p&gt;$&lt;/p&gt; : &lt;&gt;&lt;/&gt;} 
                     { veryHealthy ? &lt;p&gt;Healthy&lt;/p&gt; : &lt;&gt;&lt;/&gt; } 
                     { veryPopular ? &lt;p&gt;Popular&lt;/p&gt; : &lt;&gt;&lt;/&gt; } 
@@ -463,8 +463,8 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
                   &lt;/div&gt;
                   
                  &lt;/Link&gt;
-                 {!loadingFridge.done &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >id === idCheck </span>? (
-<span class="branch-0 cbranch-no" title="branch not covered" >                    &lt;KitchenIcon className={styles.fridgeIcon} /&gt; </span>
+                 {!loadingFridge.done &amp;&amp; id === idCheck ? (
+                    &lt;KitchenIcon className={styles.fridgeIcon} /&gt; 
                     ) : (
                     &lt;Button variant="outlined" class={styles.savedButton} onClick={collectRecipeHandler}&gt;Save Recipe!&lt;/Button&gt;
                   )}   
@@ -475,11 +475,11 @@ const ListedRecipe = ({userLoggedIn, recipe, saveRecipe, savedType, removeSavedR
     }
 }
 &nbsp;
-const mapStateToProps = (state) =&gt; ({
+const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   userLoggedIn: state.userLoggedIn.username,
 });
 &nbsp;
-const mapDispatchToProps = (dispatch) =&gt; ({
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   actions: {
     setModalOpen: <span class="fstat-no" title="function not covered" >(m</span>odalId) =&gt; {
 <span class="cstat-no" title="statement not covered" >      dispatch({ type: "openModal", payload: modalId });</span>
@@ -496,7 +496,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ListedRecipe);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jan 17 2021 19:30:12 GMT+1100 (Australian Eastern Daylight Time)
+                at Mon Jan 18 2021 13:57:00 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

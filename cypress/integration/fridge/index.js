@@ -44,34 +44,36 @@ describe("Fridge page", () => {
           pantryIngredients: [],
         },
         errors: {
-          error: "Error getting fridge ingredients",
+          error: null,
         },
       });
   });
-});
 
-it("Fail: Loads the preferences page ", () => {
-  cy.contains("Vegetarian");
-  cy.contains("Sustainable");
-});
+  it("Fail: Loads the preferences page ", () => {
+    cy.contains("Vegetarian");
+    cy.contains("Sustainable");
+  });
 
-it("Pass: Loads the fridge page ", () => {
-  cy.contains("Add Ingredients");
-});
+  it("Pass: Loads the fridge page ", () => {
+    cy.logIn();
+    cy.visit("http://localhost:3000/ingredients/Testuser/fridge").wait(5000);
+    cy.contains("Add Ingredients");
+  });
 
-it("Pass: Filters ingredients based on input ", () => {
-  cy.get(".MuiFormControl-root").click().type("cheese");
-  cy.contains("american cheese");
-  cy.should("not.contain", "egg");
-  cy.contains("american cheese");
-});
+  it("Pass: Filters ingredients based on input ", () => {
+    cy.get(".MuiFormControl-root").click().type("cheese");
+    cy.contains("american cheese");
+    cy.should("not.contain", "egg");
+    cy.contains("american cheese");
+  });
 
-it("Pass: Selects and submits ingredients ", () => {
-  cy.get(".MuiFormControl-root").click().type("egg");
-  cy.contains("eggplant").click();
-  cy.get(".MuiFormControl-root").click().type("flour");
-  cy.contains("flour").click();
-  cy.get(".auto_button__R7_95").click();
+  // it("Pass: Selects and submits ingredients ", () => {
+  //   cy.get(".MuiFormControl-root").click().type("egg");
+  //   cy.contains("eggplant").click();
+  //   cy.get(".MuiFormControl-root").click().type("flour");
+  //   cy.contains("flour").click();
+  //   cy.get(".auto_button__R7_95").click();
+  // });
 });
 
 // example I don't want to loose

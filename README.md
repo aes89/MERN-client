@@ -426,4 +426,9 @@ run $open coverage/lcov-report/index.html
 
 cypress-testing-library
 allows reusable components in cypress testing
+
+How did you go doing anymore readme stuff ? For libraries and test logs etc? The main readme is on the server repo
+
+Are you all good to pull it down and add your testing notes for cypress client in there ? :)
 </details>
+

@@ -54,6 +54,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 // )
 
 const App = ({ actions }) => {
+  console.log("actions", actions);
   useEffect(() => {
     try {
       actions.logIn(getUsername());

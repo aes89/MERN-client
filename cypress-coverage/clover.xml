@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1610872213218" clover="3.2.0">
-  <project timestamp="1610872213218" name="All files">
-    <metrics statements="924" coveredstatements="345" conditionals="356" coveredconditionals="99" methods="353" coveredmethods="115" elements="1633" coveredelements="559" complexity="0" loc="924" ncloc="924" packages="37" files="43" classes="43"/>
+<coverage generated="1610938621117" clover="3.2.0">
+  <project timestamp="1610938621117" name="All files">
+    <metrics statements="924" coveredstatements="199" conditionals="356" coveredconditionals="25" methods="353" coveredmethods="56" elements="1633" coveredelements="280" complexity="0" loc="924" ncloc="924" packages="37" files="44" classes="44"/>
     <package name="src">
-      <metrics statements="34" coveredstatements="23" conditionals="10" coveredconditionals="6" methods="12" coveredmethods="9"/>
+      <metrics statements="34" coveredstatements="20" conditionals="10" coveredconditionals="4" methods="12" coveredmethods="7"/>
       <file name="App.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/App.js">
-        <metrics statements="20" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="8"/>
-        <line num="32" count="61" type="stmt"/>
-        <line num="33" count="72" type="stmt"/>
-        <line num="35" count="72" type="stmt"/>
-        <line num="39" count="36" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="61" type="stmt"/>
-        <line num="58" count="164" type="stmt"/>
-        <line num="59" count="61" type="stmt"/>
-        <line num="60" count="61" type="stmt"/>
-        <line num="61" count="61" type="stmt"/>
+        <metrics statements="21" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="6"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="56" count="8" type="stmt"/>
+        <line num="57" count="16" type="stmt"/>
+        <line num="58" count="16" type="stmt"/>
+        <line num="59" count="8" type="stmt"/>
+        <line num="60" count="8" type="stmt"/>
+        <line num="61" count="8" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="70" count="61" type="stmt"/>
-        <line num="72" count="164" type="stmt"/>
-        <line num="132" count="253" type="stmt"/>
-        <line num="136" count="122" type="stmt"/>
-        <line num="138" count="61" type="stmt"/>
-        <line num="139" count="61" type="stmt"/>
+        <line num="70" count="8" type="stmt"/>
+        <line num="72" count="16" type="stmt"/>
+        <line num="132" count="32" type="stmt"/>
+        <line num="136" count="16" type="stmt"/>
+        <line num="138" count="8" type="stmt"/>
+        <line num="139" count="8" type="stmt"/>
         <line num="140" count="0" type="stmt"/>
       </file>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/index.js">
-        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="0" coveredmethods="0"/>
-        <line num="9" count="61" type="stmt"/>
-        <line num="16" count="61" type="stmt"/>
-        <line num="26" count="61" type="cond" truecount="1" falsecount="1"/>
-        <line num="27" count="61" type="stmt"/>
-        <line num="33" count="61" type="stmt"/>
-        <line num="35" count="61" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="18" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
       </file>
       <file name="reducers.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="reportWebVitals.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reportWebVitals.js">
         <metrics statements="8" coveredstatements="2" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="1"/>
-        <line num="1" count="61" type="stmt"/>
-        <line num="2" count="61" type="cond" truecount="2" falsecount="2"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="cond" truecount="2" falsecount="2"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -50,48 +49,52 @@
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
       </file>
+      <file name="store.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/store.js">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="4" count="8" type="stmt"/>
+      </file>
     </package>
     <package name="src.components.AuthenticationModal">
       <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="3"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/AuthenticationModal/index.js">
         <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="3"/>
-        <line num="9" count="61" type="stmt"/>
-        <line num="10" count="250" type="stmt"/>
-        <line num="12" count="250" type="stmt"/>
-        <line num="19" count="250" type="stmt"/>
-        <line num="31" count="250" type="stmt"/>
-        <line num="44" count="248" type="stmt"/>
-        <line num="48" count="122" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="10" count="48" type="stmt"/>
+        <line num="12" count="48" type="stmt"/>
+        <line num="19" count="48" type="stmt"/>
+        <line num="31" count="48" type="stmt"/>
+        <line num="44" count="32" type="stmt"/>
+        <line num="48" count="16" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.browseRecipes">
-      <metrics statements="67" coveredstatements="30" conditionals="24" coveredconditionals="10" methods="20" coveredmethods="10"/>
+      <metrics statements="67" coveredstatements="3" conditionals="24" coveredconditionals="0" methods="20" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/browseRecipes/index.js">
-        <metrics statements="67" coveredstatements="30" conditionals="24" coveredconditionals="10" methods="20" coveredmethods="10"/>
-        <line num="27" count="61" type="stmt"/>
-        <line num="28" count="40" type="stmt"/>
-        <line num="29" count="40" type="stmt"/>
-        <line num="30" count="40" type="stmt"/>
-        <line num="31" count="40" type="stmt"/>
-        <line num="32" count="40" type="stmt"/>
-        <line num="33" count="40" type="stmt"/>
-        <line num="34" count="40" type="stmt"/>
-        <line num="35" count="40" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="41" count="4" type="cond" truecount="1" falsecount="1"/>
+        <metrics statements="67" coveredstatements="3" conditionals="24" coveredconditionals="0" methods="20" coveredmethods="0"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="42" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="70" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="71" count="4" type="stmt"/>
-        <line num="74" count="4" type="stmt"/>
-        <line num="75" count="4" type="stmt"/>
-        <line num="76" count="4" type="stmt"/>
-        <line num="78" count="4" type="stmt"/>
-        <line num="79" count="4" type="stmt"/>
-        <line num="82" count="4" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
         <line num="89" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="90" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
@@ -100,10 +103,10 @@
         <line num="99" count="0" type="stmt"/>
         <line num="100" count="0" type="stmt"/>
         <line num="101" count="0" type="stmt"/>
-        <line num="107" count="40" type="stmt"/>
-        <line num="109" count="4" type="stmt"/>
-        <line num="110" count="4" type="stmt"/>
-        <line num="111" count="4" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="111" count="0" type="stmt"/>
         <line num="117" count="0" type="stmt"/>
         <line num="118" count="0" type="stmt"/>
         <line num="120" count="0" type="stmt"/>
@@ -128,14 +131,14 @@
         <line num="154" count="0" type="stmt"/>
         <line num="156" count="0" type="stmt"/>
         <line num="158" count="0" type="stmt"/>
-        <line num="162" count="40" type="stmt"/>
-        <line num="164" count="40" type="stmt"/>
-        <line num="195" count="40" type="stmt"/>
-        <line num="211" count="61" type="stmt"/>
-        <line num="215" count="61" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="211" count="8" type="stmt"/>
+        <line num="215" count="8" type="stmt"/>
         <line num="218" count="0" type="stmt"/>
         <line num="220" count="0" type="stmt"/>
-        <line num="222" count="4" type="stmt"/>
+        <line num="222" count="0" type="stmt"/>
         <line num="224" count="0" type="stmt"/>
       </file>
     </package>
@@ -143,17 +146,17 @@
       <metrics statements="12" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/carousel/index.js">
         <metrics statements="12" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
-        <line num="15" count="61" type="stmt"/>
-        <line num="16" count="61" type="stmt"/>
-        <line num="20" count="61" type="stmt"/>
-        <line num="22" count="172" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="31" count="172" type="stmt"/>
+        <line num="31" count="16" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="85" count="252" type="stmt"/>
-        <line num="89" count="138" type="stmt"/>
+        <line num="85" count="32" type="stmt"/>
+        <line num="89" count="16" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
       </file>
     </package>
@@ -161,53 +164,53 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/footer/index.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="5" count="164" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="16" type="stmt"/>
       </file>
     </package>
     <package name="src.components.forgotPassword">
-      <metrics statements="32" coveredstatements="4" conditionals="16" coveredconditionals="0" methods="13" coveredmethods="0"/>
+      <metrics statements="32" coveredstatements="17" conditionals="16" coveredconditionals="9" methods="13" coveredmethods="6"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/forgotPassword/index.js">
-        <metrics statements="32" coveredstatements="4" conditionals="16" coveredconditionals="0" methods="13" coveredmethods="0"/>
-        <line num="21" count="61" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="61" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <metrics statements="32" coveredstatements="17" conditionals="16" coveredconditionals="9" methods="13" coveredmethods="6"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="18" count="26" type="stmt"/>
+        <line num="20" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="24" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="24" type="stmt"/>
+        <line num="25" count="26" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="130" type="stmt"/>
+        <line num="30" count="130" type="stmt"/>
+        <line num="31" count="130" type="stmt"/>
+        <line num="35" count="130" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="60" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="56" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="57" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="144" count="61" type="stmt"/>
-        <line num="149" count="61" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
+        <line num="68" count="130" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
+        <line num="136" count="12" type="stmt"/>
+        <line num="141" count="12" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="144" count="2" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.fridge">
       <metrics statements="33" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="13" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/fridge/index.js">
         <metrics statements="33" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="13" coveredmethods="0"/>
-        <line num="33" count="61" type="stmt"/>
+        <line num="33" count="8" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
@@ -235,8 +238,8 @@
         <line num="82" count="0" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
-        <line num="141" count="61" type="stmt"/>
-        <line num="146" count="61" type="stmt"/>
+        <line num="141" count="8" type="stmt"/>
+        <line num="146" count="8" type="stmt"/>
         <line num="149" count="0" type="stmt"/>
         <line num="150" count="0" type="stmt"/>
         <line num="151" count="0" type="stmt"/>
@@ -246,29 +249,29 @@
       <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/help/index.js">
         <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="18" count="61" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="88" count="61" type="stmt"/>
-        <line num="92" count="61" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="95" count="0" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="111" count="8" type="stmt"/>
+        <line num="115" count="8" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.home">
       <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/home/index.js">
         <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
-        <line num="15" count="61" type="stmt"/>
-        <line num="16" count="344" type="stmt"/>
-        <line num="18" count="344" type="stmt"/>
-        <line num="25" count="344" type="stmt"/>
-        <line num="26" count="69" type="stmt"/>
-        <line num="27" count="69" type="stmt"/>
-        <line num="28" count="69" type="stmt"/>
-        <line num="32" count="344" type="stmt"/>
-        <line num="60" count="252" type="stmt"/>
-        <line num="64" count="138" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="16" count="32" type="stmt"/>
+        <line num="18" count="32" type="stmt"/>
+        <line num="25" count="32" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="32" count="32" type="stmt"/>
+        <line num="60" count="32" type="stmt"/>
+        <line num="64" count="16" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
       </file>
     </package>
@@ -276,7 +279,7 @@
       <metrics statements="34" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="17" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/ingredient/index.js">
         <metrics statements="34" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <line num="29" count="61" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
@@ -303,8 +306,8 @@
         <line num="96" count="0" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
-        <line num="132" count="61" type="stmt"/>
-        <line num="138" count="61" type="stmt"/>
+        <line num="132" count="8" type="stmt"/>
+        <line num="138" count="8" type="stmt"/>
         <line num="141" count="0" type="stmt"/>
         <line num="143" count="0" type="stmt"/>
         <line num="145" count="0" type="stmt"/>
@@ -349,22 +352,22 @@
         <line num="115" count="0" type="stmt"/>
         <line num="118" count="0" type="stmt"/>
         <line num="120" count="0" type="stmt"/>
-        <line num="142" count="61" type="stmt"/>
-        <line num="149" count="61" type="stmt"/>
+        <line num="142" count="8" type="stmt"/>
+        <line num="149" count="8" type="stmt"/>
         <line num="152" count="0" type="stmt"/>
         <line num="154" count="0" type="stmt"/>
         <line num="155" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.listedRecipe">
-      <metrics statements="27" coveredstatements="9" conditionals="18" coveredconditionals="9" methods="9" coveredmethods="3"/>
+      <metrics statements="27" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="9" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/listedRecipe/index.js">
-        <metrics statements="27" coveredstatements="9" conditionals="18" coveredconditionals="9" methods="9" coveredmethods="3"/>
-        <line num="14" count="61" type="stmt"/>
-        <line num="15" count="40" type="stmt"/>
-        <line num="17" count="40" type="stmt"/>
-        <line num="23" count="40" type="stmt"/>
-        <line num="25" count="40" type="stmt"/>
+        <metrics statements="27" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
@@ -380,123 +383,123 @@
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="65" count="40" type="cond" truecount="1" falsecount="1"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="67" count="0" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
-        <line num="92" count="40" type="stmt"/>
-        <line num="131" count="61" type="stmt"/>
-        <line num="135" count="61" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="131" count="8" type="stmt"/>
+        <line num="135" count="8" type="stmt"/>
         <line num="138" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.loading">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/loading/index.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="11" count="178" type="stmt"/>
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="11" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.login">
-      <metrics statements="44" coveredstatements="38" conditionals="22" coveredconditionals="20" methods="16" coveredmethods="12"/>
+      <metrics statements="44" coveredstatements="12" conditionals="22" coveredconditionals="6" methods="16" coveredmethods="6"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/login/index.js">
-        <metrics statements="44" coveredstatements="38" conditionals="22" coveredconditionals="20" methods="16" coveredmethods="12"/>
-        <line num="21" count="61" type="stmt"/>
-        <line num="22" count="632" type="stmt"/>
-        <line num="24" count="632" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="632" type="cond" truecount="2" falsecount="0"/>
-        <line num="27" count="352" type="stmt"/>
-        <line num="30" count="632" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="376" type="stmt"/>
-        <line num="33" count="632" type="stmt"/>
-        <line num="36" count="61" type="stmt"/>
-        <line num="37" count="2828" type="stmt"/>
-        <line num="38" count="2828" type="stmt"/>
-        <line num="40" count="2828" type="stmt"/>
-        <line num="44" count="2828" type="stmt"/>
-        <line num="52" count="18" type="stmt"/>
-        <line num="53" count="18" type="stmt"/>
-        <line num="56" count="16" type="stmt"/>
-        <line num="57" count="16" type="stmt"/>
-        <line num="58" count="16" type="stmt"/>
-        <line num="60" count="16" type="stmt"/>
-        <line num="61" count="16" type="stmt"/>
-        <line num="62" count="16" type="stmt"/>
-        <line num="63" count="16" type="stmt"/>
-        <line num="64" count="16" type="stmt"/>
-        <line num="65" count="16" type="stmt"/>
-        <line num="68" count="2" type="stmt"/>
-        <line num="69" count="2" type="stmt"/>
-        <line num="70" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="71" count="2" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="79" count="18" type="stmt"/>
-        <line num="80" count="11" type="stmt"/>
-        <line num="81" count="11" type="stmt"/>
-        <line num="86" count="2828" type="stmt"/>
-        <line num="150" count="0" type="stmt"/>
-        <line num="157" count="0" type="stmt"/>
-        <line num="177" count="108" type="stmt"/>
-        <line num="182" count="61" type="stmt"/>
-        <line num="184" count="16" type="stmt"/>
-        <line num="186" count="16" type="stmt"/>
-        <line num="187" count="16" type="stmt"/>
-        <line num="188" count="0" type="stmt"/>
-        <line num="189" count="0" type="stmt"/>
-        <line num="190" count="19" type="stmt"/>
+        <metrics statements="44" coveredstatements="12" conditionals="22" coveredconditionals="6" methods="16" coveredmethods="6"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="36" count="16" type="stmt"/>
+        <line num="37" count="16" type="stmt"/>
+        <line num="39" count="16" type="stmt"/>
+        <line num="43" count="16" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="85" count="16" type="stmt"/>
+        <line num="146" count="6" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="171" count="16" type="stmt"/>
+        <line num="176" count="16" type="stmt"/>
+        <line num="178" count="0" type="stmt"/>
+        <line num="180" count="0" type="stmt"/>
+        <line num="181" count="0" type="stmt"/>
+        <line num="182" count="0" type="stmt"/>
+        <line num="183" count="6" type="stmt"/>
+        <line num="184" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.logo">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/logo/index.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="61" type="stmt"/>
-        <line num="7" count="442" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="7" count="32" type="stmt"/>
       </file>
     </package>
     <package name="src.components.nav">
-      <metrics statements="32" coveredstatements="28" conditionals="6" coveredconditionals="6" methods="15" coveredmethods="12"/>
+      <metrics statements="32" coveredstatements="13" conditionals="6" coveredconditionals="3" methods="15" coveredmethods="7"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/nav/index.js">
-        <metrics statements="32" coveredstatements="28" conditionals="6" coveredconditionals="6" methods="15" coveredmethods="12"/>
-        <line num="42" count="61" type="stmt"/>
-        <line num="43" count="196" type="stmt"/>
-        <line num="45" count="196" type="stmt"/>
-        <line num="46" count="196" type="stmt"/>
-        <line num="57" count="196" type="stmt"/>
-        <line num="58" count="196" type="stmt"/>
-        <line num="59" count="98" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
+        <metrics statements="32" coveredstatements="13" conditionals="6" coveredconditionals="3" methods="15" coveredmethods="7"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="43" count="16" type="stmt"/>
+        <line num="45" count="16" type="stmt"/>
+        <line num="46" count="16" type="stmt"/>
+        <line num="57" count="16" type="stmt"/>
+        <line num="58" count="16" type="stmt"/>
+        <line num="59" count="8" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
-        <line num="80" count="1" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
-        <line num="82" count="1" type="stmt"/>
-        <line num="83" count="1" type="stmt"/>
-        <line num="84" count="1" type="stmt"/>
-        <line num="85" count="1" type="stmt"/>
-        <line num="89" count="196" type="stmt"/>
-        <line num="158" count="30" type="stmt"/>
-        <line num="165" count="12" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="89" count="16" type="stmt"/>
+        <line num="158" count="6" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
         <line num="176" count="0" type="stmt"/>
-        <line num="188" count="253" type="stmt"/>
-        <line num="194" count="122" type="stmt"/>
-        <line num="197" count="42" type="stmt"/>
+        <line num="188" count="32" type="stmt"/>
+        <line num="194" count="16" type="stmt"/>
+        <line num="197" count="6" type="stmt"/>
         <line num="199" count="0" type="stmt"/>
-        <line num="200" count="1" type="stmt"/>
-        <line num="201" count="1" type="stmt"/>
-        <line num="203" count="98" type="stmt"/>
+        <line num="200" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="203" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.components.noItemsPage">
       <metrics statements="4" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/noItemsPage/index.js">
         <metrics statements="4" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="8" count="61" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
         <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="11" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -506,7 +509,7 @@
       <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/notFound/index.js">
         <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="16" count="61" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
       </file>
@@ -515,7 +518,7 @@
       <metrics statements="34" coveredstatements="3" conditionals="16" coveredconditionals="0" methods="14" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/pantry/index.js">
         <metrics statements="34" coveredstatements="3" conditionals="16" coveredconditionals="0" methods="14" coveredmethods="0"/>
-        <line num="34" count="61" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
@@ -544,39 +547,39 @@
         <line num="84" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="137" count="0" type="stmt"/>
-        <line num="157" count="61" type="stmt"/>
-        <line num="162" count="61" type="stmt"/>
+        <line num="157" count="8" type="stmt"/>
+        <line num="162" count="8" type="stmt"/>
         <line num="165" count="0" type="stmt"/>
         <line num="166" count="0" type="stmt"/>
         <line num="167" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.preferences">
-      <metrics statements="42" coveredstatements="29" conditionals="10" coveredconditionals="5" methods="19" coveredmethods="14"/>
+      <metrics statements="42" coveredstatements="7" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/preferences/index.js">
-        <metrics statements="40" coveredstatements="27" conditionals="10" coveredconditionals="5" methods="19" coveredmethods="14"/>
-        <line num="33" count="61" type="stmt"/>
-        <line num="36" count="61" type="stmt"/>
+        <metrics statements="40" coveredstatements="5" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="0"/>
+        <line num="33" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="44" count="61" type="stmt"/>
-        <line num="45" count="58" type="stmt"/>
-        <line num="46" count="58" type="stmt"/>
-        <line num="47" count="58" type="stmt"/>
-        <line num="48" count="58" type="stmt"/>
-        <line num="52" count="58" type="stmt"/>
-        <line num="53" count="8" type="stmt"/>
-        <line num="55" count="5" type="stmt"/>
-        <line num="56" count="5" type="stmt"/>
-        <line num="57" count="5" type="stmt"/>
-        <line num="64" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="44" count="8" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="68" count="2" type="stmt"/>
-        <line num="72" count="8" type="stmt"/>
-        <line num="73" count="5" type="stmt"/>
-        <line num="78" count="58" type="stmt"/>
-        <line num="85" count="1" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
@@ -586,79 +589,79 @@
         <line num="100" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="102" count="0" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
-        <line num="111" count="58" type="stmt"/>
-        <line num="141" count="3" type="stmt"/>
-        <line num="142" count="1" type="stmt"/>
-        <line num="146" count="80" type="stmt"/>
-        <line num="150" count="640" type="stmt"/>
-        <line num="182" count="61" type="stmt"/>
-        <line num="188" count="61" type="stmt"/>
-        <line num="191" count="5" type="stmt"/>
+        <line num="111" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="182" count="8" type="stmt"/>
+        <line num="188" count="8" type="stmt"/>
+        <line num="191" count="0" type="stmt"/>
         <line num="192" count="0" type="stmt"/>
       </file>
       <file name="list.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/preferences/list.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="61" type="stmt"/>
-        <line num="13" count="61" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.components.profileImage">
       <metrics statements="23" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/profileImage/index.js">
         <metrics statements="23" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="0"/>
-        <line num="16" count="61" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="41" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="85" count="61" type="stmt"/>
-        <line num="90" count="61" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="89" count="8" type="stmt"/>
+        <line num="94" count="8" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.register">
-      <metrics statements="51" coveredstatements="28" conditionals="50" coveredconditionals="34" methods="12" coveredmethods="5"/>
+      <metrics statements="51" coveredstatements="4" conditionals="50" coveredconditionals="0" methods="12" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/register/index.js">
-        <metrics statements="51" coveredstatements="28" conditionals="50" coveredconditionals="34" methods="12" coveredmethods="5"/>
-        <line num="15" count="61" type="stmt"/>
-        <line num="16" count="239" type="stmt"/>
-        <line num="18" count="239" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="8" type="stmt"/>
-        <line num="20" count="231" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="147" type="stmt"/>
-        <line num="28" count="239" type="cond" truecount="2" falsecount="0"/>
-        <line num="29" count="77" type="stmt"/>
-        <line num="30" count="162" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="94" type="stmt"/>
-        <line num="34" count="239" type="cond" truecount="2" falsecount="0"/>
-        <line num="35" count="101" type="stmt"/>
-        <line num="36" count="138" type="cond" truecount="2" falsecount="0"/>
-        <line num="41" count="104" type="stmt"/>
-        <line num="45" count="239" type="cond" truecount="2" falsecount="0"/>
-        <line num="46" count="170" type="stmt"/>
-        <line num="47" count="69" type="cond" truecount="2" falsecount="0"/>
-        <line num="48" count="65" type="stmt"/>
-        <line num="51" count="239" type="stmt"/>
-        <line num="54" count="61" type="stmt"/>
-        <line num="55" count="1040" type="stmt"/>
-        <line num="56" count="1040" type="stmt"/>
-        <line num="57" count="1040" type="stmt"/>
-        <line num="61" count="1040" type="stmt"/>
+        <metrics statements="51" coveredstatements="4" conditionals="50" coveredconditionals="0" methods="12" coveredmethods="0"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="8" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
@@ -679,20 +682,20 @@
         <line num="98" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
         <line num="100" count="0" type="stmt"/>
-        <line num="105" count="1040" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
         <line num="208" count="0" type="stmt"/>
-        <line num="222" count="61" type="stmt"/>
-        <line num="227" count="61" type="stmt"/>
+        <line num="222" count="8" type="stmt"/>
+        <line num="227" count="8" type="stmt"/>
         <line num="233" count="0" type="stmt"/>
         <line num="234" count="0" type="stmt"/>
-        <line num="235" count="3" type="stmt"/>
+        <line num="235" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.resetPassword">
       <metrics statements="45" coveredstatements="4" conditionals="26" coveredconditionals="0" methods="17" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/resetPassword/index.js">
         <metrics statements="45" coveredstatements="4" conditionals="26" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <line num="19" count="61" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="23" count="0" type="stmt"/>
@@ -703,7 +706,7 @@
         <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="36" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="42" count="61" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
@@ -731,8 +734,8 @@
         <line num="102" count="0" type="stmt"/>
         <line num="179" count="0" type="stmt"/>
         <line num="185" count="0" type="stmt"/>
-        <line num="198" count="61" type="stmt"/>
-        <line num="203" count="61" type="stmt"/>
+        <line num="198" count="8" type="stmt"/>
+        <line num="203" count="8" type="stmt"/>
         <line num="205" count="0" type="stmt"/>
         <line num="206" count="0" type="stmt"/>
         <line num="207" count="0" type="stmt"/>
@@ -743,7 +746,7 @@
       <metrics statements="46" coveredstatements="3" conditionals="16" coveredconditionals="0" methods="17" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/savedRecipes/index.js">
         <metrics statements="46" coveredstatements="3" conditionals="16" coveredconditionals="0" methods="17" coveredmethods="0"/>
-        <line num="26" count="61" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
@@ -784,25 +787,25 @@
         <line num="101" count="0" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
         <line num="136" count="0" type="stmt"/>
-        <line num="155" count="61" type="stmt"/>
-        <line num="159" count="61" type="stmt"/>
+        <line num="155" count="8" type="stmt"/>
+        <line num="159" count="8" type="stmt"/>
         <line num="162" count="0" type="stmt"/>
         <line num="164" count="0" type="stmt"/>
         <line num="166" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.searchButton">
-      <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="3"/>
+      <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/searchButton/index.js">
-        <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="3"/>
-        <line num="10" count="61" type="stmt"/>
-        <line num="11" count="164" type="stmt"/>
-        <line num="12" count="164" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="40" type="stmt"/>
-        <line num="22" count="124" type="stmt"/>
+        <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="3"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="16" type="stmt"/>
+        <line num="12" count="16" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="33" count="248" type="stmt"/>
-        <line num="37" count="122" type="stmt"/>
+        <line num="33" count="32" type="stmt"/>
+        <line num="37" count="16" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
       </file>
     </package>
@@ -810,7 +813,7 @@
       <metrics statements="53" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="15" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/singleRecipe/index.js">
         <metrics statements="53" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="15" coveredmethods="0"/>
-        <line num="23" count="61" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -860,23 +863,23 @@
         <line num="99" count="0" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
         <line num="162" count="0" type="stmt"/>
-        <line num="185" count="61" type="stmt"/>
-        <line num="190" count="61" type="stmt"/>
+        <line num="185" count="8" type="stmt"/>
+        <line num="190" count="8" type="stmt"/>
         <line num="193" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.styles">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="makeStyles.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/styles/makeStyles.js">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="61" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.components.userSettings">
       <metrics statements="59" coveredstatements="4" conditionals="48" coveredconditionals="0" methods="15" coveredmethods="0"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/components/userSettings/index.js">
         <metrics statements="59" coveredstatements="4" conditionals="48" coveredconditionals="0" methods="15" coveredmethods="0"/>
-        <line num="35" count="61" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="39" count="0" type="stmt"/>
@@ -897,7 +900,7 @@
         <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="71" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="77" count="61" type="stmt"/>
+        <line num="77" count="8" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
@@ -931,8 +934,8 @@
         <line num="151" count="0" type="stmt"/>
         <line num="152" count="0" type="stmt"/>
         <line num="157" count="0" type="stmt"/>
-        <line num="285" count="61" type="stmt"/>
-        <line num="290" count="61" type="stmt"/>
+        <line num="285" count="8" type="stmt"/>
+        <line num="290" count="8" type="stmt"/>
         <line num="293" count="0" type="stmt"/>
         <line num="295" count="0" type="stmt"/>
       </file>
@@ -947,10 +950,10 @@
       <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/errors/index.js">
         <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="7" count="61" type="stmt"/>
-        <line num="8" count="61" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -960,13 +963,13 @@
       <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/ingredients/index.js">
         <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="6" count="61" type="stmt"/>
-        <line num="8" count="61" type="stmt"/>
-        <line num="11" count="61" type="stmt"/>
-        <line num="12" count="61" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
@@ -978,23 +981,23 @@
       </file>
     </package>
     <package name="src.reducers.login">
-      <metrics statements="16" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+      <metrics statements="16" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/login/index.js">
-        <metrics statements="16" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="6" count="61" type="stmt"/>
-        <line num="8" count="61" type="stmt"/>
-        <line num="10" count="61" type="stmt"/>
-        <line num="11" count="61" type="stmt"/>
-        <line num="13" count="77" type="stmt"/>
-        <line num="14" count="77" type="stmt"/>
-        <line num="18" count="77" type="stmt"/>
-        <line num="19" count="77" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <metrics statements="16" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
       </file>
@@ -1003,39 +1006,39 @@
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/modals/index.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="6" count="61" type="stmt"/>
-        <line num="8" count="61" type="stmt"/>
-        <line num="9" count="61" type="stmt"/>
-        <line num="11" count="42" type="stmt"/>
-        <line num="14" count="22" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.reducers.preferences">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/preferences/index.js">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="16" count="61" type="stmt"/>
-        <line num="17" count="61" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
+        <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.reducers.recipes">
-      <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/recipes/index.js">
-        <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="7" count="61" type="stmt"/>
-        <line num="9" count="61" type="stmt"/>
-        <line num="10" count="61" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
+        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
@@ -1043,36 +1046,36 @@
       </file>
     </package>
     <package name="src.reducers.userInfo">
-      <metrics statements="14" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <metrics statements="14" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="index.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/reducers/userInfo/index.js">
-        <metrics statements="14" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
-        <line num="3" count="61" type="stmt"/>
-        <line num="4" count="61" type="stmt"/>
-        <line num="5" count="61" type="stmt"/>
-        <line num="7" count="61" type="stmt"/>
-        <line num="10" count="61" type="stmt"/>
-        <line num="11" count="61" type="stmt"/>
+        <metrics statements="14" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="61" type="stmt"/>
-        <line num="20" count="114" type="stmt"/>
-        <line num="22" count="61" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.services">
-      <metrics statements="92" coveredstatements="30" conditionals="18" coveredconditionals="5" methods="42" coveredmethods="17"/>
+      <metrics statements="92" coveredstatements="4" conditionals="18" coveredconditionals="0" methods="42" coveredmethods="3"/>
       <file name="authServices.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/services/authServices.js">
-        <metrics statements="49" coveredstatements="21" conditionals="8" coveredconditionals="4" methods="19" coveredmethods="12"/>
+        <metrics statements="49" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="19" coveredmethods="3"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
-        <line num="12" count="18" type="stmt"/>
-        <line num="13" count="16" type="stmt"/>
-        <line num="14" count="16" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -1096,28 +1099,28 @@
         <line num="79" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
-        <line num="88" count="8" type="stmt"/>
-        <line num="89" count="5" type="stmt"/>
-        <line num="90" count="5" type="stmt"/>
-        <line num="95" count="1" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
         <line num="99" count="0" type="stmt"/>
         <line num="100" count="0" type="stmt"/>
-        <line num="108" count="61" type="stmt"/>
-        <line num="113" count="16" type="cond" truecount="1" falsecount="1"/>
-        <line num="116" count="16" type="stmt"/>
-        <line num="123" count="142" type="stmt"/>
-        <line num="127" count="142" type="stmt"/>
-        <line num="132" count="16" type="cond" truecount="1" falsecount="1"/>
-        <line num="135" count="16" type="stmt"/>
-        <line num="141" count="98" type="stmt"/>
-        <line num="146" count="16" type="cond" truecount="1" falsecount="1"/>
-        <line num="149" count="16" type="stmt"/>
-        <line num="155" count="10" type="stmt"/>
-        <line num="160" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="163" count="5" type="stmt"/>
+        <line num="108" count="8" type="stmt"/>
+        <line num="113" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="123" count="8" type="stmt"/>
+        <line num="127" count="8" type="stmt"/>
+        <line num="132" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="141" count="8" type="stmt"/>
+        <line num="146" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="160" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="163" count="0" type="stmt"/>
       </file>
       <file name="ingredientServices.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/services/ingredientServices.js">
-        <metrics statements="22" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="2"/>
+        <metrics statements="22" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -1134,19 +1137,19 @@
         <line num="46" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
-        <line num="57" count="8" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
         <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="67" count="4" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="72" count="0" type="stmt"/>
       </file>
       <file name="recipeServices.js" path="/Users/Adrienne/Desktop/MERN/mern-client/src/services/recipeServices.js">
-        <metrics statements="21" coveredstatements="7" conditionals="6" coveredconditionals="1" methods="11" coveredmethods="3"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <metrics statements="21" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="11" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -1155,9 +1158,9 @@
         <line num="28" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
-        <line num="43" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="44" count="8" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="44" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="54" count="0" type="stmt"/>

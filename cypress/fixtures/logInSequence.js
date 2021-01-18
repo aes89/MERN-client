@@ -2,9 +2,8 @@ import "@testing-library/cypress/add-commands";
 
 Cypress.Commands.add("logIn", () => {
   cy.visit("localhost:3000");
-
-  cy.get(".nav_trigger__3BDFX").trigger("mouseover");
-  cy.get(".nav_nav__3AJrQ").scrollIntoView();
+  // not simulating hover correctly, according to CYpress docs cannot be done with CSS effect, only JS. Used force: true.
+  cy.get("i").trigger("mouseover");
   cy.contains("Login").click({ force: true });
   cy.get(".loginEmail")
     .click()

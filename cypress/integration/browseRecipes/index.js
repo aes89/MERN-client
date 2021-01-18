@@ -11,45 +11,6 @@ describe("Browse Recipes", () => {
   it("Pass: Should suggest recipes when no ingredients or preferences to search with", function () {
     cy.logIn();
     cy.visit("http://localhost:3000/recipes/browse");
-    cy.window()
-      .its("store")
-      .invoke("getState")
-      .should("deep.equal", {
-        modalOpen: {
-          modal: null,
-        },
-        userPreferences: {
-          vegetarian: false,
-          vegan: false,
-          glutenFree: false,
-          dairyFree: false,
-          veryHealthy: false,
-          cheap: false,
-          veryPopular: false,
-          sustainable: false,
-        },
-        userLoggedIn: {
-          username: "Testuser",
-          jwt: null,
-        },
-        currentUserSettings: {
-          username: "Username",
-          email: "Email",
-          profile: null,
-        },
-        recipes: {
-          browseRecipes: null,
-          savedRecipes: null,
-          singleRecipe: null,
-        },
-        userIngredients: {
-          fridgeIngredients: [],
-          pantryIngredients: [],
-        },
-        errors: {
-          error: null,
-        },
-      });
     cy.wait(5000);
     cy.contains(
       "You have no ingredients in your fridge, so here are some recipe ideas!"
