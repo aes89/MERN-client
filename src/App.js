@@ -52,19 +52,22 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 const App = ({ actions }) => {
   let history = useHistory();
-  // useEffect(( ) => {
 
-  //    if (document.cookie){
+    useEffect(( ) => {
+        try {
+          actions.logIn(getUsername());
+          actions.getToken(getLoggedInUser());
+        } catch (error) {
+          console.log("got an error trying to check authenticated user:", error);
+          setLoggedInUser();
+          setUsername();
+          actions.logout();
+        }
+        // return a function that specifies any actions on component unmount
+        return () => {};
+      }, []);
 
-  //    } else {
-  //       actions.logout();
-  //       console.log("logged cause of expired jwt out")
-  //       //toast.success("Sorry your account was inactive, log in again!")
-  //    }
-  //   
-
-  // }, [document.cookie]);
-  return (
+   return (
     <Fragment>
       <Helmet>
         <title>FridgeMate</title>

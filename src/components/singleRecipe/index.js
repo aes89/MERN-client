@@ -48,18 +48,18 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
   //get saved receipes from local storage and assign to state first then use that state to display recipes
     function checkSingleRecipeLocal () {
       let checker =  JSON.parse(localStorage.getItem("singleRecipe"))
-   
-      if (checker.id){
-        checker.id = checker.id.toString()
-        const exists = Object.values(checker).some(function(k) { 
-        return k === id })
-        return exists
-      } else if (checker.recipeID) {
-        checker.recipeID = checker.recipeID.toString()
-        const exists = Object.values(checker).some(function(k) { 
-        return k === id })
-        return exists
-      }
+   //
+      // if (checker.id){
+      //   checker.id = checker.id.toString()
+      //   const exists = Object.values(checker).some(function(k) { 
+      //   return k === id })
+      //   return exists
+      // } else if (checker.recipeID) {
+      //   checker.recipeID = checker.recipeID.toString()
+      //   const exists = Object.values(checker).some(function(k) { 
+      //   return k === id })
+      //   return exists
+      // }
   }
 
   useEffect(() => {
@@ -164,7 +164,7 @@ const SingleRecipe = ({ actions, savedRecipes, singleRecipe }) => {
                               
                                <ul class={styles.ingredientBox}>
                                 {extendedIngredients && extendedIngredients.map((ingredient) => (
-                                   <li key={ingredient}> {ingredient.replace(/^\w/, (c) => c.toUpperCase())} <CloseIcon/> </li>
+                                   <li key={ingredient}> {ingredient.replace(/^\w/, (c) => c.toUpperCase())}</li>
                                    ))}    
                                </ul>  
                                 

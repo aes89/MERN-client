@@ -111,7 +111,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
             })
             .catch((error) => {
               setFridgeLoading({ done: true }); 
-              if (error.response && error.response.status === 401){
+              console.log(error.response)
+              if (error.response  === 401){
                 toast.error("Oh no, we couldnt' save your recipe!")
               } else if (error.response.status === 422) {
                 toast.error("Oops, you have already saved this recipe")
