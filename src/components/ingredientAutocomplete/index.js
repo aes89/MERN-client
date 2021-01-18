@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 import { useHistory } from "react-router-dom";
 
@@ -29,29 +30,43 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-
-
   //removes selected ingredient from list of ingredients to add
-    const filteredFridge = fridgeIngredients
-      ? ingredients.filter(
-          (ingredient) => !fridgeIngredients.includes(ingredient.name)
-        )
-      : ingredients;
+  // const filteredFridge = fridgeIngredients
+  //   ? ingredients.filter(
+  //       (ingredient) => !fridgeIngredients.includes(ingredient.name)
+  //     )
+  //   : ingredients;
 
-    const filteredPantry = pantryIngredients
-      ? pantry.filter(
-          (ingredient) => !pantryIngredients.includes(ingredient.name)
-        )
-      : pantry;
-    var filteredList;
-    if(type === "fridge" ){
-      filteredList = filteredFridge
-    } else {
-      filteredList = pantry
-    }
+  // const filteredPantry = pantryIngredients
+  //   ? pantry.filter(
+  //       (ingredient) => !pantryIngredients.includes(ingredient.name)
+  //     )
+  //   : pantry;
+  // var filteredList;
+  // if(type === "fridge" ){
+  //   filteredList = filteredFridge
+  // } else {
+  //   filteredList = pantry
+  // }
 
   //const filteredList = type === "fridge" ? filteredFridge : pantry;
   //console.log("check filteredList", filteredList)
+  const isFridge = type === "fridge";
+  //removes selected ingredient from list of ingredients to add
+
+  const filteredFridge = fridgeIngredients
+    ? ingredients.filter(
+        (ingredient) => !fridgeIngredients.includes(ingredient.name)
+      )
+    : ingredients;
+
+  const filteredPantry = pantryIngredients
+    ? pantry.filter((i) => !pantryIngredients.includes(i.name))
+    : pantry;
+
+  const filteredList = isFridge ? filteredFridge : filteredPantry;
+
+  console.log("check filteredList", filteredPantry);
 
   let history = useHistory();
 
@@ -61,14 +76,17 @@ function AutocompleteIngredients({
   function handleAddFridge(event) {
     //console.log(values);
     const newValues = values.map((i) => i.name);
-       //console.log("check fridge", newValues);
+    //console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((res) => {
         actions.addToFridge(res.fridgeIngredients);
         setFridge(res.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
-        toast.success(" New Fridge Ingredient added, lets search for some recipes!");
+        toast.success(
+          " New Fridge Ingredient added, lets search for some recipes!"
+        );
+        setValues([]);
       })
       .catch((error) => {
         toast.error("Oh no error!");
@@ -82,26 +100,26 @@ function AutocompleteIngredients({
   }
 
   function handleAddPantry(event) {
-    
     const newValues = values.map((i) => i.name);
-      addPantryItem(getUsername(), { item: newValues })
-        .then((res) => {
-          actions.addToPantry(res.pantryIngredients);
-          setPantry(res.pantryIngredients);
-          history.push("/ingredients/"+getUsername()+"/pantry");
-          toast.success(" New pantry staple added!");
-        })
-        .catch((error) => {
-          toast.error("Oh no error!");
-          if (error.response && error.response.status === 401)
-            setErrors("Error adding to your pantry");
-          else
-            setErrors(
-              "There may be a problem with the server. Please try again after a few moments."
-            );
-        });
+    addPantryItem(getUsername(), { item: newValues })
+      .then((res) => {
+        actions.addToPantry(res.pantryIngredients);
+        setPantry(res.pantryIngredients);
+        history.push("/ingredients/" + getUsername() + "/pantry");
+        toast.success(" New pantry staple added!");
+      })
+      .catch((error) => {
+        toast.error("Oh no error!");
+        if (error.response && error.response.status === 401)
+          setErrors("Error adding to your pantry");
+        else
+          setErrors(
+            "There may be a problem with the server. Please try again after a few moments."
+          );
+      });
   }
- 
+
+  console.log("values in state", values);
   return (
     // autocomplete list
     <div class={styles.autoComplete}>
@@ -112,9 +130,27 @@ function AutocompleteIngredients({
         options={filteredList}
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
-        defaultValue={[filteredList[13]]}
-        onChange={(event, value) =>  setValues(value) }
+        onChange={(event, value) => {
+          const filteredValues = _.reject(value, ({ name }) =>
+            _.includes(isFridge ? fridgeIngredients : pantryIngredients, name)
+          );
+          setValues(filteredValues);
+        }}
         renderInput={(params) => {
+          const filteredAdornment = _.reject(
+            _.get(params, "InputProps.startAdornment"),
+            (adornment) => {
+              const {
+                props: { label },
+              } = adornment;
+              return _.includes(
+                isFridge ? fridgeIngredients : pantryIngredients,
+                label
+              );
+            }
+          );
+          _.set(params, "InputProps.startAdornment", filteredAdornment);
+
           return (
             <TextField
               inputValue=""
@@ -128,7 +164,7 @@ function AutocompleteIngredients({
       />
       <Button
         class={styles.button}
-        onClick={type === "fridge" ? handleAddFridge : handleAddPantry}
+        onClick={isFridge ? handleAddFridge : handleAddPantry}
       >
         {" "}
         Add Ingredients

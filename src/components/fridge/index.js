@@ -1,9 +1,14 @@
-import React, { Fragment, useEffect,useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { deleteAllFridge,getAllFridgeIngredients, getFridge, setFridge } from '../../services/ingredientServices'
-import {getUsername} from '../../services/authServices'
+import {
+  deleteAllFridge,
+  getAllFridgeIngredients,
+  getFridge,
+  setFridge,
+} from "../../services/ingredientServices";
+import { getUsername } from "../../services/authServices";
 
 import styles from "./fridge.module.css";
 import appstyles from "../../app.module.css";
@@ -18,111 +23,144 @@ import Loading from "../loading";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Fadein from '@material-ui/core/Fade';
+import Fadein from "@material-ui/core/Fade";
 
 import fridge from "../styles/imgs/fridge.png";
 
-import {  toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-const Fridge = ({actions, fridgeIngredients}) => {
+const Fridge = ({ actions, fridgeIngredients }) => {
   const classes = useStyles();
   let history = useHistory();
   const [errors, setErrors] = useState(null);
-   const [loading, setloading] = useState({ done: false });
-  
-  const checker = getFridge()
+  const [loading, setloading] = useState({ done: false });
+
+  const checker = getFridge();
 
   useEffect(() => {
     //update this so if local storage is full of ingredients dont call the DB
-    getAllFridgeIngredients(getUsername()).then((res) => {
-                actions.addToFridge(res.fridgeIngredients)
-                setFridge(res.fridgeIngredients)
-                history.push("/ingredients/"+getUsername()+"/fridge")
-            }).catch((error) => {
-                if (error.response && error.response.status === 401)
-                actions.changeError("Error getting fridge ingredients")
-                else   
-                actions.changeError("There may be a problem with the server. Please try again after a few moments.")
-            })    
-      setTimeout(() => {  
-      setloading({ done: true })
-            }, 2500);
-  },[])
-
+    getAllFridgeIngredients(getUsername())
+      .then((res) => {
+        actions.addToFridge(res.fridgeIngredients);
+        setFridge(res.fridgeIngredients);
+        history.push("/ingredients/" + getUsername() + "/fridge");
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 401)
+          actions.changeError("Error getting fridge ingredients");
+        else
+          actions.changeError(
+            "There may be a problem with the server. Please try again after a few moments."
+          );
+      });
+    setTimeout(() => {
+      setloading({ done: true });
+    }, 2500);
+  }, []);
 
   const handleClearFridge = async () => {
-         deleteAllFridge(getUsername()).then((r) => {
-              actions.clearFridge()
-              setFridge()
-              history.push("/ingredients/"+getUsername()+"/fridge")
-              toast.warn("You have no ingredients left in your fridge!")
-          }).catch((error) => {
-              toast.error("Oh no, error!")
-              if (error.response && error.response.status === 401)
-              setErrors("Error clearing your Fridge")
-              else   
-              setErrors("There may be a problem with the server. Please try again after a few moments.")
-          })
+    deleteAllFridge(getUsername())
+      .then((r) => {
+        actions.clearFridge();
+        setFridge();
+        history.push("/ingredients/" + getUsername() + "/fridge");
+        toast.warn("You have no ingredients left in your fridge!");
+      })
+      .catch((error) => {
+        toast.error("Oh no, error!");
+        if (error.response && error.response.status === 401)
+          setErrors("Error clearing your Fridge");
+        else
+          setErrors(
+            "There may be a problem with the server. Please try again after a few moments."
+          );
+      });
   };
 
   return (
     <div className={classes.root}>
-      <Fadein in={true}  timeout={2000}>
-      <Grid container spacing={0} >
-        <Grid container item xs={12} spacing={0}>
-          <Logo />
-          <Grid item xs={12} spacing={2}>
-            <h1 class={appstyles.headings}>My Fridge</h1>
-             <div class={styles.searchButtonMove}>
-                <SearchRecipeButton/>
+      <Fadein in={true} timeout={2000}>
+        <Grid container spacing={0}>
+          <Grid container item xs={12} spacing={0}>
+            <Logo />
+            <Grid item xs={12} spacing={2}>
+              <h1 class={appstyles.headings}>My Fridge</h1>
+              <div class={styles.searchButtonMove}>
+                <SearchRecipeButton />
               </div>
-          </Grid>
-        
-      
-          <Grid item xs={12} spacing={2}>
-            <div class={appstyles.layoutContent}>
-                   {errors && <div>Error: {errors}</div>}
-            {!loading.done ? (
-                <Loading/>
-                    ) : (  
-            <>
-              <div class={appstyles.subheading}>Add ingredients to your Fridge Below and we will use them to find you recipes!</div>
-                    
-                <div class={styles.fridgeAutoBox}> 
-                <AutocompleteIngredients type="fridge"/> 
-                <div class={styles.fridge}> <img alt="Fridge cartoon" src={fridge} /></div>
-                </div>
-                <Grid container spacing={1} wrap="wrap" alignItems="center" justify="center" class={styles.background}>
-                {checker ?  <Ingredients ingredients={fridgeIngredients}/> : <NoIngredients type="fridge" image={fridge}/>  } 
-                </Grid>
-                {checker  ?   <div className={styles.button} ><Button variant="outlined" width="100px" onClick={() => { handleClearFridge() }}>Clear All Fridge Contents</Button></div> : <div></div>  } 
-              </>
-            )}
-            
-            </div>
+            </Grid>
+
+            <Grid item xs={12} spacing={2}>
+              <div class={appstyles.layoutContent}>
+                {errors && <div>Error: {errors}</div>}
+                {!loading.done ? (
+                  <Loading />
+                ) : (
+                  <>
+                    <div class={appstyles.subheading}>
+                      Add ingredients to your Fridge Below and we will use them
+                      to find you recipes!
+                    </div>
+
+                    <div class={styles.fridgeAutoBox}>
+                      <AutocompleteIngredients type="fridge" />
+                      <div class={styles.fridge}>
+                        {" "}
+                        <img alt="Fridge cartoon" src={fridge} />
+                      </div>
+                    </div>
+                    <Grid
+                      container
+                      spacing={1}
+                      wrap="wrap"
+                      alignItems="center"
+                      justify="center"
+                      class={styles.background}
+                    >
+                      {checker ? (
+                        <Ingredients ingredients={fridgeIngredients} />
+                      ) : (
+                        <NoIngredients type="fridge" image={fridge} />
+                      )}
+                    </Grid>
+                    {checker ? (
+                      <div className={styles.button}>
+                        <Button
+                          variant="outlined"
+                          width="100px"
+                          onClick={() => {
+                            handleClearFridge();
+                          }}
+                        >
+                          Clear All Fridge Contents
+                        </Button>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </>
+                )}
+              </div>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
       </Fadein>
     </div>
   );
 };
 
-
 const mapStateToProps = (state) => ({
   fridgeIngredients: state.userIngredients.fridgeIngredients,
-  error: state.errorsMessages
+  error: state.errorsMessages,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
-    addToFridge: ( ingredients ) =>
+    addToFridge: (ingredients) =>
       dispatch({ type: "fridgeIngredients", payload: ingredients }),
     clearFridge: () => dispatch({ type: "deleteAllFridge" }),
-    changeError: ( error ) =>
-      dispatch({ type: "error", payload: error }),
+    changeError: (error) => dispatch({ type: "error", payload: error }),
   },
 });
 
