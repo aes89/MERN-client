@@ -29,7 +29,6 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-
   //removes selected ingredient from list of ingredients to add
 
   const filteredFridge = fridgeIngredients
@@ -39,14 +38,12 @@ function AutocompleteIngredients({
     : ingredients;
 
   const filteredPantry = pantryIngredients
-    ? pantry.filter(
-        (i) => !pantryIngredients.includes(i.name)
-      )
+    ? pantry.filter((i) => !pantryIngredients.includes(i.name))
     : pantry;
 
-  const filteredList = type === "fridge" ? filteredFridge : pantry;
+  const filteredList = type === "fridge" ? filteredFridge : filteredPantry;
 
-  console.log("check filteredList", filteredPantry)
+  console.log("check filteredList", filteredPantry);
 
   let history = useHistory();
 
@@ -56,7 +53,7 @@ function AutocompleteIngredients({
   function handleAddFridge(event) {
     //console.log(values);
     const newValues = values.map((i) => i.name);
-       //console.log("check fridge", newValues);
+    //console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((r) => {
@@ -64,7 +61,9 @@ function AutocompleteIngredients({
         actions.addToFridge(r.fridgeIngredients);
         setFridge(r.fridgeIngredients);
         history.push("/ingredients/" + getUsername() + "/fridge");
-        toast.success(" New Fridge Ingredient added, lets search for some recipes!");
+        toast.success(
+          " New Fridge Ingredient added, lets search for some recipes!"
+        );
       })
       .catch((error) => {
         //console.log("errors");
@@ -80,16 +79,16 @@ function AutocompleteIngredients({
   }
 
   function handleAddPantry(event) {
-    
     const newValues = values.map((i) => i.name);
-       //console.log("check pantry", newValues);
+    //console.log("check pantry", newValues);
     addPantryItem(getUsername(), { item: newValues })
       .then((r) => {
         //console.log(r);
         actions.addToPantry(r.pantryIngredients);
         setPantry(r.pantryIngredients);
-        history.push("/ingredients/"+getUsername()+"/pantry");
+        history.push("/ingredients/" + getUsername() + "/pantry");
         toast.success(" New pantry staple added!");
+        "#AutocompleteElementID".data().autocomplete.term = null;
       })
       .catch((error) => {
         //console.log("errors");
@@ -103,7 +102,7 @@ function AutocompleteIngredients({
           );
       });
   }
- 
+
   return (
     // autocomplete list
     <div class={styles.autoComplete}>
@@ -115,7 +114,7 @@ function AutocompleteIngredients({
         getOptionLabel={(option) => option.name}
         filterSelectedOptions="true"
         defaultValue={[filteredList[13]]}
-        onChange={(event, value) =>  setValues(value) }
+        onChange={(event, value) => setValues(value)}
         renderInput={(params) => {
           return (
             <TextField

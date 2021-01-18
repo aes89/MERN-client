@@ -119,7 +119,6 @@ const Fridge = ({ actions, fridgeIngredients }) => {
                       </div>
                       <div>
                         {" "}
-                        {/* below not styled but I maybe lost it in a merge? */}
                         {checker ? (
                           <Ingredients ingredients={fridgeIngredients} />
                         ) : (
