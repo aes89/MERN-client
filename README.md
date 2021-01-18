@@ -22,8 +22,6 @@
 
 ---
 
-<<<<<<< HEAD
-=======
 ### Manual Testing Log - Development
 <details>
 <summary>Click to expand</summary>
@@ -75,19 +73,15 @@
 | test | test |
 
 </details>
->>>>>>> tests
 
 ### Daily Tasks
 
-<<<<<<< HEAD
-=======
 | Sprint | Feature | Test |
 |:---:|:---:|:---:|
 | 1 | test | test |
 | 1 | test | test |
 | 1 | test | test |
 
->>>>>>> tests
 
 
 <summary>Click to expand</summary>
@@ -418,8 +412,6 @@ run $open coverage/lcov-report/index.html
 cypress-testing-library
 allows reusable components in cypress testing
 
-How did you go doing anymore readme stuff ? For libraries and test logs etc? The main readme is on the server repo
 
-Are you all good to pull it down and add your testing notes for cypress client in there ? :)
 </details>
 
