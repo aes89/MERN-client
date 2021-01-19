@@ -105,7 +105,288 @@ The overall goal of this application is a search application based on user ingre
 
 </details>
 
+
 ---
+
+### Target audience
+
+<details><summary>Click to expand</summary>
+
+**Key Demographics**
+* Gender: Anyone, predominantly women.
+* Age: 18-55.
+* Family status: Cooking for self, partner or dependents.
+* Profession: Students, professionals and homemakers.
+* Language: English.
+* Main interests: cooking, health, diet, low waste, saving money, trying new things.
+
+**Key Psychographics**
+* Dislikes repetitive meals, like variety and new options.
+* Dislikes spending lots of money on lots of ingredients and food waste.
+* Enjoys sharing and preparing meals.
+
+**Challenges**
+* Finds it difficult to create recipes.
+* Has a limited food budget or limited access to ingredients.
+* Has an interest in cooking but limitations (e.g. budget, dietary restrictions, skill).
+
+**Preferred Channels**
+* Follows celebrity chefs and food themed accounts on social media.
+* Searches for recipes/blogs on Google.
+
+**Preferred Content Types**
+* Articles.
+* Blog posts.
+* Social media posts.
+
+
+</details>
+
+---
+### Dataflow Diagram
+
+<details><summary>Click to expand</summary>
+
+[Click here to View on Lucid Chart](https://lucid.app/lucidchart/invitations/accept/63016e48-cfa5-489b-b7fc-e2e8c84311d2)
+
+
+![Dataflow-Diagram](./docs/diagrams/DFD.png)
+</details>
+
+---
+### Application Architecture Diagram
+
+<details><summary>Click to expand</summary>
+
+[Click here to View on Lucid Chart](https://lucid.app/lucidchart/invitations/accept/8e98769d-0f56-4e25-8b80-25d8c69c2047)
+
+![Application-Architecture-Diagram](./docs/diagrams/aad.png)
+</details>    
+
+---
+### User Stories
+
+
+#### Personas
+<details><summary>Click to expand</summary>
+
+![Sarah Persona](./docs/persons/sarah.png)
+![Wayne Persona](./docs/persons/wayne.png)
+![Liza Persona](./docs/persons/Eliza.png)
+![Bez Persona](./docs/persons/bez2.png)
+
+</details>
+
+#### Intial Draft Stories
+
+<details><summary>Click to expand</summary>
+
+* As a overall user:
+    * I can go to the home page sign up to create an account
+    * I can login
+    * I can navigate to my account settings and edit my account details
+    * I can navigate to the account settings and delete the account
+    * I can navigate to my dash and see what recipes I have interacted with (vote, save, reviewed) so I can quickly access/reaccess them later.
+    * I can navigate to my dash and see my current groceries organised by category
+    * I can navigate to my dashboard and see my current pantry staples
+    * I can navigate to main interface and see 'get searching today'!
+    * Once an initial search is done, I want see 'refresh again'
+    * From main interface  I can make a recipe search 
+    * From main interface I can navigate to my grocery lists
+    * From main interface I can navigate to my saved recipes
+    * I can add more groceries with predictive input
+    * I can delete groceries from my list
+    * I can clear all my grocery list
+    * I can clear all of my grocery list
+    * I can see my recipes returned search with them categories in breakfast, lunch and dinner
+    * I can further filter by diet (eg vegan) and prep time
+    * I can see my recipes returned via list with image, name, time and calories
+    * I can click go to recipe
+    * I can click a like heart on the recipe
+    * On a clicked recipe page I can click the save recipe button
+    * On a clicked recipe page I can view the whole recipe
+    * On a clicked recipe page I can rate the recipe
+
+</details>
+
+
+#### MVP
+ 
+<details><summary>Click to expand</summary>
+
+
+##### Overall User
+* As a overall user who is not logged in I can navigate to the home page and:
+    * click "Login/Sign Up" and get a pop up.
+    * click on any link and be prompted to log in/sign up with a popup. 
+
+* As a overall, logged in user I can navigate to the home page and:
+    * navigate to my <a href="#accsettings">account settings</a>.
+    * search recipes and be redirected to <a href="#searchresults">search results</a>. 
+
+* As a overall user I navigate to my <a id="accsettings">account settings and:</a>
+    * edit my account details.
+    * delete my account.
+
+* As an overall user I can see my side navigation on all pages and:
+    * navigate to <a href="#myfridge">My Fridge</a> page.
+    * navigate to <a href="#mypantry">My Pantry Staples</a> page.
+    * navigate to <a href="#mysaved">My Saved Recipes</a> page.
+    * search recipes and be redirected to <a href="#searchresults">search results</a>.
+    * navigate to the <a href="#mypreferences">My Preferences</a> page.
+    * click sign up if not logged in
+    * click login if not logged in
+    * click logout if logged in
+
+* As an overall user I can navigate to <a id="myfridge">My Fridge page</a> and:
+    * remove all items from my list with the "Empty My Fridge" button, which will confirm my choice.
+    * add ingredients to my list using predictive input.
+    * remove ingredients from my list.
+    * search for recipes by pressing the "search" button and be redirected to the <a href="#searchresults">results</a> page.
+  
+* As an overall user I can navigate to <a id="mypantry">My Pantry Staples page</a> and:
+    * add a pantry staple.
+    * delete a pantry staple.
+
+* As an overall user I can navigate to <a id="mysaved">My Saved Recipes page</a> and:
+    * view my saved recipes with their name, category and preparation time.
+    * delete a saved recipe
+    * navigate to a <a href="#single">single recipe's</a> page.
+
+* As an overall user, when redirected to the <a id="searchresults">search result</a> page I can:
+    * view returned results with their name, category and preparation time.
+    * navigate to a <a href="#single">single recipe's</a> page.
+    * filter results with the filter button, returning a pop up with filter choices.
+    * click save recipe
+    
+* As an overall user I can navigate to a <a id="single">single recipe page</a> and:
+    * view full details of a recipe including original web address, average user rating, category, preparation time, servings, calories, ingredients, link to full directions and photo.
+    * navigate to the original web address.
+    * view how many ingredients I have and how many are required (ie "You have 7/10 required ingredients").
+
+* As an overall user I can navigate to <a id="mypreferences">My Preferences page</a> and:
+    * enter/update preferred dietary requirements (e.g. vegetarian).
+    * enter/update preferred dietary restrictions (e.g. no nuts).
+
+##### Sarah 
+* As a mother and busy worker…
+    * I would like to have a tool where I can utilise my current groceries to the fullest.
+    * I would like to find some recipe variety for my family.
+    * I would like to be able to filter via prep time in case I want a quick and easy recipe.
+    * I would like a tool that is simple and easy to use.
+    * I would like to see my saved recipes so I can use them another time if I like them.
+    * I would like to filter via gluten free due to my child’s allergies.
+    * I would like to see the nutrient values in the recipes as I am health conscious.
+
+##### Wayne 
+* As a full-time worker and novice chef...
+    * I would like to view times on recipes when deciding what to try to cook.
+    * I would like a simple interface without confusing options.
+    * I would like the app to remember my items so I do not need to repeatedly enter staples.
+    * I would like to see how many ingredients are missing when selecting a recipe.
+    
+##### Eliza 
+* As a student and vegetarian…
+    * I would like to have a tool to find recipe inspiration with my favourite ingredients.
+    * I would also like a tool to find vegetarian dishes with alternatives to my favourite ingredients.
+    * I would like to be able to filter recipes based on my dietary needs as a vegetarian.
+  
+##### Bez 
+* As a chef with an egg surplus, an interest in learning different ways to cook them and some extra time for cooking...
+    * I would like to save recipes for later.
+    * I would like to see how many more ingredients I need without reading the whole recipe.
+    * I would like to filter searches by how long a recipe takes, for when I have more/less time.
+
+
+</details>
+
+
+#### Nice to have Extra Features
+ 
+<details><summary>Click to expand</summary>
+
+* As a overall user who is not logged in I can navigate to the home page and:
+    * login/sign up using Google Oauth.
+
+* As a overall user I can navigate to home page and:
+    * View some highlighted recipes of the week.
+
+* As an overall user, when redirected to the <a id="searchresults">search result</a> page I can:
+    * view returned results as above along with average star rating. 
+    * Click save recipe and be prompted to save to a collection.
+
+* As an overall user I can navigate to <a id="mysaved">My Saved Recipes page</a> and:
+    * View my recipe collections
+    * Create a new collection
+    * Edit a collection
+    * Delete a collection
+
+* As an overall user I can navigate to <a id="myfridge">My Fridge page</a> and:
+    * View all my ingredients by category
+  
+* As an overall user I can navigate to a <a id="single">single recipe page</a> and:
+    * view recipe as above, along with the average star rating.
+    * view written all written reviews at bottom of recipe.
+    * Click review recipe, and pop out window comes up to write a review and add a star rating. 
+    
+</details>
+
+---
+### Design Planning
+
+#### Mood Board
+
+<details><summary>Click to expand</summary>
+
+![Mood board](./docs/diagrams/moodboard.png)
+
+</details>
+
+#### Wireframes
+
+<details><summary>Click to expand</summary>
+
+[Click here to View on Miro](https://miro.com/app/board/o9J_led5nw4=/)
+
+#### Mobile
+![Mobile Wireframe 1](./docs/wireframes/v1/mobilewv1.jpg)    
+#### Tablet
+![Tablet Wireframe 1](./docs/wireframes/v1/tablet.jpg)
+#### Desktop
+![Desktop Wireframe 1](./docs/wireframes/v1/desktop.jpg)
+#### Nav and Footer
+![Nav and Footer](./docs/wireframes/v1/nav_footer.jpg)
+#### Pop Out Windows
+![Pop Out Windows](./docs/wireframes/v1/pop_out.jpg)
+
+</details>
+        
+
+#### Prototypes
+
+<details><summary>Click to expand</summary>
+
+[Click here to View on Framer](https://framer.com/projects/Mockups-Prototypes--gQTgOBRzoQePnxdnXfiq-51eZf)
+
+#### Pages
+![Home](./docs/prototypes/home.png)
+![Fridge](./docs/prototypes/fridge.png)
+![pantry](./docs/prototypes/pantry.png)    
+![pantry-fridge-no-items](./docs/prototypes/pantryfridgenoitems.png)  
+![browse](./docs/prototypes/browse.png)   
+![saved-recipes](./docs/prototypes/saved-recipes.png)  
+![single-recipes](./docs/prototypes/single-recipe.png)  
+![preferences](./docs/prototypes/pref.png)  
+![settings](./docs/prototypes/settings.png)  
+![pop-outs](./docs/prototypes/pop-outs.png)  
+![404](./docs/prototypes/404.png)  
+
+#### How They Link
+![linking](./docs/prototypes/linking.png)  
+
+</details>
+
+----
 
 ### Screen Shots
 <details>
@@ -136,17 +417,40 @@ The overall goal of this application is a search application based on user ingre
 ### Tech stack
 <details><summary>Click to expand</summary>
 
-* **React JS** - An open-source, front end, JavaScript library for building user interfaces or UI components.
-* **Node JS** - An open-source, cross-platform, back-end, asynchronous event-driven JavaScript runtime environment that executes JavaScript code outside a web browser.
+**Design and Planning**
+* Trello (Planning)
+* Miro (Wireframing)
+* xtensio (Personas)
+* Framer (Prototypes)
+* Lucid Chart (Diagramming)
+* Slack (Team Communication)
+
+**Frontend**
 * **HTML5**  - A markup language used for structuring and presenting content.
 * **CSS3** - A style sheet language used for describing the presentation of a document
 * **CSS Modules** -A CSS Module is a CSS file in which all class names and animation names are scoped locally by default, class names become similar to JavaScript variables . A CSS Module goes into the compiler, and CSS comes out the other side.
+* **React JS** - An open-source, front end, JavaScript library for building user interfaces or UI components.
+* **JavaScript**  -
+
+**Backend**
+* **Node JS** - An open-source, cross-platform, back-end, asynchronous event-driven JavaScript runtime environment that executes JavaScript code outside a web browser.
 * **AWS s3** - Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface. This was utilised in our profile image upload feature, in which the file is uploaded to S3 and then saved as a URL in MongoDb.
+
+**Database**
 * **MongoDB** - Is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
+
+
+**Other**
 * **Spoonacular API** - Recipe API that includes over 360,000 recipes as well as an open source recipe database.
 * **Heroku**  - Is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud supporting several programming languages. This was used as our server deployment service.
 * **Netlify** - A powerful serverless platform with an intuitive git-based workflow. This was used as our client side deployment. 
 * **GitHub** - Is a provider of Internet hosting for software development and version control using Git and it was our Version Control Host. 
+* **thenounproject.com** - Icons/images which included the nav bar icons.
+* **pngtree.com** - Images of food on nav bar.
+* **pixabay.com** - Background images. 
+* **https://unsplash.com/** - Background images. 
+
+
 </details>
 
 ---
@@ -241,12 +545,6 @@ The overall goal of this application is a search application based on user ingre
 
 
 
-**Other**
-
-* **Noun** - Icons/images which included the nav bar icons.
-* **pngtree.com** - Images of food on nav bar.
-* **pixabay.com** - Background images. 
-* **https://unsplash.com/** - Background images. 
 
 
 </details>
@@ -417,7 +715,6 @@ Our application has gone through comprehensive testing with Mocha for the Server
 
 
 
-
 </details>
 
 ---
@@ -530,8 +827,8 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 11/01/2020 | Preferences Page | Initial View | Description/prompt needed for choosing preferences | Yes | |
 | 11/01/2020 | Home | Initial View | Help button needed in navigation | Yes | |
 | 11/01/2020 | Browse Recipes | Page Load | Additional loading time needed for recipes to return from DB | Yes | |
-| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  &cross; |Dev Test Record 1  |
-| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  &cross; |Dev Test Record 1  |
+| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
+| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
 | 14/01/2020 | Pantry Page| Component | Error - filterpantry function not working , undefined |  Yes | Dev Test Record 1 |
 | 14/01/2020 | Browse Recipe | Component | Loading fridge animation applied to all browse recipe buttons |  &cross; | Dev Test Record 1  |
 | 14/01/2020 | Browse Page | Recipe Title | Recipe Title - room not large enough for longer recipe names |  Yes | Dev Test Record 1  |
@@ -916,40 +1213,3 @@ The functionality which takes the users preferences and filters out recipes usin
 
 
 </details>
-
-
----
-
-### Other
-<details>
-<summary> Notes to delete later </summary>
-Rubric notes:
-
-- complete and detailed description of libraries used in the app
-- frequent commits, merges and pull requests from all team members/multiple feature branches/README and gitignore with appropriate content
-- project results demonstrating consideration of strength and weaknesses of team members and project/team conditions/ Kanban board of tickets assigned to team members labelled with difficulty level and corresponding Git commits.
-- cloud hosting service, uses environment variables, use same database type in development/testing as production, uses custom domain name
-- evidence of user testing of site in development and production, and framework testing for both
-  
-  cypress coverage:
-npx nyc report --reporter=text-summary
-
-# see just the coverage summary
-$ npx nyc report --reporter=text-summary
-# see just the coverage file by file
-$ npx nyc report --reporter=text
-# save the HTML report again
-$ npx nyc report --reporter=lcov
-
-
-cypress-and-jest
-Combines Cypress and Jest coverage reports
-run $open coverage/lcov-report/index.html
- npm run report:combined
-
-cypress-testing-library
-allows reusable components in cypress testing
-
-
-</details>
-
