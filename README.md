@@ -419,12 +419,12 @@ The overall goal of this application is a search application based on user ingre
 <details><summary>Click to expand</summary>
 
 **Design and Planning**
-* Trello - Project management and planning. 
-* Miro - Wireframing. 
-* xtensio - Personas.
-* Framer - Prototyping. 
-* Lucid Chart- Diagramming. 
-* Slack - Team communication. 
+* **Trello** - Project management and planning. 
+* **Miro** - Wireframing. 
+* **xtensio** - Personas.
+* **Framer** - Prototyping. 
+* **Lucid Chart**- Diagramming. 
+* **Slack** - Team communication. 
 
 **Frontend**
 * **HTML5**  - A markup language used for structuring and presenting content.
