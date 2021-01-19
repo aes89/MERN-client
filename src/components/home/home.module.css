@@ -11,7 +11,7 @@
     height: 100vh;
     overflow: hidden;
     background-image: url(../styles/imgs/background.jpg);  
-    background-image: url(../styles/imgs/fridgebackground.jpg);
+    background-image: url(../styles/imgs/fridgebackground.jpg); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

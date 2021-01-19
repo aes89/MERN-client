@@ -102,6 +102,7 @@ The overall goal of this application is a search application based on user ingre
 * User can write a review on a recipe (including picture).
 * Filter feature used to filter recipes, this include diet, health labels, cuisine and prep time. 
 * Filter buttons on saved recipe page at the top to show dishes based off Breakfast, lunch, dinner, snack.
+* Highlight ingredients in single recipe page that the user has a does not have. 
 
 </details>
 
@@ -579,6 +580,7 @@ This application has been testing in both Chrome and FireFox on Mac OS Big Sur 1
 Our application has gone through comprehensive testing with Mocha for the Server and Cypress for the client. Along with countless manual tests using Postman and the console. 
 
 ### Manual Testing Log - Development
+Also see screen recordings in /docs/devtestvideo.
 
 #### Server 
 
@@ -655,7 +657,7 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 5 | Home | Home page loads with appropriate components (nav, joke, home page, footer). |
 | 5 | Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
 | 5 | Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
-| 5 | Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal opens. Persisting bug. |
+| 5 | Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal does not open. Persisting bug. |
 | 5 | Nav | Nav renders on wide home screen, is hidden on smaller screens. Comes into view on hover on top of page and menu icon.  |
 | 5 | Home - no user | All links redirect to home page excluding log in/register/where to start. |
 | 5 | Help | Help modal opens from link in nav. Closes when "back" clicked or clicks away from modal. |
@@ -698,21 +700,6 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 5 | Saved Recipes | Loads as expected with previously saves recipes or "Looks like you have no recipes saved!"|
 | 5 | Saved Recipes | Clicking "remove recipe" on a saved recipe displays "removed from saved recipes" toast and recipe is no longer visible in component. |
 | 5 | Saved Recipes | Both "back to search" and "browse recipes" buttons return user to Browse Recipe page. |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </details>
@@ -788,16 +775,59 @@ Our application has gone through comprehensive testing with Mocha for the Server
 
 #### Client
 
-| Sprint | Feature | Test |
-|:---:|:---:|:---:|
-| 1 | test | test |
-| 1 | test | test |
-| 1 | test | test |
 <details>
 <summary>Click to expand</summary>
 
+Development testing was repeated on deployment. 
 
-
+| Feature | Test |
+|:---:|:---:|:---:|
+| Home | Home page loads with appropriate components (nav, joke, home page, footer). |
+| Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
+| Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
+| Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal does not open. Persisting bug. |
+| Nav | Nav renders on wide home screen, is hidden on smaller screens. Comes into view on hover on top of page and menu icon.  |
+| Home - no user | All links redirect to home page excluding log in/register/where to start. |
+| Help | Help modal opens from link in nav. Closes when "back" clicked or clicks away from modal. |
+| Register | Register modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| Login | Login modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| Login | Changes to "Register" modal when "New?" link clicked. |
+| Register | New user can register from Register modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| Login | User can login from login modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| Home with user | Successful login and registration redirects to home page, "Yu are logged in!" toast displays. |
+| Nav with user | When user authenticated, "log in" and "register" links change to "log out". |
+| Logout | When "log out" clicked, user is redirected to home page, toast displays "come back soon!" and home pge returns to stat where links redirect to home page. |
+| Nav/Profile image | Users without an uploaded image display the default silhouette image, otherwise their uploaded image is displayed.  |
+| Nav/Profile image | Clicking the silhouette image links to user settings page. |
+| User settings | Form loads with previously entered username, email and fields for password displaying "password" and "retype password" and profile image upload form. |
+| User settings | All fields, must be entered to update any user setting, i.e. password cannot be updated without entering/changing username or email address. Note for future improvement. |
+| Profile image | Clicking "browse" opens file browser, file can be selected. Selecting incorrect format (e.g. word document) shows "oh no!" toast and does not give option to upload. |
+| Profile image | Clicking "browse" opens file browser, file can be selected. Selecting correct format (e.g. .jpeg) shows the image above the form and changes the nav image. Clicking upload displays confirmation toast. |
+| Profile image | Clicking "upload" with no image selected  displays "oh no!" toast. |
+| Profile image | Attempting to upload incorrect file type crashes DB. Added to future features list with priority. |
+| Fridge | Loads as expected with previously entered ingredients or blank form if none. |
+| Fridge | Can remove individual ingredients and all ingredients via empty fridge.  |
+| Fridge | "Browse Recipes" button works as expected - displays browse recipes section. |
+| Pantry | Loads as expected with previously entered staples or blank form if none. |
+| Pantry | Can remove individual ingredients and all ingredients via empty pantry.  |
+| Pantry | "Browse Recipes" button works as expected - displays browse recipes section. |
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| Autocomplete | Selects ingredient from list and adds ingredient as a tag to autocomplete field. Ingredient cannot be selected from list again. |
+| Autocomplete | "Add Ingredients" clears tags and displays the ingredients individually in the fridge/pantry cutting board space. |
+| Autocomplete | Persisting bug - removing an individual ingredient or all ingredients returns them to the Autocomplete field. They can be entered multiple times using the "add ingredients" button.|
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. Handled using server-side validation however not ideal UI. |
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| Preferences | Loads as expected with previously entered preferences or blank form if none. |
+| Preferences | Preference options can be selected/deselected using check boxes. "Update Preferences" button displays "Preferences updated..." toast to confirm.  |
+| Browse Recipes | Loads as expected with suggested recipes if no ingredients etc entered, or suggested recipes matching entered ingredients/staples. |
+| Browse Recipes | Clicking "save recipe" shows "ou have saves this recipe!" toast, saving the same recipe displays "you have already saved this recipe" toast. |
+| Browse recipes | Persisting bug - sometimes "3/5" ingredients will display as "/NaN", possibly an API issue. Required further testing. |
+| Browse Recipes | Previously searches recipes will display on page after changing ingredients/staples, clicking "refresh search" button on browse recipes page will display new recipes. |
+| Saved Recipes | Loads as expected with previously saves recipes or "Looks like you have no recipes saved!"|
+| Saved Recipes | Clicking "remove recipe" on a saved recipe displays "removed from saved recipes" toast and recipe is no longer visible in component. |
+| Saved Recipes | Both "back to search" and "browse recipes" buttons return user to Browse Recipe page. |
 
 </details>
 
@@ -812,9 +842,16 @@ Our application has gone through comprehensive testing with Mocha for the Server
 <br>
 
 #### Screen Recordings
-[Dev User Testing Video 1- User](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/user-test-dev-1.mp4)
+[User Test 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/user-test-dev-1.mp4)
 
-[Dev User Testing Video 2 - Password Reset](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/dev-password-reset-.mp4)
+[User Test- Reset Password](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/dev-password-reset-.mp4)
+
+[User Desktop](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/full-dev-test.mp4)
+
+[User Mobile](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/phone-overview.mp4)
+
+[User Tablet](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/tablet-overview.mp4)
+
 
 #### Test Notes
 
@@ -827,15 +864,15 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 11/01/2020 | Preferences Page | Initial View | Description/prompt needed for choosing preferences | Yes | |
 | 11/01/2020 | Home | Initial View | Help button needed in navigation | Yes | |
 | 11/01/2020 | Browse Recipes | Page Load | Additional loading time needed for recipes to return from DB | Yes | |
-| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
-| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
-| 14/01/2020 | Pantry Page| Component | Error - filterpantry function not working , undefined |  Yes | Dev Test Record 1 |
-| 14/01/2020 | Browse Recipe | Component | Loading fridge animation applied to all browse recipe buttons |  &cross; | Dev Test Record 1  |
-| 14/01/2020 | Browse Page | Recipe Title | Recipe Title - room not large enough for longer recipe names |  Yes | Dev Test Record 1  |
-| 14/01/2020 | Saved Recipe Page | Component | Need back to saved recipes button for smoother user experience  |  Yes | Dev Test Record 1  |
-| 14/01/2020 | User Settings Page | Component | Add loading screen after update settings for smoother UX  |  Yes | Dev Test Record 1  |
-| 14/01/2020 | Login In Modal  | Modal | Add loading screen for after clicking login |  Yes | Dev Test Record 1  |
-| 18/01/2020 | Username | Nav | Username coming up on nav bar- causing issues with saving recipes  |  Yes | Dev User Testing Video 2 - Password Reset |
+| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  Yes | User Test 1  |
+| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  Yes | User Test 1 |
+| 14/01/2020 | Pantry Page| Component | Error - filterpantry function not working , undefined |  Yes | User Test 1 |
+| 14/01/2020 | Browse Recipe | Component | Loading fridge animation applied to all browse recipe buttons |  &cross; | User Test 1 |
+| 14/01/2020 | Browse Page | Recipe Title | Recipe Title - room not large enough for longer recipe names |  Yes | User Test 1  |
+| 14/01/2020 | Saved Recipe Page | Component | Need back to saved recipes button for smoother user experience  |  Yes | User Test 1 |
+| 14/01/2020 | User Settings Page | Component | Add loading screen after update settings for smoother UX  |  Yes | User Test 1 |
+| 14/01/2020 | Login In Modal  | Modal | Add loading screen for after clicking login |  Yes | User Test 1  |
+| 18/01/2020 | Username | Nav | Username coming up on nav bar- causing issues with saving recipes  |  Yes | User Test- Reset Password |
 | 18/01/2020 | Single Recipe | Checker local storage | Property ID of Null coming up. |  Yes- refactored |  |
 
 </details>
@@ -851,8 +888,10 @@ Our application has gone through comprehensive testing with Mocha for the Server
 <br>
 
 #### Screen Recordings
-[Prod User Testing Video 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/Production-test-1.mp4)
 
+[User Test Production 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/Production-test-1.mp4)
+
+[User Test Production Full](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/main-prod-test.mp4)
 
 | Date | Feature | Test | Notes | Refactored | Screen Record ? |
 |:---:|:---:|:---:|:---:|:---:|:---:|

@@ -106,7 +106,7 @@ const Pantry = ({ actions, pantryIngredients }) => {
                 <Loading />
               ) : (
                 <>
-                <div class={appstyles.subheading}>Add staples to your Pantry Below and we will use them to find you recipes!</div>
+                <div class={appstyles.subheading}>Add staples to your Pantry Below!</div>
                   <div class={styles.pantryAutoBox}>
                     <AutocompleteIngredients type="pantry" />
                     <div class={styles.pantry}>
