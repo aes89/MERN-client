@@ -419,12 +419,12 @@ The overall goal of this application is a search application based on user ingre
 <details><summary>Click to expand</summary>
 
 **Design and Planning**
-* Trello (Planning)
-* Miro (Wireframing)
-* xtensio (Personas)
-* Framer (Prototypes)
-* Lucid Chart (Diagramming)
-* Slack (Team Communication)
+* Trello - Project management and planning. 
+* Miro - Wireframing. 
+* xtensio - Personas.
+* Framer - Prototyping. 
+* Lucid Chart- Diagramming. 
+* Slack - Team communication. 
 
 **Frontend**
 * **HTML5**  - A markup language used for structuring and presenting content.
@@ -440,16 +440,15 @@ The overall goal of this application is a search application based on user ingre
 **Database**
 * **MongoDB** - Is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
 
-
 **Other**
 * **Spoonacular API** - Recipe API that includes over 360,000 recipes as well as an open source recipe database.
 * **Heroku**  - Is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud supporting several programming languages. This was used as our server deployment service.
 * **Netlify** - A powerful serverless platform with an intuitive git-based workflow. This was used as our client side deployment. 
 * **GitHub** - Is a provider of Internet hosting for software development and version control using Git and it was our Version Control Host. 
-* **thenounproject.com** - Icons/images which included the nav bar icons.
-* **pngtree.com** - Images of food on nav bar.
-* **pixabay.com** - Background images. 
-* **https://unsplash.com/** - Background images. 
+* **[Noun Project](https://thenounproject.com/)** - Icons/images which included the nav bar icons.
+* **[PngTree](pngtree.com)** - Images of food on nav bar.
+* **[Pixabay](pixabay.com)** - Background images. 
+* **[Unsplash](unsplash.com)** - Background images. 
 
 
 </details>
@@ -528,13 +527,10 @@ The overall goal of this application is a search application based on user ingre
 * **@cypress/code-coverage 3.9.1** - Peery dependency with Cypress, used for code coverage reporting but does not instrument code which allows for code coverage calculation. 
 * **@testing-library/cypress 7.0.3** - This allows you to use all the useful DOM Testing Library methods in your tests.
 * **cypress-localstorage-commands 1.3.1** - Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and disabling localStorage.
-
-
 * **@babel/core 7.12.9** - Babel is a JavaScript compiler.
 * **@babel/preset-env 7.12.7** - A Babel preset for each environment.
 * **@babel/preset-react 7.12.7** - Babel preset for all React plugins.
 * **babel-plugin-istanbul 6.0.0** - A Babel plugin that instruments your code with Istanbul coverage.
-
 * **babel-jest 26.6.3** - Jest plugin to use babel for transformation. 
 * **identity-obj-proxy 3.0.0** - An identity object using ES6 proxies. Useful for testing trivial webpack imports. For instance, you can tell Jest to mock this object as imported CSS modules; then all your className lookups on the imported styles object will be returned as-is.
 * **jest-transform-stub 2.0.0** - Jest doesn't handle non JavaScript assets by default. You can use this module to avoid errors when importing non JavaScript assets.
@@ -543,10 +539,6 @@ The overall goal of this application is a search application based on user ingre
 * **enzyme-adapter-react-16 1.15.5** - Has peer dependencies on react and react-dom. Adapts enzyme to the specific version of react.
 * **enzyme-to-json 3.6.18** - Convert Enzyme wrappers to a format compatible with Jest snapshot testing.
 * **react-test-renderer 17.0.1** - Used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
-
-
-
-
 
 </details>
 
@@ -575,7 +567,7 @@ The overall goal of this application is a search application based on user ingre
 
 ## Testing
 
-This application has been testing in both Chrome and FireFox on Mac OS Big Sur 11.1.
+This application has been tested in Chrome, Safari and FireFox on Mac OS Big Sur 11.1.
 
 Our application has gone through comprehensive testing with Mocha for the Server and Cypress for the client. Along with countless manual tests using Postman and the console. 
 
