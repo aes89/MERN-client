@@ -1,12 +1,6 @@
 import logIn from "../../fixtures/logInSequence";
 
 describe("Help modal", () => {
-  //   logs in
-  it("Pass: Opens Help modal from home page when logged in", () => {
-    cy.logIn();
-    cy.get(".MuiButtonBase-root").click();
-  });
-
   it("Pass: Opens and closes Help modal from home page when not logged in", () => {
     cy.visit("localhost:3000");
     cy.get(".MuiButtonBase-root").click({ force: true });
