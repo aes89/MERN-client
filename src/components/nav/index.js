@@ -43,7 +43,6 @@ const NavBar = ({
   currentProfile,
 }) => {
   let history = useHistory();
-  //const [profile, setProfile] = useState("");
   const { setModalOpen } = actions;
   const listFoodImg = [
     carrot,
@@ -61,8 +60,6 @@ const NavBar = ({
   function handleLogout() {
     logoutUser()
       .then((r) => {
-        //console.log("Got back response on logout", r);
-        console.log("logged out");
         history.push("/");
         toast.success("Come back soon!");
       })

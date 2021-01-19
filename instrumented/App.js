@@ -45,21 +45,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render={(props) => (
-//       getLoggedInUser() === true
-//         ? <Component {...props} />
-//         : <Redirect to='/' />
-//   )} />
-// )
-
 const App = ({ actions }) => {
   useEffect(() => {
     try {
       actions.logIn(getUsername());
       actions.getToken(getLoggedInUser());
     } catch (error) {
-      console.log("got an error trying to check authenticated user:", error);
       setLoggedInUser();
       setUsername();
       actions.logout();
@@ -115,7 +106,6 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     setModalOpen: (modalId) => {
       store.dispatch({ type: "openModal", payload: modalId });
-      console.log("APP JS STORE", store.getState());
     },
     logIn: (username) => dispatch({ type: "login", payload: username }),
     getToken: (jwt) => dispatch({ type: "token", payload: jwt }),

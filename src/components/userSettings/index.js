@@ -147,8 +147,6 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
     },
   });
 
-  console.log("current user settings in user settings", currentUserSettings);
-
   return (
     <div className={classes.root}>
       <Fadein in={true} timeout={2000}>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.31% </span>
+                <span class="strong">91.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.91% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
@@ -122,14 +122,7 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,27 +133,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85x</span>
+<span class="cline-any cline-yes">384x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">384x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">384x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">384x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,11 +174,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">290x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">152x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -202,59 +188,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { connect } from "react-redux";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 &nbsp;
-//import SearchRecipeButton from "../searchButton";
 import styles from "./home.module.css";
 import Logo from "../logo";
 import Carousel from "../carousel";
 import jokes from "../../data/recipeJokes.json";
-import Fade from 'react-reveal/Fade';
-import Swing from 'react-reveal/Swing';
-import Fadein from '@material-ui/core/Fade';
-&nbsp;
-&nbsp;
+import Fade from "react-reveal/Fade";
+import Swing from "react-reveal/Swing";
+import Fadein from "@material-ui/core/Fade";
 &nbsp;
 const Home = ({ actions, userLoggedIn }) =&gt; {
   const [joke, setJoke] = useState("");
-  
-  const text = {
-        color: '#3F7209',
-        marginLeft: "10px"
-  }; 
 &nbsp;
- 
+  const text = {
+    color: "#3F7209",
+    marginLeft: "10px",
+  };
 &nbsp;
   useEffect(() =&gt; {
-       let randomObject = jokes[Math.floor(Math.random() * jokes.length)];
-       setJoke(randomObject.name)
-       console.log(randomObject.name)
-       
-      },[])
+    let randomObject = jokes[Math.floor(Math.random() * jokes.length)];
+    setJoke(randomObject.name);
+  }, []);
 &nbsp;
   return (
     &lt;div className={styles.homeLayoutOnly}&gt;
       &lt;Logo /&gt;
-       &lt;Fadein in={true} timeout={2000}  &gt;
-      &lt;main class={styles.homeContent}&gt;
-        &lt;div class={styles.homeBox}&gt;
-         &lt;Fade top&gt;
-           &lt;p style={text}&gt;{joke}&lt;/p&gt;
-         &lt;/Fade&gt;
-           
-          &lt;Swing&gt;
-          &lt;h1 &gt;What is in your fridge?&lt;/h1&gt;
+      &lt;Fadein in={true} timeout={2000}&gt;
+        &lt;main class={styles.homeContent}&gt;
+          &lt;div class={styles.homeBox}&gt;
+            &lt;Fade top&gt;
+              &lt;p style={text}&gt;{joke}&lt;/p&gt;
+            &lt;/Fade&gt;
+&nbsp;
+            &lt;Swing&gt;
+              &lt;h1&gt;What is in your fridge?&lt;/h1&gt;
             &lt;/Swing&gt;
-          
-          &lt;Fade bottom&gt;
-          &lt;h3 &gt;
-            Just add ingredients to your fridge and FridgeMate will help find recipes
-            personlised to you!
-          &lt;/h3&gt;
-         &lt;/Fade&gt;
-           &lt;Carousel/&gt;
-        &lt;/div&gt;
-      &lt;/main&gt;
+&nbsp;
+            &lt;Fade bottom&gt;
+              &lt;h3&gt;
+                Just add ingredients to your fridge and FridgeMate will help
+                find recipes personlised to you!
+              &lt;/h3&gt;
+            &lt;/Fade&gt;
+            &lt;Carousel /&gt;
+          &lt;/div&gt;
+        &lt;/main&gt;
       &lt;/Fadein&gt;
     &lt;/div&gt;
   );
@@ -280,7 +259,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jan 18 2021 13:57:00 GMT+1100 (Australian Eastern Daylight Time)
+                at Tue Jan 19 2021 18:03:01 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
