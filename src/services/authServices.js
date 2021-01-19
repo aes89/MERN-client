@@ -3,14 +3,12 @@ import api from "../config/api";
 export async function registerUser(userInfo) {
   // call to server to register user
   const response = await api.post("/user/register", userInfo);
-  console.log("Server", response);
   return response.data;
 }
 
 export async function loginUser(userInfo) {
   // call to server to login user
   const response = await api.post("/user/login", userInfo);
-  console.log("Server", response);
   return response.data;
 }
 
@@ -23,7 +21,6 @@ export async function forgotPassword(email) {
   // call to server to login user
   // return user info if successful and error if not
   const response = await api.post("/user/forgot-password", email);
-  console.log("Server", response);
   return response.data;
 }
 
@@ -35,7 +32,6 @@ export async function resetPassword(token) {
       resetPasswordToken: token,
     },
   });
-  console.log("Server", response);
   return response.data;
 }
 
@@ -43,14 +39,12 @@ export async function updatePasswordViaReset(password) {
   // call to server to login user
   // return user info if successful and error if not
   const response = await api.put("/user/update-password", password);
-  console.log("Server", response);
   return response.data;
 }
 
 export async function getUserSettings(username) {
   // call to server to register user
   const response = await api.get("/user/" + username + "/account-settings");
-  console.log("Server", response);
   return response.data;
 }
 
@@ -60,33 +54,26 @@ export async function updateUserSettings(settingInfo, username) {
     "/user/" + username + "/account-settings",
     settingInfo
   );
-  console.log("Server", response);
   return response.data;
 }
 
 export async function uploadProfileImage(image, username) {
   // call to server to register user
-  //console.log("image", image);
   try {
     //file from event - axios doesn't read as an object so wrapped in formData
     var formData = new FormData();
     formData.append("image", image);
-    console.log("form data", formData);
     const response = await api.post(
       `/user/${username}/add-profile-picture`,
       formData
     );
-    console.log("Server", response);
     return response.data;
-  } catch (error) {
-    console.log("error in image upload", error);
-  }
+  } catch (error) {}
 }
 
 export async function getPreference(username) {
   // call to server to register user
   const response = await api.get("/preferences/" + username);
-  console.log("Server", response);
   return response.data;
 }
 
@@ -96,34 +83,10 @@ export async function updatePreference(userInfo, username) {
     "/preferences/" + username + "/edit",
     userInfo
   );
-  console.log("Server", response);
   return response.data;
 }
 
-//LOCAL STORAGE
-
-//Right now we are saving the token - but as token is in a cookie this does not need to be in local storage- remove later
-// Get loggedInUser from localStorage
-// export function getLoggedInUser() {
-//   return localStorage.getItem("token");
-// }
-
-// // Store loggedInUser token in local storage
-// export function setLoggedInUser(token) {
-//   token
-//     ? localStorage.setItem("token", token)
-//     : localStorage.removeItem("token");
-//   console.log("local token Updated");
-//   //console.log(token);
-// }
-
-// Get loggedInUser from localStorage
-// Get loggedInUser from localStorage
 export function getUsername() {
-  console.log(
-    "localStorage cypress test get user name",
-    localStorage.getItem("username")
-  );
   return localStorage.getItem("username");
 }
 
@@ -132,8 +95,6 @@ export function setUsername(user) {
   user
     ? localStorage.setItem("username", user)
     : localStorage.removeItem("username");
-  console.log("local username Updated");
-  //console.log(user);
 }
 
 // Get profile from localStorage
@@ -146,8 +107,6 @@ export function setProfile(image) {
   image
     ? localStorage.setItem("profile", image)
     : localStorage.removeItem("profile");
-  console.log("local profile Updated");
-  //console.log(image);
 }
 
 // Get preferences from localStorage
@@ -160,6 +119,4 @@ export function setPref(pref) {
   pref
     ? localStorage.setItem("preferences", JSON.stringify(pref))
     : localStorage.removeItem("preferences");
-  console.log("local preferences Updated");
-  //console.log(pref);
 }

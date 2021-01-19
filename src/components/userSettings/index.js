@@ -75,6 +75,7 @@ const validate = (values) => {
 const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
   const classes = useStyles();
   const [loading, setloading] = useState({ done: false });
+ 
   const text = {
     color: "red",
     marginLeft: "10px",
@@ -145,8 +146,6 @@ const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
       }, 3000);
     },
   });
-
-  console.log("current user settings in user settings", currentUserSettings);
 
   return (
     <div className={classes.root}>

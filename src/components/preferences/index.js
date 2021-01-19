@@ -58,14 +58,9 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
         setPref({ ...pref });
         actions.updatePreferences(JSON.parse(getPref()));
         setChecked(JSON.parse(getPref()));
-        //console.log("check local", JSON.parse(getPref()))
-        //console.log("check redux", userPreferences)
       })
       .catch((error) => {
-        //console.log("errors");
-        //console.log(error.response);
         if (error.response && error.response.status === 404)
-          //formik.setStatus("Error getting pref information ");
           toast.error("Sorry we could not get your information at this time.");
         else
           toast.error(
@@ -74,7 +69,6 @@ const Preferences = ({ actions, userPreferences, userLoggedIn }) => {
       });
     setTimeout(() => {
       setloading({ done: true });
-      //console.log("check loading done")
     }, 3000);
   }, []);
 

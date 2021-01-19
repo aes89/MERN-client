@@ -14,7 +14,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-//for cypress state?
+//for cypress state
 if (window.Cypress) {
   window.store = store;
 }

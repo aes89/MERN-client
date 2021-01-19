@@ -2,12 +2,7 @@ import { connect } from "react-redux";
 import React, { Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import {
-  //setLoggedInUser,
-  //getLoggedInUser,
-  getUsername,
-  setUsername,
-} from "./services/authServices";
+import { getUsername, setUsername } from "./services/authServices";
 
 import { ToastContainer } from "react-toastify";
 
@@ -26,9 +21,6 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-
-//NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
-//MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isLoggedIn = getUsername();
 
@@ -47,27 +39,22 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 const App = ({ actions }) => {
-  
-
-    useEffect(( ) => {
-        try {
-          actions.logIn(getUsername());
-          //actions.getToken(getLoggedInUser());
-        } catch (error) {
-          console.log("got an error trying to check authenticated user:", error);
-          //setLoggedInUser();
-          setUsername();
-          actions.logout();
-        }
-        // return a function that specifies any actions on component unmount
-        return () => {};
-      }, []);
+  useEffect(() => {
+    try {
+      actions.logIn(getUsername());
+    } catch (error) {
+      setUsername();
+      actions.logout();
+    }
+    // return a function that specifies any actions on component unmount
+    return () => {};
+  }, []);
 
   return (
     <Fragment>
       <Helmet>
         <title>FridgeMate</title>
-        <meta name="description" content="Helmet application" />
+        <meta name="description" content="Recipe application" />
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
