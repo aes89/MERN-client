@@ -1,5 +1,5 @@
 describe("Home page without user", () => {
-  it("PasS: should have the right initial state", function () {
+  it("Pass: should have the right initial state", function () {
     cy.visit("http://localhost:3000");
     cy.window()
       .its("store")
@@ -64,19 +64,11 @@ describe("Home page without user", () => {
     cy.contains("My Preferences");
   });
 
-  it("Fail: Should not be logged in", () => {
+  it("Fail: Should be logged in", () => {
     cy.visit("localhost:3000");
 
     cy.contains("What is in your fridge?");
 
     cy.contains("Logout");
   });
-
-  //to be completed
-  // it("Shows a joke", () => {
-
-  // });
-  // it("Shows login/register on any link when user not logged in", () => {
-
-  // });
 });

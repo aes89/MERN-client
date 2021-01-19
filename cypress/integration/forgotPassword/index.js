@@ -1,4 +1,4 @@
-describe("Log In", () => {
+describe("Forgot password modal", () => {
   it("Pass: should have the right initial state", function () {
     cy.visit("http://localhost:3000/");
     cy.window()

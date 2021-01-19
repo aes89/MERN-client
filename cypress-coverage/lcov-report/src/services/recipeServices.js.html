@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.06% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/17</span>
+                <span class='fraction'>0/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.06% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/17</span>
+                <span class='fraction'>0/17</span>
             </div>
         
             
@@ -123,14 +123,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,21 +147,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,15 +184,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import api from "../config/api";
 &nbsp;
 // Returns Recipes to browse
-export async function browseSearchRecipes() {
-  const response = await api.get("/recipes/browse");
-  await setBrowsedRecipes(response.data);
-  return response.data;
+export async function <span class="fstat-no" title="function not covered" >browseSearchRecipes(</span>) {
+  const response = <span class="cstat-no" title="statement not covered" >await api.get("/recipes/browse");</span>
+<span class="cstat-no" title="statement not covered" >  await setBrowsedRecipes(response.data);</span>
+<span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
 // Returns all user saved recipes
-export async function getAllUserSavedRecipes() {
-  const response = await api.get("/recipes/saved-recipes");
+export async function <span class="fstat-no" title="function not covered" >getAllUserSavedRecipes(</span>) {
+  const response = <span class="cstat-no" title="statement not covered" >await api.get("/recipes/saved-recipes");</span>
 <span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
@@ -214,23 +214,23 @@ export async function <span class="fstat-no" title="function not covered" >remov
 <span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
-export function getBrowsedRecipes() {
-  return localStorage.getItem("browsedRecipes");
+export function <span class="fstat-no" title="function not covered" >getBrowsedRecipes(</span>) {
+<span class="cstat-no" title="statement not covered" >  return localStorage.getItem("browsedRecipes");</span>
 }
 &nbsp;
-export function setBrowsedRecipes(items) {
-  items
+export function <span class="fstat-no" title="function not covered" >setBrowsedRecipes(</span>items) {
+<span class="cstat-no" title="statement not covered" >  items</span>
     ? localStorage.setItem("browsedRecipes", JSON.stringify(items))
-    : <span class="branch-1 cbranch-no" title="branch not covered" >localStorage.removeItem("browsedRecipes");</span>
+    : localStorage.removeItem("browsedRecipes");
 }
 &nbsp;
-export function getSavedRecipes() {
-  return localStorage.getItem("savedRecipes");
+export function <span class="fstat-no" title="function not covered" >getSavedRecipes(</span>) {
+<span class="cstat-no" title="statement not covered" >  return localStorage.getItem("savedRecipes");</span>
 }
 &nbsp;
-export function setSavedRecipes(recipe) {
-  recipe
-    ? <span class="branch-0 cbranch-no" title="branch not covered" >localStorage.setItem("savedRecipes", JSON.stringify(recipe))</span>
+export function <span class="fstat-no" title="function not covered" >setSavedRecipes(</span>recipe) {
+<span class="cstat-no" title="statement not covered" >  recipe</span>
+    ? localStorage.setItem("savedRecipes", JSON.stringify(recipe))
     : localStorage.removeItem("savedRecipes");
 }
 &nbsp;
@@ -250,7 +250,7 @@ export function <span class="fstat-no" title="function not covered" >setSingleRe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 19 2021 18:03:01 GMT+1100 (Australian Eastern Daylight Time)
+                at Tue Jan 19 2021 20:26:38 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
