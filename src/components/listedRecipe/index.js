@@ -11,6 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 
+
 const ListedRecipe = ({
   userLoggedIn,
   recipe,
@@ -74,7 +75,9 @@ const ListedRecipe = ({
     };
     setLoading(true);
     await saveRecipe(newRecipe);
-    setLoading(false);
+    setTimeout(() => {
+        setLoading(false);
+    },5000);
   }
 
   async function deleteRecipeHandler(id) {
@@ -82,7 +85,7 @@ const ListedRecipe = ({
     await removeSavedRecipe(id);
     setLoading(false);
   }
-  console.log("id and idCheck", { id, idCheck });
+ // console.log("id and idCheck", { id, idCheck });
 
   if (savedType === "saved recipes") {
     //This is for save Recipe page
@@ -123,9 +126,13 @@ const ListedRecipe = ({
           <Paper className={classes.paper} variant="outlined">
             <Link to={"/recipes/" + id + "/recipe"}>
               <div class={styles.listItem}>
+              {missedIngred ? (
                 <div>
                   You have {usedIngred}/{usedIngred + missedIngred} ingredients!{" "}
                 </div>
+                 ) : (
+                  <></>
+                   )}
                 {image ? (
                   <img alt="recipe" src={image} />
                 ) : (
