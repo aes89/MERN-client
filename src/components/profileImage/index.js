@@ -27,8 +27,9 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
           const {
             user: { profile },
           } = image;
+          console.log("I AM HITTING PROFILE >>>>>>>>>>>>>>>>>>>", profile);
           actions.updateProfile({ profile });
-          history.push("/user/" + getUsername() + "/account-settings");
+          // history.push("/user/" + getUsername() + "/account-settings");
           toast.success("Profile Picture updated!");
         })
         .catch((error) => {
@@ -91,7 +92,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     updateProfile: ({ profile }) => {
-      console.log("profile", profile);
+      console.log("profile in map dispatch to props", profile);
       return dispatch({ type: "updateProfile", payload: { profile } });
     },
   },
