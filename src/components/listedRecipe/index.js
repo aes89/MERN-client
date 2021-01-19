@@ -11,6 +11,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 
+import { getFridge } from "../../services/ingredientServices";
+
 const ListedRecipe = ({
   userLoggedIn,
   recipe,
@@ -74,7 +76,9 @@ const ListedRecipe = ({
     };
     setLoading(true);
     await saveRecipe(newRecipe);
-    setLoading(false);
+    setTimeout(() => {
+        setLoading(false);
+    },5000);
   }
 
   async function deleteRecipeHandler(id) {
@@ -123,9 +127,13 @@ const ListedRecipe = ({
           <Paper className={classes.paper} variant="outlined">
             <Link to={"/recipes/" + id + "/recipe"}>
               <div class={styles.listItem}>
+              {getFridge() ? (
                 <div>
                   You have {usedIngred}/{usedIngred + missedIngred} ingredients!{" "}
                 </div>
+                 ) : (
+                  <></>
+                   )}
                 {image ? (
                   <img alt="recipe" src={image} />
                 ) : (
