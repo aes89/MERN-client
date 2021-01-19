@@ -11,7 +11,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import KitchenIcon from "@material-ui/icons/Kitchen";
 
-import { getFridge } from "../../services/ingredientServices";
 
 const ListedRecipe = ({
   userLoggedIn,
@@ -86,7 +85,7 @@ const ListedRecipe = ({
     await removeSavedRecipe(id);
     setLoading(false);
   }
-  console.log("id and idCheck", { id, idCheck });
+ // console.log("id and idCheck", { id, idCheck });
 
   if (savedType === "saved recipes") {
     //This is for save Recipe page
@@ -127,7 +126,7 @@ const ListedRecipe = ({
           <Paper className={classes.paper} variant="outlined">
             <Link to={"/recipes/" + id + "/recipe"}>
               <div class={styles.listItem}>
-              {getFridge() ? (
+              {!usedIngred && missedIngred ? (
                 <div>
                   You have {usedIngred}/{usedIngred + missedIngred} ingredients!{" "}
                 </div>

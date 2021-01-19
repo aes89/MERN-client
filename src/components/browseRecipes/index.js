@@ -40,8 +40,9 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   function handleNewIngredientsAdded() {
     let fridgeChecker = getFridge();
     if (fridgeChecker === []) {
-      setBrowsedRecipes(); //local storage
+      //setBrowsedRecipes(); //local storage
       history.push("/recipes/browse");
+      recipeSearchHandler();
     } else {
     }
   }
