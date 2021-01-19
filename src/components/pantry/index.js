@@ -52,15 +52,15 @@ const Pantry = ({ actions, pantryIngredients }) => {
         //console.log("errors")
         //console.log(error);
         if (error.response && error.response.status === 401)
-          actions.changeError("Sorry we could not get your pantry at this time.");
+          toast.error("Sorry we could not get your pantry at this time.");
         else
-          actions.changeError(
+          toast.error(
             "There may be a problem with the server. Please try again after a few moments."
           );
       });
         setTimeout(() => {
         setloading({ done: true })
-        console.log("check loading done")  
+        //console.log("check loading done")  
         }, 4000);
   }, []);
 

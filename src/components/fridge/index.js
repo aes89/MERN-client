@@ -45,9 +45,9 @@ const Fridge = ({ actions, fridgeIngredients }) => {
                 history.push("/ingredients/"+getUsername()+"/fridge")
             }).catch((error) => {
                 if (error.response && error.response.status === 401)
-                actions.changeError("Error getting fridge ingredients")
+                toast.error("Error getting fridge ingredients")
                 else   
-                actions.changeError("There may be a problem with the server. Please try again after a few moments.")
+                toast.error("There may be a problem with the server. Please try again after a few moments.")
             })    
       setTimeout(() => {  
       setloading({ done: true })
