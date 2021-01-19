@@ -1,6 +1,6 @@
 import logIn from "../../fixtures/logInSequence";
 
-describe("Log In", () => {
+describe("Logs In", () => {
   it("Pass: should have the right initial state", function () {
     cy.visit("http://localhost:3000/ingredients/Testuser/fridge");
     cy.window()
@@ -40,7 +40,7 @@ describe("Log In", () => {
           pantryIngredients: [],
         },
         errors: {
-          error: "Error getting fridge ingredients",
+          error: null,
         },
       });
   });
@@ -67,53 +67,6 @@ describe("Log In", () => {
     cy.contains("What is in your fridge?");
   });
 
-  it("Pass: Logs in and changes state", () => {
-    cy.logIn();
-    cy.get(".nav_trigger__3BDFX").trigger("mouseover");
-    cy.get(".nav_nav__3AJrQ").scrollIntoView();
-    cy.contains("Testuser");
-    cy.window()
-      .its("store")
-      .invoke("getState")
-      // .should("deep.equal", { userLoggedIn: { username: "Testuser" } });
-      .should("deep.equal", {
-        modalOpen: {
-          modal: null,
-        },
-        userPreferences: {
-          vegetarian: false,
-          vegan: false,
-          glutenFree: false,
-          dairyFree: false,
-          veryHealthy: false,
-          cheap: false,
-          veryPopular: false,
-          sustainable: false,
-        },
-        userLoggedIn: {
-          username: "Testuser",
-          jwt: undefined,
-        },
-        currentUserSettings: {
-          username: "Username",
-          email: "Email",
-          profile: undefined,
-        },
-        recipes: {
-          browseRecipes: null,
-          savedRecipes: null,
-          singleRecipe: null,
-        },
-        userIngredients: {
-          fridgeIngredients: [],
-          pantryIngredients: [],
-        },
-        errors: {
-          error: null,
-        },
-      });
-  });
-
   it("Fail: Logs in and loads homepage with incorrect username in nav", () => {
     cy.logIn();
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
@@ -121,7 +74,7 @@ describe("Log In", () => {
     cy.contains("Barry");
   });
 
-  it("Pass: Deson't log in with incorrect credentials", () => {
+  it("Pass: Doesn't log in with incorrect credentials", () => {
     cy.visit("localhost:3000");
 
     cy.get(".nav_trigger__3BDFX").trigger("mouseover");
@@ -136,7 +89,6 @@ describe("Log In", () => {
       .type("WrongPassword!1")
       .should("have.value", "WrongPassword!1");
     cy.contains("Log In").click();
-    cy.contains("Error: Authentication failed");
     cy.contains("Oh no!");
   });
 

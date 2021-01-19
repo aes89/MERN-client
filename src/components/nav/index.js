@@ -208,6 +208,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// export default navBar;
-
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+
+export { NavBar as NavBarForTest };
