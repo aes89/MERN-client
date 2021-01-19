@@ -1145,5 +1145,9 @@ The functionality which takes the users preferences and filters out recipes usin
 <summary>Click to expand</summary>
 
 
+| Date | Feature | Notes | Refactored | 
+|:---:|:---:|:---:|:---:|
+|19/01/2021| User Profile Upload|Need to refresh user settings page manually before viewing profile image |&cross;|
+|19/01/2021| Browse Recipes | The checker which determines if a message about no fridge ingredients is displayed only works if fridge page is visited first - this would be fixed by calling DB for all use info on log in and store in local store. |&cross;|
 
 </details>
