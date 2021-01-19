@@ -21,8 +21,6 @@ import Footer from "./components/footer";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-//NOTE TO CHANGE THE BELOW ROUTES BACK TO PRIVATE ROUTE AFTER ALL CODE IS DONE
-//MAYBE ADD TOAST NOTIFCATION BELOW?
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isLoggedIn = getUsername();
 
@@ -56,7 +54,7 @@ const App = ({ actions }) => {
     <Fragment>
       <Helmet>
         <title>FridgeMate</title>
-        <meta name="description" content="Helmet application" />
+        <meta name="description" content="Recipe application" />
       </Helmet>
       <CssBaseline />
       <BrowserRouter>

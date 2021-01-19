@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
   let history = useHistory();
   const [loading, setloading] = useState({ done: true });
-
+  
   const formik = useFormik({
     initialValues: {
       file: "",
