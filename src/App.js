@@ -47,8 +47,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 const App = ({ actions }) => {
-  
-
     useEffect(( ) => {
         try {
           actions.logIn(getUsername());
@@ -67,7 +65,7 @@ const App = ({ actions }) => {
     <Fragment>
       <Helmet>
         <title>FridgeMate</title>
-        <meta name="description" content="Helmet application" />
+        <meta name="description" content="Recipe application" />
       </Helmet>
       <CssBaseline />
       <BrowserRouter>
