@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">3.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/30</span>
+                <span class='fraction'>1/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.94% </span>
+                <span class="strong">5.88% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/17</span>
+                <span class='fraction'>1/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">3.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/30</span>
+                <span class='fraction'>1/30</span>
             </div>
         
             
@@ -189,13 +189,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,26 +254,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">199x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,19 +285,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -309,15 +309,15 @@ export async function <span class="fstat-no" title="function not covered" >regis
 <span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
-export async function loginUser(userInfo) {
+export async function <span class="fstat-no" title="function not covered" >loginUser(</span>userInfo) {
   // call to server to login user
-  const response = await api.post("/user/login", userInfo);
-  return response.data;
+  const response = <span class="cstat-no" title="statement not covered" >await api.post("/user/login", userInfo);</span>
+<span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
-export async function logoutUser() {
+export async function <span class="fstat-no" title="function not covered" >logoutUser(</span>) {
   // call to server to logout user
-  return api.get("/user/logout");
+<span class="cstat-no" title="statement not covered" >  return api.get("/user/logout");</span>
 }
 &nbsp;
 export async function <span class="fstat-no" title="function not covered" >forgotPassword(</span>email) {
@@ -374,19 +374,19 @@ export async function <span class="fstat-no" title="function not covered" >uploa
   } catch (error) {}
 }
 &nbsp;
-export async function getPreference(username) {
+export async function <span class="fstat-no" title="function not covered" >getPreference(</span>username) {
   // call to server to register user
-  const response = await api.get("/preferences/" + username);
-  return response.data;
+  const response = <span class="cstat-no" title="statement not covered" >await api.get("/preferences/" + username);</span>
+<span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
-export async function updatePreference(userInfo, username) {
+export async function <span class="fstat-no" title="function not covered" >updatePreference(</span>userInfo, username) {
   // call to server to register user
-  const response = await api.patch(
+  const response = <span class="cstat-no" title="statement not covered" >await api.patch(</span>
     "/preferences/" + username + "/edit",
     userInfo
   );
-  return response.data;
+<span class="cstat-no" title="statement not covered" >  return response.data;</span>
 }
 &nbsp;
 export function getUsername() {
@@ -394,10 +394,10 @@ export function getUsername() {
 }
 &nbsp;
 // Store loggedInUser username in local storage
-export function setUsername(user) {
-  user
+export function <span class="fstat-no" title="function not covered" >setUsername(</span>user) {
+<span class="cstat-no" title="statement not covered" >  user</span>
     ? localStorage.setItem("username", user)
-    : <span class="branch-1 cbranch-no" title="branch not covered" >localStorage.removeItem("username");</span>
+    : localStorage.removeItem("username");
 }
 &nbsp;
 // Get profile from localStorage
@@ -406,22 +406,22 @@ export function <span class="fstat-no" title="function not covered" >getProfile(
 }
 &nbsp;
 // Store profile  in local storage
-export function setProfile(image) {
-  image
+export function <span class="fstat-no" title="function not covered" >setProfile(</span>image) {
+<span class="cstat-no" title="statement not covered" >  image</span>
     ? localStorage.setItem("profile", image)
-    : <span class="branch-1 cbranch-no" title="branch not covered" >localStorage.removeItem("profile");</span>
+    : localStorage.removeItem("profile");
 }
 &nbsp;
 // Get preferences from localStorage
-export function getPref() {
-  return localStorage.getItem("preferences");
+export function <span class="fstat-no" title="function not covered" >getPref(</span>) {
+<span class="cstat-no" title="statement not covered" >  return localStorage.getItem("preferences");</span>
 }
 &nbsp;
 // Store preferences username in local storage
-export function setPref(pref) {
-  pref
+export function <span class="fstat-no" title="function not covered" >setPref(</span>pref) {
+<span class="cstat-no" title="statement not covered" >  pref</span>
     ? localStorage.setItem("preferences", JSON.stringify(pref))
-    : <span class="branch-1 cbranch-no" title="branch not covered" >localStorage.removeItem("preferences");</span>
+    : localStorage.removeItem("preferences");
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -430,7 +430,7 @@ export function setPref(pref) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 19 2021 18:03:01 GMT+1100 (Australian Eastern Daylight Time)
+                at Tue Jan 19 2021 20:26:38 GMT+1100 (Australian Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

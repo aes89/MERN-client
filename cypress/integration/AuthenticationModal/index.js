@@ -1,4 +1,4 @@
-describe("Log In", () => {
+describe("Log In Modal", () => {
   it("Pass: Had the right initial state", () => {
     cy.visit("http://localhost:3000/");
     cy.window()

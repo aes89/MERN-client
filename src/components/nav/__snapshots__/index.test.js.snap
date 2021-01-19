@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div
+  class="navBox"
+>
+  <Connect(AuthenticationModal) />
+  <a
+    class="trigger"
+  >
+    <i>
+      <Memo([object Object])
+        fontSize="large"
+      />
+    </i>
+  </a>
+  <ForwardRef(Fade)
+    in={true}
+    timeout={2000}
+  >
+    <nav
+      class="nav"
+    >
+      <ul>
+        <li>
+          <Link
+            to="/user/true/account-settings"
+          >
+            <div
+              class="userProfile"
+            >
+              <img
+                alt="profile of user"
+                src={Object {}}
+              />
+              <div>
+                <Component />
+              </div>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Connect(SearchRecipeButton) />
+          <a
+            class="navLink"
+          />
+        </li>
+        <li>
+          <Link
+            class="navLink"
+            to="/ingredients/true/fridge"
+          >
+            <img
+              alt="Fridge"
+              src=""
+            />
+            <div>
+              My Fridge
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            class="navLink"
+            to="/ingredients/true/pantry"
+          >
+            <img
+              alt="Pantry"
+              src=""
+            />
+            <div>
+              Pantry Staples
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            class="navLink"
+            to="/recipes/saved-recipes"
+          >
+            <img
+              alt="list"
+              src=""
+            />
+            <div>
+              Saved Recipes
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            class="navLink"
+            to="/preferences/true"
+          >
+            <img
+              alt="preference"
+              src=""
+            />
+            <div>
+               My Preferences
+            </div>
+          </Link>
+        </li>
+        <li
+          class="foodPic"
+        >
+          <img
+            alt="picture of food"
+            src=""
+          />
+        </li>
+        <li
+          class="navButtons"
+        >
+           
+          <WithStyles(ForwardRef(Button))
+            class="navButtonstyle"
+            onClick={[Function]}
+            variant="outlined"
+          >
+            Log out
+          </WithStyles(ForwardRef(Button))>
+        </li>
+        <li
+          style={
+            Object {
+              "padding": "10px",
+              "textAlign": "left",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Button))
+            onClick={[Function]}
+          >
+            <Memo([object Object]) />
+          </WithStyles(ForwardRef(Button))>
+        </li>
+      </ul>
+    </nav>
+  </ForwardRef(Fade)>
+</div>
+`;

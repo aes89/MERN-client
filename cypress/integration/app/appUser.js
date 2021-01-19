@@ -5,7 +5,7 @@ describe("Home page with user logged in", () => {
     cy.logIn();
   });
 
-  it("Fail: Should be logged in", () => {
+  it("Fail: Should not be logged in", () => {
     cy.visit("localhost:3000");
 
     cy.contains("What is in your fridge?");
