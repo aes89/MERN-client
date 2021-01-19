@@ -191,9 +191,9 @@ The overall goal of this application is a search application based on user ingre
 
 * **react 17.0.1** - An open-source, front end, JavaScript library for building user interfaces or UI components.
 * **react-dom 17.0.1** - This package serves as the entry point to the DOM and server renderers for React.
-* **react-router-dom 5.2.0** - description
-* **react-scripts 4.0.1** - description
-* **formik 2.2.5** - Is a open source library for React it is declarative, intuitive and adoptable. Its key features are getting values in and out of form state, validation and error messages and handling form submission.This library was used for all our form inputs. 
+* **react-router-dom 5.2.0** - React Router is a collection of navigational components that compose declaratively with your application, DOM bindings for React Router. 
+* **react-scripts 4.0.1** - includes scripts and configuration used by Create React App used to initiate the project.
+* **formik 2.2.5** - Is a open source library for React it is declarative, intuitive and adoptable. Its key features are getting values in and out of form state, validation and error messages and handling form submission.This library was used for all our form inputs, excluding preferences. 
 * **axios 0.21.1** - Is a promise-based HTTP client that supports an easy-to-use API and can be used in both the browser and Node. js.
 * **react-redux 7.2.2** - Is the official React binding for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update data.
 * **@reduxjs/toolkit** - Is the official, opinionated, batteries-included toolset for efficient Redux development, intended to be the standard way to write Redux logic. It includes utility functions and several Redux add ons. 
@@ -209,20 +209,36 @@ The overall goal of this application is a search application based on user ingre
 * **@material-ui/core 4.11.2** - Our main styling layout for done with Material UI grid and paper
 * **@material-ui/icons 4.11.2** - This package was used for various icons in our application. 
 * **@material-ui/lab 4.0.0-alpha.57** -This was used to import our 'Autocomplete' component which was very useful for our ingredient input. 
+* **@cypress/instrument-cra 1.4.0** - This package helps Cypress to work with "Create React Apps" without ejecting react-scripts.
+* **dotenv 8.2.0** -  This loads environment variables from a .env file into process.env.
+* **lodash 4.17.20** - A Javascript utility library. Used to filter ingredients and clear the Autocomplete component on submission. 
+* **web-vitals 0.2.4** - Used with Cypress. A modular library for measuring all the Web Vitals metrics.
 
-* **@testing-library/jest-dom 5.11.4** - description
-* **@testing-library/react 11.1.0** - description
-* **@testing-library/user-event 12.1.10** - description
+* **@testing-library/jest-dom 5.11.4** - A companion library for Testing Library that provides custom DOM element matchers for Jest.
 
 **Client Development**
 
-* **cypress 6.2.1** - Is a front end testing tool for end-to-end, integreation and unit tests.
-* **@babel/core 7.12.9** - description
-* **@babel/preset-env 7.12.7** - description
-* **@babel/preset-react 7.12.7** - description
-* **babel-jest 26.6.3** - description
-* **identity-obj-proxy 3.0.0** - description
-* **jest-transform-stub 2.0.0** - description
+* **cypress 6.2.1** - Is a front end testing tool for end-to-end, integration and unit tests.
+* **@cypress/code-coverage 3.9.1** - Peery dependency with Cypress, used for code coverage reporting but does not instrument code which allows for code coverage calculation. 
+* **@testing-library/cypress 7.0.3** - This allows you to use all the useful DOM Testing Library methods in your tests.
+* **cypress-localstorage-commands 1.3.1** - Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and disabling localStorage.
+
+
+* **@babel/core 7.12.9** - Babel is a JavaScript compiler.
+* **@babel/preset-env 7.12.7** - A Babel preset for each environment.
+* **@babel/preset-react 7.12.7** - Babel preset for all React plugins.
+* **babel-plugin-istanbul 6.0.0** - A Babel plugin that instruments your code with Istanbul coverage.
+
+* **babel-jest 26.6.3** - Jest plugin to use babel for transformation. 
+* **identity-obj-proxy 3.0.0** - An identity object using ES6 proxies. Useful for testing trivial webpack imports. For instance, you can tell Jest to mock this object as imported CSS modules; then all your className lookups on the imported styles object will be returned as-is.
+* **jest-transform-stub 2.0.0** - Jest doesn't handle non JavaScript assets by default. You can use this module to avoid errors when importing non JavaScript assets.
+* **@wojtekmaj/enzyme-adapter-react-17 0.4.1** - Unofficial adapter for React 17 for Enzyme.
+* **enzyme 3.11.0** - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output. Used for snapshots.
+* **enzyme-adapter-react-16 1.15.5** - Has peer dependencies on react and react-dom. Adapts enzyme to the specific version of react.
+* **enzyme-to-json 3.6.18** - Convert Enzyme wrappers to a format compatible with Jest snapshot testing.
+* **react-test-renderer 17.0.1** - Used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+
 
 **Other**
 
