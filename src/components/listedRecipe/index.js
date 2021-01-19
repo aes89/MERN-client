@@ -126,7 +126,7 @@ const ListedRecipe = ({
           <Paper className={classes.paper} variant="outlined">
             <Link to={"/recipes/" + id + "/recipe"}>
               <div class={styles.listItem}>
-              {!usedIngred && missedIngred ? (
+              {missedIngred ? (
                 <div>
                   You have {usedIngred}/{usedIngred + missedIngred} ingredients!{" "}
                 </div>
