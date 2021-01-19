@@ -101,6 +101,7 @@ The overall goal of this application is a search application based on user ingre
 * User can write a review on a recipe (including picture).
 * Filter feature used to filter recipes, this include diet, health labels, cuisine and prep time. 
 * Filter buttons on saved recipe page at the top to show dishes based off Breakfast, lunch, dinner, snack.
+* Highlight ingredients in single recipe page that the user has a does not have. 
 
 </details>
 
@@ -731,9 +732,16 @@ Our application has gone through comprehensive testing with Mocha for the Server
 <br>
 
 #### Screen Recordings
-[Dev User Testing Video 1- User](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/user-test-dev-1.mp4)
+[User Test 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/user-test-dev-1.mp4)
 
-[Dev User Testing Video 2 - Password Reset](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/dev-password-reset-.mp4)
+[User Test- Reset Password](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/dev-password-reset-.mp4)
+
+[User Desktop](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/full-dev-test.mp4)
+
+[User Mobile](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/phone-overview.mp4)
+
+[User Tablet](https://github.com/CA-MERN/MERN-server/tree/main/docs/devtestvideo/tablet-overview.mp4)
+
 
 #### Test Notes
 
@@ -746,15 +754,15 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 11/01/2020 | Preferences Page | Initial View | Description/prompt needed for choosing preferences | Yes | |
 | 11/01/2020 | Home | Initial View | Help button needed in navigation | Yes | |
 | 11/01/2020 | Browse Recipes | Page Load | Additional loading time needed for recipes to return from DB | Yes | |
-| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
-| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  Yes |Dev Test Record 1  |
-| 14/01/2020 | Pantry Page| Component | Error - filterpantry function not working , undefined |  Yes | Dev Test Record 1 |
-| 14/01/2020 | Browse Recipe | Component | Loading fridge animation applied to all browse recipe buttons |  &cross; | Dev Test Record 1  |
-| 14/01/2020 | Browse Page | Recipe Title | Recipe Title - room not large enough for longer recipe names |  Yes | Dev Test Record 1  |
-| 14/01/2020 | Saved Recipe Page | Component | Need back to saved recipes button for smoother user experience  |  Yes | Dev Test Record 1  |
-| 14/01/2020 | User Settings Page | Component | Add loading screen after update settings for smoother UX  |  Yes | Dev Test Record 1  |
-| 14/01/2020 | Login In Modal  | Modal | Add loading screen for after clicking login |  Yes | Dev Test Record 1  |
-| 18/01/2020 | Username | Nav | Username coming up on nav bar- causing issues with saving recipes  |  Yes | Dev User Testing Video 2 - Password Reset |
+| 14/01/2020 | Add Fridge Ingredients | Component | Clear Autocomplete ingredient component after adding |  Yes | User Test 1  |
+| 14/01/2020 | Add Pantry Staples | Component | Clear Autocomplete ingredient component after adding |  Yes | User Test 1 |
+| 14/01/2020 | Pantry Page| Component | Error - filterpantry function not working , undefined |  Yes | User Test 1 |
+| 14/01/2020 | Browse Recipe | Component | Loading fridge animation applied to all browse recipe buttons |  &cross; | User Test 1 |
+| 14/01/2020 | Browse Page | Recipe Title | Recipe Title - room not large enough for longer recipe names |  Yes | User Test 1  |
+| 14/01/2020 | Saved Recipe Page | Component | Need back to saved recipes button for smoother user experience  |  Yes | User Test 1 |
+| 14/01/2020 | User Settings Page | Component | Add loading screen after update settings for smoother UX  |  Yes | User Test 1 |
+| 14/01/2020 | Login In Modal  | Modal | Add loading screen for after clicking login |  Yes | User Test 1  |
+| 18/01/2020 | Username | Nav | Username coming up on nav bar- causing issues with saving recipes  |  Yes | User Test- Reset Password |
 | 18/01/2020 | Single Recipe | Checker local storage | Property ID of Null coming up. |  Yes- refactored |  |
 
 </details>
@@ -770,8 +778,10 @@ Our application has gone through comprehensive testing with Mocha for the Server
 <br>
 
 #### Screen Recordings
-[Prod User Testing Video 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/Production-test-1.mp4)
 
+[User Test Production 1](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/Production-test-1.mp4)
+
+[User Test Production Full](https://github.com/CA-MERN/MERN-server/tree/main/docs/prodtestvideo/main-prod-test.mp4)
 
 | Date | Feature | Test | Notes | Refactored | Screen Record ? |
 |:---:|:---:|:---:|:---:|:---:|:---:|
