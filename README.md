@@ -781,7 +781,7 @@ Also see screen recordings in /docs/devtestvideo.
 Development testing was repeated on deployment. 
 
 | Feature | Test |
-|:---:|:---:|:---:|
+|:---:|:---:|
 | Home | Home page loads with appropriate components (nav, joke, home page, footer). |
 | Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
 | Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
