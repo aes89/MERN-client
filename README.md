@@ -92,6 +92,7 @@ The overall goal of this application is a search application based on user ingre
    
 #### Future Features
 
+* Priority - Improve UI around profile image upload - input validation needed, instructions on accepted formats needed, change image to update AFTER upload so user gets feedback on when process complete.
 * Search History capture.
 * Oauth with sign up and login.
 * Recipes of the week on the home page.
@@ -353,9 +354,68 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 4 | User Settings | User settings can be updated independently from the profile image  |
 | 4 | Pantry | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
 | 4 | Fridge | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
-| 4 | Pantry | test |
-| 4 | Pantry | test |
-| 4 | Pantry | test |
+| 5 | Home | Home page loads with appropriate components (nav, joke, home page, footer). |
+| 5 | Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
+| 5 | Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
+| 5 | Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal opens. Persisting bug. |
+| 5 | Nav | Nav renders on wide home screen, is hidden on smaller screens. Comes into view on hover on top of page and menu icon.  |
+| 5 | Home - no user | All links redirect to home page excluding log in/register/where to start. |
+| 5 | Help | Help modal opens from link in nav. Closes when "back" clicked or clicks away from modal. |
+| 5 | Register | Register modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| 5 | Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| 5 | Login | Login modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| 5 | Login | Changes to "Register" modal when "New?" link clicked. |
+| 5 | Register | New user can register from Register modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| 5 | Login | User can login from login modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| 5 | Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| 5 | Home with user | Successful login and registration redirects to home page, "Yu are logged in!" toast displays. |
+| 5 | Nav with user | When user authenticated, "log in" and "register" links change to "log out". |
+| 5 | Logout | When "log out" clicked, user is redirected to home page, toast displays "come back soon!" and home pge returns to stat where links redirect to home page. |
+| 5 | Nav/Profile image | Users without an uploaded image display the default silhouette image, otherwise their uploaded image is displayed.  |
+| 5 | Nav/Profile image | Clicking the silhouette image links to user settings page. |
+| 5 | User settings | Form loads with previously entered username, email and fields for password displaying "password" and "retype password" and profile image upload form. |
+| 5 | User settings | All fields, must be entered to update any user setting, i.e. password cannot be updated without entering/changing username or email address. Note for future improvement. |
+| 5 | Profile image | Clicking "browse" opens file browser, file can be selected. Selecting incorrect format (e.g. word document) shows "oh no!" toast and does not give option to upload. |
+| 5 | Profile image | Clicking "browse" opens file browser, file can be selected. Selecting correct format (e.g. .jpeg) shows the image above the form and changes the nav image. Clicking upload displays confirmation toast. |
+| 5 | Profile image | Clicking "upload" with no image selected  displays "oh no!" toast. |
+| 5 | Profile image | Attempting to upload incorrect file type crashes DB. Added to future features list with priority. |
+| 5 | Fridge | Loads as expected with previously entered ingredients or blank form if none. |
+| 5 | Fridge | Can remove individual ingredients and all ingredients via empty fridge.  |
+| 5 | Fridge | "Browse Recipes" button works as expected - displays browse recipes section. |
+| 5 | Pantry | Loads as expected with previously entered staples or blank form if none. |
+| 5 | Pantry | Can remove individual ingredients and all ingredients via empty pantry.  |
+| 5 | Pantry | "Browse Recipes" button works as expected - displays browse recipes section. |
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| 5 | Autocomplete | Selects ingredient from list and adds ingredient as a tag to autocomplete field. Ingredient cannot be selected from list again. |
+| 5 | Autocomplete | "Add Ingredients" clears tags and displays the ingredients individually in the fridge/pantry cutting board space. |
+| 5 | Autocomplete | Persisting bug - removing an individual ingredient or all ingredients returns them to the Autocomplete field. They can be entered multiple times using the "add ingredients" button.|
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. Handled using server-side validation however not ideal UI. |
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| 5 | Preferences | Loads as expected with previously entered preferences or blank form if none. |
+| 5 | Preferences | Preference options can be selected/deselected using check boxes. "Update Preferences" button displays "Preferences updated..." toast to confirm.  |
+| 5 | Browse Recipes | Loads as expected with suggested recipes if no ingredients etc entered, or suggested recipes matching entered ingredients/staples. |
+| 5 | Browse Recipes | Clicking "save recipe" shows "ou have saves this recipe!" toast, saving the same recipe displays "you have already saved this recipe" toast. |
+| 5 | Browse recipes | Persisting bug - sometimes "3/5" ingredients will display as "/NaN", possibly an API issue. Required further testing. |
+| 5 | Browse Recipes | Previously searches recipes will display on page after changing ingredients/staples, clicking "refresh search" button on browse recipes page will display new recipes. |
+| 5 | Saved Recipes | Loads as expected with previously saves recipes or "Looks like you have no recipes saved!"|
+| 5 | Saved Recipes | Clicking "remove recipe" on a saved recipe displays "removed from saved recipes" toast and recipe is no longer visible in component. |
+| 5 | Saved Recipes | Both "back to search" and "browse recipes" buttons return user to Browse Recipe page. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </details>
@@ -431,16 +491,13 @@ Our application has gone through comprehensive testing with Mocha for the Server
 
 #### Client
 
-<<<<<<< HEAD
 | Sprint | Feature | Test |
 |:---:|:---:|:---:|
 | 1 | test | test |
 | 1 | test | test |
 | 1 | test | test |
-=======
 <details>
 <summary>Click to expand</summary>
->>>>>>> 7b5a32dfc76ea6ffe1ef4b85ee2b5a7798c20ab2
 
 
 
@@ -639,7 +696,7 @@ In my testing of the main function in which makes all the API calls and data val
 In my first test call:
 
 ````js
-const recipes = returnRecipesToBrowse(req);
+const recipes = returnRecipesToBrowse(req);ƒr
 console.log(recipes); // will give you something like Promise {pending}
 ````
 Then this was tried:
