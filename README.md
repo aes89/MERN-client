@@ -101,6 +101,7 @@ The overall goal of this application is a search application based on user ingre
 * User can write a review on a recipe (including picture).
 * Filter feature used to filter recipes, this include diet, health labels, cuisine and prep time. 
 * Filter buttons on saved recipe page at the top to show dishes based off Breakfast, lunch, dinner, snack.
+* Highlight ingredients in single recipe page that the user has a does not have. 
 
 </details>
 
