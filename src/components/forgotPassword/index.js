@@ -42,7 +42,6 @@ const ForgotPassword = ({ actions, loggedIn, modalId }) => {
       setloading({ done: false });
       forgotPassword({ ...values })
         .then((r) => {
-          console.log(r);
           setTimeout(() => {
             setloading({ done: true });
             toast.success("Reset Link Sent to your Email!");
