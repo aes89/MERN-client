@@ -786,7 +786,7 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | Date | Feature | Test | Notes | Refactored | Screen Record ? |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 17/01/2020 | CORS | App | CORS error- has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. |  Yes- Procfile was missing | n/a  |
-| 18/01/2020 | Cookies | App | Cookies are being sent from server, but browser is not holding them. |   &cross; |  Production user test video 1  |
+| 18/01/2020 | Cookies | App | Cookies are being sent from server, but browser is not holding them. |  Yes |  Production user test video 1  |
 
 
 </details>
@@ -1129,6 +1129,11 @@ The functionality which takes the users preferences and filters out recipes usin
 <img src="./docs/trello/sprint5-2.png" alt="sprint 5 card 2" width="80%" />
 <img src="./docs/trello/sprint5-3.png" alt="sprint 5 card 3" width="80%" />
 <img src="./docs/trello/sprint5-4.png" alt="sprint 5 card 4" width="80%" />
+
+#### Final Trello
+
+<img src="./docs/trello/sprint5-5.png" alt="sprint 5 card 5" width="80%" />
+
 
 </details>
 
