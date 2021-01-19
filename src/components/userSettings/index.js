@@ -75,6 +75,7 @@ const validate = (values) => {
 const UserSettings = ({ actions, currentUserSettings, userLoggedIn }) => {
   const classes = useStyles();
   const [loading, setloading] = useState({ done: false });
+ 
   const text = {
     color: "red",
     marginLeft: "10px",

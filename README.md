@@ -781,7 +781,7 @@ Also see screen recordings in /docs/devtestvideo.
 Development testing was repeated on deployment. 
 
 | Feature | Test |
-|:---:|:---:|:---:|
+|:---:|:---:|
 | Home | Home page loads with appropriate components (nav, joke, home page, footer). |
 | Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
 | Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
@@ -896,7 +896,7 @@ Development testing was repeated on deployment.
 | Date | Feature | Test | Notes | Refactored | Screen Record ? |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | 17/01/2020 | CORS | App | CORS error- has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. |  Yes- Procfile was missing | n/a  |
-| 18/01/2020 | Cookies | App | Cookies are being sent from server, but browser is not holding them. |   &cross; |  Production user test video 1  |
+| 18/01/2020 | Cookies | App | Cookies are being sent from server, but browser is not holding them. |  Yes |  Production user test video 1  |
 
 
 </details>
@@ -1240,6 +1240,11 @@ The functionality which takes the users preferences and filters out recipes usin
 <img src="./docs/trello/sprint5-3.png" alt="sprint 5 card 3" width="80%" />
 <img src="./docs/trello/sprint5-4.png" alt="sprint 5 card 4" width="80%" />
 
+#### Final Trello
+
+<img src="./docs/trello/sprint5-5.png" alt="sprint 5 card 5" width="80%" />
+
+
 </details>
 
 ---
@@ -1250,5 +1255,8 @@ The functionality which takes the users preferences and filters out recipes usin
 <summary>Click to expand</summary>
 
 
+| Date | Feature | Notes | Refactored | 
+|:---:|:---:|:---:|:---:|
+|19/01/2021| Browse Recipes | The checker which determines if a message about no fridge ingredients is displayed only works if fridge page is visited first - this would be fixed by calling DB for all use info on log in and store in local store. |&cross;|
 
 </details>

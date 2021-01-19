@@ -62,6 +62,7 @@ const SavedRecipes = ({ actions, savedRecipes }) => {
 
       getSavedHandler()
       setSavedUserRecipes(JSON.parse(getSavedRecipes()))
+        
     }, []);
 
     //function for removing from saved recipes- this is sent via props to listed recipe
