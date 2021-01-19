@@ -50,6 +50,7 @@
  }
  
  .nav ul {
+   list-style-type: none;
     position: absolute;
     top: 4em;
     left: 0;

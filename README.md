@@ -92,6 +92,7 @@ The overall goal of this application is a search application based on user ingre
    
 #### Future Features
 
+* Priority - Improve UI around profile image upload - input validation needed, instructions on accepted formats needed, change image to update AFTER upload so user gets feedback on when process complete.
 * Search History capture.
 * Oauth with sign up and login.
 * Recipes of the week on the home page.
@@ -496,9 +497,9 @@ The overall goal of this application is a search application based on user ingre
 
 * **react 17.0.1** - An open-source, front end, JavaScript library for building user interfaces or UI components.
 * **react-dom 17.0.1** - This package serves as the entry point to the DOM and server renderers for React.
-* **react-router-dom 5.2.0** - description
-* **react-scripts 4.0.1** - description
-* **formik 2.2.5** - Is a open source library for React it is declarative, intuitive and adoptable. Its key features are getting values in and out of form state, validation and error messages and handling form submission.This library was used for all our form inputs. 
+* **react-router-dom 5.2.0** - React Router is a collection of navigational components that compose declaratively with your application, DOM bindings for React Router. 
+* **react-scripts 4.0.1** - includes scripts and configuration used by Create React App used to initiate the project.
+* **formik 2.2.5** - Is a open source library for React it is declarative, intuitive and adoptable. Its key features are getting values in and out of form state, validation and error messages and handling form submission.This library was used for all our form inputs, excluding preferences. 
 * **axios 0.21.1** - Is a promise-based HTTP client that supports an easy-to-use API and can be used in both the browser and Node. js.
 * **react-redux 7.2.2** - Is the official React binding for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update data.
 * **@reduxjs/toolkit** - Is the official, opinionated, batteries-included toolset for efficient Redux development, intended to be the standard way to write Redux logic. It includes utility functions and several Redux add ons. 
@@ -514,20 +515,36 @@ The overall goal of this application is a search application based on user ingre
 * **@material-ui/core 4.11.2** - Our main styling layout for done with Material UI grid and paper
 * **@material-ui/icons 4.11.2** - This package was used for various icons in our application. 
 * **@material-ui/lab 4.0.0-alpha.57** -This was used to import our 'Autocomplete' component which was very useful for our ingredient input. 
+* **@cypress/instrument-cra 1.4.0** - This package helps Cypress to work with "Create React Apps" without ejecting react-scripts.
+* **dotenv 8.2.0** -  This loads environment variables from a .env file into process.env.
+* **lodash 4.17.20** - A Javascript utility library. Used to filter ingredients and clear the Autocomplete component on submission. 
+* **web-vitals 0.2.4** - Used with Cypress. A modular library for measuring all the Web Vitals metrics.
 
-* **@testing-library/jest-dom 5.11.4** - description
-* **@testing-library/react 11.1.0** - description
-* **@testing-library/user-event 12.1.10** - description
+* **@testing-library/jest-dom 5.11.4** - A companion library for Testing Library that provides custom DOM element matchers for Jest.
 
 **Client Development**
 
-* **cypress 6.2.1** - Is a front end testing tool for end-to-end, integreation and unit tests.
-* **@babel/core 7.12.9** - description
-* **@babel/preset-env 7.12.7** - description
-* **@babel/preset-react 7.12.7** - description
-* **babel-jest 26.6.3** - description
-* **identity-obj-proxy 3.0.0** - description
-* **jest-transform-stub 2.0.0** - description
+* **cypress 6.2.1** - Is a front end testing tool for end-to-end, integration and unit tests.
+* **@cypress/code-coverage 3.9.1** - Peery dependency with Cypress, used for code coverage reporting but does not instrument code which allows for code coverage calculation. 
+* **@testing-library/cypress 7.0.3** - This allows you to use all the useful DOM Testing Library methods in your tests.
+* **cypress-localstorage-commands 1.3.1** - Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and disabling localStorage.
+
+
+* **@babel/core 7.12.9** - Babel is a JavaScript compiler.
+* **@babel/preset-env 7.12.7** - A Babel preset for each environment.
+* **@babel/preset-react 7.12.7** - Babel preset for all React plugins.
+* **babel-plugin-istanbul 6.0.0** - A Babel plugin that instruments your code with Istanbul coverage.
+
+* **babel-jest 26.6.3** - Jest plugin to use babel for transformation. 
+* **identity-obj-proxy 3.0.0** - An identity object using ES6 proxies. Useful for testing trivial webpack imports. For instance, you can tell Jest to mock this object as imported CSS modules; then all your className lookups on the imported styles object will be returned as-is.
+* **jest-transform-stub 2.0.0** - Jest doesn't handle non JavaScript assets by default. You can use this module to avoid errors when importing non JavaScript assets.
+* **@wojtekmaj/enzyme-adapter-react-17 0.4.1** - Unofficial adapter for React 17 for Enzyme.
+* **enzyme 3.11.0** - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output. Used for snapshots.
+* **enzyme-adapter-react-16 1.15.5** - Has peer dependencies on react and react-dom. Adapts enzyme to the specific version of react.
+* **enzyme-to-json 3.6.18** - Convert Enzyme wrappers to a format compatible with Jest snapshot testing.
+* **react-test-renderer 17.0.1** - Used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+
 
 
 
@@ -563,6 +580,7 @@ This application has been testing in both Chrome and FireFox on Mac OS Big Sur 1
 Our application has gone through comprehensive testing with Mocha for the Server and Cypress for the client. Along with countless manual tests using Postman and the console. 
 
 ### Manual Testing Log - Development
+Also see screen recordings in /docs/devtestvideo.
 
 #### Server 
 
@@ -636,9 +654,53 @@ Our application has gone through comprehensive testing with Mocha for the Server
 | 4 | User Settings | User settings can be updated independently from the profile image  |
 | 4 | Pantry | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
 | 4 | Fridge | Ingredients can be selected from the Autocomplete field which are displayed as tags within the field, and cannot be selected from the drop down a second time |
-| 4 | Pantry | test |
-| 4 | Pantry | test |
-| 4 | Pantry | test |
+| 5 | Home | Home page loads with appropriate components (nav, joke, home page, footer). |
+| 5 | Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
+| 5 | Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
+| 5 | Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal does not open. Persisting bug. |
+| 5 | Nav | Nav renders on wide home screen, is hidden on smaller screens. Comes into view on hover on top of page and menu icon.  |
+| 5 | Home - no user | All links redirect to home page excluding log in/register/where to start. |
+| 5 | Help | Help modal opens from link in nav. Closes when "back" clicked or clicks away from modal. |
+| 5 | Register | Register modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| 5 | Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| 5 | Login | Login modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| 5 | Login | Changes to "Register" modal when "New?" link clicked. |
+| 5 | Register | New user can register from Register modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| 5 | Login | User can login from login modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| 5 | Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| 5 | Home with user | Successful login and registration redirects to home page, "Yu are logged in!" toast displays. |
+| 5 | Nav with user | When user authenticated, "log in" and "register" links change to "log out". |
+| 5 | Logout | When "log out" clicked, user is redirected to home page, toast displays "come back soon!" and home pge returns to stat where links redirect to home page. |
+| 5 | Nav/Profile image | Users without an uploaded image display the default silhouette image, otherwise their uploaded image is displayed.  |
+| 5 | Nav/Profile image | Clicking the silhouette image links to user settings page. |
+| 5 | User settings | Form loads with previously entered username, email and fields for password displaying "password" and "retype password" and profile image upload form. |
+| 5 | User settings | All fields, must be entered to update any user setting, i.e. password cannot be updated without entering/changing username or email address. Note for future improvement. |
+| 5 | Profile image | Clicking "browse" opens file browser, file can be selected. Selecting incorrect format (e.g. word document) shows "oh no!" toast and does not give option to upload. |
+| 5 | Profile image | Clicking "browse" opens file browser, file can be selected. Selecting correct format (e.g. .jpeg) shows the image above the form and changes the nav image. Clicking upload displays confirmation toast. |
+| 5 | Profile image | Clicking "upload" with no image selected  displays "oh no!" toast. |
+| 5 | Profile image | Attempting to upload incorrect file type crashes DB. Added to future features list with priority. |
+| 5 | Fridge | Loads as expected with previously entered ingredients or blank form if none. |
+| 5 | Fridge | Can remove individual ingredients and all ingredients via empty fridge.  |
+| 5 | Fridge | "Browse Recipes" button works as expected - displays browse recipes section. |
+| 5 | Pantry | Loads as expected with previously entered staples or blank form if none. |
+| 5 | Pantry | Can remove individual ingredients and all ingredients via empty pantry.  |
+| 5 | Pantry | "Browse Recipes" button works as expected - displays browse recipes section. |
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| 5 | Autocomplete | Selects ingredient from list and adds ingredient as a tag to autocomplete field. Ingredient cannot be selected from list again. |
+| 5 | Autocomplete | "Add Ingredients" clears tags and displays the ingredients individually in the fridge/pantry cutting board space. |
+| 5 | Autocomplete | Persisting bug - removing an individual ingredient or all ingredients returns them to the Autocomplete field. They can be entered multiple times using the "add ingredients" button.|
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. Handled using server-side validation however not ideal UI. |
+| 5 | Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| 5 | Preferences | Loads as expected with previously entered preferences or blank form if none. |
+| 5 | Preferences | Preference options can be selected/deselected using check boxes. "Update Preferences" button displays "Preferences updated..." toast to confirm.  |
+| 5 | Browse Recipes | Loads as expected with suggested recipes if no ingredients etc entered, or suggested recipes matching entered ingredients/staples. |
+| 5 | Browse Recipes | Clicking "save recipe" shows "ou have saves this recipe!" toast, saving the same recipe displays "you have already saved this recipe" toast. |
+| 5 | Browse recipes | Persisting bug - sometimes "3/5" ingredients will display as "/NaN", possibly an API issue. Required further testing. |
+| 5 | Browse Recipes | Previously searches recipes will display on page after changing ingredients/staples, clicking "refresh search" button on browse recipes page will display new recipes. |
+| 5 | Saved Recipes | Loads as expected with previously saves recipes or "Looks like you have no recipes saved!"|
+| 5 | Saved Recipes | Clicking "remove recipe" on a saved recipe displays "removed from saved recipes" toast and recipe is no longer visible in component. |
+| 5 | Saved Recipes | Both "back to search" and "browse recipes" buttons return user to Browse Recipe page. |
+
 
 </details>
 
@@ -716,8 +778,56 @@ Our application has gone through comprehensive testing with Mocha for the Server
 <details>
 <summary>Click to expand</summary>
 
+Development testing was repeated on deployment. 
 
-
+| Feature | Test |
+|:---:|:---:|:---:|
+| Home | Home page loads with appropriate components (nav, joke, home page, footer). |
+| Carousel | Carousel opens when "Where to start" clicked, slides display as expected.  |
+| Carousel | Carousel closes when user clicks away from modal, "Register" modal opens.  |
+| Carousel | Carousel closes when user clicks "Get started" in modal, however "Register" modal does not open. Persisting bug. |
+| Nav | Nav renders on wide home screen, is hidden on smaller screens. Comes into view on hover on top of page and menu icon.  |
+| Home - no user | All links redirect to home page excluding log in/register/where to start. |
+| Help | Help modal opens from link in nav. Closes when "back" clicked or clicks away from modal. |
+| Register | Register modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| Login | Login modal opens from nav link. Closes when "cancel" clicked or user clicks away from modal. |
+| Login | Changes to "Register" modal when "New?" link clicked. |
+| Register | New user can register from Register modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| Login | User can login from login modal. Appropriate error messages displayed for incorrect or missing input (advises required format or "required" if empty after field is interacted with). |
+| Register | Changes to "Login" modal when "Have an account?" link clicked. |
+| Home with user | Successful login and registration redirects to home page, "Yu are logged in!" toast displays. |
+| Nav with user | When user authenticated, "log in" and "register" links change to "log out". |
+| Logout | When "log out" clicked, user is redirected to home page, toast displays "come back soon!" and home pge returns to stat where links redirect to home page. |
+| Nav/Profile image | Users without an uploaded image display the default silhouette image, otherwise their uploaded image is displayed.  |
+| Nav/Profile image | Clicking the silhouette image links to user settings page. |
+| User settings | Form loads with previously entered username, email and fields for password displaying "password" and "retype password" and profile image upload form. |
+| User settings | All fields, must be entered to update any user setting, i.e. password cannot be updated without entering/changing username or email address. Note for future improvement. |
+| Profile image | Clicking "browse" opens file browser, file can be selected. Selecting incorrect format (e.g. word document) shows "oh no!" toast and does not give option to upload. |
+| Profile image | Clicking "browse" opens file browser, file can be selected. Selecting correct format (e.g. .jpeg) shows the image above the form and changes the nav image. Clicking upload displays confirmation toast. |
+| Profile image | Clicking "upload" with no image selected  displays "oh no!" toast. |
+| Profile image | Attempting to upload incorrect file type crashes DB. Added to future features list with priority. |
+| Fridge | Loads as expected with previously entered ingredients or blank form if none. |
+| Fridge | Can remove individual ingredients and all ingredients via empty fridge.  |
+| Fridge | "Browse Recipes" button works as expected - displays browse recipes section. |
+| Pantry | Loads as expected with previously entered staples or blank form if none. |
+| Pantry | Can remove individual ingredients and all ingredients via empty pantry.  |
+| Pantry | "Browse Recipes" button works as expected - displays browse recipes section. |
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| Autocomplete | Selects ingredient from list and adds ingredient as a tag to autocomplete field. Ingredient cannot be selected from list again. |
+| Autocomplete | "Add Ingredients" clears tags and displays the ingredients individually in the fridge/pantry cutting board space. |
+| Autocomplete | Persisting bug - removing an individual ingredient or all ingredients returns them to the Autocomplete field. They can be entered multiple times using the "add ingredients" button.|
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. Handled using server-side validation however not ideal UI. |
+| Autocomplete | Displays fridge or pantry lists on appropriate pages. |
+| Preferences | Loads as expected with previously entered preferences or blank form if none. |
+| Preferences | Preference options can be selected/deselected using check boxes. "Update Preferences" button displays "Preferences updated..." toast to confirm.  |
+| Browse Recipes | Loads as expected with suggested recipes if no ingredients etc entered, or suggested recipes matching entered ingredients/staples. |
+| Browse Recipes | Clicking "save recipe" shows "ou have saves this recipe!" toast, saving the same recipe displays "you have already saved this recipe" toast. |
+| Browse recipes | Persisting bug - sometimes "3/5" ingredients will display as "/NaN", possibly an API issue. Required further testing. |
+| Browse Recipes | Previously searches recipes will display on page after changing ingredients/staples, clicking "refresh search" button on browse recipes page will display new recipes. |
+| Saved Recipes | Loads as expected with previously saves recipes or "Looks like you have no recipes saved!"|
+| Saved Recipes | Clicking "remove recipe" on a saved recipe displays "removed from saved recipes" toast and recipe is no longer visible in component. |
+| Saved Recipes | Both "back to search" and "browse recipes" buttons return user to Browse Recipe page. |
 
 </details>
 
@@ -922,7 +1032,7 @@ In my testing of the main function in which makes all the API calls and data val
 In my first test call:
 
 ````js
-const recipes = returnRecipesToBrowse(req);
+const recipes = returnRecipesToBrowse(req);ƒr
 console.log(recipes); // will give you something like Promise {pending}
 ````
 Then this was tried:

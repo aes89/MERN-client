@@ -9,20 +9,20 @@ const initialState = { username: "Username", email: "Email", profile: null };
 //update initial state (null here) to new state, data collected from component.
 const currentUserSettings = createReducer(initialState, (builder) => {
   builder.addCase(settings, (state, action) => {
-    state.username = action.payload.username;   
+    state.username = action.payload.username;
     state.email = action.payload.email;
+    console.log("is this hitting first", action.payload.profile);
     state.profile = action.payload.profile;
     console.log("user settings updated");
     //console.log(action.payload);
   });
   builder.addCase(updateProfile, (state, actions) => {
-    //console.log("hitting this action", actions.payload.profile);
+    console.log("is this hitting second (it should be the only one hitting");
     state.profile = actions.payload.profile;
   });
   builder.addCase(removeProfile, (state) => {
-      state.profile = null;
-    })
-  
+    state.profile = null;
+  });
 });
 
 export default currentUserSettings;
