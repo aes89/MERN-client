@@ -33,7 +33,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   const [pantryChecker, setPantryChecker] = useState("");
   const [fridgeChecker, setFridgeChecker] = useState("");
   const [loading, setloading] = useState(false);
-  const [fridgeLoading, setFridgeLoading] = useState({ done: true });
   const [recipesState, setRecipesState] = useState(null);
   const [errors, setErrors] = useState(null);
 
@@ -102,7 +101,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
   //Write savedRecipe Handler
   async function saveRecipeHandler(newRecipe) {
     //setloading(false)
-    setFridgeLoading({ done: false });
     await addNewSavedRecipe(newRecipe)
       .then((res) => {
         //saved to redux
@@ -111,12 +109,8 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
         setSavedRecipes(res);
         setErrors("");
         toast.success(" You have saved this recipe!");
-        setTimeout(() => {
-          setFridgeLoading({ done: true });
-        }, 5000);
       })
       .catch((error) => {
-        setFridgeLoading({ done: true });
         if (error.response === 401) {
           toast.error("Oh no, we couldnt' save your recipe!");
         } else if (error.response.status === 422) {
@@ -180,7 +174,6 @@ const BrowseRecipes = ({ browseRecipes, actions }) => {
                               key={recipe.id}
                               recipe={recipe}
                               saveRecipe={saveRecipeHandler}
-                              loadingFridge={fridgeLoading}
                               idCheck={recipe.id}
                             />
                           ))}
