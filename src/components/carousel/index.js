@@ -19,8 +19,6 @@ const Carousel = ({ actions }) => {
   const [state, setState] = useState({ open: false });
 
   const onCloseHandler = () => {
-    console.log("onCloseHandler");
-
     setState({ open: false });
     actions.setModalOpen("register");
   };

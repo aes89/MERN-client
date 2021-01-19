@@ -27,9 +27,7 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
           const {
             user: { profile },
           } = image;
-          console.log("I AM HITTING PROFILE >>>>>>>>>>>>>>>>>>>", profile);
           actions.updateProfile({ profile });
-          // history.push("/user/" + getUsername() + "/account-settings");
           toast.success("Profile Picture updated!");
         })
         .catch((error) => {
@@ -65,7 +63,6 @@ const ProfileImage = ({ actions, userLoggedIn, currentUserSettings }) => {
               name="file"
               type="file"
               onChange={(event) => {
-                console.log("event", event.currentTarget.files[0]);
                 formik.setFieldValue("file", event.currentTarget.files[0]);
               }}
             />
@@ -92,7 +89,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: {
     updateProfile: ({ profile }) => {
-      console.log("profile in map dispatch to props", profile);
       return dispatch({ type: "updateProfile", payload: { profile } });
     },
   },

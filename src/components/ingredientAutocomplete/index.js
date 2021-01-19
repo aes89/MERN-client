@@ -30,27 +30,6 @@ function AutocompleteIngredients({
   type,
   username,
 }) {
-  //removes selected ingredient from list of ingredients to add
-  // const filteredFridge = fridgeIngredients
-  //   ? ingredients.filter(
-  //       (ingredient) => !fridgeIngredients.includes(ingredient.name)
-  //     )
-  //   : ingredients;
-
-  // const filteredPantry = pantryIngredients
-  //   ? pantry.filter(
-  //       (ingredient) => !pantryIngredients.includes(ingredient.name)
-  //     )
-  //   : pantry;
-  // var filteredList;
-  // if(type === "fridge" ){
-  //   filteredList = filteredFridge
-  // } else {
-  //   filteredList = pantry
-  // }
-
-  //const filteredList = type === "fridge" ? filteredFridge : pantry;
-  //console.log("check filteredList", filteredList)
   const isFridge = type === "fridge";
   //removes selected ingredient from list of ingredients to add
 
@@ -66,17 +45,13 @@ function AutocompleteIngredients({
 
   const filteredList = isFridge ? filteredFridge : filteredPantry;
 
-  console.log("check filteredList", filteredPantry);
-
   let history = useHistory();
 
   const [values, setValues] = useState([]);
   const [errors, setErrors] = useState(null);
 
   function handleAddFridge(event) {
-    //console.log(values);
     const newValues = values.map((i) => i.name);
-    //console.log("check fridge", newValues);
 
     addFridgeItem(getUsername(), { item: newValues })
       .then((res) => {
@@ -119,7 +94,6 @@ function AutocompleteIngredients({
       });
   }
 
-  console.log("values in state", values);
   return (
     // autocomplete list
     <div class={styles.autoComplete}>
